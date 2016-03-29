@@ -1,0 +1,180 @@
+/* Remove this part to integrate in Collaboratory */
+.container-fluid {
+  padding-left: 24px;
+}
+
+.navbar-form.navbar-fixed-bottom {
+  padding-left: 24px;
+}
+
+@media screen and (min-width: 800px) {
+  .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+/* END Remove to integrate in Collaboratory */
+
+.table {
+  font-size: 13px;
+}
+.form-step {
+  margin-bottom: 60px;
+}
+
+.navbar-form.navbar-fixed-bottom {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 0;
+}
+
+label.input-group {
+  font-weight: normal;
+}
+
+.input-group-btn > .btn {
+  height: 33px;
+}
+
+/* User Card */
+
+.hbp-usercard {
+  min-height: 80px;
+  position: relative;
+}
+.hbp-usercard-pix {
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+.hbp-usercard-pix.hbp-generated-icon {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+}
+.hbp-usercard-pix > img {
+  border: 0;
+  height: auto;
+  vertical-align: middle;
+  width: 80px;
+}
+
+.hbp-usercard-name {
+  margin-bottom: 8px;
+  margin-top: 12px;
+}
+
+.hbp-usercard-name,
+.hbp-usercard-institution,
+.hbp-usercard-contact {
+  margin-left: 92px;
+}
+
+.hbp-usercard-contact-item {
+  padding-right: 12px;
+}
+
+
+/* Form */
+.team-role {
+  margin-left: 92px;
+}
+
+.form-group > .list-group {
+  padding-top: 0;
+  margin-bottom: 0;
+}
+
+.user-select-form-group {
+  margin-bottom: 150px;
+} /* hack to let the drop down display nicely  */
+
+.selected-user {
+  display: block;
+  padding-bottom: 12px;
+}
+
+
+.resourceDetails {
+  padding: 0 0 0 24px;
+}
+
+.plan {
+  padding-left: 16px;
+  position: relative;
+}
+
+.plan input[type='radio'] {
+  position: absolute;
+  left: -8px;
+  margin-top: 8px;
+}
+
+label .list-group {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.project-keywords {
+  height: 33px;
+}
+
+.typeSelected {
+  padding:10px;
+  color:#156015;
+  background-color: rgba(0,200,0,0.3);
+}
+
+.typeSelection {
+  width:20%;
+  vertical-align:top;
+  border-style: none solid none none;
+  border-width: 1px;
+  border-color:rgba(25,25,25,0.1);
+}
+
+.typeDefinition {
+  width:80%;
+  vertical-align:top;
+  padding-left: 20px;
+}
+
+.container {
+  width: 744px;
+}
+
+.middlePart{
+  float:left;
+  width: 744px;
+}
+
+.leftSide{
+  float:left;
+  /* Firefox */
+  width: -moz-calc((100% - 744px)/2);
+  /* WebKit */
+  width: -webkit-calc((100% - 744px)/2);
+/* Opera */
+width: -o-calc((100% - 744px)/2);
+/* Standard */
+width: calc((100% - 744px)/2);
+  align:right;
+}
+
+.rightSide{
+  float:left;
+  /* Firefox */
+  width: -moz-calc((100% - 744px)/2);
+  /* WebKit */
+  width: -webkit-calc((100% - 744px)/2);
+/* Opera */
+width: -o-calc((100% - 744px)/2);
+/* Standard */
+width: calc((100% - 744px)/2);
+  align:left;
+}
