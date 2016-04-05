@@ -48,11 +48,11 @@
       <ui-select
       multiple
       tagging
-      tagging-label="(custom 'new' label)"
+      tagging-label=" (Add this tag)"
       ng-model="record.tags"
       theme="bootstrap"
       sortable="true">
-      <ui-select-match placeholder="Click to select"></ui-select-match>
+      <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
       <ui-select-choices repeat="tag in availableTags | filter:$select.search">
         {{tag}}
       </ui-select-choices>
