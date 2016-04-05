@@ -8,10 +8,5 @@
  * Controller of the projectProposalApp
  */
 angular.module('projectProposalApp')
-  .controller('DefinitionsCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('DefinitionsCtrl', function ($scope) {
   });

@@ -8,10 +8,34 @@
  * Controller of the projectProposalApp
  */
 angular.module('projectProposalApp')
-  .controller('DeliverablesCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('DeliverablesCtrl', function ($scope) {
+    $scope.record = {
+      "deliverables":[
+        "name":{},
+        "deliveryDate":{},
+        "dependencies":[],
+        "risks":{},
+        "description":{},
+        "saas":[
+
+        ],
+        "paas":[
+
+        ],
+        "iaas":[
+
+        ],
+        "haas":[
+
+        ],
+        "members":[
+          "name":{},
+          "tasks":[
+            "role":{},
+            "pm":{},
+            "description":{}
+          ]
+        ]
+      ]
+    };
   });

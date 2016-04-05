@@ -1,0 +1,131 @@
+<div class="leftSide">
+  <a ui-sref="form.members" class="next-button">
+    <img src="../images/previous.png" width="200px">
+  </a>
+</div>
+<div class="container form middlePart">
+
+  <!-- project Title -->
+  <div class="form-group">
+    <label>Project Title</label> (300 characters max.)
+    <div>
+      <p><input maxlength="300" ng-model="record.projectTitle" type="text" required></p>
+    </div>
+  </div>
+
+  <table width="100%">
+  <!-- Project beggining date, min value is set for "Today" in the formController -->
+  <!-- and is reformated to correspond to a date field -->
+    <td class="inTwo">
+      <div class="form-group" >
+        <label>Project Start Date</label>
+        <p><input type="date" ng-model="record.projectStartDate"  min= {{date|date:'yyyy-MM-dd'}} required></p>
+      </div>
+    </td>
+    <td class="inTwoEmptySeparator">
+    </td>
+    <!-- Project end date, min value is set for the value of the projectStartDate -->
+    <!-- and is reformated to correspond to a date field -->
+    <td class="inTwo">
+      <div class="form-group">
+        <label>Project End Date</label>
+        <p><input type="date" ng-model="record.projectEndDate" min= {{record.projectStartDate|date:'yyyy-MM-dd'}} required></p>
+      </div>
+    </td>
+  </table>
+
+  <!-- TODO -->
+  <!-- Task selection -->
+  <div class="form-group" id="task">
+    <label>Tasks</label>
+  </div>
+
+
+  <!-- Tag selection -->
+  <div class="form-group">
+    <label>Project Key Words</label>
+    <div>
+      <ui-select
+      multiple
+      tagging
+      tagging-label="(custom 'new' label)"
+      ng-model="record.tags"
+      theme="bootstrap"
+      sortable="true">
+      <ui-select-match placeholder="Click to select"></ui-select-match>
+      <ui-select-choices repeat="tag in availableTags | filter:$select.search">
+        {{tag}}
+      </ui-select-choices>
+    </ui-select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Executive Summary</label> (1000 characters max.)
+  <div>
+    <p><input maxlength="1000" ng-model="record.executiveSummary" type="text" required></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Impact Statement</label> (1000 characters max.)
+  <div>
+    <p><input maxlength="1000" ng-model="record.impactStatement" type="text" required></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Benefit to Community</label> (500 characters max.)
+  <div>
+    <p><input maxlength="500" ng-model="record.benefitToCommunity" type="text" required></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Scientific Summary</label> (2000 characters max.)
+  <div>
+    <p><input maxlength="2000" ng-model="record.scientificSummary" type="text" required></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label>Technological Summary</label> (2000 characters max.)
+  <div>
+    <p><input maxlength="2000" ng-model="record.technologicalSummary" type="text" required></p>
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="id_3-publi">Publications</label>
+  <!-- TODO: Multiple inputs -->
+  <div>
+    <input id="id_form_publi-TOTAL_FORMS" name="form_publi-TOTAL_FORMS" type="hidden" value="1"><input id="id_form_publi-INITIAL_FORMS" name="form_publi-INITIAL_FORMS" type="hidden" value="0"><input id="id_form_publi-MIN_NUM_FORMS" name="form_publi-MIN_NUM_FORMS" type="hidden" value="0"><input id="id_form_publi-MAX_NUM_FORMS" name="form_publi-MAX_NUM_FORMS" type="hidden" value="1000">
+    <div id="publi" style="padding-bottom:5px">
+      <label for="id_form_publi-0-name"style="padding-right:5px">Name</label>
+      <input id="id_form_publi-0-name" name="form_publi-0-name" type="text" maxlength="200">
+
+      <br />
+      <label for="id_form_publi-0-link" style="padding-right:15px">URL</label>
+      <input id="id_form_publi-0-link" name="form_publi-0-link" type="url" maxlength="200">
+    </div>
+    <input type="button" value="Add More" id="add_more" onclick="addMore('publi')">
+  </div>
+</div>
+<hr />
+<input id="id_form_publi-TOTAL_FORMS" name="form_publi-TOTAL_FORMS" type="hidden" value="1"><input id="id_form_publi-INITIAL_FORMS" name="form_publi-INITIAL_FORMS" type="hidden" value="0"><input id="id_form_publi-MIN_NUM_FORMS" name="form_publi-MIN_NUM_FORMS" type="hidden" value="0"><input id="id_form_publi-MAX_NUM_FORMS" name="form_publi-MAX_NUM_FORMS" type="hidden" value="1000">
+<div class="form-group">
+<!-- TODO: Multiple inputs -->
+  <label for="id_1-past_projects">Related Projects</label>  <input type="button" value="Add More" id="add_more" onclick="addMore()">
+  <div style="padding:0px 20px;">
+    <div id="past">
+    </div>
+  </div>
+</div>
+
+
+</div>
+<div class="rightSide">
+  <a ui-sref="form.deliverables" class="next-button">
+    <img src="../images/next.png" width="200px">
+  </a>
+</div>

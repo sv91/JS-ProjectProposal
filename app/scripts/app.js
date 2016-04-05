@@ -109,35 +109,51 @@
   };
 })*/
 angular
-.module('projectProposalApp', ['ui.router'])
-.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
-		'use strict';
+.module('projectProposalApp', ['ui.router','ui.select'])
+.config(function ($stateProvider, $urlRouterProvider) {
 
 		$stateProvider
-			.state('type', {
+		.state('form', {
+			url: '/form',
+			templateUrl: 'views/form.html',
+			controller:'formController'
+		})
+			.state('form.type', {
 				url: '/type',
 				templateUrl: 'views/type.html',
 				controller: 'TypeCtrl'
 			})
-      .state('members', {
+      .state('form.members', {
 				url: '/members',
 				templateUrl: 'views/members.html',
 				controller: 'MembersCtrl'
 			})
-      .state('definitions', {
+      .state('form.definitions', {
 				url: '/definitions',
 				templateUrl: 'views/definitions.html',
 				controller: 'DefinitionsCtrl'
 			})
-      .state('deliverables', {
+      .state('form.deliverables', {
 				url: '/deliverables',
 				templateUrl: 'views/deliverables.html',
-				controller: 'DeliverablesCtrl'
+				//controller: 'DeliverablesCtrl'
 			})
-      .state('summary', {
+      .state('form.summary', {
 				url: '/summary',
 				templateUrl: 'views/summary.html',
-				controller: 'SummaryCtrl'
-			})
-		$urlRouterProvider.otherwise('/type');
+				//controller: 'SummaryCtrl'
+			});
+		$urlRouterProvider.otherwise('/form/type');
+})
+
+.controller('formController', function($scope) {
+
+    // we will store all of our form data in this object
+    $scope.record = {};
+    $scope.date = new Date();
+	  $scope.availableTags = {"tag":"Example Tag"};
+
+    // function to process the form
+    $scope.processForm = function() {
+    };
 });

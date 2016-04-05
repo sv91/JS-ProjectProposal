@@ -26,7 +26,6 @@
 
 .navbar-form.navbar-fixed-bottom {
   background: rgba(255, 255, 255, 0.9);
-  border-bottom: 0;
 }
 
 label.input-group {
@@ -126,8 +125,9 @@ label .list-group {
 
 .typeSelected {
   padding:10px;
-  color:#156015;
-  background-color: rgba(0,200,0,0.3);
+  color:#006040;
+  background-color: rgba(0,200,130,0.3);
+  border-radius: 5px;
 }
 
 .typeSelection {
@@ -142,10 +142,20 @@ label .list-group {
   width:80%;
   vertical-align:top;
   padding-left: 20px;
+  padding-top: 5px;
 }
 
 .container {
   width: 744px;
+}
+
+.form {
+  background-color: rgb(245,245,245);
+  border-style: none solid solid none;
+  border-color:rgba(25,25,25,0.1);
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .middlePart{
@@ -159,11 +169,12 @@ label .list-group {
   width: -moz-calc((100% - 744px)/2);
   /* WebKit */
   width: -webkit-calc((100% - 744px)/2);
-/* Opera */
-width: -o-calc((100% - 744px)/2);
-/* Standard */
-width: calc((100% - 744px)/2);
-  align:right;
+  /* Opera */
+  width: -o-calc((100% - 744px)/2);
+  /* Standard */
+  width: calc((100% - 744px)/2);
+
+  vertical-align: middle;
 }
 
 .rightSide{
@@ -172,9 +183,59 @@ width: calc((100% - 744px)/2);
   width: -moz-calc((100% - 744px)/2);
   /* WebKit */
   width: -webkit-calc((100% - 744px)/2);
-/* Opera */
-width: -o-calc((100% - 744px)/2);
-/* Standard */
-width: calc((100% - 744px)/2);
-  align:left;
+  /* Opera */
+  width: -o-calc((100% - 744px)/2);
+  /* Standard */
+  width: calc((100% - 744px)/2);
+}
+
+/* format of invalid inputs */
+input.ng-invalid.ng-touched {
+  background-color: #FA787E;
+  border-color: #CA5B5B;
+}
+
+/* numbered buttons */
+#status-buttons                 {  }
+#status-buttons a               { color:#000; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase;width:80px; }
+#status-buttons a:hover         { text-decoration:none; }
+
+/* we will style the span as the circled number */
+#status-buttons span            { background:#080808; color:#FFF; display:block; height:30px; margin:0 auto 10px; padding-top:8px; width:30px;
+    border-radius:50%; }
+
+/* active buttons turn light green-blue*/
+#status-buttons a.active span   { background:#00BC8C; }
+
+.page-header {
+  text-align: center;
+}
+
+.next-button {
+  vertical-align: middle;
+}
+
+.form-group input{
+  border: 1px solid #ccc;
+  padding: 3px 3px 0 3px;
+  height: 26px;
+}
+.form-group input[type=radio]{
+  border: 0px;
+  padding: 0px;
+  height: auto;
+}
+
+.form-group input[type=text]{
+  width:723px;
+}
+
+.inTwo{
+  width:49%;
+  vertical-align:top;
+}
+
+.inTwoEmptySeparator{
+  style="width:2%;
+  vertical-align:top;
 }

@@ -26,8 +26,8 @@
     <div class="header">
     </div>
 
-    <div class="container-fluid">
-      <div ui-view=""></div>
+    <div>
+      <div ui-view></div>
     </div>
 
     <div class="footer">
@@ -52,8 +52,20 @@
   <!-- endbuild -->
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/ui-select/dist/select.js"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/controllers/type.js"></script>
+  <script src="scripts/controllers/members.js"></script>
+  <script src="scripts/controllers/definitions.js"></script>
+  <!-- To create date calendar for Firefox and IE -->
+  <script src="https://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js"></script>
+  <script src="https://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js"></script>
+  <script>
+    webshims.setOptions('waitReady', false);
+    webshims.setOptions('forms-ext', {types: 'date'});
+    webshims.polyfill('forms forms-ext');
+  </script>
   <!-- endbuild -->
 </body>
 </html>

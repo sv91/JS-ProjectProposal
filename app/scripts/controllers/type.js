@@ -9,5 +9,4 @@
  */
 angular.module('projectProposalApp')
   .controller('TypeCtrl', function ($scope) {
-    $scope.record = {"projectType": {}};
   });

@@ -8,10 +8,13 @@
  * Controller of the projectProposalApp
  */
 angular.module('projectProposalApp')
-  .controller('MembersCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MembersCtrl', function ($scope) {
+    $scope.record = {
+      "principalInvestigator": {},
+      "coPrincipalInvestigator":{},
+  /*    "memberList":[
+        "name":{},
+        "sciper":{}
+      ]*/
+    };
   });

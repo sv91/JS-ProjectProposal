@@ -1,16 +1,18 @@
-<form action="" method="post">
-	<div class="leftSide">
-		Test
+	<div class="leftSide" style="visibility:hidden">
+		<!-- placeholder  -->
+		 placeholder
 	</div>
-	<div class="container middlePart">
+	<div class="container form middlePart">
 		<div class="form-group">
-			<label for="id_0-project_type">Project Type</label>
+			<!-- main information -->
+			<label>Project Type</label>
 			<p>The Blue Brain Project reserves the right to stop providing access to resource in case of misconduct at any point in time or absence of results evaluated on a yearly basis.</p><br />
 			<div style="padding:0px 10px;">
 				<!-- FOR TEST
 				<input type="text" ng-model="record.projectType">
 				FOR TEST -->
 				<div>
+					<!-- information for "testing", change style if selected -->
 					<table ng-class="{typeSelected: record.projectType=='testing'}">
 						<td class="typeSelection">
 							<input type="radio" name="type" value="testing" ng-model="record.projectType" style="margin:10px">
@@ -21,7 +23,9 @@
 						</td>
 					</table>
 				</div>
+				<br />
 				<div>
+					<!-- information for "development", change style if selected -->
 					<table ng-class="{typeSelected: record.projectType=='development'}">
 						<td class="typeSelection">
 							<input type="radio" name="type" value="development" ng-model="record.projectType" style="margin:10px">
@@ -32,7 +36,9 @@
 						</td>
 					</table>
 				</div>
+				<br />
 				<div>
+					<!-- information for "production", change style if selected -->
 					<table ng-class="{typeSelected: record.projectType=='production'}">
 						<td class="typeSelection">
 							<input type="radio" name="type" value="production" ng-model="record.projectType" style="margin:10px">
@@ -47,6 +53,7 @@
 		</div>
 	</div>
 	<div class="rightSide">
-		Test
+    <a ui-sref="form.members" class="next-button">
+			<img src="../images/next.png" width="200px">
+    </a>
 	</div>
-</form>
