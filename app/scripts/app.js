@@ -136,7 +136,7 @@ angular
       .state('form.deliverables', {
 				url: '/deliverables',
 				templateUrl: 'views/deliverables.html',
-				//controller: 'DeliverablesCtrl'
+				controller: 'DeliverablesCtrl'
 			})
       .state('form.summary', {
 				url: '/summary',
@@ -146,12 +146,14 @@ angular
 		$urlRouterProvider.otherwise('/form/type');
 })
 
+
+
 .controller('formController', function($scope) {
 
     // we will store all of our form data in this object
     $scope.record = {};
     $scope.date = new Date();
-	  $scope.availableTags = {"tag":"Example Tag"};
+	  $scope.availableTags = ["Science","Research","Testing","Computing"];
 
     // function to process the form
     $scope.processForm = function() {

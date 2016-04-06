@@ -1,0 +1,54 @@
+<div class="relatedProjectList" data-ng-model="record.relatedProjects">
+    <div ng-repeat="svPair in record.relatedProjects">
+        <div>
+            <!--<pre>{{ngModel|json}}</pre>-->
+            <div>
+              Project name:
+                <input type="text" class=""
+                       name="dataset_title"
+                       placeholder="Project name"
+                       ng-required=""
+                       uib-typeahead="project.name for project in relatedProjects| unique:'name' | filter:$viewValue  | limitTo:8"
+                       typeahead-editable
+                       typeahead-min-length="0"
+                       typeahead-show-hint="false"
+                       ng-model="svPair.name">
+            </div>
+            <table width="100%"><tr>
+            <td class="inTwo">
+              Start Date:
+                <input type="date" class="form-control"
+                       name="dataset_title"
+                       uib-typeahead="project.startDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+                       placeholder="Start Date"
+                       ng-model="svPair.startDate">
+
+            </td>
+            <td class="inTwoEmptySeparator">
+            </td>
+            <td class="inTwo">End Date:
+                <input type="date" class="form-control"
+                       name="dataset_title"
+                       uib-typeahead="project.endDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+                       placeholder="End Date"
+                       ng-model="svPair.endDate">
+
+            </td></tr></table>
+            <div>Description:
+                <input type="text" class="form-control"
+                       name="dataset_title"
+                       uib-typeahead="project.description for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+                       placeholder="A short description"
+                       ng-model="svPair.description">
+
+            </div>
+            <div>
+                <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
+                    <span aria-hidden="true">&times;</span></div>
+
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="btn btn-default" ng-click="addProject()">+</div>

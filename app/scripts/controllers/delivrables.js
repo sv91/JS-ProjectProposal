@@ -8,34 +8,62 @@
  * Controller of the projectProposalApp
  */
 angular.module('projectProposalApp')
-  .controller('DeliverablesCtrl', function ($scope) {
-    $scope.record = {
-      "deliverables":[
-        "name":{},
-        "deliveryDate":{},
-        "dependencies":[],
-        "risks":{},
-        "description":{},
-        "saas":[
+  .controller('DeliverablesCtrl', function () {
+    ;
+  })
 
-        ],
-        "paas":[
+  .directive('deliverablePicker', function () {
+    return {
+      scope: true,
+      templateUrl: 'views/deliverablePicker.html',
+      link: function postLink(scope) {
+        if (!scope.record.deliverables) {
+          scope.record.deliverables = [
+            {"name": "", "date": "", "risks": "", "description": ""}
+          ];
+        }
+        scope.deleteDeliverable = function (item) {
+          if (scope.record.deliverables.length < 2) {
+            scope.record.deliverables = [{"name": "", "date": "", "risks": "", "description": ""}];
+            return;
+          }
+          var index = scope.record.deliverables.indexOf(item);
+          scope.record.deliverables.splice(index, 1);
 
-        ],
-        "iaas":[
+        };
+        scope.addDeliverable = function () {
+          scope.record.deliverables.push({"name": "", "date": "", "risks": "", "description": ""});
+        };
 
-        ],
-        "haas":[
-
-        ],
-        "members":[
-          "name":{},
-          "tasks":[
-            "role":{},
-            "pm":{},
-            "description":{}
-          ]
-        ]
-      ]
+      }
     };
-  });
+  })
+
+  .directive('memberPicker', function () {
+    return {
+      scope: true,
+      templateUrl: 'views/memberPicker.html',
+      link: function postLink(scope) {
+        if (!scope.record.members) {
+          scope.record.members = [
+            {"name": "", "link": ""}
+          ];
+        }
+        scope.deleteMember = function (item) {
+          if (scope.record.members.length < 2) {
+            scope.record.members = [{"name": "", "link": ""}];
+            return;
+          }
+          var index = scope.record.members.indexOf(item);
+          scope.record.members.splice(index, 1);
+
+        };
+        scope.addMember = function () {
+          scope.record.members.push({"name": "", "link": ""});
+        };
+
+      }
+    };
+  })
+
+  ;

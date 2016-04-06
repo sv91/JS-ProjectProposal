@@ -96,30 +96,15 @@
 </div>
 
 <div class="form-group">
-  <label for="id_3-publi">Publications</label>
-  <!-- TODO: Multiple inputs -->
-  <div>
-    <input id="id_form_publi-TOTAL_FORMS" name="form_publi-TOTAL_FORMS" type="hidden" value="1"><input id="id_form_publi-INITIAL_FORMS" name="form_publi-INITIAL_FORMS" type="hidden" value="0"><input id="id_form_publi-MIN_NUM_FORMS" name="form_publi-MIN_NUM_FORMS" type="hidden" value="0"><input id="id_form_publi-MAX_NUM_FORMS" name="form_publi-MAX_NUM_FORMS" type="hidden" value="1000">
-    <div id="publi" style="padding-bottom:5px">
-      <label for="id_form_publi-0-name"style="padding-right:5px">Name</label>
-      <input id="id_form_publi-0-name" name="form_publi-0-name" type="text" maxlength="200">
-
-      <br />
-      <label for="id_form_publi-0-link" style="padding-right:15px">URL</label>
-      <input id="id_form_publi-0-link" name="form_publi-0-link" type="url" maxlength="200">
-    </div>
-    <input type="button" value="Add More" id="add_more" onclick="addMore('publi')">
-  </div>
+  <label>Publications</label>
+    <publication-picker></publication-picker>
 </div>
-<hr />
-<input id="id_form_publi-TOTAL_FORMS" name="form_publi-TOTAL_FORMS" type="hidden" value="1"><input id="id_form_publi-INITIAL_FORMS" name="form_publi-INITIAL_FORMS" type="hidden" value="0"><input id="id_form_publi-MIN_NUM_FORMS" name="form_publi-MIN_NUM_FORMS" type="hidden" value="0"><input id="id_form_publi-MAX_NUM_FORMS" name="form_publi-MAX_NUM_FORMS" type="hidden" value="1000">
+
+
 <div class="form-group">
 <!-- TODO: Multiple inputs -->
-  <label for="id_1-past_projects">Related Projects</label>  <input type="button" value="Add More" id="add_more" onclick="addMore()">
-  <div style="padding:0px 20px;">
-    <div id="past">
-    </div>
-  </div>
+  <label>Related Projects</label>
+  <related-project-picker></related-project-picker>
 </div>
 
 

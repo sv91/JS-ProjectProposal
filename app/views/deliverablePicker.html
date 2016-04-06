@@ -1,0 +1,49 @@
+<div class="deliverablesList" data-ng-model="record.deliverables">
+    <div ng-repeat="svPair in record.deliverables">
+        <div>
+            <!--<pre>{{ngModel|json}}</pre>-->
+            <div >
+
+                <input type="text"
+                       name="dataset_title"
+                       placeholder="Deliverable name"
+                       ng-required=""
+                       uib-typeahead="deliverable.name for deliverable in deliverables| unique:'name' | filter:$viewValue  | limitTo:8"
+                       typeahead-editable
+                       typeahead-min-length="0"
+                       typeahead-show-hint="false"
+                       ng-model="svPair.name">
+            </div>
+            <br />
+            <div>
+                <input type="date"
+                       name="dataset_title"
+                       uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+                       ng-model="svPair.date">
+            </div>
+            <br />
+            <div>
+                <input type="text"
+                       name="dataset_title"
+                       uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+                       placeholder="A short description"
+                       ng-model="svPair.description">
+            </div>
+            <br />
+            <div>
+                <input type="text"
+                       name="dataset_title"
+                       uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+                       placeholder="Risks of the deliverable"
+                       ng-model="svPair.risks">
+            </div>
+            <div>
+                <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
+                    <span aria-hidden="true">&times;</span></div>
+
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="btn btn-default" ng-click="addDeliverable()">+</div>
