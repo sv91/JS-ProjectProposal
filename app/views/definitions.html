@@ -19,7 +19,7 @@
     <td class="inTwo">
       <div class="form-group" >
         <label>Project Start Date</label>
-        <p><input type="date" ng-model="record.projectStartDate"  min= {{date|date:'yyyy-MM-dd'}} required></p>
+        <p><input class="form-control" type="date" ng-model="record.projectStartDate" min= {{date|date:'yyyy-MM-dd'}} required></p>
       </div>
     </td>
     <td class="inTwoEmptySeparator">
@@ -29,13 +29,53 @@
     <td class="inTwo">
       <div class="form-group">
         <label>Project End Date</label>
-        <p><input type="date" ng-model="record.projectEndDate" min= {{record.projectStartDate|date:'yyyy-MM-dd'}} required></p>
+        <p><input class="form-control" type="date" ng-model="record.projectEndDate" min= {{record.projectStartDate|date:'yyyy-MM-dd'}} required></p>
       </div>
     </td>
   </table>
 
   <!-- TODO -->
+  <!-- New project? -->
+  <div class="form-group" id="new_project">
+    <label>New project?</label>
+
+      <!-- TODO -->
+      <!-- If not, information about project -->
+  </div>
+
+  <!-- TODO -->
+  <!-- Old project specification-->  
+  <div class="form-group" id="old_project">
+      <label>Project Title</label>
+      <label>Project ID</label>
+      <label>Project Principal Investigator</label>
+  </div>
+
+  <!-- TODO -->
+  <!-- Grants selection -->
+  <!-- Do it like tags with a set of grants -->
+  <div class="form-group" id="grants">
+    <label>Grants</label>
+    <div>
+      <ui-select
+      multiple
+      tagging
+      tagging-label=" (Add this grant)"
+      ng-model="record.grants"
+      theme="bootstrap"
+      sortable="true">
+      <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
+      <ui-select-choices repeat="grant in availableGrants | filter:$select.search">
+        {{grant}}
+      </ui-select-choices>
+    </ui-select>
+  </div>
+  </div>
+
+  <!-- TODO -->
   <!-- Task selection -->
+  <!-- Do it like dependencies with filter such as the provided choices -->
+  <!-- are list of task from the set of tasks of the selected grants -->
   <div class="form-group" id="task">
     <label>Tasks</label>
   </div>

@@ -9,7 +9,6 @@
  */
 angular.module('projectProposalApp')
   .controller('DeliverablesCtrl', function () {
-    ;
   })
 
   .directive('deliverablePicker', function () {
@@ -19,12 +18,12 @@ angular.module('projectProposalApp')
       link: function postLink(scope) {
         if (!scope.record.deliverables) {
           scope.record.deliverables = [
-            {"name": "", "date": "", "risks": "", "description": ""}
+            {"name": "", "date": "", "risks": "", "description": "","dependency":[]}
           ];
         }
         scope.deleteDeliverable = function (item) {
           if (scope.record.deliverables.length < 2) {
-            scope.record.deliverables = [{"name": "", "date": "", "risks": "", "description": ""}];
+            scope.record.deliverables = [{"name": "", "date": "", "risks": "", "description": "","dependency":[]}];
             return;
           }
           var index = scope.record.deliverables.indexOf(item);
@@ -32,7 +31,7 @@ angular.module('projectProposalApp')
 
         };
         scope.addDeliverable = function () {
-          scope.record.deliverables.push({"name": "", "date": "", "risks": "", "description": ""});
+          scope.record.deliverables.push({"name": "", "date": "", "risks": "", "description": "","dependency":[]});
         };
 
       }

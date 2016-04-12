@@ -14,6 +14,7 @@
                        typeahead-show-hint="false"
                        ng-model="svPair.name">
             </div>
+            <!-- Table to put the dates at the same position -->
             <table width="100%"><tr>
             <td class="inTwo">
               Start Date:
@@ -31,6 +32,7 @@
                        name="dataset_title"
                        uib-typeahead="project.endDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
                        placeholder="End Date"
+                       min= {{svPair.startDate|date:'yyyy-MM-dd'}} 
                        ng-model="svPair.endDate">
 
             </td></tr></table>
@@ -51,4 +53,4 @@
         <hr>
     </div>
 </div>
-<div class="btn btn-default" ng-click="addProject()">+</div>
+<div class="btn btn-default" ng-click="addProject()">Add a related Project</div>

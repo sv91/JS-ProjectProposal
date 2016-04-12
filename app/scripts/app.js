@@ -153,7 +153,10 @@ angular
     // we will store all of our form data in this object
     $scope.record = {};
     $scope.date = new Date();
+
+		// The available values for the different fields
 	  $scope.availableTags = ["Science","Research","Testing","Computing"];
+		$scope.availableGrants = ["Human Brain Project","Blue Brain Project","KAUST"];
 
     // function to process the form
     $scope.processForm = function() {

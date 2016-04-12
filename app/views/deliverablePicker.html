@@ -1,49 +1,90 @@
 <div class="deliverablesList" data-ng-model="record.deliverables">
-    <div ng-repeat="svPair in record.deliverables">
-        <div>
-            <!--<pre>{{ngModel|json}}</pre>-->
-            <div >
+  <div ng-repeat="svPair in record.deliverables">
 
-                <input type="text"
-                       name="dataset_title"
-                       placeholder="Deliverable name"
-                       ng-required=""
-                       uib-typeahead="deliverable.name for deliverable in deliverables| unique:'name' | filter:$viewValue  | limitTo:8"
-                       typeahead-editable
-                       typeahead-min-length="0"
-                       typeahead-show-hint="false"
-                       ng-model="svPair.name">
-            </div>
-            <br />
-            <div>
-                <input type="date"
-                       name="dataset_title"
-                       uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-                       ng-model="svPair.date">
-            </div>
-            <br />
-            <div>
-                <input type="text"
-                       name="dataset_title"
-                       uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-                       placeholder="A short description"
-                       ng-model="svPair.description">
-            </div>
-            <br />
-            <div>
-                <input type="text"
-                       name="dataset_title"
-                       uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-                       placeholder="Risks of the deliverable"
-                       ng-model="svPair.risks">
-            </div>
-            <div>
-                <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
-                    <span aria-hidden="true">&times;</span></div>
+    <img src="/images/plus.jpg" class="minusPlus" style="display:none" onclick="show(this)">
+    <img src="/images/minus.jpg" class="minusPlus" onclick="hide(this)">
+    <label>Deliverable <i>{{svPair.name}}</i></label>
 
-            </div>
-        </div>
-        <hr>
+    <div>
+      <!--<pre>{{ngModel|json}}</pre>-->
+      <div >
+        Name:
+        <input type="text"
+        class="form-control"
+        name="dataset_title"
+        placeholder="Deliverable name"
+        ng-required=""
+        uib-typeahead="deliverable.name for deliverable in deliverables| unique:'name' | filter:$viewValue  | limitTo:8"
+        typeahead-editable
+        typeahead-min-length="0"
+        typeahead-show-hint="false"
+        ng-model="svPair.name">
+      </div>
+      <div>
+        Date:
+        <input type="date"
+        class="form-control"
+        name="dataset_title"
+        uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+        ng-model="svPair.date">
+      </div>
+      <div>
+        Description:
+        <input type="text"
+        class="form-control"
+        name="dataset_title"
+        uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+        placeholder="A short description"
+        ng-model="svPair.description">
+      </div>
+      <div>
+        Risks:
+        <input type="text"
+        class="form-control"
+        name="dataset_title"
+        uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+        placeholder="Risks of the deliverable"
+        ng-model="svPair.risks">
+      </div>
+      <div>
+        Dependencies: <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
+        <ui-select
+        multiple
+        ng-model="svPair.dependency"
+        theme="bootstrap"
+        sortable="true">
+        <ui-select-match placeholder="Select the dependencies">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | filter:{'name': svPair.name}:false ">
+          {{dependency.name}}
+        </ui-select-choices>
+      </ui-select>
+
     </div>
+    <div align="right">
+      Delete this Deliverable<br />
+      <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
+        <span aria-hidden="true">&times;</span>
+      </div>
+    </div>
+  </div>
+  <hr>
 </div>
-<div class="btn btn-default" ng-click="addDeliverable()">+</div>
+</div>
+<div class="btn btn-default" ng-click="addDeliverable()">Add a Deliverable</div>
+
+<script>
+/*
+TODO Move to index and generalize
+*/
+function show(img){
+  img.parentNode.getElementsByTagName("div")[0].style.display="";
+  img.parentNode.getElementsByTagName("img")[1].style.display="";
+  img.style.display="none";
+}
+
+function hide(img){
+  img.parentNode.getElementsByTagName("div")[0].style.display="none";
+  img.parentNode.getElementsByTagName("img")[0].style.display="";
+  img.style.display="none";
+}
+</script>
