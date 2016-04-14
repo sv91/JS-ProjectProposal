@@ -239,3 +239,7 @@ input.ng-invalid.ng-touched {
   style="width:2%;
   vertical-align:top;
 }
+
+.hideOld{
+  display:none;
+}

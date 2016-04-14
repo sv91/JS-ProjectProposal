@@ -8,7 +8,8 @@
  * Controller of the projectProposalApp
  */
 angular.module('projectProposalApp')
-  .controller('DefinitionsCtrl', function () {
+  .controller('DefinitionsCtrl', function ($scope) {
+    $scope.record.newproject = 'true';
   })
 
     .directive('publicationPicker', function () {

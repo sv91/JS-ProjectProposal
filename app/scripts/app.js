@@ -10,59 +10,7 @@
  */
 
 /*  .module('projectProposalApp', ['hbpCommon','ui.select'])
-  .directive('singleUserSelect', function($log, hbpUserDirectory) {
-	return {
-	    scope: true,
-		template: '<hbp-user-selector hbp-on-select="handleUserSelection"></hbp-user-selector><hbp-usercard hbp-user="selectedUser" ></hbp-usercard></pre>',
-		link: function(scope, elt, attr) {
-			// check if a user id is already set
-			var userId = elt.parent().find('input').attr('value');
-			if (userId) {
-				hbpUserDirectory.get([userId])
-				.then(function(users) {
-					scope.selectedUser = users[userId];
-				})
-				.catch($log.error);
-			}
 
-			scope.selectedUser = null;
-			scope.handleUserSelection = function(options) {
-				if(checkNames(options.user.displayName,elt.parent().find('input').attr('id'))){
-					console.log('select', arguments);
-					scope.selectedUser = options.user;
-					elt.parent().find('input').attr('value', scope.selectedUser.displayName);
-					elt.parent().find('p').find('input').attr('value', scope.selectedUser.id);
-				}
-			}
-		}
-	}
-})
-.directive('singleUserShow', function($log, hbpUserDirectory) {
-	return {
-	    scope: true,
-		template: '<hbp-usercard hbp-user="selectedUser" ></hbp-usercard></pre>',
-		link: function(scope, elt, attr) {
-			// check if a user id is already set
-			var userId = elt.parent().find('input').attr('value');
-			if (userId) {
-				hbpUserDirectory.get([userId])
-				.then(function(users) {
-					scope.selectedUser = users[userId];
-				})
-				.catch($log.error);
-			}
-
-
-			scope.selectedUser = null;
-			scope.handleUserSelection = function(options) {
-				console.log('select', arguments);
-				scope.selectedUser = options.user;
-				elt.parent().find('input').attr('value', scope.selectedUser.displayName);
-				elt.parent().find('p').find('input').attr('value', scope.selectedUser.id);
-			}
-		}
-	}
-})
 .directive('multiUserSelect', function() {
 	return {
 		scope: true,
@@ -157,6 +105,14 @@ angular
 		// The available values for the different fields
 	  $scope.availableTags = ["Science","Research","Testing","Computing"];
 		$scope.availableGrants = ["Human Brain Project","Blue Brain Project","KAUST"];
+		$scope.availableTasks = [
+			{"name":"TaskHBP1","grant":"Human Brain Project"},
+			{"name":"TaskHBP2","grant":"Human Brain Project"},
+			{"name":"TaskBBP1","grant":"Blue Brain Project"},
+			{"name":"TaskBBP2","grant":"Blue Brain Project"},
+			{"name":"TaskKAUST1","grant":"KAUST"},
+			{"name":"TaskKAUST2","grant":"KAUST"},
+		];
 
     // function to process the form
     $scope.processForm = function() {

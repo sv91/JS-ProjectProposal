@@ -37,18 +37,34 @@
   <!-- TODO -->
   <!-- New project? -->
   <div class="form-group" id="new_project">
-    <label>New project?</label>
+    <label>New project?</label><br />
+    <input type="radio" name="new_project" value="true" ng-model="record.newproject"> Yes <br />
+    <input type="radio" name="new_project" value="false" ng-model="record.newproject"> No <br />
 
-      <!-- TODO -->
-      <!-- If not, information about project -->
   </div>
 
   <!-- TODO -->
-  <!-- Old project specification-->  
-  <div class="form-group" id="old_project">
-      <label>Project Title</label>
-      <label>Project ID</label>
-      <label>Project Principal Investigator</label>
+  <!-- Old project specification-->
+  <div class="form-group" id="old_project" ng-class="{hideOld: record.newproject=='true'}">
+    <!-- project Title -->
+    <div class="form-group">
+      <label>Previous Project Title</label> (300 characters max.)
+      <div>
+        <p><input maxlength="300" ng-model="record.previousProject.title" type="text" required></p>
+      </div>
+    </div><!-- project Title -->
+    <div class="form-group">
+      <label>Previous Project ID</label>
+      <div>
+        <p><input ng-model="record.previousProject.title" type="text" required></p>
+      </div>
+    </div><!-- project Title -->
+    <div class="form-group">
+      <label>Previous Project Principal Investigator</label>
+      <div>
+        <p><input ng-model="record.previousProject.title" type="text" required></p>
+      </div>
+    </div>
   </div>
 
   <!-- TODO -->
@@ -78,6 +94,18 @@
   <!-- are list of task from the set of tasks of the selected grants -->
   <div class="form-group" id="task">
     <label>Tasks</label>
+    <div>
+      <ui-select
+      multiple
+      ng-model="record.tasks"
+      theme="bootstrap"
+      sortable="true">
+      <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+      <ui-select-choices repeat="tasks in availableTasks | filter:$select.search | filter:($scope.record.grants.indexOf(tasks.grant) > -1)">
+        {{tasks.name}}
+      </ui-select-choices>
+    </ui-select>
+  </div>
   </div>
 
 

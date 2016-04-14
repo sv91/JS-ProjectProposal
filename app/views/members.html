@@ -3,9 +3,38 @@
     <img src="../images/previous.png" width="200px">
   </a>
 </div>
-<div class="container form middlePart">
 
+
+
+<div class="container form middlePart">
+  <!-- principal Investigator -->
+  <div class="form-group">
+    <label>Project Leader</label>
+    <div>
+<single-user-select>
+</single-user-select>
+      </div>
+  </div>
+
+<!-- Co-principal Investigator -->
+<div class="form-group">
+  <label>Project Co-Leader</label>
+  <div>
+    <p><input maxlength="300" ng-model="record.projectTitle" type="text" required></p>
+  </div>
 </div>
+
+<!-- Members -->
+<div class="form-group">
+  <label>Members</label>
+  <div>
+    <p><input maxlength="300" ng-model="record.projectTitle" type="text" required></p>
+  </div>
+</div>
+</div>
+
+
+
 <div class="rightSide">
   <a ui-sref="form.definitions" class="next-button">
     <img src="../images/next.png" width="200px">
