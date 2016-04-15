@@ -1,8 +1,9 @@
-<div class="leftSide">
-  <a ui-sref="form.members" class="next-button">
-    <img src="../images/previous.png" width="200px">
-  </a>
+<div class="leftSide" style="visibility:hidden">
+  <!-- placeholder  -->
+   placeholder
 </div>
+
+
 <div class="container form middlePart">
 
   <!-- project Title -->
@@ -101,8 +102,8 @@
       theme="bootstrap"
       sortable="true">
       <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
-      <ui-select-choices repeat="tasks in availableTasks | filter:$select.search | filter:($scope.record.grants.indexOf(tasks.grant) > -1)">
-        {{tasks.name}}
+      <ui-select-choices repeat="tasks in availableTasks | filter:$select.search | objectByKeyValFilter:"grant":"Human Brain Project" }">
+        {{tasks.name}} - <i>{{tasks.grant}}</i>
       </ui-select-choices>
     </ui-select>
   </div>
@@ -178,7 +179,8 @@
 
 </div>
 <div class="rightSide">
-  <a ui-sref="form.deliverables" class="next-button">
-    <img src="../images/next.png" width="200px">
-  </a>
 </div>
+
+<script>
+updateLinks("members","deliverables");
+</script>

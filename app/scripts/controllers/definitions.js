@@ -38,6 +38,30 @@ angular.module('projectProposalApp')
     		}
     	};
     })
+
+    .filter('grantsFilter', function () {
+        return function (items, search) {
+            var result = [];
+            angular.forEach(items, function (value, key) {
+                angular.forEach(value, function (value2, key2) {
+                    if (search.indexOf(value2) > -1) {
+                        result.push(value2);
+                    }
+                })
+            });
+            return result;
+
+        }
+    })
+
+    .filter("grantsFilter", function() {
+  return function(input,scope) {
+    if(input.grant in scope.record.grants){
+      return input;
+    }
+    return '';
+  };
+})
       .directive('relatedProjectPicker', function () {
       	return {
       		scope: true,

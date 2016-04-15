@@ -94,10 +94,22 @@ angular
 		$urlRouterProvider.otherwise('/form/type');
 })
 
+.factory('Links',function(){
+	var nextPage = '.type';
+	var prevPage = '.type';
 
+	return {
+		nextPage: function() { return nextPage; },
+		prevPage: function() { return prevPage; },
+		updateLinks: function(prev,next) {
+			nextPage = next;
+			prevPage = prev;
+		}
+	}
+
+})
 
 .controller('formController', function($scope) {
-
     // we will store all of our form data in this object
     $scope.record = {};
     $scope.date = new Date();
@@ -117,4 +129,15 @@ angular
     // function to process the form
     $scope.processForm = function() {
     };
-});
+})
+.filter('objectByKeyValFilter', function () {
+return function (input, filterKey, filterVal) {
+    var filteredInput ={};
+     angular.forEach(input, function(value, key){
+       if(value[filterKey] && value[filterKey] !== filterVal){
+          filteredInput[key]= value;
+        }
+     }
+	 );
+     return filteredInput;
+}});

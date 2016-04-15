@@ -205,7 +205,9 @@ input.ng-invalid.ng-touched {
     border-radius:50%; }
 
 /* active buttons turn light green-blue*/
-#status-buttons a.active span   { background:#00BC8C; }
+    #status-buttons a.active span   { background:#00BC8C; }
+
+    #status-buttons a.pN span   { background:#C0C0C0; }
 
 .page-header {
   text-align: center;
