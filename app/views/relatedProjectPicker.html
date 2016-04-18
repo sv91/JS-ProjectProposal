@@ -3,7 +3,7 @@
         <div>
             <!--<pre>{{ngModel|json}}</pre>-->
             <div onclick="updateBubble(this,'The name of a related project.')">
-              Project name:
+              Project name
                 <input type="text" class=""
                        name="dataset_title"
                        placeholder="Project name"
@@ -16,8 +16,8 @@
             </div>
             <!-- Table to put the dates at the same position -->
             <table width="100%"><tr>
-            <td class="inTwo" onclick="updateBubble(this,'The start date.">
-              Start Date:
+            <td class="inTwo" onclick="updateBubble(this,'The start date.')">
+              Start Date
                 <input type="date" class="form-control"
                        name="dataset_title"
                        uib-typeahead="project.startDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
@@ -28,7 +28,7 @@
             <td class="inTwoEmptySeparator">
             </td>
             <td class="inTwo" onclick="updateBubble(this,'The end date.<br />Can not precede the start date.')">
-              End Date:
+              End Date
                 <input type="date" class="form-control"
                        name="dataset_title"
                        uib-typeahead="project.endDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
@@ -38,7 +38,7 @@
 
             </td></tr></table>
             <div onclick="updateBubble(this,'A short description.')">
-              Description:
+              Description
                 <input type="text" class="form-control"
                        name="dataset_title"
                        uib-typeahead="project.description for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"

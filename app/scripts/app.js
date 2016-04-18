@@ -104,6 +104,7 @@ angular
 		// The available values for the different fields
 	  $scope.availableTags = ["Science","Research","Testing","Computing"];
 		$scope.availableGrants = ["Human Brain Project","Blue Brain Project","KAUST"];
+		$scope.availableHardware = ["MacBook","PS4","iPhone"];
 		$scope.availableTasks = [
 			{"name":"TaskHBP1","grant":"Human Brain Project"},
 			{"name":"TaskHBP2","grant":"Human Brain Project"},
@@ -111,6 +112,18 @@ angular
 			{"name":"TaskBBP2","grant":"Blue Brain Project"},
 			{"name":"TaskKAUST1","grant":"KAUST"},
 			{"name":"TaskKAUST2","grant":"KAUST"},
+		];
+		$scope.availableSoftDev = [
+			{"name":"Ticketing system","desc":"(JIRA, ...)"},
+			{"name":"Continuous integration","desc":"(Jenkins, ...)"},
+			{"name":"Wiki","desc":"(Confluence, ...)"}
+		];
+		$scope.availableArchitecture = [
+			{"name":"Intel x86","desc":""},
+			{"name":"Intel accelarators","desc":"(KNL, SKL, ...)"},
+			{"name":"IBM Blue Gene/Q","desc":""},
+			{"name":"IBM POWER7, POWER8","desc":""},
+			{"name":"Nvidia GPU","desc":""}
 		];
 
     // function to process the form

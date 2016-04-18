@@ -1,15 +1,15 @@
 <div class="deliverablesList" data-ng-model="record.deliverables">
   <div ng-repeat="svPair in record.deliverables">
-  <table width="100%">
-    <td>
-    <img src="/images/plus.jpg" class="minusPlus" style="display:none" onclick="show(this)">
-    <img src="/images/minus.jpg" class="minusPlus" onclick="hide(this)">
-    <label>Deliverable <i>{{svPair.name}}</i></label>
-  </td>
-  <td align="right">
-  <label>{{svPair.date|date:'EEE. dd MMM. yy'}}</label>
-  </td>
-</table>
+    <table width="100%">
+      <td>
+        <img src="/images/plus.jpg" class="minusPlus" style="display:none" onclick="show(this)">
+        <img src="/images/minus.jpg" class="minusPlus" onclick="hide(this)">
+        <label>Deliverable <i>{{svPair.name}}</i></label>
+      </td>
+      <td align="right">
+        <label>{{svPair.date|date:'EEE. dd MMM. yy'}}</label>
+      </td>
+    </table>
     <div>
       <!--<pre>{{ngModel|json}}</pre>-->
       <div onclick="updateBubble(this,'The name of the deliverable.')">
@@ -26,55 +26,182 @@
         ng-model="svPair.name">
       </div><br />
       <div onclick="updateBubble(this,'Delivery date.<br />Should be between the project start date and end date.')">
-        <label>Date</label>
-        <input type="date"
-        class="form-control"
-        name="dataset_title"
-        max= {{record.projectEndDate|date:'yyyy-MM-dd'}}
-        min= {{record.projectStartDate|date:'yyyy-MM-dd'}}
-        uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-        ng-model="svPair.date">
-      </div><br />
-      <div onclick="updateBubble(this,'A short description.')">
-        <label>Description</label>
-        <input type="text"
-        class="form-control"
-        name="dataset_title"
-        uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-        placeholder="A short description"
-        ng-model="svPair.description">
-      </div><br />
-      <div onclick="updateBubble(this,'Some risks.')">
-        <label>Risks</label>
-        <input type="text"
-        class="form-control"
-        name="dataset_title"
-        uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-        placeholder="Risks of the deliverable"
-        ng-model="svPair.risks">
-      </div><br />
-      <div onclick="updateBubble(this,'Dependencies of the deliverable to other delivrebales.')">
-        <label>Dependencies</label> <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
-        <ui-select
-        multiple
-        ng-model="svPair.dependency"
-        theme="bootstrap"
-        sortable="true">
-        <ui-select-match placeholder="Select the dependencies">{{$item.name}}</ui-select-match>
-        <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | filter:{'name': svPair.name}:false ">
-          {{dependency.name}}
-        </ui-select-choices>
-      </ui-select>
+      <label>Date</label>
+      <input type="date"
+      class="form-control"
+      name="dataset_title"
+      max= {{record.projectEndDate|date:'yyyy-MM-dd'}}
+      min= {{record.projectStartDate|date:'yyyy-MM-dd'}}
+      uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+      ng-model="svPair.date">
+    </div><br />
+    <div onclick="updateBubble(this,'A short description.')">
+      <label>Description</label>
+      <input type="text"
+      class="form-control"
+      name="dataset_title"
+      uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+      placeholder="A short description"
+      ng-model="svPair.description">
+    </div><br />
+    <div onclick="updateBubble(this,'Some risks.')">
+      <label>Risks</label>
+      <input type="text"
+      class="form-control"
+      name="dataset_title"
+      uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+      placeholder="Risks of the deliverable"
+      ng-model="svPair.risks">
+    </div><br />
+    <div onclick="updateBubble(this,'Dependencies of the deliverable to other delivrebales.')">
+      <label>Dependencies</label> <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
+      <ui-select
+      multiple
+      ng-model="svPair.dependency"
+      theme="bootstrap"
+      sortable="true">
+      <ui-select-match placeholder="Select the dependencies">{{$item.name}}</ui-select-match>
+      <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | filter:{'name': svPair.name}:false ">
+        {{dependency.name}}
+      </ui-select-choices>
+    </ui-select>
 
-    </div>
-    <div align="right">
-      Delete this Deliverable<br />
-      <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
-        <span aria-hidden="true">&times;</span>
-      </div>
+  </div>
+  <br />
+  <div>
+    <label>Computing, Storage and Services resources</label>
+    <div class="p10-5">
+      <label>Software as a Service (SaaS)</label>
+      <div class="p10">
+        <table width="100%"><tr>
+          <td class="inTwo" onclick="updateBubble(this,'Select the needed tools.')">
+            Software development
+            <ui-select
+            multiple
+            ng-model="svPair.softdev"
+            theme="bootstrap"
+            sortable="true">
+            <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+            <ui-select-choices repeat="soft in availableSoftDev | filter:$select.search">
+              {{soft.name}} <i>{{soft.desc}}</i>
+            </ui-select-choices>
+          </ui-select>
+
+        </td>
+        <td class="inTwoEmptySeparator">
+        </td>
+        <td class="inTwo" onclick="updateBubble(this,'The end date.<br />Can not precede the start date.')">
+        HBP Collab
+        <input type="date" class="form-control"
+        name="dataset_title"
+        uib-typeahead="project.endDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+        placeholder="End Date"
+        min= {{svPair.startDate|date:'yyyy-MM-dd'}}
+        ng-model="svPair.collabs">
+
+      </td></tr></table>
     </div>
   </div>
-  <hr>
+  <div class="p10-5">
+    <label>Platform as a Service (PaaS)</label>
+    <div class="p10">
+      TOFILL
+    </div>
+  </div>
+  <div class="p10-5">
+    <label>Infrastructure as a Service (IaaS)</label>
+    <div class="p10">
+      Prefered Architecture
+      <ui-select
+      onclick="updateBubble(this,'Prefered Architecture.')"
+      multiple
+      ng-model="svPair.architecture"
+      theme="bootstrap"
+      sortable="true">
+      <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+      <ui-select-choices repeat="soft in availableArchitecture | filter:$select.search">
+        {{soft.name}} <i>{{soft.desc}}</i>
+      </ui-select-choices>
+    </ui-select>
+    <br />
+    <table width="100%"><tr>
+      <td class="inTwo">
+        HPC Computing
+        <div class="p10 form-group">
+          Total number of runs
+          <input type="number" ng-model="svPair.HPC.runs" min="0"  onclick="updateBubble(this,'Number of runs.')">
+          Average partition size (Number of processors)
+          <input type="number" ng-model="svPair.HPC.partition" min="0" onclick="updateBubble(this,'Average partition size (Number of processors).')">
+          Time to solution (In hours)
+          <input type="number" ng-model="svPair.HPC.time" min="0" onclick="updateBubble(this,'Time to solution (In hours).')">
+        </div>
+      </td>
+      <td class="inTwoEmptySeparator">
+      </td>
+      <td class="inTwo">
+      HPC Storage
+      <div class="p10 form-group">
+        Number of artefacts
+        <input type="number" ng-model="svPair.HPC.numarte" min="0" onclick="updateBubble(this,'Number of artefacts.')">
+        Average size of artefacts (in GB)
+        <input type="number" ng-model="svPair.HPC.sizearte" min="0" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
+      </div>
+    </td></tr><tr>
+      <td class="inTwo">
+        Cloud Computing
+        <div class="p10 form-group">
+          Total number of runs
+          <input type="number" ng-model="svPair.cloud.runs" min="0"  onclick="updateBubble(this,'Number of runs.')">
+          Average partition size (Number of processors)
+          <input type="number" ng-model="svPair.cloud.partition" min="0" onclick="updateBubble(this,'Average partition size (Number of processors).')">
+          Time to solution (In hours)
+          <input type="number" ng-model="svPair.cloud.time" min="0" onclick="updateBubble(this,'Time to solution (In hours).')">
+        </div>
+      </td>
+      <td class="inTwoEmptySeparator">
+      </td>
+      <td class="inTwo">
+      Cloud Storage
+      <div class="p10 form-group">
+        Number of artefacts
+        <input type="number" ng-model="svPair.cloud.numarte" min="0" onclick="updateBubble(this,'Number of artefacts.')">
+        Average size of artefacts (in GB)
+        <input type="number" ng-model="svPair.cloud.sizearte" min="0" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
+      </div>
+    </td></tr></table>
+  </div>
+</div>
+<div class="p10-5">
+  <label>Hardware as a Service (HaaS)</label>
+  <ui-select
+  onclick="updateBubble(this,'Hardware as a Service (HaaS).')"
+  multiple
+  tagging
+  tagging-label=" (Add this hardware)"
+  ng-model="record.hardware"
+  theme="bootstrap"
+  sortable="true">
+  <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
+  <ui-select-choices repeat="hard in availableHardware | filter:$select.search">
+    {{hard}}
+  </ui-select-choices>
+</ui-select>
+  <div class="p10">
+  </div>
+</div>
+</div>
+<br />
+<div>
+  <label>Human resources</label>
+</div>
+<div align="right">
+  Delete this Deliverable<br />
+  <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
+    <span aria-hidden="true">&times;</span>
+  </div>
+</div>
+</div>
+<hr>
 </div>
 </div>
 <div class="btn btn-default" ng-click="addDeliverable()">Add a Deliverable</div>
