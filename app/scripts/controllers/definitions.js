@@ -23,6 +23,7 @@ angular.module('projectProposalApp')
   					];
   				}
     			scope.deletePublication = function (item) {
+          resetBubble();
     				if (scope.record.publications.length < 2) {
     					scope.record.publications = [{"name": "", "link": ""}];
     					return;
@@ -39,29 +40,6 @@ angular.module('projectProposalApp')
     	};
     })
 
-    .filter('grantsFilter', function () {
-        return function (items, search) {
-            var result = [];
-            angular.forEach(items, function (value, key) {
-                angular.forEach(value, function (value2, key2) {
-                    if (search.indexOf(value2) > -1) {
-                        result.push(value2);
-                    }
-                })
-            });
-            return result;
-
-        }
-    })
-
-    .filter("grantsFilter", function() {
-  return function(input,scope) {
-    if(input.grant in scope.record.grants){
-      return input;
-    }
-    return '';
-  };
-})
       .directive('relatedProjectPicker', function () {
       	return {
       		scope: true,
@@ -73,6 +51,7 @@ angular.module('projectProposalApp')
     					];
     				}
       			scope.deleteProject = function (item) {
+            resetBubble();
       				if (scope.record.relatedProjects.length < 2) {
       					scope.record.relatedProjects = [
                   {"name": "", "startDate": "", "endDate": "", "description": ""}

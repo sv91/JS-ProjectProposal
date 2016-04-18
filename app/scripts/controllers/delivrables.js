@@ -22,6 +22,7 @@ angular.module('projectProposalApp')
           ];
         }
         scope.deleteDeliverable = function (item) {
+        resetBubble();
           if (scope.record.deliverables.length < 2) {
             scope.record.deliverables = [{"name": "", "date": "", "risks": "", "description": "","dependency":[]}];
             return;

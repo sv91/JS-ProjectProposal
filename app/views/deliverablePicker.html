@@ -1,14 +1,19 @@
 <div class="deliverablesList" data-ng-model="record.deliverables">
   <div ng-repeat="svPair in record.deliverables">
-
+  <table width="100%">
+    <td>
     <img src="/images/plus.jpg" class="minusPlus" style="display:none" onclick="show(this)">
     <img src="/images/minus.jpg" class="minusPlus" onclick="hide(this)">
     <label>Deliverable <i>{{svPair.name}}</i></label>
-
+  </td>
+  <td align="right">
+  <label>{{svPair.date|date:'EEE. dd MMM. yy'}}</label>
+  </td>
+</table>
     <div>
       <!--<pre>{{ngModel|json}}</pre>-->
-      <div  onclick="updateBubble(this,'The name of the deliverable.')">
-        Name
+      <div onclick="updateBubble(this,'The name of the deliverable.')">
+        <label>Name</label>
         <input type="text"
         class="form-control"
         name="dataset_title"
@@ -21,7 +26,7 @@
         ng-model="svPair.name">
       </div><br />
       <div onclick="updateBubble(this,'Delivery date.<br />Should be between the project start date and end date.')">
-        Date
+        <label>Date</label>
         <input type="date"
         class="form-control"
         name="dataset_title"
@@ -31,7 +36,7 @@
         ng-model="svPair.date">
       </div><br />
       <div onclick="updateBubble(this,'A short description.')">
-        Description
+        <label>Description</label>
         <input type="text"
         class="form-control"
         name="dataset_title"
@@ -40,7 +45,7 @@
         ng-model="svPair.description">
       </div><br />
       <div onclick="updateBubble(this,'Some risks.')">
-        Risks
+        <label>Risks</label>
         <input type="text"
         class="form-control"
         name="dataset_title"
@@ -49,7 +54,7 @@
         ng-model="svPair.risks">
       </div><br />
       <div onclick="updateBubble(this,'Dependencies of the deliverable to other delivrebales.')">
-        Dependencies <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
+        <label>Dependencies</label> <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
         <ui-select
         multiple
         ng-model="svPair.dependency"
@@ -79,14 +84,16 @@
 TODO Move to index and generalize
 */
 function show(img){
-  img.parentNode.getElementsByTagName("div")[0].style.display="";
+  img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="";
   img.parentNode.getElementsByTagName("img")[1].style.display="";
   img.style.display="none";
+  resetBubble();
 }
 
 function hide(img){
-  img.parentNode.getElementsByTagName("div")[0].style.display="none";
+  img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="none";
   img.parentNode.getElementsByTagName("img")[0].style.display="";
   img.style.display="none";
+  resetBubble();
 }
 </script>
