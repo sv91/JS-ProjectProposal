@@ -39,7 +39,20 @@ angular.module('projectProposalApp')
     		}
     	};
     })
-
+    .filter('taskFilter', function() {
+      return function(input, list) {
+        if(list == undefined){
+          return input;
+        }
+        var output=[];
+        angular.forEach(input,function(val){
+          if (list.indexOf(val.grant)>-1){
+              output.push(val);
+          }
+        })
+        return output;
+      }
+    })
       .directive('relatedProjectPicker', function () {
       	return {
       		scope: true,

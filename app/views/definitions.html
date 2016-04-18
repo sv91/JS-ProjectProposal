@@ -96,7 +96,7 @@
       theme="bootstrap"
       sortable="true">
       <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
-      <ui-select-choices repeat="tasks in availableTasks | filter:$select.search | objectByKeyValFilter:"grant":"Human Brain Project" }">
+      <ui-select-choices repeat="tasks in availableTasks | filter:$select.search | taskFilter : record.grants ">
         {{tasks.name}} - <i>{{tasks.grant}}</i>
       </ui-select-choices>
     </ui-select>
