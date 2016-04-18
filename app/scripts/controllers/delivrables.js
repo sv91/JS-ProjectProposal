@@ -10,7 +10,7 @@
 angular.module('projectProposalApp')
   .controller('DeliverablesCtrl', function () {
   })
-  .filter('myFilter', function() {
+  .filter('dependencyFilter', function() {
     function dependencyCheck(val,optional1){
       var depend = true;
       angular.forEach(val.dependency,function(dep){

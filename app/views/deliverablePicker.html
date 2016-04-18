@@ -53,7 +53,7 @@
       theme="bootstrap"
       sortable="true">
       <ui-select-match placeholder="Select the dependencies">{{$item.name}}</ui-select-match>
-      <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | myFilter : svPair.name">
+      <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | dependencyFilter : svPair.name">
         {{dependency.name}}
       </ui-select-choices>
     </ui-select>
