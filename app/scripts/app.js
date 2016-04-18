@@ -57,7 +57,7 @@
   };
 })*/
 angular
-.module('projectProposalApp', ['ui.router','ui.select'/*,'hbpCommon','bbpOidcClient'*/])
+.module('projectProposalApp', ['ui.router','ui.select','angular.filter'/*,'hbpCommon','bbpOidcClient'*/])
 .config(function ($stateProvider, $urlRouterProvider) {
 
 		$stateProvider

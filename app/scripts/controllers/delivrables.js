@@ -10,7 +10,32 @@
 angular.module('projectProposalApp')
   .controller('DeliverablesCtrl', function () {
   })
+  .filter('myFilter', function() {
+    function dependencyCheck(val,optional1){
+      var depend = true;
+      angular.forEach(val.dependency,function(dep){
+        if (dep.name === optional1){
+           return depend = false;
+        }
+        depend = dependencyCheck(dep,optional1);
+      })
+    return depend ;
+    }
+    return function(input, optional1) {
+      var output=[];
+      angular.forEach(input,function(val){
+        if (val.name !== optional1){
+          var depend = dependencyCheck(val,optional1);
+          if(depend){
+            output.push(val);
+          }
+        }
+      })
+      return output;
 
+    }
+
+  })
   .directive('deliverablePicker', function () {
     return {
       scope: true,

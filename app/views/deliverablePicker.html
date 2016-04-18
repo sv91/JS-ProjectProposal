@@ -16,20 +16,14 @@
         <label>Name</label>
         <input type="text"
         class="form-control"
-        name="dataset_title"
         placeholder="Deliverable name"
-        ng-required=""
-        uib-typeahead="deliverable.name for deliverable in deliverables| unique:'name' | filter:$viewValue  | limitTo:8"
-        typeahead-editable
-        typeahead-min-length="0"
-        typeahead-show-hint="false"
+        ng-required="true"
         ng-model="svPair.name">
       </div><br />
       <div onclick="updateBubble(this,'Delivery date.<br />Should be between the project start date and end date.')">
       <label>Date</label>
       <input type="date"
       class="form-control"
-      name="dataset_title"
       max= {{record.projectEndDate|date:'yyyy-MM-dd'}}
       min= {{record.projectStartDate|date:'yyyy-MM-dd'}}
       uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
@@ -39,7 +33,6 @@
       <label>Description</label>
       <input type="text"
       class="form-control"
-      name="dataset_title"
       uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
       placeholder="A short description"
       ng-model="svPair.description">
@@ -48,12 +41,11 @@
       <label>Risks</label>
       <input type="text"
       class="form-control"
-      name="dataset_title"
       uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
       placeholder="Risks of the deliverable"
       ng-model="svPair.risks">
     </div><br />
-    <div onclick="updateBubble(this,'Dependencies of the deliverable to other delivrebales.')">
+    <div onclick="updateBubble(this,'Dependencies of the deliverable to other deliverables.')">
       <label>Dependencies</label> <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
       <ui-select
       multiple
@@ -61,7 +53,7 @@
       theme="bootstrap"
       sortable="true">
       <ui-select-match placeholder="Select the dependencies">{{$item.name}}</ui-select-match>
-      <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | filter:{'name': svPair.name}:false ">
+      <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | myFilter : svPair.name">
         {{dependency.name}}
       </ui-select-choices>
     </ui-select>
