@@ -18,9 +18,18 @@
 
         <!-- use ng-submit to catch the form submission and use our Angular function -->
         <form id="signup-form" ng-submit="processForm()">
-
+          <div class="leftSide" style="visibility:hidden">
+        		<!-- placeholder  -->
+        		 placeholder
+        	</div>
             <!-- our nested state views will be injected here -->
             <div id="form-views" ui-view></div>
+
+            <div class="rightSide" id="rightSide">
+              <div id="bubble" class="bubble">
+              </div>
+            </div>
+
         </form>
 
     </div>

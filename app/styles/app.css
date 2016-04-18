@@ -158,6 +158,15 @@ label .list-group {
   padding: 10px;
 }
 
+.bubble {
+  background-color: rgb(235,235,235);
+  border-style: none solid solid none;
+  border-color:rgba(25,25,25,0.1);
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 10px;
+}
+
 .middlePart{
   float:left;
   width: 744px;
@@ -178,6 +187,7 @@ label .list-group {
 }
 
 .rightSide{
+  padding: 0px 10px 10px;
   float:left;
   /* Firefox */
   width: -moz-calc((100% - 744px)/2);

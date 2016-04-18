@@ -33,6 +33,8 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/ui-select/dist/select.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
+      'bower_components/angular-bbp-config/angular-bbp-config.js',
+      'bower_components/bbp-oidc-client/angular-bbp-oidc-client.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

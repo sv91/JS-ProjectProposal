@@ -7,8 +7,8 @@
 
     <div>
       <!--<pre>{{ngModel|json}}</pre>-->
-      <div >
-        Name:
+      <div  onclick="updateBubble(this,'The name of the deliverable.')">
+        Name
         <input type="text"
         class="form-control"
         name="dataset_title"
@@ -19,35 +19,37 @@
         typeahead-min-length="0"
         typeahead-show-hint="false"
         ng-model="svPair.name">
-      </div>
-      <div>
-        Date:
+      </div><br />
+      <div onclick="updateBubble(this,'Delivery date.<br />Should be between the project start date and end date.')">
+        Date
         <input type="date"
         class="form-control"
         name="dataset_title"
+        max= {{record.projectEndDate|date:'yyyy-MM-dd'}}
+        min= {{record.projectStartDate|date:'yyyy-MM-dd'}}
         uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
         ng-model="svPair.date">
-      </div>
-      <div>
-        Description:
+      </div><br />
+      <div onclick="updateBubble(this,'A short description.')">
+        Description
         <input type="text"
         class="form-control"
         name="dataset_title"
         uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
         placeholder="A short description"
         ng-model="svPair.description">
-      </div>
-      <div>
-        Risks:
+      </div><br />
+      <div onclick="updateBubble(this,'Some risks.')">
+        Risks
         <input type="text"
         class="form-control"
         name="dataset_title"
         uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
         placeholder="Risks of the deliverable"
         ng-model="svPair.risks">
-      </div>
-      <div>
-        Dependencies: <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
+      </div><br />
+      <div onclick="updateBubble(this,'Dependencies of the deliverable to other delivrebales.')">
+        Dependencies <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
         <ui-select
         multiple
         ng-model="svPair.dependency"

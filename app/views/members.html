@@ -1,13 +1,6 @@
-<div class="leftSide" style="visibility:hidden">
-  <!-- placeholder  -->
-   placeholder
-</div>
-
-
-
 <div class="container form middlePart">
   <!-- principal Investigator -->
-  <div class="form-group">
+  <div class="form-group" onclick="updateBubble(this,'Select the leader of this project.')">
     <label>Project Leader</label>
     <div>
 <single-user-select>
@@ -16,15 +9,15 @@
   </div>
 
 <!-- Co-principal Investigator -->
-<div class="form-group">
+<div class="form-group" onclick="updateBubble(this,'Select the co-leader of this project if it have one.')">
   <label>Project Co-Leader</label>
   <div>
-    <p><input maxlength="300" ng-model="record.projectTitle" type="text" required></p>
+    <p><input maxlength="300" ng-model="record.projectTitle" type="text"></p>
   </div>
 </div>
 
 <!-- Members -->
-<div class="form-group">
+<div class="form-group" onclick="updateBubble(this,'Select all the members of this project(Do not add the leader and co-leader).')">
   <label>Members</label>
   <div>
     <p><input maxlength="300" ng-model="record.projectTitle" type="text" required></p>
@@ -32,11 +25,7 @@
 </div>
 </div>
 
-
-
-<div class="rightSide">
-</div>
-
 <script>
+resetBubble();
 updateLinks("type","definitions");
 </script>

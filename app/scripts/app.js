@@ -57,7 +57,7 @@
   };
 })*/
 angular
-.module('projectProposalApp', ['ui.router','ui.select'])
+.module('projectProposalApp', ['ui.router','ui.select'/*,'hbpCommon','bbpOidcClient'*/])
 .config(function ($stateProvider, $urlRouterProvider) {
 
 		$stateProvider
@@ -94,25 +94,12 @@ angular
 		$urlRouterProvider.otherwise('/form/type');
 })
 
-.factory('Links',function(){
-	var nextPage = '.type';
-	var prevPage = '.type';
-
-	return {
-		nextPage: function() { return nextPage; },
-		prevPage: function() { return prevPage; },
-		updateLinks: function(prev,next) {
-			nextPage = next;
-			prevPage = prev;
-		}
-	}
-
-})
-
 .controller('formController', function($scope) {
     // we will store all of our form data in this object
     $scope.record = {};
     $scope.date = new Date();
+    $scope.nextPage = {};
+    $scope.prevPage = {};
 
 		// The available values for the different fields
 	  $scope.availableTags = ["Science","Research","Testing","Computing"];
