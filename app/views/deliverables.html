@@ -3,6 +3,20 @@
 </div>
 
 <script>
-resetBubble();
+function show(img){
+  img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="";
+  img.parentNode.getElementsByTagName("img")[1].style.display="";
+  img.style.display="none";
+  resetBubble();
+}
+
+function hide(img){
+  img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="none";
+  img.parentNode.getElementsByTagName("img")[0].style.display="";
+  img.style.display="none";
+  resetBubble();
+}
+</script>
+<script>
 updateLinks("definitions","summary");
 </script>

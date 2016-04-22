@@ -2,30 +2,32 @@
   <!-- principal Investigator -->
   <div class="form-group" onclick="updateBubble(this,'Select the leader of this project.')">
     <label>Project Leader</label>
-    <div>
-<single-user-select>
-</single-user-select>
+    <div style="width:720px">
+      <input type="text" ng-model="record.pi">
+      <single-user-select></single-user-select>
       </div>
   </div>
 
 <!-- Co-principal Investigator -->
-<div class="form-group" onclick="updateBubble(this,'Select the co-leader of this project if it have one.')">
+<div class="form-group" onclick="updateBubble(this,'Select the co-leader of this project if there is one.')">
   <label>Project Co-Leader</label>
-  <div>
-    <p><input maxlength="300" ng-model="record.projectTitle" type="text"></p>
-  </div>
+  <div style="width:720px">
+    <input type="text" ng-model="record.copi">
+    <single-user-select></single-user-select>
+    </div>
 </div>
 
 <!-- Members -->
 <div class="form-group" onclick="updateBubble(this,'Select all the members of this project(Do not add the leader and co-leader).')">
   <label>Members</label>
-  <div>
-    <p><input maxlength="300" ng-model="record.projectTitle" type="text" required></p>
-  </div>
+  <div style="width:720px">
+    <input type="text" ng-model="record.members">
+    <multi-user-select></multi-user-select>
+    </div>
 </div>
+
 </div>
 
 <script>
-resetBubble();
 updateLinks("type","definitions");
 </script>

@@ -227,6 +227,11 @@ input.ng-invalid.ng-touched {
   vertical-align: middle;
 }
 
+hbp-user-selector input.form-control {
+  width:684px !important;
+  height: 33px !important;
+}
+
 .form-group input{
   border: 1px solid #ccc;
   padding: 3px 3px 0 3px;
@@ -267,4 +272,45 @@ input.ng-invalid.ng-touched {
 
 .p10{
   padding:0px 10px;
+}
+
+.memberName{
+  width:23%;
+  padding: 1px 5px;
+}
+
+.memberRole{
+  width:23%;
+  padding: 1px 5px;
+}
+
+.memberPm{
+  width:23%;
+  padding: 1px 5px;
+}
+
+.memberDesc{
+  width:23%;
+  padding: 1px 5px;
+}
+
+.memberButtom{
+  width:8%;
+}
+
+.memberName input{
+  width:100% !important;
+}
+.memberRole input{
+  width:100% !important;
+}
+.memberPm input{
+  width:100% !important;
+}
+.memberDesc input{
+  width:100% !important;
+}
+
+table{
+  width:100%;
 }

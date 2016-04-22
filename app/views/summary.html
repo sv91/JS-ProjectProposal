@@ -1,8 +1,305 @@
-<div class="container form middlePart">
-  
+<div class="container form middlePart" data-ng-model="summ">
+  <label>
+    Summary
+  </label>
+
+  <div class="form-group">
+    <label>Project Title</label>
+    <div>
+      <p>{{record.projectTitle}}</p>
+    </div>
+  </div>
+
+  <table width="100%">
+    <td class="inTwo">
+      <div class="form-group">
+        <label>Project Start Date</label>
+        <p>{{record.projectStartDate | date:'EEE. dd MMM. yy'}}</p>
+      </div>
+    </td>
+    <td class="inTwoEmptySeparator">
+    </td>
+    <td class="inTwo">
+      <div class="form-group">
+        <label>Project End Date</label>
+        <p>{{record.projectEndDate | date:'EEE. dd MMM. yy'}}</p>
+      </div>
+    </td>
+  </table>
+  <div class="form-group" ng-class="{hideOld: record.newproject=='true'}">
+    <label>New project</label><br />
+    <div class="form-group">
+      <div class="form-group">
+        <label>Previous Project Title</label>
+        <div>
+          <p>{{record.previousProject.title}}</p>
+        </div>
+      </div><!-- project Title -->
+      <div class="form-group">
+        <label>Previous Project ID</label>
+        <div>
+          <p>{{record.previousProject.title}}</p>
+        </div>
+      </div><!-- project Title -->
+      <div class="form-group">
+        <label>Previous Project Principal Investigator</label>
+        <div>
+          <p>{{record.previousProject.title}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Grants</label>
+    <ul>
+      <li ng-repeat="grant in record.grants">{{grant}}</li>
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <label>Tasks</label>
+    <ul>
+      <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
+    </ul>
+  </div>
+
+  <div class="form-group">
+    <label>Project Key Words</label>
+    <ul>
+      <li ng-repeat="tag in record.tags">{{tag}}</li>
+    </ul>
+  </div>
+
+  <div class="form-group">
+  <label>Executive Summary</label>
+  <div>
+    <p>{{record.executiveSummary}}</p>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <label>Impact Statement</label>
+  <div>
+    <p>{{record.impactStatement}}</p>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <label>Benefit to Community</label>
+  <div>
+    <p>{{record.benefitToCommunity}}</p>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <label>Scientific Summary</label>
+  <div>
+    <p>{{record.scientificSummary}}</p>
+  </div>
+  </div>
+
+  <div class="form-group">
+  <label>Technological Summary</label>
+  <div>
+    <p>{{record.technologicalSummary}}</p>
+  </div>
+  </div>
+
+  <div class="form-group" ng-show="record.publications.length">
+  <label>Publications</label>
+  <ul>
+    <li ng-repeat="pub in record.publications">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
+  </ul>
+  </div>
+
+
+  <div class="form-group" ng-show="record.relatedProjects.length">
+  <label>Related Projects</label>
+  <ul>
+    <li ng-repeat="proj in record.relatedProjects"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
+  </ul>
+  </div>
+
+<hr />
+
+
+
+<div>
+  <label>Computing, Storage and Services resources</label>
+  <div class="p10-5">
+    <label>Software as a Service (SaaS)</label>
+    <div class="p10">
+      <table width="100%"><tr>
+        <td class="inTwo">
+          Software development
+          <ul>
+            <li ng-repeat="soft in summ.softdev">{{soft}}</li>
+          </ul>
+      </td>
+      <td class="inTwoEmptySeparator">
+      </td>
+      <td class="inTwo">
+      HBP Collab
+      <ul>
+        <li ng-repeat="collab in summ.collabs">{{collab.name}}</li>
+      </ul>
+
+    </td></tr></table>
+  </div>
+</div>
+<div class="p10-5">
+  <label>Platform as a Service (PaaS)</label>
+  <div class="p10">
+    TOFILL
+  </div>
+</div>
+<div class="p10-5">
+  <label>Infrastructure as a Service (IaaS)</label>
+  <div class="p10">
+    Prefered Architecture
+    <ul>
+      <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
+    </ul>
+
+  <br />
+  <table width="100%"><tr>
+    <td class="inTwo">
+      HPC Computing
+      <div class="p10 form-group">
+        Total number of runs
+        <p>
+          {{summ.hpc.runs}}
+        </p>
+        Average partition size (Number of processors)
+        <p>
+          {{summ.hpc.partition}}
+        </p>
+        Time to solution (In hours)
+        <p>
+          {{summ.hpc.time}}
+        </p>
+      </div>
+    </td>
+    <td class="inTwoEmptySeparator">
+    </td>
+    <td class="inTwo">
+    HPC Storage
+    <div class="p10 form-group">
+      Number of artefacts
+      <p>
+        {{summ.hpc.numarte}}
+      </p>
+    Average size of artefacts (in GB)
+      <p>
+        {{summ.hpc.sizearte}}
+      </p>
+      </div>
+  </td></tr><tr>
+    <td class="inTwo">
+      Cloud Computing
+      <div class="p10 form-group">
+        Total number of runs
+        <p>
+          {{summ.cloud.runs}}
+        </p>
+        Average partition size (Number of processors)
+        <p>
+          {{summ.cloud.partition}}
+        </p>
+        Time to solution (In hours)
+        <p>
+          {{summ.cloud.time}}
+        </p>
+      </div>
+    </td>
+    <td class="inTwoEmptySeparator">
+    </td>
+    <td class="inTwo">
+    Cloud Storage
+    <div class="p10 form-group">
+      Number of artefacts
+      <p>
+        {{summ.cloud.numarte}}
+      </p>
+    Average size of artefacts (in GB)
+      <p>
+        {{summ.cloud.sizearte}}
+      </p>
+      </div>
+  </td></tr></table>
+</div>
+</div>
+<div class="p10-5">
+<label>Hardware as a Service (HaaS)</label>
+<ul>
+  <li ng-repeat="tasks in summ.hardware">{{tasks}}</i></li>
+</ul>
+
+</div>
+</div>
+
+
+<hr />
+<div>
+<label>Human resources</label>
+
+<table>
+  <td class="memberName">
+  <label>Name</label>
+  <ul>
+    <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
+  </ul>
+  </td>
+  <td class="memberPm">
+  <ul>
+    <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
+  </ul>
+  <label>Person/Month</label>
+  </td>
+</table>
+
+<div class="memberList" data-ng-model="svPair.members">
+  <div ng-repeat="member in svPair.members">
+    <div>
+      <!--<pre>{{ngModel|json}}</pre>-->
+      <table>
+        <td class="memberName">
+        <select ng-model="member.name">
+          <option ng-repeat="people in record.membersAndLead" value="people.name">{{people.name}}</option>
+        </select>
+        </td>
+        <td class="memberRole">
+        <select ng-model="member.role">
+          <option ng-repeat="role in availableRoles" value="role">{{role}}</option>
+        </select>
+        </td>
+        <td class="memberPm">
+        <input type="number" class=""
+        ng-model="member.pm">
+        </td>
+        <td class="memberDesc">
+        <input type="text" class=""
+        placeholder="Description"
+        ng-model="member.description">
+        </td>
+        <td class="memberButtom">
+          <div button type="button" class="close" aria-label="Remove" ng-click="deleteMember(member,svPair)">
+          <span aria-hidden="true">&times;</span>
+        </div>
+        </td>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="btn btn-default" ng-click="addMember(svPair)">Add members</div>
+</div>
+
+
+
+
 </div>
 
 <script>
-resetBubble();
-updateLinks("deliverables","summary");
+updateLinks("deliverables","summ");
 </script>

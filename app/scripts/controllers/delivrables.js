@@ -15,10 +15,10 @@ angular.module('projectProposalApp')
       var depend = true;
       angular.forEach(val.dependency,function(dep){
         if (dep.name === optional1){
-           return depend = false;
+           return false;
         }
         depend = dependencyCheck(dep,optional1);
-      })
+      });
     return depend ;
     }
     return function(input, optional1) {
@@ -30,10 +30,10 @@ angular.module('projectProposalApp')
             output.push(val);
           }
         }
-      })
+      });
       return output;
 
-    }
+    };
 
   })
   .directive('deliverablePicker', function () {
@@ -43,13 +43,13 @@ angular.module('projectProposalApp')
       link: function postLink(scope) {
         if (!scope.record.deliverables) {
           scope.record.deliverables = [
-            {"name": "", "date": "", "risks": "", "description": "","dependency":[]}
+            {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':''}
           ];
         }
         scope.deleteDeliverable = function (item) {
         resetBubble();
           if (scope.record.deliverables.length < 2) {
-            scope.record.deliverables = [{"name": "", "date": "", "risks": "", "description": "","dependency":[]}];
+            scope.record.deliverables = [{'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':''}];
             return;
           }
           var index = scope.record.deliverables.indexOf(item);
@@ -57,34 +57,23 @@ angular.module('projectProposalApp')
 
         };
         scope.addDeliverable = function () {
-          scope.record.deliverables.push({"name": "", "date": "", "risks": "", "description": "","dependency":[]});
+          scope.record.deliverables.push({'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':''});
         };
-
-      }
-    };
-  })
-
-  .directive('memberPicker', function () {
-    return {
-      scope: true,
-      templateUrl: 'views/memberPicker.html',
-      link: function postLink(scope) {
-        if (!scope.record.members) {
-          scope.record.members = [
-            {"name": "", "link": ""}
-          ];
-        }
-        scope.deleteMember = function (item) {
-          if (scope.record.members.length < 2) {
-            scope.record.members = [{"name": "", "link": ""}];
+        // Functions for the members inside a deliverable
+        scope.deleteMember = function (item,del) {
+        resetBubble();
+        var index = scope.record.deliverables.indexOf(del);
+          if (scope.record.deliverables[index].members.length < 2) {
+            scope.record.deliverables[index].members = [{'name': '', 'role': '', 'pm':'','description':''}];
             return;
           }
-          var index = scope.record.members.indexOf(item);
-          scope.record.members.splice(index, 1);
+          var indexMember = scope.record.deliverables[index].members.indexOf(item);
+          scope.record.deliverables[index].members.splice(indexMember, 1);
 
         };
-        scope.addMember = function () {
-          scope.record.members.push({"name": "", "link": ""});
+        scope.addMember = function (del) {
+          var index = scope.record.deliverables.indexOf(del);
+          scope.record.deliverables[index].members.push({'name': '', 'role': '', 'pm':'','description':''});
         };
 
       }

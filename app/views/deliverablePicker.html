@@ -2,8 +2,8 @@
   <div ng-repeat="svPair in record.deliverables">
     <table width="100%">
       <td>
-        <img src="/images/plus.jpg" class="minusPlus" style="display:none" onclick="show(this)">
-        <img src="/images/minus.jpg" class="minusPlus" onclick="hide(this)">
+        <img src="/images/plus.jpg" class="minusPlus" style="display:none" onclick="show(this);">
+        <img src="/images/minus.jpg" class="minusPlus" onclick="hide(this);">
         <label>Deliverable <i>{{svPair.name}}</i></label>
       </td>
       <td align="right">
@@ -46,7 +46,7 @@
       ng-model="svPair.risks">
     </div><br />
     <div onclick="updateBubble(this,'Dependencies of the deliverable to other deliverables.')">
-      <label>Dependencies</label> <!-- TODO Improve, add a rule to not take itself, and to avoid loop -->
+      <label>Dependencies</label>
       <ui-select
       multiple
       ng-model="svPair.dependency"
@@ -82,14 +82,19 @@
         </td>
         <td class="inTwoEmptySeparator">
         </td>
-        <td class="inTwo" onclick="updateBubble(this,'The end date.<br />Can not precede the start date.')">
+        <td class="inTwo">
         HBP Collab
-        <input type="date" class="form-control"
-        name="dataset_title"
-        uib-typeahead="project.endDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-        placeholder="End Date"
-        min= {{svPair.startDate|date:'yyyy-MM-dd'}}
-        ng-model="svPair.collabs">
+        <ui-select
+        onclick="updateBubble(this,'Select related Collab.')"
+        multiple
+        ng-model="svPair.collabs"
+        theme="bootstrap"
+        sortable="true">
+        <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
+        <ui-select-choices repeat="soft in availableCollab | filter:$select.search">
+          {{soft}}
+        </ui-select-choices>
+      </ui-select>
 
       </td></tr></table>
     </div>
@@ -185,6 +190,59 @@
 <br />
 <div>
   <label>Human resources</label>
+
+  <table>
+    <td class="memberName">
+    <label>Name</label>
+    </td>
+    <td class="memberRole">
+    <label>Role</label>
+    </td>
+    <td class="memberPm">
+    <label>Person/Month</label>
+    </td>
+    <td class="memberDesc">
+    <label>Description</label>
+    </td>
+    <td class="memberButton" align="right">
+    <label>Delete</label>
+    </td>
+  </table>
+
+  <div class="memberList" data-ng-model="svPair.members">
+    <div ng-repeat="member in svPair.members">
+      <div>
+        <!--<pre>{{ngModel|json}}</pre>-->
+        <table>
+          <td class="memberName">
+          <select ng-model="member.name">
+            <option ng-repeat="people in record.membersAndLead" value="people.name">{{people.name}}</option>
+          </select>
+          </td>
+          <td class="memberRole">
+          <select ng-model="member.role">
+            <option ng-repeat="role in availableRoles" value="role">{{role}}</option>
+          </select>
+          </td>
+          <td class="memberPm">
+          <input type="number" class=""
+          ng-model="member.pm">
+          </td>
+          <td class="memberDesc">
+          <input type="text" class=""
+          placeholder="Description"
+          ng-model="member.description">
+          </td>
+          <td class="memberButtom">
+            <div button type="button" class="close" aria-label="Remove" ng-click="deleteMember(member,svPair)">
+            <span aria-hidden="true">&times;</span>
+          </div>
+          </td>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="btn btn-default" ng-click="addMember(svPair)">Add members</div>
 </div>
 <div align="right">
   Delete this Deliverable<br />
@@ -197,22 +255,3 @@
 </div>
 </div>
 <div class="btn btn-default" ng-click="addDeliverable()">Add a Deliverable</div>
-
-<script>
-/*
-TODO Move to index and generalize
-*/
-function show(img){
-  img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="";
-  img.parentNode.getElementsByTagName("img")[1].style.display="";
-  img.style.display="none";
-  resetBubble();
-}
-
-function hide(img){
-  img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="none";
-  img.parentNode.getElementsByTagName("img")[0].style.display="";
-  img.style.display="none";
-  resetBubble();
-}
-</script>

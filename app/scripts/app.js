@@ -9,57 +9,10 @@
  * Main module of the application.
  */
 
-/*  .module('projectProposalApp', ['hbpCommon','ui.select'])
-
-.directive('multiUserSelect', function() {
-	return {
-		scope: true,
-		template: '<hbp-user-selector hbp-on-select="handleUserSelection"></hbp-user-selector><hbp-usercard ng-repeat="u in selectedUsers" hbp-user="u" ></hbp-usercard></pre>',
-		link: function(scope, elt, attr) {
-			scope.selectedUsers = [];
-			scope.handleUserSelection = function(options) {
-				console.log('select', arguments);
-				scope.selectedUsers.push(options.user);
-				// TODO: elt.parent().find('input').attr(value, scope.selectedUser);
-			}
-		}
-	}
-})
-.filter('propsFilter', function() {
-  return function(items, props) {
-    var out = [];
-
-    if (angular.isArray(items)) {
-      var keys = Object.keys(props);
-
-      items.forEach(function(item) {
-        var itemMatches = false;
-
-        for (var i = 0; i < keys.length; i++) {
-          var prop = keys[i];
-          var text = props[prop].toLowerCase();
-          if (item[prop].toString().toLowerCase().indexOf(text) !== -1) {
-            itemMatches = true;
-            break;
-          }
-        }
-
-        if (itemMatches) {
-          out.push(item);
-        }
-      });
-    } else {
-      // Let the output be the input untouched
-      out = items;
-    }
-
-    return out;
-  };
-})*/
 angular
-.module('projectProposalApp', ['ui.router','ui.select','angular.filter'/*,'hbpCommon','bbpOidcClient'*/])
+.module('projectProposalApp', ['ui.router','ui.select','angular.filter','hbpCommon','bbpOidcClient','ui.bootstrap'])
 .config(function ($stateProvider, $urlRouterProvider) {
-
+// link adresses to views and controllers
 		$stateProvider
 		.state('form', {
 			url: '/form',
@@ -69,7 +22,7 @@ angular
 			.state('form.type', {
 				url: '/type',
 				templateUrl: 'views/type.html',
-				controller: 'TypeCtrl'
+				//controller: 'TypeCtrl'
 			})
       .state('form.members', {
 				url: '/members',
@@ -89,55 +42,49 @@ angular
       .state('form.summary', {
 				url: '/summary',
 				templateUrl: 'views/summary.html',
-				//controller: 'SummaryCtrl'
+				controller: 'SummaryCtrl'
 			});
 		$urlRouterProvider.otherwise('/form/type');
 })
 
-.controller('formController', function($scope) {
+.controller('formController', function($scope, hbpCollabStore) {
     // we will store all of our form data in this object
     $scope.record = {};
+    $scope.summ = {};
+		// value of current date
     $scope.date = new Date();
+		// links between pages
     $scope.nextPage = {};
     $scope.prevPage = {};
 
 		// The available values for the different fields
-	  $scope.availableTags = ["Science","Research","Testing","Computing"];
-		$scope.availableGrants = ["Human Brain Project","Blue Brain Project","KAUST"];
-		$scope.availableHardware = ["MacBook","PS4","iPhone"];
+	  $scope.availableTags = ['Science','Research','Testing','Computing'];
+	  $scope.availableRoles = ['Deliverable lead','Technical Lead','Scientific Lead','Developper','Scientist'];
+		$scope.availableGrants = ['Human Brain Project','Blue Brain Project','KAUST'];
+		$scope.availableHardware = ['MacBook','PS4','iPhone'];
 		$scope.availableTasks = [
-			{"name":"TaskHBP1","grant":"Human Brain Project"},
-			{"name":"TaskHBP2","grant":"Human Brain Project"},
-			{"name":"TaskBBP1","grant":"Blue Brain Project"},
-			{"name":"TaskBBP2","grant":"Blue Brain Project"},
-			{"name":"TaskKAUST1","grant":"KAUST"},
-			{"name":"TaskKAUST2","grant":"KAUST"},
+			{'name':'TaskHBP1','grant':'Human Brain Project'},
+			{'name':'TaskHBP2','grant':'Human Brain Project'},
+			{'name':'TaskBBP1','grant':'Blue Brain Project'},
+			{'name':'TaskBBP2','grant':'Blue Brain Project'},
+			{'name':'TaskKAUST1','grant':'KAUST'},
+			{'name':'TaskKAUST2','grant':'KAUST'},
 		];
 		$scope.availableSoftDev = [
-			{"name":"Ticketing system","desc":"(JIRA, ...)"},
-			{"name":"Continuous integration","desc":"(Jenkins, ...)"},
-			{"name":"Wiki","desc":"(Confluence, ...)"}
+			{'name':'Ticketing system','desc':'(JIRA, ...)'},
+			{'name':'Continuous integration','desc':'(Jenkins, ...)'},
+			{'name':'Wiki','desc':'(Confluence, ...)'}
 		];
 		$scope.availableArchitecture = [
-			{"name":"Intel x86","desc":""},
-			{"name":"Intel accelarators","desc":"(KNL, SKL, ...)"},
-			{"name":"IBM Blue Gene/Q","desc":""},
-			{"name":"IBM POWER7, POWER8","desc":""},
-			{"name":"Nvidia GPU","desc":""}
+			{'name':'Intel x86','desc':''},
+			{'name':'Intel accelarators','desc':'(KNL, SKL, ...)'},
+			{'name':'IBM Blue Gene/Q','desc':''},
+			{'name':'IBM POWER7, POWER8','desc':''},
+			{'name':'Nvidia GPU','desc':''}
 		];
+		//$scope.availableCollab=hbpCollabStore.list().toArray();
 
     // function to process the form
     $scope.processForm = function() {
     };
-})
-.filter('objectByKeyValFilter', function () {
-return function (input, filterKey, filterVal) {
-    var filteredInput ={};
-     angular.forEach(input, function(value, key){
-       if(value[filterKey] && value[filterKey] !== filterVal){
-          filteredInput[key]= value;
-        }
-     }
-	 );
-     return filteredInput;
-}});
+});
