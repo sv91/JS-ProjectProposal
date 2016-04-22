@@ -8,7 +8,14 @@
  * Controller of the projectProposalApp
  */
 angular.module('projectProposalApp')
-  .controller('DeliverablesCtrl', function () {
+  .controller('DeliverablesCtrl', function ($scope) {
+  if($scope.record.members!=undefined && $scope.record.members!=null){
+    $scope.membersAndLead=$scope.record.members;
+  }
+    $scope.membersAndLead.push($scope.record.pi);
+    if($scope.record.copi!=undefined && $scope.record.copi!=null){
+      $scope.membersAndLead.push($scope.record.copi);
+    }
   })
   .filter('dependencyFilter', function() {
     function dependencyCheck(val,optional1){
