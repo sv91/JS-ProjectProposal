@@ -3,8 +3,7 @@
   <div class="form-group" onclick="updateBubble(this,'Select the leader of this project.')">
     <label>Project Leader</label>
     <div style="width:720px">
-      <input type="text" ng-model="record.pi">
-      <single-user-select></single-user-select>
+      <single-user-select-pi></single-user-select-pi>
       </div>
   </div>
 
@@ -12,8 +11,7 @@
 <div class="form-group" onclick="updateBubble(this,'Select the co-leader of this project if there is one.')">
   <label>Project Co-Leader</label>
   <div style="width:720px">
-    <input type="text" ng-model="record.copi">
-    <single-user-select></single-user-select>
+    <single-user-select-copi></single-user-select-copi>
     </div>
 </div>
 
@@ -21,7 +19,6 @@
 <div class="form-group" onclick="updateBubble(this,'Select all the members of this project(Do not add the leader and co-leader).')">
   <label>Members</label>
   <div style="width:720px">
-    <input type="text" ng-model="record.members">
     <multi-user-select></multi-user-select>
     </div>
 </div>
