@@ -22,6 +22,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       // bower:js
+      'bower_components/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
@@ -33,6 +34,16 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/angular-bbp-config/angular-bbp-config.js',
       'bower_components/bbp-oidc-client/angular-bbp-oidc-client.js',
+      'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/lodash/lodash.js',
+      'bower_components/marked-hbp/lib/marked.js',
+      'bower_components/angular-hbp-common/dist/angular-hbp-common.js',
+      'bower_components/angular-filter/dist/angular-filter.min.js',
+      'bower_components/angular-hbp-document-client/dist/angular-hbp-document-client.js',
+      'bower_components/angular-uuid4/angular-uuid4.js',
+      'bower_components/angular-hbp-collaboratory/angular-hbp-collaboratory.js',
+      'bower_components/select2/select2.js',
+      'bower_components/angular-ui-select3/src/select3.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
