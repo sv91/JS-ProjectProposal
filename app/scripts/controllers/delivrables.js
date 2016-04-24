@@ -9,12 +9,17 @@
  */
 angular.module('projectProposalApp')
   .controller('DeliverablesCtrl', function ($scope) {
+    function addPerson(person){
+      if($scope.membersAndLead.indexOf(person)==-1){
+        $scope.membersAndLead.push(person);
+      }
+    }
   if($scope.record.members!=undefined && $scope.record.members!=null){
-    $scope.membersAndLead=$scope.record.members;
+    angular.forEach($scope.record.members,function(people){addPerson(people);});
   }
-    $scope.membersAndLead.push($scope.record.pi);
+    addPerson($scope.record.pi);
     if($scope.record.copi!=undefined && $scope.record.copi!=null){
-      $scope.membersAndLead.push($scope.record.copi);
+      addPerson($scope.record.copi);
     }
   })
   .filter('dependencyFilter', function() {

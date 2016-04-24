@@ -216,12 +216,12 @@
         <table>
           <td class="memberName">
           <select ng-model="member.name">
-            <option ng-repeat="people in membersAndLead" value="people.displayName">{{people.displayName}}</option>
+            <option ng-repeat="people in membersAndLead" value="{{people.id}}">{{people.displayName}}</option>
           </select>
           </td>
           <td class="memberRole">
           <select ng-model="member.role">
-            <option ng-repeat="role in availableRoles" value="role">{{role}}</option>
+            <option ng-repeat="role in availableRoles" value="{{role}}">{{role}}</option>
           </select>
           </td>
           <td class="memberPm">
@@ -255,3 +255,7 @@
 </div>
 </div>
 <div class="btn btn-default" ng-click="addDeliverable()">Add a Deliverable</div>
+
+<pre>
+  {{record}}
+</pre>
