@@ -111,7 +111,7 @@
   <div class="form-group" ng-show="record.publications.length">
     <label>Publications</label>
     <ul>
-      <li ng-repeat="pub in record.publications">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
+      <li ng-repeat="pub in record.publications" ng-show="pub.name">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
     </ul>
   </div>
 
@@ -119,7 +119,7 @@
   <div class="form-group" ng-show="record.relatedProjects.length">
     <label>Related Projects</label>
     <ul>
-      <li ng-repeat="proj in record.relatedProjects"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
+      <li ng-repeat="proj in record.relatedProjects" ng-show="proj.name"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
     </ul>
   </div>
 
