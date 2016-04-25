@@ -6,45 +6,45 @@
   <div class="form-group">
     <label>Project Title</label>
     <div>
-      <p>{{record.projectTitle}}</p>
+      <input type="text" readonly required value="{{record.projectTitle}}">
     </div>
   </div>
 
   <table width="100%">
     <td class="inTwo">
       <div class="form-group">
-        <label>Project Start Date</label>
-        <p>{{record.projectStartDate | date:'EEE. dd MMM. yy'}}</p>
+        <label>Project Start Date</label><br />
+        <input type="date" readonly required value="{{record.projectStartDate | date:'yyyy-MM-dd'}}">
       </div>
     </td>
     <td class="inTwoEmptySeparator">
     </td>
     <td class="inTwo">
       <div class="form-group">
-        <label>Project End Date</label>
-        <p>{{record.projectEndDate | date:'EEE. dd MMM. yy'}}</p>
+        <label>Project End Date</label><br />
+        <input type="date" readonly required value="{{record.projectEndDate | date:'yyyy-MM-dd'}}">
       </div>
     </td>
   </table>
-  <div class="form-group" ng-class="{hideOld: record.newproject=='true'}">
+  <div class="form-group" ng-class="{hideOld: record.newproject!='false'}">
     <label>New project</label><br />
     <div class="form-group">
       <div class="form-group">
         <label>Previous Project Title</label>
         <div>
-          <p>{{record.previousProject.title}}</p>
+          <input type="text" readonly value="{{record.previousProject.title}}">
         </div>
       </div><!-- project Title -->
       <div class="form-group">
         <label>Previous Project ID</label>
         <div>
-          <p>{{record.previousProject.title}}</p>
+          <input type="text" readonly value="{{record.previousProject.id}}">
         </div>
       </div><!-- project Title -->
       <div class="form-group">
         <label>Previous Project Principal Investigator</label>
         <div>
-          <p>{{record.previousProject.title}}</p>
+          <input type="text" readonly value="{{record.previousProject.pi}}">
         </div>
       </div>
     </div>
@@ -59,247 +59,222 @@
 
   <div class="form-group">
     <label>Tasks</label>
-    <ul>
+    <ul ng-show="record.tasks.length">
       <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
     </ul>
+    <span ng-hide="record.tasks.length"><br />None</span>
   </div>
 
-  <div class="form-group">
+  <div class="form-group" ng-class="{hideOld: record.newproject!='false'}">
     <label>Project Key Words</label>
-    <ul>
+    <ul ng-show="record.tags.length">
       <li ng-repeat="tag in record.tags">{{tag}}</li>
     </ul>
+    <span ng-hide="record.tags.length"><br />None</span>
   </div>
 
   <div class="form-group">
-  <label>Executive Summary</label>
-  <div>
-    <p>{{record.executiveSummary}}</p>
-  </div>
-  </div>
-
-  <div class="form-group">
-  <label>Impact Statement</label>
-  <div>
-    <p>{{record.impactStatement}}</p>
-  </div>
+    <label>Executive Summary</label>
+    <div>
+      <input type="text" readonly required value="{{record.executiveSummary}}">
+    </div>
   </div>
 
   <div class="form-group">
-  <label>Benefit to Community</label>
-  <div>
-    <p>{{record.benefitToCommunity}}</p>
-  </div>
-  </div>
-
-  <div class="form-group">
-  <label>Scientific Summary</label>
-  <div>
-    <p>{{record.scientificSummary}}</p>
-  </div>
+    <label>Impact Statement</label>
+    <div>
+      <input type="text" readonly required value="{{record.impactStatement}}">
+    </div>
   </div>
 
   <div class="form-group">
-  <label>Technological Summary</label>
-  <div>
-    <p>{{record.technologicalSummary}}</p>
+    <label>Benefit to Community</label>
+    <div>
+      <input type="text" readonly required value="{{record.benefitToCommunity}}">
+    </div>
   </div>
+
+  <div class="form-group">
+    <label>Scientific Summary</label>
+    <div>
+      <input type="text" readonly required value="{{record.scientificSummary}}">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>Technological Summary</label>
+    <div>
+      <input type="text" readonly required value="{{record.technologicalSummary}}">
+    </div>
   </div>
 
   <div class="form-group" ng-show="record.publications.length">
-  <label>Publications</label>
-  <ul>
-    <li ng-repeat="pub in record.publications">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
-  </ul>
+    <label>Publications</label>
+    <ul>
+      <li ng-repeat="pub in record.publications">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
+    </ul>
   </div>
 
 
   <div class="form-group" ng-show="record.relatedProjects.length">
-  <label>Related Projects</label>
-  <ul>
-    <li ng-repeat="proj in record.relatedProjects"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
-  </ul>
-  </div>
-
-<hr />
-
-
-
-<div>
-  <label>Computing, Storage and Services resources</label>
-  <div class="p10-5">
-    <label>Software as a Service (SaaS)</label>
-    <div class="p10">
-      <table width="100%"><tr>
-        <td class="inTwo">
-          Software development
-          <ul>
-            <li ng-repeat="soft in summ.softdev">{{soft.name}}</li>
-          </ul>
-      </td>
-      <td class="inTwoEmptySeparator">
-      </td>
-      <td class="inTwo">
-      HBP Collab
-      <ul>
-        <li ng-repeat="collab in summ.collabs">{{collab.name}}</li>
-      </ul>
-
-    </td></tr></table>
-  </div>
-</div>
-<div class="p10-5">
-  <label>Platform as a Service (PaaS)</label>
-  <div class="p10">
-    TOFILL
-  </div>
-</div>
-<div class="p10-5">
-  <label>Infrastructure as a Service (IaaS)</label>
-  <div class="p10">
-    Prefered Architecture
+    <label>Related Projects</label>
     <ul>
-      <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
+      <li ng-repeat="proj in record.relatedProjects"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
     </ul>
-
-  <br />
-  <table width="100%"><tr>
-    <td class="inTwo">
-      HPC Computing
-      <div class="p10 form-group">
-        Total number of runs
-        <p>
-          {{summ.hpc.runs}}
-        </p>
-        Average partition size (Number of processors)
-        <p>
-          {{summ.hpc.partition}}
-        </p>
-        Time to solution (In hours)
-        <p>
-          {{summ.hpc.time}}
-        </p>
-      </div>
-    </td>
-    <td class="inTwoEmptySeparator">
-    </td>
-    <td class="inTwo">
-    HPC Storage
-    <div class="p10 form-group">
-      Number of artefacts
-      <p>
-        {{summ.hpc.numarte}}
-      </p>
-    Average size of artefacts (in GB)
-      <p>
-        {{summ.hpc.sizearte}}
-      </p>
-      </div>
-  </td></tr><tr>
-    <td class="inTwo">
-      Cloud Computing
-      <div class="p10 form-group">
-        Total number of runs
-        <p>
-          {{summ.cloud.runs}}
-        </p>
-        Average partition size (Number of processors)
-        <p>
-          {{summ.cloud.partition}}
-        </p>
-        Time to solution (In hours)
-        <p>
-          {{summ.cloud.time}}
-        </p>
-      </div>
-    </td>
-    <td class="inTwoEmptySeparator">
-    </td>
-    <td class="inTwo">
-    Cloud Storage
-    <div class="p10 form-group">
-      Number of artefacts
-      <p>
-        {{summ.cloud.numarte}}
-      </p>
-    Average size of artefacts (in GB)
-      <p>
-        {{summ.cloud.sizearte}}
-      </p>
-      </div>
-  </td></tr></table>
-</div>
-</div>
-<div class="p10-5">
-<label>Hardware as a Service (HaaS)</label>
-<ul>
-  <li ng-repeat="tasks in summ.hardware">{{tasks}}</i></li>
-</ul>
-
-</div>
-</div>
-
-
-<hr />
-<div>
-<label>Human resources</label>
-
-<table>
-  <td class="memberName">
-  <label>Name</label>
-  <ul>
-    <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
-  </ul>
-  </td>
-  <td class="memberPm">
-  <ul>
-    <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
-  </ul>
-  <label>Person/Month</label>
-  </td>
-</table>
-
-<div class="memberList" data-ng-model="svPair.members">
-  <div ng-repeat="member in svPair.members">
-    <div>
-      <!--<pre>{{ngModel|json}}</pre>-->
-      <table>
-        <td class="memberName">
-        <select ng-model="member.name">
-          <option ng-repeat="people in record.membersAndLead" value="people.name">{{people.name}}</option>
-        </select>
-        </td>
-        <td class="memberRole">
-        <select ng-model="member.role">
-          <option ng-repeat="role in availableRoles" value="role">{{role}}</option>
-        </select>
-        </td>
-        <td class="memberPm">
-        <input type="number" class=""
-        ng-model="member.pm">
-        </td>
-        <td class="memberDesc">
-        <input type="text" class=""
-        placeholder="Description"
-        ng-model="member.description">
-        </td>
-        <td class="memberButtom">
-          <div button type="button" class="close" aria-label="Remove" ng-click="deleteMember(member,svPair)">
-          <span aria-hidden="true">&times;</span>
-        </div>
-        </td>
-      </table>
-    </div>
   </div>
-</div>
-<div class="btn btn-default" ng-click="addMember(svPair)">Add members</div>
-</div>
+
+  <hr />
 
 
 
+  <div>
+    <label>Computing, Storage and Services resources</label>
+    <div class="p10-5">
+      <label>Software as a Service (SaaS)</label>
+      <div class="p10">
+        <table width="100%"><tr>
+          <td class="inTwo">
+            <u>Software development</u>
+            <ul ng-show="summ.softdev.length">
+              <li ng-repeat="soft in summ.softdev">{{soft.name}}</li>
+            </ul>
+            <span ng-hide="summ.softdev.length"><br />None</span>
+          </td>
+          <td class="inTwoEmptySeparator">
+          </td>
+          <td class="inTwo">
+            <u>HBP Collab</u>
+            <ul ng-show="summ.collabs.length">
+              <li ng-repeat="collab in summ.collabs">{{collab.name}}</li>
+            </ul>
+            <span ng-hide="summ.collabs.length"><br />None</span>
 
-</div>
+          </td></tr></table>
+        </div>
+      </div>
+      <div class="p10-5">
+        <label>Platform as a Service (PaaS)</label>
+        <div class="p10">
+          TOFILL
+        </div>
+      </div>
+      <div class="p10-5">
+        <label>Infrastructure as a Service (IaaS)</label>
+        <div class="p10">
+          <u>Prefered Architecture</u>
+          <ul ng-show="summ.architecture.length">
+            <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
+          </ul>
+          <span ng-hide="summ.architecture.length"><br />None</span>
 
-<script>
-updateLinks("deliverables","summ");
-</script>
+          <br />
+          <table width="100%" style="padding-top:15px;"><tr>
+            <td class="inTwo">
+              <u>HPC Computing</u>
+              <div class="p10 form-group">
+                <u>Total number of runs</u>
+                <input type="number" readonly ng-model="
+                summ.hpc.runs
+                ">
+                <u>Average partition size (Number of processors)</u>
+                <input type="number" readonly ng-model="
+                summ.hpc.partition
+                ">
+                <u>Time to solution (In hours)</u>
+                <input type="number" readonly ng-model="
+                summ.hpc.time
+                ">
+              </div>
+            </td>
+            <td class="inTwoEmptySeparator">
+            </td>
+            <td class="inTwo">
+              <u>HPC Storage</u>
+              <div class="p10 form-group">
+                <u>Number of artefacts</u>
+                <input type="number" readonly ng-model="
+                summ.hpc.numarte
+                ">
+                <u>Average size of artefacts (in GB)</u>
+                <input type="number" readonly ng-model="
+                summ.hpc.sizearte
+                ">
+              </div>
+            </td></tr><tr>
+              <td class="inTwo">
+                <u>Cloud Computing</u>
+                <div class="p10 form-group">
+                  <u>Total number of runs</u>
+                  <input type="number" readonly ng-model="
+                  summ.cloud.runs
+                  ">
+                  <u>Average partition size (Number of processors)</u>
+                  <input type="number" readonly ng-model="
+                  summ.cloud.partition
+                  ">
+                  <u>Time to solution (In hours)</u>
+                  <input type="number" readonly ng-model="
+                  summ.cloud.time
+                  ">
+                </div>
+              </td>
+              <td class="inTwoEmptySeparator">
+              </td>
+              <td class="inTwo">
+                <u>Cloud Storage</u>
+                <div class="p10 form-group">
+                  <u>Number of artefacts</u>
+                  <input type="number" readonly ng-model="
+                  summ.cloud.numarte
+                  ">
+                  <u>Average size of artefacts (in GB)</u>
+                  <input type="number" readonly ng-model="
+                  summ.cloud.sizearte
+                  ">
+                </div>
+              </td></tr></table>
+            </div>
+          </div>
+          <div class="p10-5">
+            <label>Hardware as a Service (HaaS)</label>
+            <ul ng-show="summ.hardware.length">
+              <li ng-repeat="tasks in summ.hardware">{{tasks}}</i></li>
+            </ul>
+            <span ng-hide="summ.hardware.length"><br />None</span>
+
+          </div>
+        </div>
+
+
+        <hr />
+        <div>
+          <label>Human resources</label>
+
+          <table>
+            <td class="inTwo">
+              <label>Name</label>
+            </td>
+            <td class="inTwo">
+              <label>Total Person/Month</label>
+            </td>
+          </table>
+
+          <div class="memberList" data-ng-model="summ.members">
+            <div ng-repeat="member in summ.members">
+              <table>
+                <td class="inTwo">
+                  {{member.name}}
+                </td>
+                <td class="inTwo">
+                  <input type="number" readonly class=""
+                  ng-model="member.pm">
+                </td>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+        <script>
+        updateLinks("deliverables","summ");
+        </script>

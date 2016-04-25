@@ -314,3 +314,22 @@ hbp-user-selector input.form-control {
 table{
   width:100%;
 }
+
+input:-moz-read-only { /* For Firefox */
+    background-color: rgb(245,245,245);
+}
+
+input:read-only {
+    background-color: rgb(245,245,245);
+}
+
+
+input:-moz-read-only:required { /* For Firefox */
+  background-color: #FA787E;
+  border-color: #CA5B5B;
+}
+
+input:read-only:required {
+  background-color: #FA787E;
+  border-color: #CA5B5B;
+}

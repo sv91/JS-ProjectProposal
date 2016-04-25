@@ -25,11 +25,34 @@ angular.module('projectProposalApp')
     return 0;
   }
 
+  function findMember(person){
+    var index=-1;
+    var goodIndex =-1;
+    angular.forEach($scope.summ.members,function(val2){
+      index++;
+      if (val2.name==person){
+        goodIndex = index;
+      }
+    })
+    return goodIndex;
+  }
+
   function refresh(){
     angular.forEach($scope.record.deliverables,function(val){
       angular.forEach(val.softdev,function(val2){
         if ($scope.summ.softdev.indexOf(val2)==-1){
           $scope.summ.softdev.push(val2);
+        }
+      })
+      angular.forEach(val.members,function(val2){
+        var index = findMember(val2.name);
+        if (index==-1){
+          var temp = {'name':'','pm':''};
+          temp.name=val2.name;
+          temp.pm=val2.pm;
+          $scope.summ.members.push(temp);
+        } else {
+          $scope.summ.members[index].pm = parseInt($scope.summ.members[index].pm) + parseInt(val2.pm);
         }
       })
       angular.forEach(val.collabs,function(val2){
