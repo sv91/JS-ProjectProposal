@@ -6,13 +6,13 @@
         <!-- the links to our nested states using relative paths -->
         <!-- add the active class if the state matches our ui-sref -->
         <div id="status-buttons" class="text-center">
-          <a href="#/form/" id="prev" class="pN" ng-class="{hideOld: hasPrev=='none'}"><span><<</span>Previous</a>
+          <a href="#/form/" id="prev" class="pN"><span><<</span>Previous</a>
           <a ui-sref-active="active" ui-sref=".type"><span>1</span>Type</a>
           <a ui-sref-active="active" ui-sref=".members"><span>2</span> Members</a>
           <a ui-sref-active="active" ui-sref=".definitions"><span>3</span>Definition</a>
           <a ui-sref-active="active" ui-sref=".deliverables"><span>4</span>Deliverables</a>
           <a ui-sref-active="active" ui-sref=".summary"><span>5</span>Summary</a>
-          <a href="#/form/" id="next" class="pN" ng-show="hasNext!=null"><span>>></span> Next</a>
+          <a href="#/form/" id="next" class="pN"><span>>></span> Next</a>
         </div>
       </div>
 
@@ -31,21 +31,25 @@
           <div id="bubble" class="bubble">
           </div>
         </div>
-        <div>
-        <input id="N" type="hidden" ng-model="hasNext">
-        <input id="P" type="hidden" ng-model="hasPrev"></div>
-
       </form>
     </div>
   </div>
 </div>
 
 <script>
+function changeURL(id,value){
+  var doc = document.getElementById(id)
+  doc.href = '#/form/'+value;
+  if(value == '' || value == null || value == undefined ){
+    doc.style = 'visibility:hidden';
+  } else {
+    doc.style = 'visibility:visible';
+  }
+
+}
 function updateLinks(prev,next){
   resetBubble();
-  document.getElementById('P').value = prev;
-  document.getElementById('N').value = next;
-  document.getElementById('prev').href = '#/form/'+prev;
-  document.getElementById('next').href = '#/form/'+next;
+  changeURL('prev',prev);
+  changeURL('next',next);
 }
 </script>

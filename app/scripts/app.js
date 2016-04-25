@@ -56,9 +56,6 @@ angular
 
     $scope.membersAndLead = [];
 
-		$scope.hasPrev = {};
-    $scope.hasNext = {};
-
 		// The available values for the different fields
 	  $scope.availableTags = ['Science','Research','Testing','Computing'];
 	  $scope.availableRoles = ['Deliverable lead','Technical Lead','Scientific Lead','Developper','Scientist'];
