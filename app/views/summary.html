@@ -145,7 +145,7 @@
           <td class="inTwo">
             <u>HBP Collab</u>
             <ul ng-show="summ.collabs.length">
-              <li ng-repeat="collab in summ.collabs">{{collab.name}}</li>
+              <li ng-repeat="collab in summ.collabs">{{collab.title}}</li>
             </ul>
             <span ng-hide="summ.collabs.length"><br />None</span>
 
@@ -276,5 +276,5 @@
         </div>
 
         <script>
-        updateLinks("deliverables","summ");
+        updateLinks("deliverables","");
         </script>

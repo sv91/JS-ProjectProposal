@@ -263,7 +263,7 @@ hbp-user-selector input.form-control {
 }
 
 .hideOld{
-  display:none;
+  display:none !important;
 }
 
 .p10-5{

@@ -90,9 +90,9 @@
         ng-model="svPair.collabs"
         theme="bootstrap"
         sortable="true">
-        <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
-        <ui-select-choices repeat="soft in availableCollab | filter:$select.search">
-          {{soft}}
+        <ui-select-match placeholder="Click to select">{{$item.title}}</ui-select-match>
+        <ui-select-choices repeat="collab in availableCollab | filter:$select.search">
+          {{collab.title}}
         </ui-select-choices>
       </ui-select>
 

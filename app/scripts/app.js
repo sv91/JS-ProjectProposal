@@ -53,12 +53,11 @@ angular
     $scope.summ = {};
 		// value of current date
     $scope.date = new Date();
-		// links between pages
-    $scope.nextPage = {};
-    $scope.prevPage = {};
-
 
     $scope.membersAndLead = [];
+
+		$scope.hasPrev = {};
+    $scope.hasNext = {};
 
 		// The available values for the different fields
 	  $scope.availableTags = ['Science','Research','Testing','Computing'];
@@ -85,7 +84,18 @@ angular
 			{'name':'IBM POWER7, POWER8','desc':''},
 			{'name':'Nvidia GPU','desc':''}
 		];
-		//$scope.availableCollab=hbpCollabStore.list().toArray();
+
+		$scope.availableCollab=[];
+				//Get the list of collabs
+
+				 function loadCollabs() {
+					 hbpCollabStore.list().then(function(rs) {return rs.toArray();})
+					 	.then(function(arr){
+  						$scope.availableCollab = arr;
+						})
+				}
+			loadCollabs();
+
 
     // function to process the form
     $scope.processForm = function() {
