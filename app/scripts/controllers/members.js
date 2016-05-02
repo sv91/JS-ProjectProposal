@@ -15,8 +15,8 @@ angular.module('projectProposalApp')
 * @ngdoc directive
 * @name projectProposalApp.directive:selectPi
 * @description
-* # deliverablePicker
-* Directive managing the deliverables for the .deliverables page.
+* # selectPi
+* Input form to select an user as the project leader.
 */
 .directive('selectPi', function($log, hbpIdentityUserDirectory) {
   return {
@@ -31,6 +31,13 @@ angular.module('projectProposalApp')
   }
 })
 
+/**
+* @ngdoc directive
+* @name projectProposalApp.directive:selectCopi
+* @description
+* # selectCopi
+* Input form to select an user as the project co-leader.
+*/
 .directive('selectCopi', function($log, hbpIdentityUserDirectory) {
   return {
     scope: true,
@@ -44,6 +51,13 @@ angular.module('projectProposalApp')
   }
 })
 
+/**
+* @ngdoc directive
+* @name projectProposalApp.directive:selectCopi
+* @description
+* # selectCopi
+* Input form to select multiple user.
+*/
 .directive('multiUserSelect', function() {
   return {
     scope: true,
