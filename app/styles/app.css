@@ -311,9 +311,6 @@ input:read-only:required {
   border-color: #CA5B5B;
 }
 
-.platinium{
-  background-color: #dfdfe1;
-}
 .gold{
   background-color: #e0dcd0;
 }
@@ -323,15 +320,11 @@ input:read-only:required {
 .bronze{
   background-color: #dfd7d0;
 }
-
-.platiniumSelected{
-  background-color: #c9cee0;
-}
 .goldSelected{
   background-color: #D4AF37;
 }
 .silverSelected{
-  background-color: #C0C0C0;
+  background-color: #C0C0D0;
 }
 .bronzeSelected{
   background-color: #CD7F32;
@@ -342,8 +335,8 @@ input:read-only:required {
 }
 
 .corner{
-    width: 40px;
-    height: 140px;
+    width: 50px;
+    height: 175px;
 }
 
 .empty{
@@ -354,4 +347,9 @@ input:read-only:required {
   font-weight: bold;
   font-size: 15px;
   color: rgba(0,0,0,0.6);
+}
+
+.description{
+  font-weight: normal;
+  font-size: 12px;
 }

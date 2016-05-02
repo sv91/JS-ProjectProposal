@@ -1,105 +1,85 @@
-<div class="container form middlePart"  onmouseover="updateBubble(this.childNodes[1].childNodes[8],'Select the type of project you would like to create.')">
+<div class="container form middlePart"  onmouseover="updateBubble(this.childNodes[1].childNodes[3],'Select the type of project you would like to create.')">
   <div class="form-group">
     <!-- main information -->
-    <label>Project Type</label>
-    <p>The Blue Brain Project reserves the right to stop providing access to resource in case of misconduct at any point in time or absence of results evaluated on a yearly basis.</p><br />
-    <div style="padding:0px 10px;">
+    <label>Please select the type of project you would like to submit</label>
+    <div style="padding:20px 10px;">
 <!-- FOR TEST
       <input type="text" ng-model="record.projectType">
       FOR TEST -->
       <table>
 
         <tr ng-class="{bronzeSelected : record.projectType=='bronze', bronze: record.projectType!='bronze'}">
-          <td colspan="3" class="empty">
+          <td colspan="2" class="empty">
             <p class="placeholder">P</p>
           </td>
           <td class="corner">
             <div>
-              <img src="/images/sideL.png">
+              <img src="/images/sideL.png" height="175px">
             </div>
           </td>
           <td>
             <p class="titre"><input type="radio" name="type" value="bronze" ng-model="record.projectType" style="margin:10px">Bronze</p>
-            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+            <p class="description">Mainly targets the prototyping of a new idea or the evaluation of a new capability (Web app, software, middle-ware, hardware,...). Total efforts should be limited to 3 Person-Month, 10,000 core-hours of compute, 1 TiB of storage and be limited to 3 month duration. At the end of the project, we expect the project PI to submit a project report of maximum 3 pages to the review panel and present the outcome of the project to a BBP tech/scientific talk.  Such project can only be prolonged once.</p>
           </td>
 
           <td class="corner">
             <div>
-              <img src="/images/sideR.png">
+              <img src="/images/sideR.png" height="175px">
             </div>
           </td>
-          <td colspan="3" class="empty">
+          <td colspan="2" class="empty">
             <p class="placeholder">P</p>
           </td>
         </tr>
 
         <tr ng-class="{silverSelected : record.projectType=='silver', silver: record.projectType!='silver'}">
-          <td colspan="2" class="empty">
+          <td colspan="1" class="empty">
             <p class="placeholder">P</p>
           </td>
           <td class="corner">
             <div>
-              <img src="/images/sideL.png">
+              <img src="/images/sideL.png" height="175px">
             </div>
           </td>
           <td colspan="3">
             <p class="titre"><input type="radio" name="type" value="silver" ng-model="record.projectType" style="margin:10px">Silver</p>
-            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+            <p class="description">Targets the extension of a prototype already developed as part of a bronze project with the goal to bring it to a sustainable state. Total efforts should be limited to 12 Person-Month, 80,000 core-hours of compute, 10 TiB of storage and be limited to 6 month duration. At the end of the project, we expect the project PI to submit a project report of maximum 5 pages, give a presentation to the review panel and to BBP audience during a tech/scientific talk. Such project can only be prolonged once. Finally we strongly advise the project team to target the presentation of the results of this project to a scientific venue.</p>
           </td>
 
           <td class="corner">
             <div>
-              <img src="/images/sideR.png">
+              <img src="/images/sideR.png" height="175px">
             </div>
           </td>
-          <td colspan="2" class="empty">
+          <td colspan="1" class="empty">
             <p class="placeholder">P</p>
           </td>
         </tr>
         <tr ng-class="{goldSelected : record.projectType=='gold', gold: record.projectType!='gold'}">
-          <td class="empty">
-            <p class="placeholder">P</p>
-          </td>
+
           <td class="corner">
             <div>
-              <img src="/images/sideL.png">
+              <img src="/images/sideL.png" height="175px">
             </div>
           </td>
           <td colspan="5">
             <p class="titre"><input type="radio" name="type" value="gold" ng-model="record.projectType" style="margin:10px">Gold</p>
-            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+            <p class="description">Consists of project for which a contract exists, or which  has been defined as part of the Blue Brain 4-year road map or has been defined as critical by the Blue Brain Project Project leadership team. We expect the project PI to present to the review panel and to BBP audience during a tech/scientific talk the status of the project every 6 months. Finally we strongly advise the project team to target the presentation of the results of this project to a scientific venue and submit at least one journal publication per year.</p>
           </td>
 
           <td class="corner">
             <div>
-              <img src="/images/sideR.png">
+              <img src="/images/sideR.png" height="175px">
             </div>
           </td>
-          <td class="empty">
-            <p class="placeholder">P</p>
-          </td>
         </tr>
-          <tr ng-class="{platiniumSelected : record.projectType=='platinium', platinium: record.projectType!='platinium'}">
-            <td class="corner">
-              <div>
-                <img src="/images/sideL.png">
-              </div>
-            </td>
-            <td colspan="7">
-              <p class="titre"><input type="radio" name="type" value="platinium" ng-model="record.projectType" style="margin:10px">Platinium</p>
-              <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
-            </td>
 
-            <td class="corner">
-              <div>
-                <img src="/images/sideR.png">
-              </div>
-            </td>
-          </tr>
 
       </table>
 
     </div>
+    <p>The Blue Brain Project reserves the right to stop providing access to resource in case of misconduct at any point in time or absence of results evaluated on a yearly basis.</p><br />
+
   </div>
 </div>
 
