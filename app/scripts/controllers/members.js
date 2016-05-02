@@ -2,15 +2,23 @@
 
 /**
 * @ngdoc function
-* @name projectProposalApp.controller:MainCtrl
+* @name projectProposalApp.controller:DefinitionsCtrl
 * @description
-* # MainCtrl
-* Controller of the projectProposalApp
+* # DefinitionsCtrl
+* Controller responsible for the .members page.
 */
 angular.module('projectProposalApp')
 .controller('MembersCtrl', function ($scope) {
 })
-.directive('singleUserSelectPi', function($log, hbpIdentityUserDirectory) {
+
+/**
+* @ngdoc directive
+* @name projectProposalApp.directive:selectPi
+* @description
+* # deliverablePicker
+* Directive managing the deliverables for the .deliverables page.
+*/
+.directive('selectPi', function($log, hbpIdentityUserDirectory) {
   return {
     scope: true,
     template: '<hbp-user-selector hbp-on-select="handleUserSelection(user)"></hbp-user-selector><hbp-usercard hbp-user="record.pi" ></hbp-usercard></pre>',
@@ -22,7 +30,8 @@ angular.module('projectProposalApp')
     }
   }
 })
-.directive('singleUserSelectCopi', function($log, hbpIdentityUserDirectory) {
+
+.directive('selectCopi', function($log, hbpIdentityUserDirectory) {
   return {
     scope: true,
     template: '<hbp-user-selector hbp-on-select="handleUserSelection(user)"></hbp-user-selector><hbp-usercard hbp-user="record.copi" ></hbp-usercard></pre>',
