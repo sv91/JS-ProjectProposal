@@ -2,10 +2,10 @@
 
 /**
 * @ngdoc function
-* @name projectProposalApp.controller:MainCtrl
+* @name projectProposalApp.controller:SummaryCtrl
 * @description
-* # MainCtrl
-* Controller of the projectProposalApp
+* # SummaryCtrl
+* Controller responsible for the .summary page.
 */
 angular.module('projectProposalApp')
 .controller('SummaryCtrl', function ($scope) {
@@ -17,7 +17,15 @@ angular.module('projectProposalApp')
   $scope.summ.cloud={'runs':0,'partition':0,'time':0,'numarte':0,'sizearte':0};
   $scope.summ.hardware=[];
   $scope.summ.members=[];
-  
+
+  /**
+  * @ngdoc function
+  * @name addIfNotNull
+  * @description
+  * # addIfNotNull
+  * Verify if a value is defined, if not return 0.
+  * @param {int} val The value to check.
+  */
   function addIfNotNull(val){
     if (val!=null && val!=undefined ){
       return val;
@@ -25,6 +33,14 @@ angular.module('projectProposalApp')
     return 0;
   }
 
+  /**
+  * @ngdoc function
+  * @name findMember
+  * @description
+  * # findMember
+  * Look for the index of the specified person in the record.summ.members JSON.
+  * @param {Object} person The person looked for.
+  */
   function findMember(person){
     var index=-1;
     var goodIndex =-1;
@@ -37,6 +53,13 @@ angular.module('projectProposalApp')
     return goodIndex;
   }
 
+  /**
+  * @ngdoc function
+  * @name refresh
+  * @description
+  * # refresh
+  * Calculate and set all the values for the summary.
+  */
   function refresh(){
     angular.forEach($scope.record.deliverables,function(val){
       angular.forEach(val.softdev,function(val2){
