@@ -311,30 +311,6 @@ input:read-only:required {
   border-color: #CA5B5B;
 }
 
-.sideL{
-  width: 0px;
-  height: 0px;
-  border-style: inset;
-  border-width: 70px 20px;
-  border-color: transparent transparent #F5F5F5 #F5F5F5;
-}
-
-.sideR{
-  width: 0px;
-  height: 0px;
-  border-style: inset;
-  border-width: 70px 20px;
-  border-color: transparent #F5F5F5 #F5F5F5 transparent;
-}
-
-.sideB{
-  width: 0px;
-  height: 0px;
-  border-style: inset;
-  border-width: 70px 20px;
-  border-color: #F5F5F5;
-}
-
 .platinium{
   background-color: #dfdfe1;
 }

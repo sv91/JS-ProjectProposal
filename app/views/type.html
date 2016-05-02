@@ -4,48 +4,31 @@
     <label>Project Type</label>
     <p>The Blue Brain Project reserves the right to stop providing access to resource in case of misconduct at any point in time or absence of results evaluated on a yearly basis.</p><br />
     <div style="padding:0px 10px;">
-<!-- FOR TEST 
+<!-- FOR TEST
       <input type="text" ng-model="record.projectType">
       FOR TEST -->
       <table>
-        <tr ng-class="{platiniumSelected : record.projectType=='platinium', platinium: record.projectType!='platinium'}">
-          <td class="corner">
-            <div class="sideL">
-              <p class="placeholder">P</p>
-            </div>
-          </td>
-          <td colspan="7">
-            <p class="titre"><input type="radio" name="type" value="platinium" ng-model="record.projectType" style="margin:10px">Platinium</p>
-            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
-          </td>
 
-          <td class="corner">
-            <div class="sideR">
-              <p class="placeholder">P</p>
-            </div>
-          </td>
-        </tr>
-
-        <tr ng-class="{goldSelected : record.projectType=='gold', gold: record.projectType!='gold'}">
-          <td class="empty">
+        <tr ng-class="{bronzeSelected : record.projectType=='bronze', bronze: record.projectType!='bronze'}">
+          <td colspan="3" class="empty">
             <p class="placeholder">P</p>
           </td>
           <td class="corner">
-            <div class="sideL">
-              <p class="placeholder">P</p>
+            <div>
+              <img src="/images/sideL.png">
             </div>
           </td>
-          <td colspan="5">
-            <p class="titre"><input type="radio" name="type" value="gold" ng-model="record.projectType" style="margin:10px">Gold</p>
+          <td>
+            <p class="titre"><input type="radio" name="type" value="bronze" ng-model="record.projectType" style="margin:10px">Bronze</p>
             <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
           </td>
 
           <td class="corner">
-            <div class="sideR">
-              <p class="placeholder">P</p>
+            <div>
+              <img src="/images/sideR.png">
             </div>
           </td>
-          <td class="empty">
+          <td colspan="3" class="empty">
             <p class="placeholder">P</p>
           </td>
         </tr>
@@ -55,8 +38,8 @@
             <p class="placeholder">P</p>
           </td>
           <td class="corner">
-            <div class="sideL">
-              <p class="placeholder">P</p>
+            <div>
+              <img src="/images/sideL.png">
             </div>
           </td>
           <td colspan="3">
@@ -65,39 +48,54 @@
           </td>
 
           <td class="corner">
-            <div class="sideR">
-              <p class="placeholder">P</p>
+            <div>
+              <img src="/images/sideR.png">
             </div>
           </td>
           <td colspan="2" class="empty">
             <p class="placeholder">P</p>
           </td>
         </tr>
-
-        <tr ng-class="{bronzeSelected : record.projectType=='bronze', bronze: record.projectType!='bronze'}">
-          <td colspan="3" class="empty">
+        <tr ng-class="{goldSelected : record.projectType=='gold', gold: record.projectType!='gold'}">
+          <td class="empty">
             <p class="placeholder">P</p>
           </td>
           <td class="corner">
-            <div class="sideL">
-              <p class="placeholder">P</p>
+            <div>
+              <img src="/images/sideL.png">
             </div>
           </td>
-          <td>
-            <p class="titre"><input type="radio" name="type" value="bronze" ng-model="record.projectType" style="margin:10px">Bronze</p>
+          <td colspan="5">
+            <p class="titre"><input type="radio" name="type" value="gold" ng-model="record.projectType" style="margin:10px">Gold</p>
             <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
           </td>
 
           <td class="corner">
-            <div class="sideR">
-              <p class="placeholder">P</p>
+            <div>
+              <img src="/images/sideR.png">
             </div>
           </td>
-          <td colspan="3" class="empty">
+          <td class="empty">
             <p class="placeholder">P</p>
           </td>
         </tr>
+          <tr ng-class="{platiniumSelected : record.projectType=='platinium', platinium: record.projectType!='platinium'}">
+            <td class="corner">
+              <div>
+                <img src="/images/sideL.png">
+              </div>
+            </td>
+            <td colspan="7">
+              <p class="titre"><input type="radio" name="type" value="platinium" ng-model="record.projectType" style="margin:10px">Platinium</p>
+              <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+            </td>
 
+            <td class="corner">
+              <div>
+                <img src="/images/sideR.png">
+              </div>
+            </td>
+          </tr>
 
       </table>
 
