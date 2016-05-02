@@ -17,7 +17,7 @@ angular.module('projectProposalApp')
   $scope.summ.cloud={'runs':0,'partition':0,'time':0,'numarte':0,'sizearte':0};
   $scope.summ.hardware=[];
   $scope.summ.members=[];
-
+  
   function addIfNotNull(val){
     if (val!=null && val!=undefined ){
       return val;
