@@ -1,52 +1,108 @@
 <div class="container form middlePart"  onmouseover="updateBubble(this.childNodes[1].childNodes[8],'Select the type of project you would like to create.')">
-	<div class="form-group">
-		<!-- main information -->
-		<label>Project Type</label>
-		<p>The Blue Brain Project reserves the right to stop providing access to resource in case of misconduct at any point in time or absence of results evaluated on a yearly basis.</p><br />
-		<div style="padding:0px 10px;">
-			<!-- FOR TEST
-			<input type="text" ng-model="record.projectType">
-			FOR TEST -->
-			<div>
-				<!-- information for "testing", change style if selected -->
-				<table ng-class="{typeSelected: record.projectType=='testing'}">
-					<td class="typeSelection">
-						<input type="radio" name="type" value="testing" ng-model="record.projectType" style="margin:10px">
-						<label>Testing</label>
-					</td>
-					<td class="typeDefinition">
-						<p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
-					</td>
-				</table>
-			</div>
-			<br />
-			<div>
-				<!-- information for "development", change style if selected -->
-				<table ng-class="{typeSelected: record.projectType=='development'}">
-					<td class="typeSelection">
-						<input type="radio" name="type" value="development" ng-model="record.projectType" style="margin:10px">
-						<label>Development</label>
-					</td>
-					<td class="typeDefinition">
-						<p>A development allocation allows a reduced set of users to get used to BBP environment and do code porting and early prototype development. Access is provided for up to 12 months with a maximum of 5 million core hours and 5TiB of storage.</p>
-					</td>
-				</table>
-			</div>
-			<br />
-			<div>
-				<!-- information for "production", change style if selected -->
-				<table ng-class="{typeSelected: record.projectType=='production'}">
-					<td class="typeSelection">
-						<input type="radio" name="type" value="production" ng-model="record.projectType" style="margin:10px">
-						<label>Production</label>
-					</td>
-					<td class="typeDefinition">
-						<p>A production allocation is intended to be used for large (1-3 years with at least 20 million core hours/year) application using well established production software. Scaling and performance of the used application is considered a must. It is expected that granted production allocation will lead to high quality publications every year. A yearly report describing how the allocation has been used will be required.</p>
-					</td>
-				</table>
-			</div>
-		</div>
-	</div>
+  <div class="form-group">
+    <!-- main information -->
+    <label>Project Type</label>
+    <p>The Blue Brain Project reserves the right to stop providing access to resource in case of misconduct at any point in time or absence of results evaluated on a yearly basis.</p><br />
+    <div style="padding:0px 10px;">
+<!-- FOR TEST 
+      <input type="text" ng-model="record.projectType">
+      FOR TEST -->
+      <table>
+        <tr ng-class="{platiniumSelected : record.projectType=='platinium', platinium: record.projectType!='platinium'}">
+          <td class="corner">
+            <div class="sideL">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+          <td colspan="7">
+            <p class="titre"><input type="radio" name="type" value="platinium" ng-model="record.projectType" style="margin:10px">Platinium</p>
+            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+          </td>
+
+          <td class="corner">
+            <div class="sideR">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+        </tr>
+
+        <tr ng-class="{goldSelected : record.projectType=='gold', gold: record.projectType!='gold'}">
+          <td class="empty">
+            <p class="placeholder">P</p>
+          </td>
+          <td class="corner">
+            <div class="sideL">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+          <td colspan="5">
+            <p class="titre"><input type="radio" name="type" value="gold" ng-model="record.projectType" style="margin:10px">Gold</p>
+            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+          </td>
+
+          <td class="corner">
+            <div class="sideR">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+          <td class="empty">
+            <p class="placeholder">P</p>
+          </td>
+        </tr>
+
+        <tr ng-class="{silverSelected : record.projectType=='silver', silver: record.projectType!='silver'}">
+          <td colspan="2" class="empty">
+            <p class="placeholder">P</p>
+          </td>
+          <td class="corner">
+            <div class="sideL">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+          <td colspan="3">
+            <p class="titre"><input type="radio" name="type" value="silver" ng-model="record.projectType" style="margin:10px">Silver</p>
+            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+          </td>
+
+          <td class="corner">
+            <div class="sideR">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+          <td colspan="2" class="empty">
+            <p class="placeholder">P</p>
+          </td>
+        </tr>
+
+        <tr ng-class="{bronzeSelected : record.projectType=='bronze', bronze: record.projectType!='bronze'}">
+          <td colspan="3" class="empty">
+            <p class="placeholder">P</p>
+          </td>
+          <td class="corner">
+            <div class="sideL">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+          <td>
+            <p class="titre"><input type="radio" name="type" value="bronze" ng-model="record.projectType" style="margin:10px">Bronze</p>
+            <p>A test allocation is intended to be used for a short project (Up to 12 months, 5-20 million core hours for 1 year and 20 TiB of data) for testing and optimization of a new prototype, initiating a collaboration with other teams and testing application execution at scale.</p>
+          </td>
+
+          <td class="corner">
+            <div class="sideR">
+              <p class="placeholder">P</p>
+            </div>
+          </td>
+          <td colspan="3" class="empty">
+            <p class="placeholder">P</p>
+          </td>
+        </tr>
+
+
+      </table>
+
+    </div>
+  </div>
 </div>
 
 <script>

@@ -42,6 +42,11 @@ angular
 		url: '/summary',
 		templateUrl: 'views/summary.html',
 		controller: 'SummaryCtrl'
+	})
+	.state('finalize', {
+		url: '/finalize',
+		templateUrl: 'views/finalize.html',
+		controller: 'FinalizeCtrl'
 	});
 	$urlRouterProvider.otherwise('/form/type');
 })

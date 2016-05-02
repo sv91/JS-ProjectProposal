@@ -44,6 +44,7 @@ module.exports = function(config) {
       'bower_components/angular-hbp-collaboratory/angular-hbp-collaboratory.js',
       'bower_components/select2/select2.js',
       'bower_components/angular-ui-select3/src/select3.js',
+      'bower_components/jspdf/dist/jspdf.debug.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

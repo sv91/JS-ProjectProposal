@@ -123,28 +123,6 @@ label .list-group {
   height: 33px;
 }
 
-.typeSelected {
-  padding:10px;
-  color:#006040;
-  background-color: rgba(0,200,130,0.3);
-  border-radius: 5px;
-}
-
-.typeSelection {
-  width:20%;
-  vertical-align:top;
-  border-style: none solid none none;
-  border-width: 1px;
-  border-color:rgba(25,25,25,0.1);
-}
-
-.typeDefinition {
-  width:80%;
-  vertical-align:top;
-  padding-left: 20px;
-  padding-top: 5px;
-}
-
 .container {
   width: 744px;
 }
@@ -331,4 +309,73 @@ input:-moz-read-only:required { /* For Firefox */
 input:read-only:required {
   background-color: #FA787E;
   border-color: #CA5B5B;
+}
+
+.sideL{
+  width: 0px;
+  height: 0px;
+  border-style: inset;
+  border-width: 70px 20px;
+  border-color: transparent transparent #F5F5F5 #F5F5F5;
+}
+
+.sideR{
+  width: 0px;
+  height: 0px;
+  border-style: inset;
+  border-width: 70px 20px;
+  border-color: transparent #F5F5F5 #F5F5F5 transparent;
+}
+
+.sideB{
+  width: 0px;
+  height: 0px;
+  border-style: inset;
+  border-width: 70px 20px;
+  border-color: #F5F5F5;
+}
+
+.platinium{
+  background-color: #dfdfe1;
+}
+.gold{
+  background-color: #e0dcd0;
+}
+.silver{
+  background-color: #dedede;
+}
+.bronze{
+  background-color: #dfd7d0;
+}
+
+.platiniumSelected{
+  background-color: #c9cee0;
+}
+.goldSelected{
+  background-color: #D4AF37;
+}
+.silverSelected{
+  background-color: #C0C0C0;
+}
+.bronzeSelected{
+  background-color: #CD7F32;
+}
+
+.placeholder{
+  visibility: hidden;
+}
+
+.corner{
+    width: 40px;
+    height: 140px;
+}
+
+.empty{
+    background-color: #F5F5F5;
+}
+.titre{
+  text-align: center;
+  font-weight: bold;
+  font-size: 15px;
+  color: rgba(0,0,0,0.6);
 }
