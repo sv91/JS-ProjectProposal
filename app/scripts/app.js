@@ -76,7 +76,9 @@ angular
 	$scope.availableSoftDev = [
 		{'name':'Ticketing system','desc':'(JIRA, ...)'},
 		{'name':'Continuous integration','desc':'(Jenkins, ...)'},
-		{'name':'Wiki','desc':'(Confluence, ...)'}
+		{'name':'Wiki','desc':'(Confluence, ...)'},
+		{'name':'Git repository','desc':''},
+		{'name':'Gerrit review','desc':''}
 	];
 	$scope.availableArchitecture = [
 		{'name':'Intel x86','desc':''},
@@ -84,6 +86,15 @@ angular
 		{'name':'IBM Blue Gene/Q','desc':''},
 		{'name':'IBM POWER7, POWER8','desc':''},
 		{'name':'Nvidia GPU','desc':''}
+	];
+	$scope.availableVirtualization = [
+		{'name':'Virtual Machine','desc':'(OpenStack, VMware, ...)'},
+		{'name':'Container','desc':'(Docker, ...)'}
+	];
+	$scope.availableDevEnv = [
+		{'name':'Compiler','desc':'(GCC, icc, ...)'},
+		{'name':'Python','desc':'(2.6, 2.7, 3.1, 3.2)'},
+		{'name':'Parallel environment','desc':'(MPI, OpenMP, Spark, ...)'}
 	];
 
 	$scope.availableCollab=[];

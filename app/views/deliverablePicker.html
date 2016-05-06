@@ -102,8 +102,38 @@
   <div class="p10-5">
     <label>Platform as a Service (PaaS)</label>
     <div class="p10">
-      TOFILL
-    </div>
+      <table width="100%"><tr>
+        <td class="inTwo" onclick="updateBubble(this,'Select the needed tools.')">
+          Virtualization
+          <ui-select
+          multiple
+          ng-model="svPair.virtualization"
+          theme="bootstrap"
+          sortable="true">
+          <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+          <ui-select-choices repeat="virtualization in availableVirtualization | filter:$select.search">
+            {{virtualization.name}} <i>{{virtualization.desc}}</i>
+          </ui-select-choices>
+        </ui-select>
+
+      </td>
+      <td class="inTwoEmptySeparator">
+      </td>
+      <td class="inTwo" onclick="updateBubble(this,'Select the needed tools.')">
+        Development environment
+        <ui-select
+        multiple
+        ng-model="svPair.devenv"
+        theme="bootstrap"
+        sortable="true">
+        <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="devenv in availableDevEnv | filter:$select.search">
+          {{devenv.name}} <i>{{devenv.desc}}</i>
+        </ui-select-choices>
+      </ui-select>
+
+    </td></tr></table>
+  </div>
   </div>
   <div class="p10-5">
     <label>Infrastructure as a Service (IaaS)</label>
