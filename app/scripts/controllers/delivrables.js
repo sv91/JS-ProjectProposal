@@ -98,7 +98,7 @@ angular.module('projectProposalApp')
       // Verify that the JSON part exists.
       if (!scope.record.deliverables) {
         scope.record.deliverables = [
-          {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':''}
+          {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':'','hardware':[{'name': '', 'price': '', 'link':'','description':''}]}
         ];
       }
 
@@ -166,6 +166,40 @@ angular.module('projectProposalApp')
       scope.addMember = function (del) {
         var index = scope.record.deliverables.indexOf(del);
         scope.record.deliverables[index].members.push({'name': '', 'role': '', 'pm':'','description':''});
+      };
+
+      // Functions for the hardwares inside a deliverable
+      /**
+      * @ngdoc function
+      * @name deleteHardware
+      * @description
+      * # deleteHardware
+      * Delete the specified hardware.
+      * If it is the only hardware, reset it.
+      * @param {Object} item The hardware to delete.
+      * @param {Object} del The deliverable in which the member have to be deleted.
+      */
+      scope.deleteHardware = function (item,del) {
+        resetBubble();
+        var index = scope.record.deliverables.indexOf(del);
+        if (scope.record.deliverables[index].hardware.length < 2) {
+          scope.record.deliverables[index].hardware = [{'name': '', 'price': '', 'link':'','description':''}];
+          return;
+        }
+        var indexHardware = scope.record.deliverables[index].hardware.indexOf(item);
+        scope.record.deliverables[index].hardware.splice(indexHardware, 1);
+      };
+      /**
+      * @ngdoc function
+      * @name addHardware
+      * @description
+      * # Hardware
+      * Add an additional form for a hardware in the specified deliverable.
+      * @param {Object} del The deliverable in which the form have to be added.
+      */
+      scope.addHardware = function (del) {
+        var index = scope.record.deliverables.indexOf(del);
+        scope.record.deliverables[index].hardware.push({'name': '', 'price': '', 'link':'','description':''});
       };
     }
   };

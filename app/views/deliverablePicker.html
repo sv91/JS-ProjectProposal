@@ -168,24 +168,50 @@
     </td></tr></table>
   </div>
 </div>
+
+
 <div class="p10-5">
   <label>Hardware as a Service (HaaS)</label>
-  <ui-select
-  onclick="updateBubble(this,'Hardware as a Service (HaaS).')"
-  multiple
-  tagging
-  tagging-label=" (Add this hardware)"
-  ng-model="svPair.hardware"
-  theme="bootstrap"
-  sortable="true">
-  <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
-  <ui-select-choices repeat="hard in availableHardware | filter:$select.search">
-    {{hard}}
-  </ui-select-choices>
-</ui-select>
-  <div class="p10">
-  </div>
+
+  <div class="p10 form-group" data-ng-model="svPair.hardware">
+    <div ng-repeat="hard in svPair.hardware">
+      <div >
+        Name
+        <input type="text" class="form-control" style="width:100%" ng-model="hard.name">
+      </div>
+      <div>
+        <table>
+        <td class="inTwo">
+          Price
+          <input type="number" class="form-control" ng-model="hard.price">
+        </td>
+      <td class="inTwoEmptySeparator">
+      </td>
+        <td class="inTwo">
+          Link
+          <input type="URL" class="form-control" ng-model="hard.link">
+        </td>
+      </table>
+      </div>
+      <div>
+        Description
+        <textarea class="form-control"  ng-model="hard.description">
+        </textarea>
+      </div>
+            <div button type="button" class="close" aria-label="Remove" ng-click="deleteHardware(hard,svPair)">
+            <span aria-hidden="true">&times;</span>
+          </div>
+          <hr />
+      </div>
+    </div>
+  <div class="btn btn-default" ng-click="addHardware(svPair)">Add hardware</div>
 </div>
+
+
+
+
+
+
 </div>
 <br />
 <div>
