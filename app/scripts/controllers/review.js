@@ -2,13 +2,13 @@
 
 /**
 * @ngdoc function
-* @name projectProposalApp.controller:SummaryCtrl
+* @name projectProposalApp.controller:ReviewCtrl
 * @description
-* # SummaryCtrl
-* Controller responsible for the .summary page.
+* # ReviewCtrl
+* Controller responsible for the .review page.
 */
 angular.module('projectProposalApp')
-.controller('SummaryCtrl', function ($scope) {
+.controller('ReviewCtrl', function ($scope) {
 
   $scope.summ.softdev=[];
   $scope.summ.collabs=[];

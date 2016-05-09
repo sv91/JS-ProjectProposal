@@ -33,6 +33,11 @@ angular
 		templateUrl: 'views/summary.html',
 		controller: 'SummaryCtrl'
 	})
+	.state('form.requirements', {
+		url: '/requirements',
+		templateUrl: 'views/requirements.html',
+		controller: 'RequirementsCtrl'
+	})
 	.state('form.deliverables', {
 		url: '/deliverables',
 		templateUrl: 'views/deliverables.html',

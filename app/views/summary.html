@@ -80,7 +80,7 @@
 <!-- Grants selection -->
 <!-- Do it like tags with a set of grants -->
 <div class="form-group" id="grants"  onclick="updateBubble(this,'Select the grants that fund this project.<br />If the required grant is not in the list, you can add it.')">
-<label>Grants</label>
+<label>Add grants supporting this project</label>
 <div>
   <ui-select
   multiple
@@ -103,7 +103,7 @@
 <!-- Do it like dependencies with filter such as the provided choices -->
 <!-- are list of task from the set of tasks of the selected grants -->
 <div class="form-group" id="task"  onclick="updateBubble(this,'Select the tasks from the selected grants that recieve contribution from this project.')">
-  <label>Tasks</label>
+  <label>Tasks related to the Grants</label>
   <div>
     <ui-select
     multiple
@@ -191,5 +191,5 @@
 
 
 <script>
-updateLinks("members","deliverables");
+updateLinks("members","requirements");
 </script>
