@@ -7,6 +7,12 @@
       <input type="text" id="subject" placeholder="Message subject" class="form-control">
     </div>
     <br />
+      <div>
+        <select id="type" placeholder="Issue type" class="form-control">
+          <option ng-repeat="type in availableTypes" value={{type.name}}>{{type.name}} - <i>{{type.description}}</i></option>
+        </select>
+      </div>
+      <br />
     <div>
       <textarea id="message" placeholder="Message ..." class="form-control"></textarea>
     </div>
@@ -26,7 +32,7 @@ updateLinks("","");
 function sendMessage(){
       var link = "mailto:alexander.vostriakov@epfl.ch"
                + "?cc=myCCaddress@example.com"
-               + "&subject=" + escape("[ProposalApp]"+document.getElementById('subject').value)
+               + "&subject=" + escape("["+document.getElementById('type').value+"]"+document.getElementById('subject').value)
                + "&body=" + escape(document.getElementById('message').value)
       ;
 

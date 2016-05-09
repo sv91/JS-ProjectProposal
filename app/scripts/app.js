@@ -63,6 +63,7 @@ angular
 	// we will store all of our form data in this object
 	$scope.record = {};
 	$scope.summ = {};
+	$scope.messageType = "";
 	// value of current date
 	$scope.date = new Date();
 
@@ -120,6 +121,11 @@ angular
 		{'name':'Visualization','shortName':'Viz'}
 	];
 
+		$scope.availableTypes = [
+			{'name':'Bug','description':'Did you notice a bug?'},
+			{'name':'Error','description':'Did an error appear?'},
+			{'name':'Comment','description':'Do you have a comment?'}
+		];
 	$scope.availableCollab=[];
 	//Get the list of collabs
 
