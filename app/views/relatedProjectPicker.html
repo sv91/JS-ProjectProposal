@@ -38,8 +38,9 @@
 
             </td></tr></table>
             <div onclick="updateBubble(this,'A short description.')">
-              Description
+              Synergies with this project (Max. 200 characters)
                 <input type="text" class="form-control"
+                       maxlength="200"
                        name="dataset_title"
                        uib-typeahead="project.description for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
                        placeholder="A short description"
