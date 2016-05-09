@@ -105,6 +105,21 @@ angular
 		{'name':'Parallel environment','desc':'(MPI, OpenMP, Spark, ...)'}
 	];
 
+	$scope.availableTeams = [
+		{'name':'Algorithms','shortName':'Algo'},
+		{'name':'Analysis','shortName':'Ana'},
+		{'name':'Building','shortName':'Build'},
+		{'name':'Data Integration','shortName':'DI'},
+		{'name':'Data Mining','shortName':'DM'},
+		{'name':'High Performance Computing','shortName':'HPC'},
+		{'name':'Infrastructure','shortName':'Infra'},
+		{'name':'Neurorobotics','shortName':'Neuro'},
+		{'name':'Platform','shortName':'Plat'},
+		{'name':'Simulation','shortName':'Sim'},
+		{'name':'Sub Cellular','shortName':'Sub'},
+		{'name':'Visualization','shortName':'Viz'}
+	];
+
 	$scope.availableCollab=[];
 	//Get the list of collabs
 
