@@ -43,7 +43,15 @@ angular
 		templateUrl: 'views/summary.html',
 		controller: 'SummaryCtrl'
 	})
-	.state('finalize', {
+	.state('form.help', {
+		url: '/help',
+		templateUrl: 'views/help.html'
+	})
+	.state('form.updates', {
+		url: '/updates',
+		templateUrl: 'views/updates.html'
+	})
+	.state('form.finalize', {
 		url: '/finalize',
 		templateUrl: 'views/finalize.html',
 		controller: 'FinalizeCtrl'

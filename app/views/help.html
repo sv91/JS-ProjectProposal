@@ -1,0 +1,35 @@
+<div class="container form middlePart" >
+  <label>Need some help?
+  </label>
+  <p>If you have any question or comment, you can contact the support of this app by using this form.</p>
+  <div>
+    <div>
+      <input type="text" id="subject" placeholder="Message subject" class="form-control">
+    </div>
+    <br />
+    <div>
+      <textarea id="message" placeholder="Message ..." class="form-control"></textarea>
+    </div>
+    <br />
+    <div>
+      <div class="btn btn-default" onclick="sendMessage();">Send message</div>
+    </div>
+  </div>
+  <hr />
+  <p>You can also consult the F.A.Q and the update list.</p>
+
+</div>
+
+<script>
+updateLinks("","");
+
+function sendMessage(){
+      var link = "mailto:alexander.vostriakov@epfl.ch"
+               + "?cc=myCCaddress@example.com"
+               + "&subject=" + escape("[ProposalApp]"+document.getElementById('subject').value)
+               + "&body=" + escape(document.getElementById('message').value)
+      ;
+
+      window.location.href = link;
+}
+</script>
