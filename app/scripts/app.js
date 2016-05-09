@@ -63,7 +63,7 @@ angular
 	// we will store all of our form data in this object
 	$scope.record = {};
 	$scope.summ = {};
-	$scope.messageType = "";
+	$scope.faq = "";
 	// value of current date
 	$scope.date = new Date();
 

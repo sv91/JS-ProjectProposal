@@ -14,11 +14,15 @@
       </div>
       <br />
     <div>
+    <div>
       <textarea id="message" placeholder="Message ..." class="form-control"></textarea>
     </div>
     <br />
-    <div>
-      <div class="btn btn-default" onclick="sendMessage();">Send message</div>
+      Did you first checked the F.A.Q. ?
+      <input type="checkbox" ng-model="faq" value="Yes"> Yes
+    </div><br/>
+    <div align="right">
+      <div class="btn btn-default" id="button" ng-disabled="!faq" onclick="sendMessage();">Send message</div>
     </div>
   </div>
   <hr />
@@ -30,12 +34,13 @@
 updateLinks("","");
 
 function sendMessage(){
+  if(document.getElementById("button").getAttribute('disabled') != "disabled"){
       var link = "mailto:alexander.vostriakov@epfl.ch"
                + "?cc=myCCaddress@example.com"
                + "&subject=" + escape("["+document.getElementById('type').value+"]"+document.getElementById('subject').value)
                + "&body=" + escape(document.getElementById('message').value)
       ;
 
-      window.location.href = link;
+      window.location.href = link;}
 }
 </script>
