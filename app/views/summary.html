@@ -1,280 +1,195 @@
-<div class="container form middlePart" data-ng-model="summ">
-  <label>
-    Summary
-  </label>
+<div class="container form middlePart">
 
-  <div class="form-group">
-    <label>Project Title</label>
-    <div>
-      <input type="text" readonly required value="{{record.projectTitle}}">
-    </div>
-  </div>
-
-  <table width="100%">
-    <td class="inTwo">
-      <div class="form-group">
-        <label>Project Start Date</label><br />
-        <input type="date" readonly required value="{{record.projectStartDate | date:'yyyy-MM-dd'}}">
-      </div>
-    </td>
-    <td class="inTwoEmptySeparator">
-    </td>
-    <td class="inTwo">
-      <div class="form-group">
-        <label>Project End Date</label><br />
-        <input type="date" readonly required value="{{record.projectEndDate | date:'yyyy-MM-dd'}}">
-      </div>
-    </td>
-  </table>
-  <div class="form-group" ng-class="{hideOld: record.newproject!='false'}">
-    <label>New project</label><br />
-    <div class="form-group">
-      <div class="form-group">
-        <label>Previous Project Title</label>
-        <div>
-          <input type="text" readonly value="{{record.previousProject.title}}">
-        </div>
-      </div><!-- project Title -->
-      <div class="form-group">
-        <label>Previous Project ID</label>
-        <div>
-          <input type="text" readonly value="{{record.previousProject.id}}">
-        </div>
-      </div><!-- project Title -->
-      <div class="form-group">
-        <label>Previous Project Principal Investigator</label>
-        <div>
-          <input type="text" readonly value="{{record.previousProject.pi}}">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Grants</label>
-    <ul>
-      <li ng-repeat="grant in record.grants">{{grant}}</li>
-    </ul>
-  </div>
-
-  <div class="form-group">
-    <label>Tasks</label>
-    <ul ng-show="record.tasks.length">
-      <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
-    </ul>
-    <span ng-hide="record.tasks.length"><br />None</span>
-  </div>
-
-  <div class="form-group" ng-class="{hideOld: record.newproject!='false'}">
-    <label>Project Key Words</label>
-    <ul ng-show="record.tags.length">
-      <li ng-repeat="tag in record.tags">{{tag}}</li>
-    </ul>
-    <span ng-hide="record.tags.length"><br />None</span>
-  </div>
-
-  <div class="form-group">
-    <label>Executive Summary</label>
-    <div>
-      <input type="text" readonly required value="{{record.executiveSummary}}">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Impact Statement</label>
-    <div>
-      <input type="text" readonly required value="{{record.impactStatement}}">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Benefit to Community</label>
-    <div>
-      <input type="text" readonly required value="{{record.benefitToCommunity}}">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Scientific Summary</label>
-    <div>
-      <input type="text" readonly required value="{{record.scientificSummary}}">
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label>Technological Summary</label>
-    <div>
-      <input type="text" readonly required value="{{record.technologicalSummary}}">
-    </div>
-  </div>
-
-  <div class="form-group" ng-show="record.publications.length">
-    <label>Publications</label>
-    <ul>
-      <li ng-repeat="pub in record.publications" ng-show="pub.name">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
-    </ul>
-  </div>
-
-
-  <div class="form-group" ng-show="record.relatedProjects.length">
-    <label>Related Projects</label>
-    <ul>
-      <li ng-repeat="proj in record.relatedProjects" ng-show="proj.name"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
-    </ul>
-  </div>
-
-  <hr />
-
-
-
+  <!-- project Title -->
+  <div class="form-group" onclick="updateBubble(this,'Write down the title of this project. <br />Maximum 300 characters.')">
+  <label>Project Title</label> (300 characters max.)
   <div>
-    <label>Computing, Storage and Services resources</label>
-    <div class="p10-5">
-      <label>Software as a Service (SaaS)</label>
-      <div class="p10">
-        <table width="100%"><tr>
-          <td class="inTwo">
-            <u>Software development</u>
-            <ul ng-show="summ.softdev.length">
-              <li ng-repeat="soft in summ.softdev">{{soft.name}}</li>
-            </ul>
-            <span ng-hide="summ.softdev.length"><br />None</span>
-          </td>
-          <td class="inTwoEmptySeparator">
-          </td>
-          <td class="inTwo">
-            <u>HBP Collab</u>
-            <ul ng-show="summ.collabs.length">
-              <li ng-repeat="collab in summ.collabs">{{collab.title}}</li>
-            </ul>
-            <span ng-hide="summ.collabs.length"><br />None</span>
+    <p>
+      <input maxlength="300" ng-model="record.projectTitle" type="text" required>
+    </p>
+  </div>
+</div>
 
-          </td></tr></table>
-        </div>
-      </div>
-      <div class="p10-5">
-        <label>Platform as a Service (PaaS)</label>
-        <div class="p10">
-          TOFILL
-        </div>
-      </div>
-      <div class="p10-5">
-        <label>Infrastructure as a Service (IaaS)</label>
-        <div class="p10">
-          <u>Prefered Architecture</u>
-          <ul ng-show="summ.architecture.length">
-            <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
-          </ul>
-          <span ng-hide="summ.architecture.length"><br />None</span>
+<table width="100%">
+  <!-- Project beggining date, min value is set for "Today" in the formController -->
+  <!-- and is reformated to correspond to a date field -->
+  <td class="inTwo" onclick="updateBubble(this,'Select the date of the begining of this project.<br />The date can not precede the current date.')">
+  <div class="form-group">
+    <label>Project Start Date</label>
+    <p>
+      <input class="form-control" type="date" ng-model="record.projectStartDate" min= {{date|date:'yyyy-MM-dd'}} required>
+    </p>
+  </div>
+</td>
+<td class="inTwoEmptySeparator">
+</td>
+<!-- Project end date, min value is set for the value of the projectStartDate -->
+<!-- and is reformated to correspond to a date field -->
+<td class="inTwo">
+  <div class="form-group" onclick="updateBubble(this,'Select the date of the ending of this project.<br />The date can not precede the begining date.')">
+  <label>Project End Date</label>
+  <p>
+    <input class="form-control" type="date" ng-model="record.projectEndDate" min= {{record.projectStartDate|date:'yyyy-MM-dd'}} required>
+  </p>
+</div>
+</td>
+</table>
 
-          <br />
-          <table width="100%" style="padding-top:15px;"><tr>
-            <td class="inTwo">
-              <u>HPC Computing</u>
-              <div class="p10 form-group">
-                <u>Total number of runs</u>
-                <input type="number" readonly ng-model="
-                summ.hpc.runs
-                ">
-                <u>Average partition size (Number of processors)</u>
-                <input type="number" readonly ng-model="
-                summ.hpc.partition
-                ">
-                <u>Time to solution (In hours)</u>
-                <input type="number" readonly ng-model="
-                summ.hpc.time
-                ">
-              </div>
-            </td>
-            <td class="inTwoEmptySeparator">
-            </td>
-            <td class="inTwo">
-              <u>HPC Storage</u>
-              <div class="p10 form-group">
-                <u>Number of artefacts</u>
-                <input type="number" readonly ng-model="
-                summ.hpc.numarte
-                ">
-                <u>Average size of artefacts (in GB)</u>
-                <input type="number" readonly ng-model="
-                summ.hpc.sizearte
-                ">
-              </div>
-            </td></tr><tr>
-              <td class="inTwo">
-                <u>Cloud Computing</u>
-                <div class="p10 form-group">
-                  <u>Total number of runs</u>
-                  <input type="number" readonly ng-model="
-                  summ.cloud.runs
-                  ">
-                  <u>Average partition size (Number of processors)</u>
-                  <input type="number" readonly ng-model="
-                  summ.cloud.partition
-                  ">
-                  <u>Time to solution (In hours)</u>
-                  <input type="number" readonly ng-model="
-                  summ.cloud.time
-                  ">
-                </div>
-              </td>
-              <td class="inTwoEmptySeparator">
-              </td>
-              <td class="inTwo">
-                <u>Cloud Storage</u>
-                <div class="p10 form-group">
-                  <u>Number of artefacts</u>
-                  <input type="number" readonly ng-model="
-                  summ.cloud.numarte
-                  ">
-                  <u>Average size of artefacts (in GB)</u>
-                  <input type="number" readonly ng-model="
-                  summ.cloud.sizearte
-                  ">
-                </div>
-              </td></tr></table>
-            </div>
-          </div>
-          <div class="p10-5">
-            <label>Hardware as a Service (HaaS)</label>
-            <ul ng-show="summ.hardware.length">
-              <li ng-repeat="tasks in summ.hardware">{{tasks}}</i></li>
-            </ul>
-            <span ng-hide="summ.hardware.length"><br />None</span>
+<!-- TODO -->
+<!-- New project? -->
+<div class="form-group" id="new_project" onclick="updateBubble(this,'Is this project new or does it continue a previous project?')">
+  <label>New project?</label>
+  <br />
+  <input type="radio" name="new_project" value="true" ng-model="record.newproject"> Yes
+  <br />
+  <input type="radio" name="new_project" value="false" ng-model="record.newproject"> No
+  <br />
 
-          </div>
-        </div>
+</div>
+
+<!-- TODO -->
+<!-- Old project specification-->
+<div class="form-group" id="old_project" ng-class="{hideOld: record.newproject=='true'}">
+  <!-- project Title -->
+  <div class="form-group" onclick="updateBubble(this,'Specify the name of the previous project that this project extends.')">
+    <label>Previous Project Title</label> (300 characters max.)
+    <div>
+      <p>
+        <input maxlength="300" ng-model="record.previousProject.title" type="text" required>
+      </p>
+    </div>
+  </div><!-- project Title -->
+  <div class="form-group"  onclick="updateBubble(this,'Specify the ID of the previous project that this project extends.')">
+    <label>Previous Project ID</label>
+    <div>
+      <p>
+        <input ng-model="record.previousProject.title" type="text" required>
+      </p>
+    </div>
+  </div><!-- project Title -->
+  <div class="form-group" onclick="updateBubble(this,'Specify the name of the Principal Investigator of the previous project that this project extends.')">
+    <label>Previous Project Principal Investigator</label>
+    <div>
+      <p>
+        <input ng-model="record.previousProject.title" type="text" required>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Grants selection -->
+<!-- Do it like tags with a set of grants -->
+<div class="form-group" id="grants"  onclick="updateBubble(this,'Select the grants that fund this project.<br />If the required grant is not in the list, you can add it.')">
+<label>Grants</label>
+<div>
+  <ui-select
+  multiple
+  tagging
+  tagging-label=" (Add this grant)"
+  ng-model="record.grants"
+  theme="bootstrap"
+  sortable="true">
+  <ui-select-match placeholder="Click to select">
+    {{$item}}
+  </ui-select-match>
+  <ui-select-choices repeat="grant in availableGrants | filter:$select.search">
+    {{grant}}
+  </ui-select-choices>
+</ui-select>
+</div>
+</div>
+
+<!-- Task selection -->
+<!-- Do it like dependencies with filter such as the provided choices -->
+<!-- are list of task from the set of tasks of the selected grants -->
+<div class="form-group" id="task"  onclick="updateBubble(this,'Select the tasks from the selected grants that recieve contribution from this project.')">
+  <label>Tasks</label>
+  <div>
+    <ui-select
+    multiple
+    ng-model="record.tasks"
+    theme="bootstrap"
+    sortable="true">
+    <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+    <ui-select-choices repeat="tasks in availableTasks | filter:$select.search | taskFilter : record.grants ">
+      {{tasks.name}} - <i>{{tasks.grant}}</i>
+    </ui-select-choices>
+  </ui-select>
+</div>
+</div>
 
 
-        <hr />
-        <div>
-          <label>Human resources</label>
+<div class="form-group">
+  <label>External Projects related to this Project</label>
+  <related-project-picker></related-project-picker>
+</div>
 
-          <table>
-            <td class="inTwo">
-              <label>Name</label>
-            </td>
-            <td class="inTwo">
-              <label>Total Person/Month</label>
-            </td>
-          </table>
 
-          <div class="memberList" data-ng-model="summ.members">
-            <div ng-repeat="member in summ.members">
-              <table>
-                <td class="inTwo">
-                  {{member.name}}
-                </td>
-                <td class="inTwo">
-                  <input type="number" readonly class=""
-                  ng-model="member.pm">
-                </td>
-              </table>
-            </div>
-          </div>
+<!-- Tag selection -->
+<div class="form-group" onclick="updateBubble(this,'Select tags for this project.<br />If the required tag is not in the list, you can add it.')">
+<label>Project Key Words</label>
+<div>
+  <ui-select
+  multiple
+  tagging
+  tagging-label=" (Add this tag)"
+  ng-model="record.tags"
+  theme="bootstrap"
+  sortable="true">
+  <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
+  <ui-select-choices repeat="tag in availableTags | filter:$select.search">
+    {{tag}}
+  </ui-select-choices>
+</ui-select>
+</div>
+</div>
 
-        </div>
+<div class="form-group" onclick="updateBubble(this,'Some summary.<br />Maximum 1000 characters.')">
+<label>Executive Summary</label> (1000 characters max.)
+<div>
+  <textarea class="form-control" maxlength="1000" ng-model="record.executiveSummary" required>
+  </textarea>
+</div>
+</div>
 
-        <script>
-        updateLinks("deliverables","");
-        </script>
+<div class="form-group" onclick="updateBubble(this,'Some summary.<br />Maximum 1000 characters.')">
+<label>Impact Statement</label> (1000 characters max.)
+<div>
+  <textarea class="form-control" maxlength="1000" ng-model="record.impactStatement" required>
+  </textarea>
+</div>
+</div>
+
+<div class="form-group" onclick="updateBubble(this,'Some summary.<br />Maximum 500 characters.')">
+<label>Benefit to Community</label> (500 characters max.)
+<div>
+  <textarea class="form-control" maxlength="500" ng-model="record.benefitToCommunity" required>
+</textarea>
+</div>
+</div>
+
+<div class="form-group" onclick="updateBubble(this,'Some summary.<br />Maximum 2000 characters.')">
+<label>Scientific Summary</label> (2000 characters max.)
+<div>
+  <textarea class="form-control" maxlength="2000" ng-model="record.scientificSummary" required>
+  </textarea>
+</div>
+</div>
+
+<div class="form-group" onclick="updateBubble(this,'Some summary.<br />Maximum 2000 characters.')">
+<label>Technological Summary</label> (2000 characters max.)
+<div>
+  <textarea class="form-control" maxlength="2000" ng-model="record.technologicalSummary" required>
+  </textarea>
+</div>
+</div>
+
+<div class="form-group">
+  <label>Publications</label>
+  <publication-picker></publication-picker>
+</div>
+
+
+<script>
+updateLinks("members","deliverables");
+</script>

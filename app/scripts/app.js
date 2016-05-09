@@ -28,20 +28,20 @@ angular
 		templateUrl: 'views/members.html',
 		controller: 'MembersCtrl'
 	})
-	.state('form.definitions', {
-		url: '/definitions',
-		templateUrl: 'views/definitions.html',
-		controller: 'DefinitionsCtrl'
+	.state('form.summary', {
+		url: '/summary',
+		templateUrl: 'views/summary.html',
+		controller: 'SummaryCtrl'
 	})
 	.state('form.deliverables', {
 		url: '/deliverables',
 		templateUrl: 'views/deliverables.html',
 		controller: 'DeliverablesCtrl'
 	})
-	.state('form.summary', {
-		url: '/summary',
-		templateUrl: 'views/summary.html',
-		controller: 'SummaryCtrl'
+	.state('form.review', {
+		url: '/review',
+		templateUrl: 'views/review.html',
+		controller: 'ReviewCtrl'
 	})
 	.state('form.help', {
 		url: '/help',
