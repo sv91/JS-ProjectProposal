@@ -135,6 +135,14 @@ angular
 			{'name':'GridFTP','desc':''},
 			{'name':'globus online','desc':''}
 		];
+		$scope.availableRequirements = [
+			{'name':'Building','desc':'Define size of circuit, model, software to be used.'},
+			{'name':'Simulation','desc':'Define typical simulation, expected time to solution, size of circuit, equations, software to be used.'},
+			{'name':'Analysis','desc':'Define typical analysis and software package to be used.'},
+			{'name':'Visualization','desc':'Define typical visualization, file format, software package to be used.'},
+			{'name':'Web application','desc':''}
+		];
+
 	$scope.availableCollab=[];
 	//Get the list of collabs
 

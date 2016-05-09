@@ -353,3 +353,7 @@ input:read-only:required {
   font-weight: normal;
   font-size: 12px;
 }
+
+textarea{
+  height: 80px !important;
+}

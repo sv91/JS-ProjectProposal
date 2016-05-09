@@ -1,0 +1,37 @@
+<div class="requirementList" data-ng-model="record.requirements">
+    <div ng-repeat="svPair in record.requirements">
+        <div>
+            <div onclick="updateBubble(this,'Type of the requirement.')">
+              Type
+              <ui-select
+              ng-model="svPair.type"
+              theme="bootstrap"
+              sortable="true">
+              <ui-select-match placeholder="Select the type">{{$select.selected.name}}</ui-select-match>
+              <ui-select-choices repeat="type in availableRequirements | filter:$select.search">
+                {{type.name}}
+              </ui-select-choices>
+              </ui-select>
+            </div>
+            <br />
+            <div onclick="updateBubble(this,'Define the requirements')">
+               Requirements
+                <textarea class="form-control" ng-model="svPair.requirement" placeholder={{svPair.type.desc}} maxlength="300"></textarea>
+
+            </div>
+            <br />
+            <div onclick="updateBubble(this,'Define which feature is missing.')">
+               Feature of interest
+                <textarea class="form-control" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="300"></textarea>
+
+            </div>
+            <div>
+                <div button type="button" class="close" aria-label="Remove" ng-click="deleteRequirement(svPair)">
+                    <span aria-hidden="true">&times;</span></div>
+
+            </div>
+        </div>
+        <hr>
+    </div>
+</div>
+<div class="btn btn-default" ng-click="addRequirement()">Add a requirement</div>
