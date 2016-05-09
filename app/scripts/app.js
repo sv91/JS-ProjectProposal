@@ -131,6 +131,10 @@ angular
 			{'name':'Error','description':'Did an error appear?'},
 			{'name':'Comment','description':'Do you have a comment?'}
 		];
+		$scope.availableDataTransfer = [
+			{'name':'GridFTP','desc':''},
+			{'name':'globus online','desc':''}
+		];
 	$scope.availableCollab=[];
 	//Get the list of collabs
 

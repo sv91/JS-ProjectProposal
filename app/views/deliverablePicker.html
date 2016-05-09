@@ -83,20 +83,31 @@
         <td class="inTwoEmptySeparator">
         </td>
         <td class="inTwo">
-        HBP Collab
-        <ui-select
-        onclick="updateBubble(this,'Select related Collab.')"
-        multiple
-        ng-model="svPair.collabs"
-        theme="bootstrap"
-        sortable="true">
-        <ui-select-match placeholder="Click to select">{{$item.title}}</ui-select-match>
-        <ui-select-choices repeat="collab in availableCollab | filter:$select.search">
-          {{collab.title}}
-        </ui-select-choices>
-      </ui-select>
+          Data Transfer
+          <ui-select
+          multiple
+          ng-model="svPair.datatransfer"
+          theme="bootstrap"
+          sortable="true">
+          <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+          <ui-select-choices repeat="soft in availableDataTransfer | filter:$select.search">
+            {{soft.name}} <i>{{soft.desc}}</i>
+          </ui-select-choices>
+        </ui-select>
 
       </td></tr></table>
+      HBP Collab
+      <ui-select
+      onclick="updateBubble(this,'Select related Collab.')"
+      multiple
+      ng-model="svPair.collabs"
+      theme="bootstrap"
+      sortable="true">
+      <ui-select-match placeholder="Click to select">{{$item.title}}</ui-select-match>
+      <ui-select-choices repeat="collab in availableCollab | filter:$select.search">
+        {{collab.title}}
+      </ui-select-choices>
+    </ui-select>
     </div>
   </div>
   <div class="p10-5">
