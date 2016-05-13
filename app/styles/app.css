@@ -185,7 +185,7 @@ input.ng-invalid.ng-touched {
 
 /* numbered buttons */
 #status-buttons                 {  }
-#status-buttons a               { color:#000; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase;width:80px; }
+#status-buttons a               { color:#000; display:inline-block; font-size:12px; margin-right:15px; text-align:center; text-transform:uppercase;width:80px; }
 #status-buttons a:hover         { text-decoration:none; }
 
 /* we will style the span as the circled number */
