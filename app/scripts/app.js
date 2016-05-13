@@ -101,6 +101,11 @@ angular
 		{'name':'IBM POWER7, POWER8','desc':''},
 		{'name':'Nvidia GPU','desc':''}
 	];
+
+	$scope.availableArchitectureCloud = [
+		{'name':'Amazon','desc':''},
+		{'name':'Other','desc':''}
+	];
 	$scope.availableVirtualization = [
 		{'name':'Virtual Machine','desc':'(OpenStack, VMware, ...)'},
 		{'name':'Container','desc':'(Docker, ...)'}
