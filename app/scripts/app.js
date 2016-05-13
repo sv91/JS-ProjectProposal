@@ -117,20 +117,23 @@ angular
 	];
 
 	$scope.availableTeams = [
-		{'name':'Algorithms','shortName':'Algo'},
-		{'name':'Analysis','shortName':'Ana'},
-		{'name':'Building','shortName':'Build'},
-		{'name':'Data Integration','shortName':'DI'},
-		{'name':'Data Mining','shortName':'DM'},
-		{'name':'High Performance Computing','shortName':'HPC'},
-		{'name':'Infrastructure','shortName':'Infra'},
-		{'name':'Neurorobotics','shortName':'Neuro'},
-		{'name':'Platform','shortName':'Plat'},
-		{'name':'Simulation','shortName':'Sim'},
-		{'name':'Sub Cellular','shortName':'Sub'},
-		{'name':'Visualization','shortName':'Viz'}
+		{'name':'Algorithms','shortName':'Algo','displayName':''},
+		{'name':'Analysis','shortName':'Ana','displayName':''},
+		{'name':'Building','shortName':'Build','displayName':''},
+		{'name':'Data Integration','shortName':'DI','displayName':''},
+		{'name':'Data Mining','shortName':'DM','displayName':''},
+		{'name':'High Performance Computing','shortName':'HPC','displayName':''},
+		{'name':'Infrastructure','shortName':'Infra','displayName':''},
+		{'name':'Neurorobotics','shortName':'Neuro','displayName':''},
+		{'name':'Platform','shortName':'Plat','displayName':''},
+		{'name':'Simulation','shortName':'Sim','displayName':''},
+		{'name':'Sub Cellular','shortName':'Sub','displayName':''},
+		{'name':'Visualization','shortName':'Viz','displayName':''}
 	];
 
+	angular.forEach($scope.availableTeams,function(val){
+		val.displayName = "BBP Team: " + val.name;
+	});
 		$scope.availableTypes = [
 			{'name':'Bug','description':'Did you notice a bug?'},
 			{'name':'Error','description':'Did an error appear?'},

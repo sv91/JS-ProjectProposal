@@ -35,6 +35,14 @@ angular.module('projectProposalApp')
   if($scope.record.copi!=undefined && $scope.record.copi!=null){
     addPerson($scope.record.copi);
   }
+
+  // Add every selected teams.
+  if($scope.record.teams!=undefined && $scope.record.teams!=null){
+    angular.forEach($scope.record.teams,function(people){
+      addPerson(people);
+    });
+  }
+
 })
 
 /**
