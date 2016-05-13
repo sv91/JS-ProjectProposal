@@ -150,19 +150,43 @@
             <td class="inTwoEmptySeparator">
             </td>
             <td class="inTwo">
-              <u>HBP Collab</u>
-              <ul ng-show="summ.collabs.length">
-                <li ng-repeat="collab in summ.collabs">{{collab.title}}</li>
+              <u>Data Transfer</u>
+              <ul ng-show="summ.datatransfer.length">
+                <li ng-repeat="soft in summ.datatransfer">{{soft.name}}</li>
               </ul>
-              <span ng-hide="summ.collabs.length"><br />None</span>
-
-            </td></tr></table>
+              <span ng-hide="summ.datatransfer.length"><br />None</span>
+            </td>
+          </tr>
+          </table>
+            <u>HBP Collab</u>
+            <ul ng-show="summ.collabs.length">
+              <li ng-repeat="collab in summ.collabs">{{collab.title}}</li>
+            </ul>
+            <span ng-hide="summ.collabs.length"><br />None</span>
           </div>
         </div>
         <div class="p10-5">
           <label>Platform as a Service (PaaS)</label>
           <div class="p10">
-            TOFILL
+            <table width="100%"><tr>
+              <td class="inTwo">
+                <u>Virtualization</u>
+                <ul ng-show="summ.virtualization.length">
+                  <li ng-repeat="soft in summ.virtualization">{{soft.name}}</li>
+                </ul>
+                <span ng-hide="summ.virtualization.length"><br />None</span>
+              </td>
+              <td class="inTwoEmptySeparator">
+              </td>
+              <td class="inTwo">
+                <u>Development environment</u>
+                <ul ng-show="summ.devenv.length">
+                  <li ng-repeat="soft in summ.devenv">{{soft.name}}</li>
+                </ul>
+                <span ng-hide="summ.devenv.length"><br />None</span>
+              </td>
+            </tr>
+            </table>
           </div>
         </div>
         <div class="p10-5">

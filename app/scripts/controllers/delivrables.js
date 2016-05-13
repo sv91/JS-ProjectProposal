@@ -133,7 +133,7 @@ angular.module('projectProposalApp')
       * Add an additional form for a deliverable.
       */
       scope.addDeliverable = function () {
-        scope.record.deliverables.push({'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':''});
+        scope.record.deliverables.push({'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'hardware':[{'name': '', 'price': '', 'link':'','description':''}]});
       };
 
       // Functions for the members inside a deliverable
