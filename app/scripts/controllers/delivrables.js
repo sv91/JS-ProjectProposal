@@ -98,7 +98,7 @@ angular.module('projectProposalApp')
       // Verify that the JSON part exists.
       if (!scope.record.deliverables) {
         scope.record.deliverables = [
-          {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':'','hardware':[{'name': '', 'price': '', 'link':'','description':''}]}
+          {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'hardware':[{'name': '', 'price': '', 'link':'','description':''}]}
         ];
       }
 
@@ -114,7 +114,9 @@ angular.module('projectProposalApp')
       scope.deleteDeliverable = function (item) {
         resetBubble();
         if (scope.record.deliverables.length < 2) {
-          scope.record.deliverables = [{'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'HPC':'','cloud':''}];
+          scope.record.deliverables = [
+            {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'hardware':[{'name': '', 'price': '', 'link':'','description':''}]}
+          ];
           return;
         }
         var index = scope.record.deliverables.indexOf(item);
@@ -201,6 +203,79 @@ angular.module('projectProposalApp')
         var index = scope.record.deliverables.indexOf(del);
         scope.record.deliverables[index].hardware.push({'name': '', 'price': '', 'link':'','description':''});
       };
+
+
+      // Functions for the cloud ressources inside a deliverable
+      /**
+      * @ngdoc function
+      * @name deleteHpc
+      * @description
+      * # deleteHpc
+      * Delete the specified hpc ressources.
+      * If it is the only hpc ressource, reset it.
+      * @param {Object} item The hpc ressources to delete.
+      * @param {Object} del The deliverable in which the hpc ressources have to be deleted.
+      */
+      scope.deleteHpc = function (item,del) {
+        resetBubble();
+        var index = scope.record.deliverables.indexOf(del);
+        if (scope.record.deliverables[index].hpc.length < 2) {
+          scope.record.deliverables[index].hpc = [{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}];
+          return;
+        }
+        var indexCloud = scope.record.deliverables[index].hpc.indexOf(item);
+        scope.record.deliverables[index].hpc.splice(indexCloud, 1);
+      };
+      /**
+      * @ngdoc function
+      * @name addHpc
+      * @description
+      * # addHpc
+      * Add an additional form for a hpc ressources in the specified deliverable.
+      * @param {Object} del The deliverable in which the form have to be added.
+      */
+      scope.addHpc = function (del) {
+        var index = scope.record.deliverables.indexOf(del);
+        scope.record.deliverables[index].hpc.push({'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''});
+      };
+
+
+
+      // Functions for the cloud ressources inside a deliverable
+      /**
+      * @ngdoc function
+      * @name deleteCloud
+      * @description
+      * # deleteCloud
+      * Delete the specified cloud ressources.
+      * If it is the only cloud ressource, reset it.
+      * @param {Object} item The cloud ressources to delete.
+      * @param {Object} del The deliverable in which the cloud ressources have to be deleted.
+      */
+      scope.deleteCloud = function (item,del) {
+        resetBubble();
+        var index = scope.record.deliverables.indexOf(del);
+        if (scope.record.deliverables[index].cloud.length < 2) {
+          scope.record.deliverables[index].cloud = [{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}];
+          return;
+        }
+        var indexCloud = scope.record.deliverables[index].cloud.indexOf(item);
+        scope.record.deliverables[index].cloud.splice(indexCloud, 1);
+      };
+      /**
+      * @ngdoc function
+      * @name addCloud
+      * @description
+      * # addCloud
+      * Add an additional form for a cloud ressources in the specified deliverable.
+      * @param {Object} del The deliverable in which the form have to be added.
+      */
+      scope.addCloud = function (del) {
+        var index = scope.record.deliverables.indexOf(del);
+        scope.record.deliverables[index].cloud.push({'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''});
+      };
+
+
     }
   };
 });

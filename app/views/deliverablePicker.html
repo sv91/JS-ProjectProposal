@@ -148,66 +148,110 @@
   </div>
   <div class="p10-5">
     <label>Infrastructure as a Service (IaaS)</label>
-    <div class="p10">
-      Prefered Architecture
-      <ui-select
-      onclick="updateBubble(this,'Prefered Architecture.')"
-      multiple
-      ng-model="svPair.architecture"
-      theme="bootstrap"
-      sortable="true">
-      <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
-      <ui-select-choices repeat="soft in availableArchitecture | filter:$select.search">
-        {{soft.name}} <i>{{soft.desc}}</i>
-      </ui-select-choices>
-    </ui-select>
-    <br />
-    <table width="100%"><tr>
-      <td class="inTwo">
-        HPC Computing
-        <div class="p10 form-group">
-          Total number of runs
-          <input type="number" ng-model="svPair.HPC.runs" min="0"  onclick="updateBubble(this,'Number of runs.')">
-          Average partition size (Number of processors)
-          <input type="number" ng-model="svPair.HPC.partition" min="0" onclick="updateBubble(this,'Average partition size (Number of processors).')">
-          Time to solution (In hours)
-          <input type="number" ng-model="svPair.HPC.time" min="0" onclick="updateBubble(this,'Time to solution (In hours).')">
+
+
+        <div class="hpcList p10" data-ng-model="svPair.hpc">
+          <div ng-repeat="h in svPair.hpc">
+            <div>
+              <!--<pre>{{ngModel|json}}</pre>-->
+              Prefered Architecture
+              <ui-select
+              onclick="updateBubble(this,'Prefered Architecture.')"
+              ng-model="h.type"
+              theme="bootstrap"
+              sortable="true">
+              <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+              <ui-select-choices repeat="soft in availableArchitecture | filter:$select.search">
+                {{soft.name}} <i>{{soft.desc}}</i>
+              </ui-select-choices>
+              </ui-select>
+              <br />
+              <table width="100%"><tr>
+              <td class="inTwo">
+                HPC Computing
+                <div class="p10 form-group">
+                  Total number of runs
+                  <input type="number" ng-model="h.runs" min="0"  onclick="updateBubble(this,'Number of runs.')">
+                  Average partition size (Number of processors)
+                  <input type="number" ng-model="h.part" min="0" onclick="updateBubble(this,'Average partition size (Number of processors).')">
+                  Time to solution (In hours)
+                  <input type="number" ng-model="h.time" min="0" onclick="updateBubble(this,'Time to solution (In hours).')">
+                </div>
+              </td>
+              <td class="inTwoEmptySeparator">
+              </td>
+              <td class="inTwo">
+              HPC Storage
+              <div class="p10 form-group">
+                Number of artefacts
+                <input type="number" ng-model="h.arte" min="0" onclick="updateBubble(this,'Number of artefacts.')">
+                Average size of artefacts (in GB)
+                <input type="number" ng-model="h.size" min="0" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
+              </div>
+            </td></tr></table>
+            <div button type="button" class="close" aria-label="Remove" ng-click="deleteHpc(h,svPair)">
+            <span aria-hidden="true">&times;</span>
+          </div>
+            <hr/>
+            </div>
+          </div>
+          <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Architecture</div>
         </div>
-      </td>
-      <td class="inTwoEmptySeparator">
-      </td>
-      <td class="inTwo">
-      HPC Storage
-      <div class="p10 form-group">
-        Number of artefacts
-        <input type="number" ng-model="svPair.HPC.numarte" min="0" onclick="updateBubble(this,'Number of artefacts.')">
-        Average size of artefacts (in GB)
-        <input type="number" ng-model="svPair.HPC.sizearte" min="0" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
-      </div>
-    </td></tr><tr>
-      <td class="inTwo">
-        Cloud Computing
-        <div class="p10 form-group">
-          Total number of runs
-          <input type="number" ng-model="svPair.cloud.runs" min="0"  onclick="updateBubble(this,'Number of runs.')">
-          Average partition size (Number of processors)
-          <input type="number" ng-model="svPair.cloud.partition" min="0" onclick="updateBubble(this,'Average partition size (Number of processors).')">
-          Time to solution (In hours)
-          <input type="number" ng-model="svPair.cloud.time" min="0" onclick="updateBubble(this,'Time to solution (In hours).')">
         </div>
-      </td>
-      <td class="inTwoEmptySeparator">
-      </td>
-      <td class="inTwo">
-      Cloud Storage
-      <div class="p10 form-group">
-        Number of artefacts
-        <input type="number" ng-model="svPair.cloud.numarte" min="0" onclick="updateBubble(this,'Number of artefacts.')">
-        Average size of artefacts (in GB)
-        <input type="number" ng-model="svPair.cloud.sizearte" min="0" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
-      </div>
-    </td></tr></table>
-  </div>
+      <br />
+
+            <div class="cloudList p10" data-ng-model="svPair.cloud">
+              <div ng-repeat="h in svPair.cloud">
+                <div>
+                  <!--<pre>{{ngModel|json}}</pre>-->
+                  Prefered Architecture
+                  <ui-select
+                  onclick="updateBubble(this,'Prefered Architecture.')"
+                  multiple
+                  ng-model="h.type"
+                  theme="bootstrap"
+                  sortable="true">
+                  <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+                  <ui-select-choices repeat="soft in availableArchitectureCloud | filter:$select.search">
+                    {{soft.name}} <i>{{soft.desc}}</i>
+                  </ui-select-choices>
+                  </ui-select>
+                  <br />
+                  <table width="100%"><tr>
+                  <td class="inTwo">
+                    Cloud Computing
+                    <div class="p10 form-group">
+                      Total number of runs
+                      <input type="number" ng-model="h.runs" min="0"  onclick="updateBubble(this,'Number of runs.')">
+                      Average partition size (Number of processors)
+                      <input type="number" ng-model="h.part" min="0" onclick="updateBubble(this,'Average partition size (Number of processors).')">
+                      Time to solution (In hours)
+                      <input type="number" ng-model="h.time" min="0" onclick="updateBubble(this,'Time to solution (In hours).')">
+                    </div>
+                  </td>
+                  <td class="inTwoEmptySeparator">
+                  </td>
+                  <td class="inTwo">
+                  Cloud Storage
+                  <div class="p10 form-group">
+                    Number of artefacts
+                    <input type="number" ng-model="h.arte" min="0" onclick="updateBubble(this,'Number of artefacts.')">
+                    Average size of artefacts (in GB)
+                    <input type="number" ng-model="h.size" min="0" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
+                  </div>
+                </td></tr></table>
+                <div button type="button" class="close" aria-label="Remove" ng-click="deleteCloud(h,svPair)">
+                <span aria-hidden="true">&times;</span>
+              </div>
+                <hr/>
+                </div>
+              </div>
+              <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Architecture</div>
+            </div>
+          </div><br />
+
+
+
 </div>
 
 
