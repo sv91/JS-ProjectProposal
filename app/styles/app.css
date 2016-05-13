@@ -357,3 +357,10 @@ input:read-only:required {
 textarea{
   height: 80px !important;
 }
+
+.plusMinus {
+  background: url(../images/minus.jpg) no-repeat;
+}
+.plusMinus:checked {
+  background: url(../images/plus.jpg) no-repeat;
+}
