@@ -154,9 +154,9 @@
           <div ng-repeat="h in svPair.hpc">
             <div>
               <!--<pre>{{ngModel|json}}</pre>-->
-              Prefered Architecture
+              System Architecture
               <ui-select
-              onclick="updateBubble(this,'Prefered Architecture.')"
+              onclick="updateBubble(this,'System Architecture.')"
               ng-model="h.type"
               theme="bootstrap"
               sortable="true">
@@ -195,7 +195,7 @@
             <hr/>
             </div>
           </div>
-          <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Architecture</div>
+          <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Resource</div>
         </div>
         </div>
       <br />
@@ -204,9 +204,9 @@
               <div ng-repeat="h in svPair.cloud">
                 <div>
                   <!--<pre>{{ngModel|json}}</pre>-->
-                  Prefered Architecture
+                  Provider
                   <ui-select
-                  onclick="updateBubble(this,'Prefered Architecture.')"
+                  onclick="updateBubble(this,'Provider.')"
                   ng-model="h.type"
                   theme="bootstrap"
                   sortable="true">
@@ -245,7 +245,7 @@
                 <hr/>
                 </div>
               </div>
-              <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Architecture</div>
+              <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Resource</div>
             </div>
           </div><br />
 

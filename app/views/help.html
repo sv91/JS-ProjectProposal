@@ -1,7 +1,11 @@
 <div class="container form middlePart" >
   <label>Need some help?
   </label>
-  <p>If you have any question or comment, you can contact the support of this app by using this form.</p>
+<br />
+    Did you first checked the F.A.Q. ?
+    <input type="checkbox" ng-model="faq" value="Yes"> Yes
+  <br/>
+  <p><br/>If you have any question or comment, you can contact the support of this app by using this form.</p>
   <div>
     <div>
       <input type="text" id="subject" placeholder="Message subject" class="form-control">
@@ -18,9 +22,7 @@
       <textarea id="message" placeholder="Message ..." class="form-control"></textarea>
     </div>
     <br />
-      Did you first checked the F.A.Q. ?
-      <input type="checkbox" ng-model="faq" value="Yes"> Yes
-    </div><br/>
+    </div>
     <div align="right">
       <div class="btn btn-default" id="button" ng-disabled="!faq" onclick="sendMessage();">Send message</div>
     </div>

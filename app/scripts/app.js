@@ -104,6 +104,7 @@ angular
 
 	$scope.availableArchitectureCloud = [
 		{'name':'Amazon','desc':''},
+		{'name':'BBP OpenStack','desc':''},
 		{'name':'Other','desc':''}
 	];
 	$scope.availableVirtualization = [
