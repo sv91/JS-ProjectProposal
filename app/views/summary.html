@@ -4,9 +4,8 @@
   <div class="form-group" onclick="updateBubble(this,'Write down the title of this project. <br />Maximum 300 characters.')">
   <label>Project Title</label> (300 characters max.)
   <div>
-    <p>
-      <input maxlength="300" ng-model="record.projectTitle" type="text" required>
-    </p>
+    <textarea class="form-control" maxlength="300" ng-model="record.projectTitle" required>
+    </textarea>
   </div>
 </div>
 

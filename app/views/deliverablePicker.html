@@ -31,19 +31,13 @@
     </div><br />
     <div onclick="updateBubble(this,'A short description.')">
       <label>Description</label>
-      <input type="text"
-      class="form-control"
-      uib-typeahead="deliverable.description for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-      placeholder="A short description"
-      ng-model="svPair.description">
+      <textarea class="form-control" ng-model="svPair.description" placeholder="A short description" required>
+      </textarea>
     </div><br />
     <div onclick="updateBubble(this,'Some risks.')">
       <label>Risks</label>
-      <input type="text"
-      class="form-control"
-      uib-typeahead="deliverable.risks for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-      placeholder="Risks of the deliverable"
-      ng-model="svPair.risks">
+      <textarea class="form-control" ng-model="svPair.risks" placeholder="Risks of the deliverable" required>
+      </textarea>
     </div><br />
     <div onclick="updateBubble(this,'Dependencies of the deliverable to other deliverables.')">
       <label>Dependencies</label>
