@@ -160,7 +160,7 @@
               ng-model="h.type"
               theme="bootstrap"
               sortable="true">
-              <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+              <ui-select-match placeholder="Click to select">{{$select.selected.name}}</ui-select-match>
               <ui-select-choices repeat="soft in availableArchitecture | filter:$select.search">
                 {{soft.name}} <i>{{soft.desc}}</i>
               </ui-select-choices>
@@ -207,11 +207,10 @@
                   Prefered Architecture
                   <ui-select
                   onclick="updateBubble(this,'Prefered Architecture.')"
-                  multiple
                   ng-model="h.type"
                   theme="bootstrap"
                   sortable="true">
-                  <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+                  <ui-select-match placeholder="Click to select">{{$select.selected.name}}</ui-select-match>
                   <ui-select-choices repeat="soft in availableArchitectureCloud | filter:$select.search">
                     {{soft.name}} <i>{{soft.desc}}</i>
                   </ui-select-choices>
