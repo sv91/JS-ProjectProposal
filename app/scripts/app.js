@@ -152,6 +152,11 @@ angular
 			{'name':'Web application','desc':''}
 		];
 
+		$scope.availableFormats = [
+			{'name':'HDF5'},
+			{'name':'ASCII'}
+		];
+
 	$scope.availableCollab=[];
 	//Get the list of collabs
 

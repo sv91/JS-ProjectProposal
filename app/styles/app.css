@@ -196,6 +196,13 @@ input.ng-invalid.ng-touched {
 
 #status-buttons a.pN span   { background:#C0C0C0; }
 
+#status-buttons a.finalN.disabled span   { background:#700000; }
+#status-buttons a.finalN span   { background:#007000; }
+
+a.disabled {
+    pointer-events: none;
+}
+
 .page-header {
   text-align: center;
 }

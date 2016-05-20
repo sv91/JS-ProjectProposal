@@ -25,6 +25,99 @@
                 <textarea class="form-control" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="300"></textarea>
 
             </div>
+
+<label>Inputs</label>
+            <div class="p10" data-ng-model="svPair.input">
+              <div ng-repeat="h in svPair.input">
+                <input type="checkbox" class="plusMinus" ng-model="h.open">
+                <label ng-hide="h.open">{{h.tag}}</label>
+                <div ng-show="h.open">
+                  <!--<pre>{{ngModel|json}}</pre>-->
+                  Tag
+                  <input type="text" ng-model="h.tag" class="form-control">
+                  <br />
+                  Format
+                  <ui-select
+                  ng-model="svPair.format"
+                  theme="bootstrap"
+                  sortable="true">
+                  <ui-select-match placeholder="Select the format">{{$select.selected}}</ui-select-match>
+                  <ui-select-choices repeat="type in availableFormats | filter:$select.search">
+                    {{type}}
+                  </ui-select-choices>
+                  </ui-select>
+                  <br />
+                  <table width="100%"><tr>
+                  <td class="inTwo">
+                    Number of artefacts
+                    <input type="number" class="form-control" ng-model="h.number" min="0"  onclick="updateBubble(this,'Number of artefacts.')">
+                  </td>
+                  <td class="inTwoEmptySeparator">
+                  </td>
+                  <td class="inTwo">
+                    Size of artefacts
+                    <input type="number" class="form-control" ng-model="h.size" min="0"  onclick="updateBubble(this,'Size of artefacts.')">
+
+                </td></tr></table>
+                <div button type="button" class="close" aria-label="Remove" ng-click="deleteInput(h,svPair)">
+                <span aria-hidden="true">&times;</span>
+              </div>
+                <hr/>
+                </div>
+
+
+
+              </div>
+              <div class="btn btn-default" ng-click="addInput(svPair)">Add Input</div>
+            </div>
+
+
+            <label>Outputs</label>
+                        <div class="p10" data-ng-model="svPair.output">
+                          <div ng-repeat="h in svPair.output">
+                            <input type="checkbox" class="plusMinus" ng-model="h.open">
+                            <label ng-hide="h.open">{{h.tag}}</label>
+                            <div ng-show="h.open">
+                              <!--<pre>{{ngModel|json}}</pre>-->
+                              Tag
+                              <input type="text" ng-model="h.tag" class="form-control">
+                              <br />
+                              Format
+                              <ui-select
+                              ng-model="svPair.format"
+                              theme="bootstrap"
+                              sortable="true">
+                              <ui-select-match placeholder="Select the format">{{$select.selected}}</ui-select-match>
+                              <ui-select-choices repeat="type in availableFormats | filter:$select.search">
+                                {{type}}
+                              </ui-select-choices>
+                              </ui-select>
+                              <br />
+                              <table width="100%"><tr>
+                              <td class="inTwo">
+                                Number of artefacts
+                                <input type="number" class="form-control" ng-model="h.number" min="0"  onclick="updateBubble(this,'Number of artefacts.')">
+                              </td>
+                              <td class="inTwoEmptySeparator">
+                              </td>
+                              <td class="inTwo">
+                                Size of artefacts
+                                <input type="number" class="form-control" ng-model="h.size" min="0"  onclick="updateBubble(this,'Size of artefacts.')">
+
+                            </td></tr></table>
+                            <div button type="button" class="close" aria-label="Remove" ng-click="deleteOutput(h,svPair)">
+                            <span aria-hidden="true">&times;</span>
+                          </div>
+                            <hr/>
+                            </div>
+
+
+
+                          </div>
+                          <div class="btn btn-default" ng-click="addOutput(svPair)">Add Output</div>
+                        </div>
+
+
             <div>
                 <div button type="button" class="close" aria-label="Remove" ng-click="deleteRequirement(svPair)">
                     <span aria-hidden="true">&times;</span></div>

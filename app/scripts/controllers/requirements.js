@@ -27,7 +27,7 @@ angular.module('projectProposalApp')
       // Verify that the JSON part exists.
       if (!scope.record.requirements) {
         scope.record.requirements = [
-          {'feature': '', 'requirement': '','type':''}
+          {'feature': '', 'requirement': '','type':'','input':[{'tag':'','format':'','number':'','size':'','open':true}],'output':[{'tag':'','format':'','number':'','size':'','open':true}]}
         ];
       }
       /**
@@ -43,7 +43,7 @@ angular.module('projectProposalApp')
         resetBubble();
         // If only one requirement, reset it instead of deleting.
         if (scope.record.requirements.length < 2) {
-          scope.record.requirements = [{'feature': '', 'requirements': '','type':''}];
+          scope.record.requirements = [{'feature': '', 'requirements': '','type':'','input':[{'tag':'','format':'','number':'','size':'','open':true}],'output':[{'tag':'','format':'','number':'','size':'','open':true}]}];
           return;
         }
         var index = scope.record.requirements.indexOf(item);
@@ -58,7 +58,79 @@ angular.module('projectProposalApp')
       * Add an additional form for a requirement.
       */
       scope.addRequirement = function () {
-        scope.record.requirements.push({'feature': '', 'requirements': '','type':''});
+        scope.record.requirements.push({'feature': '', 'requirements': '','type':'','input':[{'tag':'','format':'','number':'','size':'','open':true}],'output':[{'tag':'','format':'','number':'','size':'','open':true}]});
+      };
+
+
+
+      // Functions for the output ressources inside a requirement
+      /**
+      * @ngdoc function
+      * @name deleteInput
+      * @description
+      * # deleteInput
+      * Delete the specified input ressources.
+      * If it is the only input ressource, reset it.
+      * @param {Object} item The input ressources to delete.
+      * @param {Object} del The requirement in which the input ressources have to be deleted.
+      */
+      scope.deleteInput = function (item,del) {
+        resetBubble();
+        var index = scope.record.requirements.indexOf(del);
+        if (scope.record.requirements[index].input.length < 2) {
+          scope.record.requirements[index].input = [{'tag':'','format':'','number':'','size':'','open':true}];
+          return;
+        }
+        var indexOutput = scope.record.requirements[index].input.indexOf(item);
+        scope.record.requirements[index].input.splice(indexOutput, 1);
+      };
+      /**
+      * @ngdoc function
+      * @name addInput
+      * @description
+      * # addInput
+      * Add an additional form for a input ressources in the specified requirement.
+      * @param {Object} del The requirement in which the form have to be added.
+      */
+      scope.addInput = function (del) {
+        var index = scope.record.requirements.indexOf(del);
+        scope.record.requirements[index].input.push({'tag':'','format':'','number':'','size':'','open':true});
+      };
+
+
+
+      // Functions for the output ressources inside a requirement
+      /**
+      * @ngdoc function
+      * @name deleteOutput
+      * @description
+      * # deleteOutput
+      * Delete the specified output ressources.
+      * If it is the only output ressource, reset it.
+      * @param {Object} item The output ressources to delete.
+      * @param {Object} del The requirement in which the output ressources have to be deleted.
+      */
+      scope.deleteOutput = function (item,del) {
+        resetBubble();
+        var index = scope.record.requirements.indexOf(del);
+        if (scope.record.requirements[index].output.length < 2) {
+          scope.record.requirements[index].output = [{'tag':'','format':'','number':'','size':'','open':true}];
+          return;
+        }
+        var indexOutput = scope.record.requirements[index].output.indexOf(item);
+        scope.record.requirements[index].output.splice(indexOutput, 1);
+      };
+      /**
+      * @ngdoc function
+      * @name addOutput
+      * @description
+      * # addOutput
+      * Add an additional form for a output ressources in the specified requirement.
+      * @param {Object} del The requirement in which the form have to be added.
+      */
+      scope.addOutput = function (del) {
+        var index = scope.record.requirements.indexOf(del);
+        scope.record.requirements[index].output.push({'tag':'','format':'','number':'','size':'','open':true});
       };
     }
   };
