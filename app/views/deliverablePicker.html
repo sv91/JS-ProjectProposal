@@ -22,12 +22,12 @@
       </div><br />
       <div onclick="updateBubble(this,'Delivery date.<br />Should be between the project start date and end date.')">
       <label>Date</label>
-      <input type="date"
-      class="form-control"
-      max= {{record.projectEndDate|date:'yyyy-MM-dd'}}
-      min= {{record.projectStartDate|date:'yyyy-MM-dd'}}
-      uib-typeahead="deliverable.date for deliverable in deliverables | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-      ng-model="svPair.date">
+
+        <md-datepicker ng-model="svPair.date"
+        md-placeholder="Enter date"
+        md-min-date="record.projectStartDate"
+        md-max-date="record.projectEndDate"></md-datepicker>
+        
     </div><br />
     <div onclick="updateBubble(this,'A short description.')">
       <label>Description</label>

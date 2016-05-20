@@ -16,8 +16,8 @@
   <div class="form-group">
     <label>Project Start Date</label>
     <p>
-      <input class="form-control" type="date" ng-model="record.projectStartDate" min= {{date|date:'yyyy-MM-dd'}} required>
-    </p>
+      <md-datepicker ng-model="record.projectStartDate" md-placeholder="Enter date" md-min-date="today"></md-datepicker>
+      </p>
   </div>
 </td>
 <td class="inTwoEmptySeparator">
@@ -28,11 +28,12 @@
   <div class="form-group" onclick="updateBubble(this,'Select the date of the ending of this project.<br />The date can not precede the begining date.')">
   <label>Project End Date</label>
   <p>
-    <input class="form-control" type="date" ng-model="record.projectEndDate" min= {{record.projectStartDate|date:'yyyy-MM-dd'}} required>
-  </p>
+    <md-datepicker ng-model="record.projectEndDate" md-placeholder="Enter date" md-min-date="record.projectStartDate"></md-datepicker>
+    </p>
 </div>
 </td>
 </table>
+
 
 <!-- TODO -->
 <!-- New project? -->
@@ -191,5 +192,4 @@
 
 <script>
 updateLinks("members","requirements");
-dateRefresh();
 </script>

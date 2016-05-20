@@ -10,7 +10,7 @@
 */
 
 angular
-.module('projectProposalApp', ['ui.router','ui.select','angular.filter','hbpCommon','bbpOidcClient','ui.bootstrap'])
+.module('projectProposalApp', ['ui.router','ui.select','angular.filter','hbpCommon','bbpOidcClient','ui.bootstrap','ngMaterial', 'ngMessages'])
 .config(function ($stateProvider, $urlRouterProvider) {
 	// link adresses to views and controllers
 	$stateProvider
@@ -68,9 +68,9 @@ angular
 	// we will store all of our form data in this object
 	$scope.record = {};
 	$scope.summ = {};
-	$scope.faq = "";
+	$scope.faq = '';
 	// value of current date
-	$scope.date = new Date();
+	$scope.today = new Date();
 
 	$scope.membersAndLead = [];
 
@@ -133,7 +133,7 @@ angular
 	];
 
 	angular.forEach($scope.availableTeams,function(val){
-		val.displayName = "BBP Team: " + val.name;
+		val.displayName = 'BBP Team: ' + val.name;
 	});
 		$scope.availableTypes = [
 			{'name':'Bug','description':'Did you notice a bug?'},

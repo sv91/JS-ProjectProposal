@@ -18,23 +18,18 @@
             <table width="100%"><tr>
             <td class="inTwo" onclick="updateBubble(this,'The start date.')">
               Start Date
-                <input type="date" class="form-control"
-                       name="dataset_title"
-                       uib-typeahead="project.startDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-                       placeholder="Start Date"
-                       ng-model="svPair.startDate">
+                      <md-datepicker ng-model="svPair.startDate"
+                      md-placeholder="Enter date"></md-datepicker>
 
             </td>
             <td class="inTwoEmptySeparator">
             </td>
             <td class="inTwo" onclick="updateBubble(this,'The end date.<br />Can not precede the start date.')">
               End Date
-                <input type="date" class="form-control"
-                       name="dataset_title"
-                       uib-typeahead="project.endDate for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-                       placeholder="End Date"
-                       min= {{svPair.startDate|date:'yyyy-MM-dd'}}
-                       ng-model="svPair.endDate">
+
+                      <md-datepicker ng-model="svPair.endDate"
+                      md-placeholder="Enter date"
+                      md-min-date="svPair.startDate"></md-datepicker>
 
             </td></tr></table>
             <div onclick="updateBubble(this,'A short description.')">

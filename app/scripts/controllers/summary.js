@@ -9,8 +9,9 @@
 */
 angular.module('projectProposalApp')
 .controller('SummaryCtrl', function ($scope) {
-  // default value for the "New Project" field.
+  // default value for the 'New Project' field.
   $scope.record.newproject = 'true';
+  $scope.record.projectStartDateMD = new Date();
 })
 
 /**
@@ -29,7 +30,7 @@ angular.module('projectProposalApp')
       // Verify that the JSON part exists.
       if (!scope.record.publications) {
         scope.record.publications = [
-          {"name": "", "link": ""}
+          {'name': '', 'link': ''}
         ];
       }
       /**
@@ -45,7 +46,7 @@ angular.module('projectProposalApp')
         resetBubble();
         // If only one publication, reset it instead of deleting.
         if (scope.record.publications.length < 2) {
-          scope.record.publications = [{"name": "", "link": ""}];
+          scope.record.publications = [{'name': '', 'link': ''}];
           return;
         }
         var index = scope.record.publications.indexOf(item);
@@ -60,7 +61,7 @@ angular.module('projectProposalApp')
       * Add an additional form for a publication.
       */
       scope.addPublication = function () {
-        scope.record.publications.push({"name": "", "link": ""});
+        scope.record.publications.push({'name': '', 'link': ''});
       };
     }
   };
@@ -108,7 +109,7 @@ angular.module('projectProposalApp')
       // Verify that the JSON part exists.
       if (!scope.record.relatedProjects) {
         scope.record.relatedProjects = [
-          {"name": "", "startDate": "", "endDate": "", "description": ""}
+          {'name': '', 'startDate': '', 'endDate': '', 'description': ''}
         ];
       }
       /**
@@ -125,7 +126,7 @@ angular.module('projectProposalApp')
         // If only one project, reset it instead of deleting.
         if (scope.record.relatedProjects.length < 2) {
           scope.record.relatedProjects = [
-            {"name": "", "startDate": "", "endDate": "", "description": ""}
+            {'name': '', 'startDate': '', 'endDate': '', 'description': ''}
           ];
           return;
         }
@@ -142,7 +143,7 @@ angular.module('projectProposalApp')
       * Add an additional form for a related project.
       */
       scope.addProject = function () {
-        scope.record.relatedProjects.push({"name": "", "startDate": "", "endDate": "", "description": ""});
+        scope.record.relatedProjects.push({'name': '', 'startDate': '', 'endDate': '', 'description': ''});
       };
     }
   };
