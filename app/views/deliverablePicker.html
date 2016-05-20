@@ -146,7 +146,9 @@
 
         <div class="hpcList p10" data-ng-model="svPair.hpc">
           <div ng-repeat="h in svPair.hpc">
-            <div>
+            <input type="checkbox" class="plusMinus" ng-model="h.open">
+            <label ng-hide="h.open">{{h.type.name}}</label>
+            <div ng-show="h.open">
               <!--<pre>{{ngModel|json}}</pre>-->
               System Architecture
               <ui-select
@@ -188,15 +190,19 @@
           </div>
             <hr/>
             </div>
+
+
+
           </div>
           <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Resource</div>
-        </div>
         </div>
       <br />
 
             <div class="cloudList p10" data-ng-model="svPair.cloud">
               <div ng-repeat="h in svPair.cloud">
-                <div>
+                <input type="checkbox" class="plusMinus" ng-model="h.open">
+                <label ng-hide="h.open">{{h.type.name}}</label>
+                <div ng-show="h.open">
                   <!--<pre>{{ngModel|json}}</pre>-->
                   Provider
                   <ui-select
@@ -241,6 +247,7 @@
               </div>
               <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Resource</div>
             </div>
+          </div>
           </div><br />
 
 
@@ -253,6 +260,9 @@
 
   <div class="p10 form-group" data-ng-model="svPair.hardware">
     <div ng-repeat="hard in svPair.hardware">
+      <input type="checkbox" class="plusMinus" ng-model="hard.open">
+    <label ng-hide="hard.open">{{hard.name}}</label>
+    <div ng-show="hard.open">
       <div >
         Name
         <input type="text" class="form-control" style="width:100%" ng-model="hard.name">
@@ -281,6 +291,7 @@
           </div>
           <hr />
       </div>
+  </div>
     </div>
   <div class="btn btn-default" ng-click="addHardware(svPair)">Add hardware</div>
 </div>

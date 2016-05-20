@@ -106,7 +106,7 @@ angular.module('projectProposalApp')
       // Verify that the JSON part exists.
       if (!scope.record.deliverables) {
         scope.record.deliverables = [
-          {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'hardware':[{'name': '', 'price': '', 'link':'','description':''}]}
+          {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':'','open':true}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':'','open':true}],'hardware':[{'name': '', 'price': '', 'link':'','description':'','open':true}]}
         ];
       }
 
@@ -123,7 +123,7 @@ angular.module('projectProposalApp')
         resetBubble();
         if (scope.record.deliverables.length < 2) {
           scope.record.deliverables = [
-            {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'hardware':[{'name': '', 'price': '', 'link':'','description':''}]}
+            {'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':'','open':true}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':'','open':true}],'hardware':[{'name': '', 'price': '', 'link':'','description':'','open':true}]}
           ];
           return;
         }
@@ -141,7 +141,7 @@ angular.module('projectProposalApp')
       * Add an additional form for a deliverable.
       */
       scope.addDeliverable = function () {
-        scope.record.deliverables.push({'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}],'hardware':[{'name': '', 'price': '', 'link':'','description':''}]});
+        scope.record.deliverables.push({'name': '', 'date': '', 'risks': '', 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':'','open':true}],'cloud':[{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':'','open':true}],'hardware':[{'name': '', 'price': '', 'link':'','description':'','open':true}]});
       };
 
       // Functions for the members inside a deliverable
@@ -193,7 +193,7 @@ angular.module('projectProposalApp')
         resetBubble();
         var index = scope.record.deliverables.indexOf(del);
         if (scope.record.deliverables[index].hardware.length < 2) {
-          scope.record.deliverables[index].hardware = [{'name': '', 'price': '', 'link':'','description':''}];
+          scope.record.deliverables[index].hardware = [{'name': '', 'price': '', 'link':'','description':'','open':true}];
           return;
         }
         var indexHardware = scope.record.deliverables[index].hardware.indexOf(item);
@@ -209,7 +209,7 @@ angular.module('projectProposalApp')
       */
       scope.addHardware = function (del) {
         var index = scope.record.deliverables.indexOf(del);
-        scope.record.deliverables[index].hardware.push({'name': '', 'price': '', 'link':'','description':''});
+        scope.record.deliverables[index].hardware.push({'name': '', 'price': '', 'link':'','description':'','open':true});
       };
 
 
@@ -228,7 +228,7 @@ angular.module('projectProposalApp')
         resetBubble();
         var index = scope.record.deliverables.indexOf(del);
         if (scope.record.deliverables[index].hpc.length < 2) {
-          scope.record.deliverables[index].hpc = [{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}];
+          scope.record.deliverables[index].hpc = [{'type': '', 'runs': '','open':true, 'part':'','time':'','arte':'','size':''}];
           return;
         }
         var indexCloud = scope.record.deliverables[index].hpc.indexOf(item);
@@ -244,7 +244,7 @@ angular.module('projectProposalApp')
       */
       scope.addHpc = function (del) {
         var index = scope.record.deliverables.indexOf(del);
-        scope.record.deliverables[index].hpc.push({'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''});
+        scope.record.deliverables[index].hpc.push({'type': '', 'runs': '','open':true, 'part':'','time':'','arte':'','size':''});
       };
 
 
@@ -264,7 +264,7 @@ angular.module('projectProposalApp')
         resetBubble();
         var index = scope.record.deliverables.indexOf(del);
         if (scope.record.deliverables[index].cloud.length < 2) {
-          scope.record.deliverables[index].cloud = [{'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''}];
+          scope.record.deliverables[index].cloud = [{'type': '', 'runs': '','open':true, 'part':'','time':'','arte':'','size':''}];
           return;
         }
         var indexCloud = scope.record.deliverables[index].cloud.indexOf(item);
@@ -280,7 +280,7 @@ angular.module('projectProposalApp')
       */
       scope.addCloud = function (del) {
         var index = scope.record.deliverables.indexOf(del);
-        scope.record.deliverables[index].cloud.push({'type': '', 'runs': '', 'part':'','time':'','arte':'','size':''});
+        scope.record.deliverables[index].cloud.push({'type': '', 'runs': '','open':true, 'part':'','time':'','arte':'','size':''});
       };
 
 
