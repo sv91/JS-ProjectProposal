@@ -40,7 +40,7 @@
           </textarea>
         </div><br />
         <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Dependencies of the deliverable to other deliverables.')">
-          <label>Dependencies</label>
+          <label>Deliverable Dependencies</label>
           <ui-select
           multiple
           ng-required="record.projectType >= 2" ng-model="svPair.dependency"
@@ -53,6 +53,20 @@
         </ui-select>
 
       </div>
+      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Dependencies of the deliverable to previously defined requirements.')">
+        <label>Requirement Dependencies</label>
+        <ui-select
+        multiple
+        ng-required="record.projectType >= 2" ng-model="svPair.requirements"
+        theme="bootstrap"
+        sortable="true">
+        <ui-select-match placeholder="Select the dependencies">{{$item.title}}</ui-select-match>
+        <ui-select-choices repeat="requirement in record.requirements | filter:$select.search">
+          {{requirement.title}}
+        </ui-select-choices>
+      </ui-select>
+
+    </div>
       <br />
       <div>
         <label>Computing, Storage and Services resources</label>
@@ -146,6 +160,8 @@
 
 
     <div class="hpcList p10" data-ng-model="svPair.hpc" ng-show="record.projectType >= 1" >
+      <label>HPC resources
+      </label><br />
       <div ng-repeat="h in svPair.hpc" >
         <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
         <label ng-hide="h.open">{{h.type.name}}</label>
@@ -197,9 +213,11 @@
       </div>
       <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Resource</div>
     </div>
-    <br />
+    <hr />
 
     <div class="cloudList p10" data-ng-model="svPair.cloud" ng-show="record.projectType >= 1" >
+      <label>Cloud resources
+      </label><br />
       <div ng-repeat="h in svPair.cloud">
         <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
         <label ng-hide="h.open">{{h.type.name}}</label>

@@ -1,6 +1,8 @@
 <div class="relatedProjectList" data-ng-model="record.relatedProjects">
     <div ng-repeat="svPair in record.relatedProjects">
-        <div>
+      <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="svPair.open">
+      <label ng-hide="svPair.open">{{svPair.name}}</label>
+      <div ng-show="svPair.open">
             <!--<pre>{{ngModel|json}}</pre>-->
             <div onclick="updateBubble(this,'The name of a related project.')">
               Project name

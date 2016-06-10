@@ -1,7 +1,15 @@
 <div class="requirementList" data-ng-model="record.requirements">
+  <label>Requirements
+  </label>
     <div ng-repeat="svPair in record.requirements">
-        <div>
-            <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Type of the requirement.')">
+      <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="svPair.open">
+      <label ng-hide="svPair.open">{{svPair.title}}</label>
+      <div ng-show="svPair.open">
+          <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Title of the requirement')">
+             Title
+              <input type="text" class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.title" maxlength="300">
+          </div>
+          <br /><div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Type of the requirement.')">
               Type
               <ui-select
               ng-required="record.projectType >= 2" ng-model="svPair.type"
@@ -15,7 +23,7 @@
             </div>
             <br />
             <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Define the requirements')">
-               Requirements
+               Requirement definition
                 <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.requirement" placeholder={{svPair.type.desc}} maxlength="300"></textarea>
 
             </div>
@@ -27,7 +35,7 @@
             </div>
 
 <div ng-show="record.projectType >= 1" >
-<label>Inputs</label>
+<label>Describe expected input data</label>
             <div class="p10" data-ng-model="svPair.input">
               <div ng-repeat="h in svPair.input">
                 <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
@@ -72,7 +80,7 @@
               <div class="btn btn-default" ng-click="addInput(svPair)">Add Input</div>
             </div>
           </div>
-
+<br />
 <div ng-show="record.projectType >= 1" >
             <label>Outputs</label>
                         <div class="p10" data-ng-model="svPair.output">

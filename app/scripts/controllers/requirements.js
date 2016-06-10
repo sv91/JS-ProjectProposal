@@ -27,7 +27,7 @@ angular.module('projectProposalApp')
       // Verify that the JSON part exists.
       if (!scope.record.requirements) {
         scope.record.requirements = [
-          {'feature': '', 'requirement': '','type':'','input':[{'tag':'','format':'','number':'','size':'','open':true}],'output':[{'tag':'','format':'','number':'','size':'','open':true}]}
+          {'title':'','open':true,'feature': '', 'requirement': '','type':'','input':[],'output':[]}
         ];
       }
       /**
@@ -43,7 +43,7 @@ angular.module('projectProposalApp')
         resetBubble();
         // If only one requirement, reset it instead of deleting.
         if (scope.record.requirements.length < 2) {
-          scope.record.requirements = [{'feature': '', 'requirements': '','type':'','input':[{'tag':'','format':'','number':'','size':'','open':true}],'output':[{'tag':'','format':'','number':'','size':'','open':true}]}];
+          scope.record.requirements = [{'title':'','open':true,'feature': '', 'requirements': '','type':'','input':[],'output':[]}];
           return;
         }
         var index = scope.record.requirements.indexOf(item);
@@ -58,7 +58,7 @@ angular.module('projectProposalApp')
       * Add an additional form for a requirement.
       */
       scope.addRequirement = function () {
-        scope.record.requirements.push({'feature': '', 'requirements': '','type':'','input':[{'tag':'','format':'','number':'','size':'','open':true}],'output':[{'tag':'','format':'','number':'','size':'','open':true}]});
+        scope.record.requirements.push({'title':'','open':true,'feature': '', 'requirements': '','type':'','input':[],'output':[]});
       };
 
 
@@ -78,7 +78,7 @@ angular.module('projectProposalApp')
         resetBubble();
         var index = scope.record.requirements.indexOf(del);
         if (scope.record.requirements[index].input.length < 2) {
-          scope.record.requirements[index].input = [{'tag':'','format':'','number':'','size':'','open':true}];
+          scope.record.requirements[index].input = [];
           return;
         }
         var indexOutput = scope.record.requirements[index].input.indexOf(item);
@@ -114,7 +114,7 @@ angular.module('projectProposalApp')
         resetBubble();
         var index = scope.record.requirements.indexOf(del);
         if (scope.record.requirements[index].output.length < 2) {
-          scope.record.requirements[index].output = [{'tag':'','format':'','number':'','size':'','open':true}];
+          scope.record.requirements[index].output = [];
           return;
         }
         var indexOutput = scope.record.requirements[index].output.indexOf(item);

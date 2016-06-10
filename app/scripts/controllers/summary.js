@@ -108,9 +108,7 @@ angular.module('projectProposalApp')
     link: function postLink(scope) {
       // Verify that the JSON part exists.
       if (!scope.record.relatedProjects) {
-        scope.record.relatedProjects = [
-          {'name': '', 'startDate': '', 'endDate': '', 'description': ''}
-        ];
+        scope.record.relatedProjects = [];
       }
       /**
       * @ngdoc function
@@ -124,10 +122,8 @@ angular.module('projectProposalApp')
       scope.deleteProject = function (item) {
         resetBubble();
         // If only one project, reset it instead of deleting.
-        if (scope.record.relatedProjects.length < 2) {
-          scope.record.relatedProjects = [
-            {'name': '', 'startDate': '', 'endDate': '', 'description': ''}
-          ];
+        if (scope.record.relatedProjects.length < 1) {
+          scope.record.relatedProjects = [];
           return;
         }
         var index = scope.record.relatedProjects.indexOf(item);
@@ -143,7 +139,7 @@ angular.module('projectProposalApp')
       * Add an additional form for a related project.
       */
       scope.addProject = function () {
-        scope.record.relatedProjects.push({'name': '', 'startDate': '', 'endDate': '', 'description': ''});
+        scope.record.relatedProjects.push({'name': '', 'startDate': '', 'endDate': '', 'description': '','open':true});
       };
     }
   };
