@@ -73,6 +73,7 @@ angular
 	$scope.today = new Date();
 
 	$scope.membersAndLead = [];
+	$scope.log = [];
 
 	// The available values for the different fields
 	$scope.availableTags = ['Science','Research','Testing','Computing'];
@@ -135,41 +136,111 @@ angular
 	angular.forEach($scope.availableTeams,function(val){
 		val.displayName = 'BBP Team: ' + val.name;
 	});
-		$scope.availableTypes = [
-			{'name':'Bug','description':'Did you notice a bug?'},
-			{'name':'Error','description':'Did an error appear?'},
-			{'name':'Comment','description':'Do you have a comment?'}
-		];
-		$scope.availableDataTransfer = [
-			{'name':'GridFTP','desc':''},
-			{'name':'globus online','desc':''}
-		];
-		$scope.availableRequirements = [
-			{'name':'Building','desc':'Define size of circuit, model, software to be used.'},
-			{'name':'Simulation','desc':'Define typical simulation, expected time to solution, size of circuit, equations, software to be used.'},
-			{'name':'Analysis','desc':'Define typical analysis and software package to be used.'},
-			{'name':'Visualization','desc':'Define typical visualization, file format, software package to be used.'},
-			{'name':'Web application','desc':''}
-		];
+	$scope.availableTypes = [
+		{'name':'Bug','description':'Did you notice a bug?'},
+		{'name':'Error','description':'Did an error appear?'},
+		{'name':'Comment','description':'Do you have a comment?'}
+	];
+	$scope.availableDataTransfer = [
+		{'name':'GridFTP','desc':''},
+		{'name':'globus online','desc':''}
+	];
+	$scope.availableRequirements = [
+		{'name':'Building','desc':'Define size of circuit, model, software to be used.'},
+		{'name':'Simulation','desc':'Define typical simulation, expected time to solution, size of circuit, equations, software to be used.'},
+		{'name':'Analysis','desc':'Define typical analysis and software package to be used.'},
+		{'name':'Visualization','desc':'Define typical visualization, file format, software package to be used.'},
+		{'name':'Web application','desc':''}
+	];
 
-		$scope.availableFormats = [
-			{'name':'HDF5'},
-			{'name':'ASCII'}
-		];
+	$scope.availableFormats = [
+		{'name':'HDF5'},
+		{'name':'ASCII'}
+	];
 
-	$scope.availableCollab=[];
-	//Get the list of collabs
+	$scope.requiredFields = {};
+	$scope.requiredFields.gold = [
+		{'field':'projectTitle'},
+		{'field':'projectStartDate'}
+	];
 
-	function loadCollabs() {
-		hbpCollabStore.list().then(function(rs) {return rs.toArray();})
-		.then(function(arr){
-			$scope.availableCollab = arr;
-		})
+	$scope.fields = [
+		{'name':'projectTitle','show':0,'required':0},
+		{'name':'projectStartDate','show':1,'required':2}
+	];
+
+	$scope.good = false;
+	$scope.log=[];
+	$scope.minDate = new Date();
+	$scope.maxDate = new Date();
+
+
+	// Check if all the required values were filled
+	$scope.$watch('record', function(attrs) {
+		var level = $scope.record.projectType;
+		var temp = true;
+		angular.forEach($scope.fields,function(elem){
+			if( elem.required >= level ){
+			var iter = $scope.record[elem.name];
+			if(iter == undefined || iter == '' || iter == null){
+				temp = false;
+			}
+		}
+	})
+	$scope.good = temp;
+}, true);
+
+// Activate or disactivate the submit button
+$scope.$watch('good', function() {
+	var classes = 'finalN';
+	if(!$scope.good){
+		classes += ' disabled';
 	}
-	loadCollabs();
+	document.getElementById('final').className = classes;
+});
 
 
-	// function to process the form
-	$scope.processForm = function() {
+// Change the minimum date of the projects depending on the type of projects
+$scope.$watchGroup(['record.projectType', 'record.projectStartDate'], function() {
+	$scope.minDate= new Date();
+	var numberOfDaysToAdd = 0;
+	if($scope.record.projectType == 2){
+		numberOfDaysToAdd = 365;
+	}
+	var dateTemp = new Date();
+	if($scope.record.projectStartDate!=undefined ){
+		dateTemp = $scope.record.projectStartDate;
+	}
+	$scope.minDate.setDate(dateTemp.getDate() + numberOfDaysToAdd);
+});
+
+// Change the maximum date of the projects depending on the type of projects
+$scope.$watchGroup(['record.projectType', 'record.projectStartDate'], function() {
+	$scope.maxDate= new Date();
+	var numberOfDaysToAdd = 3650;
+	if($scope.record.projectType == 0){
+		numberOfDaysToAdd = 90;
+	}
+	if($scope.record.projectType == 1){
+		numberOfDaysToAdd = 183;
+	}
+	var dateTemp = new Date();
+	if($scope.record.projectStartDate!=undefined ){
+		dateTemp = $scope.record.projectStartDate;
 	};
+	$scope.maxDate.setDate(dateTemp.getDate() + numberOfDaysToAdd);
+});
+
+function loadCollabs() {
+	hbpCollabStore.list().then(function(rs) {return rs.toArray();})
+	.then(function(arr){
+		$scope.availableCollab = arr;
+	})
+}
+loadCollabs();
+
+
+// function to process the form
+$scope.processForm = function() {
+};
 });

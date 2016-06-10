@@ -183,6 +183,12 @@ input.ng-invalid.ng-touched {
   border-color: #CA5B5B;
 }
 
+/* format of invalid inputs */
+textarea.ng-invalid.ng-touched {
+  background-color: #FA787E;
+  border-color: #CA5B5B;
+}
+
 /* numbered buttons */
 #status-buttons                 {  }
 #status-buttons a               { color:#000; display:inline-block; font-size:12px; margin-right:15px; text-align:center; text-transform:uppercase;width:80px; }

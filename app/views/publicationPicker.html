@@ -1,4 +1,4 @@
-<div class="publicationList" data-ng-model="record.publications">
+<div class="publicationList" data-ng-model="record.publications" >
     <div ng-repeat="svPair in record.publications">
         <div>
             <!--<pre>{{ngModel|json}}</pre>-->
@@ -13,7 +13,7 @@
                        typeahead-editable
                        typeahead-min-length="0"
                        typeahead-show-hint="false"
-                       ng-model="svPair.name">
+                       ng-required="record.projectType >= 2" ng-model="svPair.name">
             </div>
             <div onclick="updateBubble(this,'Link to the publication, if exists.<br />Format: <i>\'http:\\\\the.address.com\'</i>')">
                Link
@@ -21,7 +21,7 @@
                        name="dataset_title"
                        uib-typeahead="publication.link for publication in publications | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
                        placeholder="Link to publication"
-                       ng-model="svPair.link">
+                       ng-required="record.projectType >= 2" ng-model="svPair.link">
 
             </div>
             <div>

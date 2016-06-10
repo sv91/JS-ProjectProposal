@@ -41,6 +41,10 @@
   </div>
 </div>
 
+<pre>
+  {{ log | json }}
+</pre>
+
 <script>
 function changeURL(id,value){
   var doc = document.getElementById(id)
@@ -56,5 +60,49 @@ function updateLinks(prev,next){
   resetBubble();
   changeURL('prev',prev);
   changeURL('next',next);
+}
+
+function getParam(elem,type){
+  var name = elem.id;
+  var show = 0;
+  angular.forEach($scope.fields,function(elem){
+    if( elem.name == name ){
+      show = elem[type];
+  }
+  })
+  return show;
+}
+
+function setSettings(elem){
+  var name = elem.id;
+  var level = 0;
+  switch($scope.record.projectType) {
+    case 'gold':
+    level = 2;
+    break;
+    case 'silver':
+    level = 1;
+    break;
+    case 'bronze':
+    level = 0;
+    break;
+    default:
+    level = 0;
+  }
+  var req = 0;
+  var show = 0;
+  angular.forEach($scope.fields,function(elem){
+    if( elem.name == name ){
+      req = elem.required;
+      show = elem.show;
+  }
+})
+  if(show < level){
+    elem.display = 'none';
+  }
+
+  if(req >= level){
+    elem.required = true;
+  }
 }
 </script>

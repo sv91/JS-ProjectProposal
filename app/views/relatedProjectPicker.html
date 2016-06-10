@@ -12,13 +12,13 @@
                        typeahead-editable
                        typeahead-min-length="0"
                        typeahead-show-hint="false"
-                       ng-model="svPair.name">
+                       ng-required="record.projectType >= 2" ng-model="svPair.name">
             </div>
             <!-- Table to put the dates at the same position -->
             <table width="100%"><tr>
             <td class="inTwo" onclick="updateBubble(this,'The start date.')">
               Start Date
-                      <md-datepicker ng-model="svPair.startDate"
+                      <md-datepicker ng-required="record.projectType >= 2" ng-model="svPair.startDate"
                       md-placeholder="Enter date"></md-datepicker>
 
             </td>
@@ -27,7 +27,7 @@
             <td class="inTwo" onclick="updateBubble(this,'The end date.<br />Can not precede the start date.')">
               End Date
 
-                      <md-datepicker ng-model="svPair.endDate"
+                      <md-datepicker ng-required="record.projectType >= 2" ng-model="svPair.endDate"
                       md-placeholder="Enter date"
                       md-min-date="svPair.startDate"></md-datepicker>
 
@@ -39,7 +39,7 @@
                        name="dataset_title"
                        uib-typeahead="project.description for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
                        placeholder="A short description"
-                       ng-model="svPair.description">
+                       ng-required="record.projectType >= 2" ng-model="svPair.description">
 
             </div>
             <div>

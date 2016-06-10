@@ -1,7 +1,7 @@
 <div class="container form middlePart">
-  <div>
+  <div ng-show="record.projectType >= 1" >
     Use case description
-    <textarea class="form-control" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="2000"></textarea>
+    <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="2000"></textarea>
 
   </div>
   <hr />

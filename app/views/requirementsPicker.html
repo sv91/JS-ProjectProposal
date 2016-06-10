@@ -1,10 +1,10 @@
 <div class="requirementList" data-ng-model="record.requirements">
     <div ng-repeat="svPair in record.requirements">
         <div>
-            <div onclick="updateBubble(this,'Type of the requirement.')">
+            <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Type of the requirement.')">
               Type
               <ui-select
-              ng-model="svPair.type"
+              ng-required="record.projectType >= 2" ng-model="svPair.type"
               theme="bootstrap"
               sortable="true">
               <ui-select-match placeholder="Select the type">{{$select.selected.name}}</ui-select-match>
@@ -14,31 +14,32 @@
               </ui-select>
             </div>
             <br />
-            <div onclick="updateBubble(this,'Define the requirements')">
+            <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Define the requirements')">
                Requirements
-                <textarea class="form-control" ng-model="svPair.requirement" placeholder={{svPair.type.desc}} maxlength="300"></textarea>
+                <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.requirement" placeholder={{svPair.type.desc}} maxlength="300"></textarea>
 
             </div>
             <br />
-            <div onclick="updateBubble(this,'Define which feature is missing.')">
+            <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Define which feature is missing.')">
                Feature of interest
-                <textarea class="form-control" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="300"></textarea>
+                <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="300"></textarea>
 
             </div>
 
+<div ng-show="record.projectType >= 1" >
 <label>Inputs</label>
             <div class="p10" data-ng-model="svPair.input">
               <div ng-repeat="h in svPair.input">
-                <input type="checkbox" class="plusMinus" ng-model="h.open">
+                <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
                 <label ng-hide="h.open">{{h.tag}}</label>
                 <div ng-show="h.open">
                   <!--<pre>{{ngModel|json}}</pre>-->
                   Tag
-                  <input type="text" ng-model="h.tag" class="form-control">
+                  <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control">
                   <br />
                   Format
                   <ui-select
-                  ng-model="svPair.format"
+                  ng-required="record.projectType >= 2" ng-model="svPair.format"
                   theme="bootstrap"
                   sortable="true">
                   <ui-select-match placeholder="Select the format">{{$select.selected}}</ui-select-match>
@@ -50,13 +51,13 @@
                   <table width="100%"><tr>
                   <td class="inTwo">
                     Number of artefacts
-                    <input type="number" class="form-control" ng-model="h.number" min="0"  onclick="updateBubble(this,'Number of artefacts.')">
+                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.number" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
                   </td>
                   <td class="inTwoEmptySeparator">
                   </td>
                   <td class="inTwo">
                     Size of artefacts
-                    <input type="number" class="form-control" ng-model="h.size" min="0"  onclick="updateBubble(this,'Size of artefacts.')">
+                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.size" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Size of artefacts.')">
 
                 </td></tr></table>
                 <div button type="button" class="close" aria-label="Remove" ng-click="deleteInput(h,svPair)">
@@ -70,21 +71,22 @@
               </div>
               <div class="btn btn-default" ng-click="addInput(svPair)">Add Input</div>
             </div>
+          </div>
 
-
+<div ng-show="record.projectType >= 1" >
             <label>Outputs</label>
                         <div class="p10" data-ng-model="svPair.output">
                           <div ng-repeat="h in svPair.output">
-                            <input type="checkbox" class="plusMinus" ng-model="h.open">
+                            <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
                             <label ng-hide="h.open">{{h.tag}}</label>
                             <div ng-show="h.open">
                               <!--<pre>{{ngModel|json}}</pre>-->
                               Tag
-                              <input type="text" ng-model="h.tag" class="form-control">
+                              <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control">
                               <br />
                               Format
                               <ui-select
-                              ng-model="svPair.format"
+                              ng-required="record.projectType >= 2" ng-model="svPair.format"
                               theme="bootstrap"
                               sortable="true">
                               <ui-select-match placeholder="Select the format">{{$select.selected}}</ui-select-match>
@@ -96,13 +98,13 @@
                               <table width="100%"><tr>
                               <td class="inTwo">
                                 Number of artefacts
-                                <input type="number" class="form-control" ng-model="h.number" min="0"  onclick="updateBubble(this,'Number of artefacts.')">
+                                <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.number" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
                               </td>
                               <td class="inTwoEmptySeparator">
                               </td>
                               <td class="inTwo">
                                 Size of artefacts
-                                <input type="number" class="form-control" ng-model="h.size" min="0"  onclick="updateBubble(this,'Size of artefacts.')">
+                                <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.size" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Size of artefacts.')">
 
                             </td></tr></table>
                             <div button type="button" class="close" aria-label="Remove" ng-click="deleteOutput(h,svPair)">
@@ -116,6 +118,7 @@
                           </div>
                           <div class="btn btn-default" ng-click="addOutput(svPair)">Add Output</div>
                         </div>
+                      </div>
 
 
             <div>
