@@ -38,8 +38,20 @@
 <label>Describe expected input data</label>
             <div class="p10" data-ng-model="svPair.input">
               <div ng-repeat="h in svPair.input">
-                <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
-                <label ng-hide="h.open">{{h.tag}}</label>
+
+                <input id="in{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
+                  <label for="in{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+                <span class="glyphicon glyphicon-minus"></span>
+                </label>
+                <div ng-hide="h.open">
+                  <label>
+                Input n°{{$index + 1}}:
+                </label> {{h.tag}}
+                  <div button type="button" class="close" aria-label="Remove" ng-click="deleteInput(h,svPair)">
+                      <span aria-hidden="true">&times;
+                      </span>
+                    </div>
+                </div>
                 <div ng-show="h.open">
                   <!--<pre>{{ngModel|json}}</pre>-->
                   Tag
@@ -85,8 +97,21 @@
             <label>Outputs</label>
                         <div class="p10" data-ng-model="svPair.output">
                           <div ng-repeat="h in svPair.output">
-                            <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
-                            <label ng-hide="h.open">{{h.tag}}</label>
+
+
+                                    <input id="out{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
+                                      <label for="out{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+                                    <span class="glyphicon glyphicon-minus"></span>
+                                    </label>
+                                    <div ng-hide="h.open">
+                                      <label>
+                                    Output n°{{$index + 1}}:
+                                    </label> {{h.tag}}
+                                      <div button type="button" class="close" aria-label="Remove" ng-click="deleteOutput(h,svPair)">
+                                          <span aria-hidden="true">&times;
+                                          </span>
+                                        </div>
+                                    </div>
                             <div ng-show="h.open">
                               <!--<pre>{{ngModel|json}}</pre>-->
                               Tag

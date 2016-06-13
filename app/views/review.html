@@ -3,11 +3,16 @@
     Review
   </label><br />
 
-  <input type="checkbox" class="plusMinus" ng-model="whole">
-  <label>Whole Project</label>
+  <input id="whole" type="checkbox" class="plusMinus" ng-model="whole">
+    <label for="whole" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+  <span class="glyphicon glyphicon-minus"></span> Whole Project
+</label>
   <div ng-show="whole" class="p10">
-    <input type="checkbox" class="plusMinus" ng-model="s">
-    <label>Summary</label>
+
+    <input id="s" type="checkbox" class="plusMinus" ng-model="s">
+      <label for="s" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+    <span class="glyphicon glyphicon-minus"></span> Summary
+  </label>
     <div ng-show="s">
       <div class="form-group">
         <label>Project Title</label>
@@ -131,8 +136,10 @@
     </div>
     <hr />
 
-    <input type="checkbox" class="plusMinus" ng-model="comp">
-    <label>Computing, Storage and Services resources</label>
+    <input id="comp" type="checkbox" class="plusMinus" ng-model="comp">
+      <label for="comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+    <span class="glyphicon glyphicon-minus"></span> Computing, Storage and Services resources
+    </label>
     <div ng-show="comp">
 
 
@@ -292,9 +299,11 @@
 
       <hr />
 
+      <input id="hr" type="checkbox" class="plusMinus" ng-model="hr">
+        <label for="hr" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+      <span class="glyphicon glyphicon-minus"></span> Human resources
+      </label>
 
-      <input type="checkbox" class="plusMinus" ng-model="hr">
-      <label>Human resources</label>
       <div ng-show="hr">
 
         <table>
@@ -327,11 +336,16 @@
 
     <div data-ng-model="summ.deliverables">
       <div ng-repeat="deli in summ.deliverables">
-        <input type="checkbox" class="plusMinus" ng-model="deli.summaryShow">
-        <label>Deliverable {{deli.name}}</label>
+              <input id="deli{{$index}}" type="checkbox" class="plusMinus" ng-model="deli.summaryShow">
+                <label for="deli{{$index}}" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+              <span class="glyphicon glyphicon-minus"></span> Deliverable {{deli.name}}
+              </label>
         <div class="p10" ng-show="deli.summaryShow">
-          <input type="checkbox" class="plusMinus" ng-model="deli.info">
-          <label>Summary</label>
+
+          <input id="deli{{$index}}-summ" type="checkbox" class="plusMinus" ng-model="deli.info">
+            <label for="deli{{$index}}-summ" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+          <span class="glyphicon glyphicon-minus"></span> Summary
+          </label>
           <div ng-show="deli.info">
             <div class="form-group">
               <label>Name</label>
@@ -370,8 +384,10 @@
           </div>
           <hr />
 
-          <input type="checkbox" class="plusMinus" ng-model="deli.compInfo">
-          <label>Computing, Storage and Services resources</label>
+          <input id="deli{{$index}}-comp" type="checkbox" class="plusMinus" ng-model="deli.compInfo">
+            <label for="deli{{$index}}-comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+          <span class="glyphicon glyphicon-minus"></span> Computing, Storage and Services resources
+          </label>
           <div ng-show="deli.compInfo">
 
 
@@ -506,10 +522,10 @@
 
 
             <hr />
-
-
-            <input type="checkbox" class="plusMinus" ng-model="deli.hr">
-            <label>Human resources</label>
+            <input id="deli{{$index}}-hr" type="checkbox" class="plusMinus" ng-model="deli.hr">
+              <label for="deli{{$index}}-hr" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+            <span class="glyphicon glyphicon-minus"></span> Human resources
+            </label>
             <div ng-show="deli.hr">
 
               <table>

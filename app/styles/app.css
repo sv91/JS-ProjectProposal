@@ -380,12 +380,30 @@ textarea{
   height: 80px !important;
 }
 
-.plusMinus {
-  background: url(../images/minus.jpg) no-repeat;
+.plusMinus{
+  display:none;
+  float:left;
 }
-.plusMinus:checked {
-  background: url(../images/plus.jpg) no-repeat;
+
+.glyphicon-minus {
+  display: none;
 }
+
+.ft{
+  float:left;
+}
+
+.css-label {
+  cursor: pointer;
+}
+
+.plusMinus:checked + .css-label .glyphicon-minus {
+  display: inline;
+}
+.plusMinus:checked + .css-label .glyphicon-plus {
+  display: none;
+}
+
 
 .md-datepicker-calendar {
   width:308px;

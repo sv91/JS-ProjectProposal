@@ -2,8 +2,8 @@
   <div ng-repeat="svPair in record.deliverables">
     <table width="100%">
       <td>
-        <img src="/images/plus.jpg" class="minusPlus" style="display:none" onclick="show(this);">
-        <img src="/images/minus.jpg" class="minusPlus" onclick="hide(this);">
+        <span class="glyphicon glyphicon-plus" class="minusPlus" style="display:none" onclick="show(this);"></span>
+        <span class="glyphicon glyphicon-minus" class="minusPlus" style="display:inline" onclick="hide(this);"></span>
         <label>Deliverable <i>{{svPair.name}}</i></label>
       </td>
       <td align="right">
@@ -163,8 +163,21 @@
       <label>HPC resources
       </label><br />
       <div ng-repeat="h in svPair.hpc" >
-        <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
-        <label ng-hide="h.open">{{h.type.name}}</label>
+
+        <input id="hpc{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
+          <label for="hpc{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-minus"></span>
+        </label>
+        <div ng-hide="h.open">
+          <label>
+        HPC resource n°{{$index + 1}}:
+        </label> {{h.type.name}}
+          <div button type="button" class="close" aria-label="Remove" ng-click="deleteHpc(h,svPair)">
+              <span aria-hidden="true">&times;
+              </span>
+            </div>
+        </div>
+
         <div ng-show="h.open">
           <!--<pre>{{ngModel|json}}</pre>-->
           System Architecture
@@ -211,6 +224,7 @@
 
 
       </div>
+      <br />
       <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Resource</div>
     </div>
     <hr />
@@ -219,8 +233,19 @@
       <label>Cloud resources
       </label><br />
       <div ng-repeat="h in svPair.cloud">
-        <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
-        <label ng-hide="h.open">{{h.type.name}}</label>
+        <input id="cloud{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
+          <label for="cloud{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-minus"></span>
+        </label>
+        <div ng-hide="h.open">
+          <label>
+        Cloud resource n°{{$index + 1}}:
+      </label> {{h.type.name}}
+          <div button type="button" class="close" aria-label="Remove" ng-click="deleteCloud(h,svPair)">
+              <span aria-hidden="true">&times;
+              </span>
+            </div>
+        </div>
         <div ng-show="h.open">
           <!--<pre>{{ngModel|json}}</pre>-->
           Provider
@@ -264,6 +289,7 @@
           <hr/>
         </div>
       </div>
+      <br />
       <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Resource</div>
     </div>
   </div><br />
@@ -279,8 +305,20 @@
 
   <div class="p10 form-group" data-ng-model="svPair.hardware" >
     <div ng-repeat="hard in svPair.hardware">
-      <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="hard.open">
-      <label ng-hide="hard.open">{{hard.name}}</label>
+      <input id="hard{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="hard.open">
+        <label for="hard{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+  <span class="glyphicon glyphicon-minus"></span>
+</label>
+      <div ng-hide="hard.open">
+        <label>
+    Hardware n°{{$index + 1}}:
+  </label> {{hard.name}}
+        <div button type="button" class="close" aria-label="Remove" ng-click="deleteHardware(hard,svPair)">
+            <span aria-hidden="true">&times;
+            </span>
+          </div>
+      </div>
+
       <div ng-show="hard.open">
         <div >
           Name
@@ -312,6 +350,7 @@
       </div>
     </div>
   </div>
+  <br />
   <div class="btn btn-default" ng-click="addHardware(svPair)">Add hardware</div>
 </div>
 </div>

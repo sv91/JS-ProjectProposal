@@ -1,7 +1,18 @@
 <div class="relatedProjectList" data-ng-model="record.relatedProjects">
     <div ng-repeat="svPair in record.relatedProjects">
-      <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="svPair.open">
-      <label ng-hide="svPair.open">{{svPair.name}}</label>
+      <input id="project{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="svPair.open">
+        <label for="project{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+  <span class="glyphicon glyphicon-minus"></span>
+</label>
+      <div ng-hide="svPair.open">
+        <label>
+    Related project n° {{$index + 1}}:
+        </label> {{svPair.name}}
+        <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
+            <span aria-hidden="true">&times;
+            </span>
+          </div>
+      </div>
       <div ng-show="svPair.open">
             <!--<pre>{{ngModel|json}}</pre>-->
             <div onclick="updateBubble(this,'The name of a related project.')">
@@ -49,8 +60,8 @@
                     <span aria-hidden="true">&times;</span></div>
 
             </div>
+            <hr>
         </div>
-        <hr>
     </div>
 </div>
 <div class="btn btn-default" ng-click="addProject()">Add a related Project</div>
