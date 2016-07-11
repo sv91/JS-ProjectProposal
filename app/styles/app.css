@@ -377,7 +377,8 @@ input:read-only:required {
 }
 
 textarea{
-  height: 80px !important;
+  min-height: 80px !important;
+  resize: vertical;
 }
 
 .plusMinus{
