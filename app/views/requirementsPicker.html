@@ -62,9 +62,9 @@
                   ng-required="record.projectType >= 2" ng-model="svPair.format"
                   theme="bootstrap"
                   sortable="true">
-                  <ui-select-match placeholder="Select the format">{{$select.selected}}</ui-select-match>
+                  <ui-select-match placeholder="Select the format">{{$select.selected.name}}</ui-select-match>
                   <ui-select-choices repeat="type in availableFormats | filter:$select.search">
-                    {{type}}
+                    {{type.name}}
                   </ui-select-choices>
                   </ui-select>
                   <br />
@@ -122,9 +122,9 @@
                               ng-required="record.projectType >= 2" ng-model="svPair.format"
                               theme="bootstrap"
                               sortable="true">
-                              <ui-select-match placeholder="Select the format">{{$select.selected}}</ui-select-match>
+                              <ui-select-match placeholder="Select the format">{{$select.selected.name}}</ui-select-match>
                               <ui-select-choices repeat="type in availableFormats | filter:$select.search">
-                                {{type}}
+                                {{type.name}}
                               </ui-select-choices>
                               </ui-select>
                               <br />
