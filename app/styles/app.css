@@ -332,6 +332,17 @@ input[type=number]:read-only {
     height: 26px;
 }
 
+textarea:read-only {
+    background-color: rgb(245,245,245);
+    width:708px;
+    resize: vertical;
+}
+
+textarea:required{
+  background-color: #FA787E !important;
+  border-color: #CA5B5B !important;
+}
+
 input:-moz-read-only:required { /* For Firefox */
   background-color: #FA787E;
   border-color: #CA5B5B;
