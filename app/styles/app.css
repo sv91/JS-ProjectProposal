@@ -326,6 +326,12 @@ input[type=text]:read-only {
   width: 708px !important;
 }
 
+
+input[type=number]:read-only {
+    width:100%;
+    height: 26px;
+}
+
 input:-moz-read-only:required { /* For Firefox */
   background-color: #FA787E;
   border-color: #CA5B5B;
