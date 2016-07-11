@@ -322,6 +322,9 @@ input:read-only {
   background-color: rgb(245,245,245);
 }
 
+input[type=text]:read-only {
+  width: 708px !important;
+}
 
 input:-moz-read-only:required { /* For Firefox */
   background-color: #FA787E;
