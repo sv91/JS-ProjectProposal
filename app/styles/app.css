@@ -444,6 +444,15 @@ textarea{
 .md-datepicker-calendar {
   width:308px;
 }
+
+  .md-datepicker-calendar-pane {
+    width:308px;
+  }
+  .md-datepicker-input-mask{
+    width:308px;
+  }
+
+
   .md-datepicker md-content {
     padding-bottom: 200px; }
   .md-datepicker .validation-messages {
