@@ -454,3 +454,7 @@ textarea{
 md-datepicker{
   background: rgba(0,0,0,0);
 }
+
+.nonePadding {
+  padding-left: 10px;
+}

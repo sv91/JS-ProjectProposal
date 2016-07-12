@@ -63,9 +63,11 @@
 
       <div class="form-group">
         <label>Grants</label>
-        <ul>
+        <ul ng-show="record.grants.length">
           <li ng-repeat="grant in record.grants">{{grant}}</li>
         </ul>
+        <br />
+<span ng-hide="record.grants.length" class="nonePadding">None</span>
       </div>
 
       <div class="form-group">
@@ -73,7 +75,8 @@
         <ul ng-show="record.tasks.length">
           <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
         </ul>
-        <span ng-hide="record.tasks.length"><br />None</span>
+        <br />
+<span ng-hide="record.tasks.length" class="nonePadding">None</span>
       </div>
 
       <div class="form-group" ng-class="{hideOld: record.newproject!='false'}">
@@ -81,7 +84,8 @@
         <ul ng-show="record.tags.length">
           <li ng-repeat="tag in record.tags">{{tag}}</li>
         </ul>
-        <span ng-hide="record.tags.length"><br />None</span>
+        <br />
+<span ng-hide="record.tags.length" class="nonePadding">None</span>
       </div>
 
       <div class="form-group">
@@ -152,7 +156,8 @@
               <ul ng-show="summ.softdev.length">
                 <li ng-repeat="soft in summ.softdev">{{soft.name}}</li>
               </ul>
-              <span ng-hide="summ.softdev.length"><br />None</span>
+              <br />
+<span ng-hide="summ.softdev.length" class="nonePadding">None</span>
             </td>
             <td class="inTwoEmptySeparator">
             </td>
@@ -161,7 +166,8 @@
               <ul ng-show="summ.datatransfer.length">
                 <li ng-repeat="soft in summ.datatransfer">{{soft.name}}</li>
               </ul>
-              <span ng-hide="summ.datatransfer.length"><br />None</span>
+              <br />
+<span ng-hide="summ.datatransfer.length" class="nonePadding">None</span>
             </td>
           </tr>
           </table>
@@ -169,7 +175,8 @@
             <ul ng-show="summ.collabs.length">
               <li ng-repeat="collab in summ.collabs">{{collab.title}}</li>
             </ul>
-            <span ng-hide="summ.collabs.length"><br />None</span>
+            <br />
+<span ng-hide="summ.collabs.length" class="nonePadding">None</span>
           </div>
         </div>
         <div class="p10-5">
@@ -181,7 +188,8 @@
                 <ul ng-show="summ.virtualization.length">
                   <li ng-repeat="soft in summ.virtualization">{{soft.name}}</li>
                 </ul>
-                <span ng-hide="summ.virtualization.length"><br />None</span>
+                <br />
+<span ng-hide="summ.virtualization.length" class="nonePadding">None</span>
               </td>
               <td class="inTwoEmptySeparator">
               </td>
@@ -190,7 +198,8 @@
                 <ul ng-show="summ.devenv.length">
                   <li ng-repeat="soft in summ.devenv">{{soft.name}}</li>
                 </ul>
-                <span ng-hide="summ.devenv.length"><br />None</span>
+                <br />
+<span ng-hide="summ.devenv.length" class="nonePadding">None</span>
               </td>
             </tr>
             </table>
@@ -203,7 +212,8 @@
             <ul ng-show="summ.architecture.length">
               <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
             </ul>
-            <span ng-hide="summ.architecture.length"><br />None</span>
+            <br />
+<span ng-hide="summ.architecture.length" class="nonePadding">None</span>
 
             <br />
             <table width="100%" style="padding-top:15px;"><tr>
@@ -245,7 +255,8 @@
             <ul ng-show="summ.architectureC.length">
               <li ng-repeat="tasks in summ.architectureC">{{tasks.name}}</li>
             </ul>
-            <span ng-hide="summ.architectureC.length"><br />None</span>
+            <br />
+<span ng-hide="summ.architectureC.length" class="nonePadding">None</span>
 
             <br />
             <table>
@@ -291,7 +302,8 @@
           <ul ng-show="deli.hardware.length">
             <li ng-repeat="hard in deli.hardware"><b>{{hard.name}}</b>: {{hard.description}}<br />Price: {{hard.price}}<br />{{hard.link}}</li>
           </ul>
-          <span ng-hide="deli.hardware.length"><br />None</span>
+          <br />
+<span ng-hide="deli.hardware.length" class="nonePadding">None</span>
 
         </div>
       </div>
@@ -378,7 +390,8 @@
               <ul ng-show="deli.dependency.length">
                 <li ng-repeat="dep in deli.dependency">{{dep}}</li>
               </ul>
-              <span ng-hide="deli.dependency.length"><br />None</span>
+              <br />
+<span ng-hide="deli.dependency.length" class="nonePadding">None</span>
             </div>
 
           </div>
@@ -400,7 +413,8 @@
                     <ul ng-show="deli.softdev.length">
                       <li ng-repeat="soft in deli.softdev">{{soft.name}}</li>
                     </ul>
-                    <span ng-hide="summ.softdev.length"><br />None</span>
+                    <br />
+<span ng-hide="summ.softdev.length" class="nonePadding">None</span>
                   </td>
                   <td class="inTwoEmptySeparator">
                   </td>
@@ -409,7 +423,8 @@
                     <ul ng-show="deli.collabs.length">
                       <li ng-repeat="collab in deli.collabs">{{collab.title}}</li>
                     </ul>
-                    <span ng-hide="deli.collabs.length"><br />None</span>
+                    <br />
+<span ng-hide="deli.collabs.length" class="nonePadding">None</span>
 
                   </td></tr></table>
                 </div>
@@ -427,7 +442,8 @@
                   <ul ng-show="deli.architecture.length">
                     <li ng-repeat="tasks in deli.architecture">{{tasks.name}}</li>
                   </ul>
-                  <span ng-hide="deli.architecture.length"><br />None</span>
+                  <br />
+<span ng-hide="deli.architecture.length" class="nonePadding">None</span>
 
                   <br />
                   <table width="100%" style="padding-top:15px;"><tr>
@@ -469,7 +485,8 @@
                   <ul ng-show="deli.architectureC.length">
                     <li ng-repeat="tasks in deli.architectureC">{{tasks.name}}</li>
                   </ul>
-                  <span ng-hide="deli.architectureC.length"><br />None</span>
+                  <br />
+<span ng-hide="deli.architectureC.length" class="nonePadding">None</span>
 
                   <br />
                   <table>
@@ -515,7 +532,8 @@
                 <ul ng-show="deli.hardware.length">
                   <li ng-repeat="hard in deli.hardware"><b>{{hard.name}}</b>: {{hard.description}}<br />Price: {{hard.price}}<br />{{hard.link}}</li>
                 </ul>
-                <span ng-hide="deli.hardware.length"><br />None</span>
+                <br />
+<span ng-hide="deli.hardware.length" class="nonePadding">None</span>
 
               </div>
             </div>

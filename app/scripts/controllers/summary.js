@@ -29,9 +29,7 @@ angular.module('projectProposalApp')
     link: function postLink(scope) {
       // Verify that the JSON part exists.
       if (!scope.record.publications) {
-        scope.record.publications = [
-          {'name': '', 'link': ''}
-        ];
+        scope.record.publications = [];
       }
       /**
       * @ngdoc function
@@ -45,8 +43,8 @@ angular.module('projectProposalApp')
       scope.deletePublication = function (item) {
         resetBubble();
         // If only one publication, reset it instead of deleting.
-        if (scope.record.publications.length < 2) {
-          scope.record.publications = [{'name': '', 'link': ''}];
+        if (scope.record.publications.length < 1) {
+          scope.record.publications = [];
           return;
         }
         var index = scope.record.publications.indexOf(item);
