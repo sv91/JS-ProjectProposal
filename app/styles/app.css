@@ -326,8 +326,16 @@ input[type=text]:read-only {
   width: 708px !important;
 }
 
-
 input[type=number]:read-only {
+    width:100%;
+    height: 26px;
+}
+
+input[type=text]:-moz-read-only {
+  width: 708px !important;
+}
+
+input[type=number]:-moz-read-only {
     width:100%;
     height: 26px;
 }
@@ -338,12 +346,19 @@ textarea:read-only {
     resize: vertical;
 }
 
+textarea:-moz-read-only {
+    background-color: rgb(245,245,245);
+    width:708px;
+    resize: vertical;
+    border-width: 1px;
+}
+
 textarea:required{
   background-color: #FA787E !important;
   border-color: #CA5B5B !important;
 }
 
-input:-moz-read-only:required { /* For Firefox */
+input:required:-moz-read-only { /* For Firefox */
   background-color: #FA787E;
   border-color: #CA5B5B;
 }

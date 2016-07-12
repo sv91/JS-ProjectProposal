@@ -66,6 +66,8 @@ angular
 
 .controller('formController', function($scope, hbpCollabStore) {
 	// we will store all of our form data in this object
+	if($scope.record == undefined | $scope.record == null){
+		console.log('scope');
 	$scope.record = {};
 	$scope.summ = {};
 	$scope.faq = '';
@@ -173,6 +175,7 @@ angular
 	$scope.log=[];
 	$scope.minDate = new Date();
 	$scope.maxDate = new Date();
+	}
 
 
 	// Check if all the required values were filled

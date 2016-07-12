@@ -282,8 +282,6 @@ angular.module('projectProposalApp')
         var index = scope.record.deliverables.indexOf(del);
         scope.record.deliverables[index].cloud.push({'type': '', 'runs': '','open':true, 'part':'','time':'','arte':'','size':''});
       };
-
-
     }
   };
 });
