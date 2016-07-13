@@ -33,7 +33,7 @@
     ng-model="record.teams"
     theme="bootstrap"
     sortable="true">
-    <ui-select-match placeholder="Click to select">{{$item.shortName}}</ui-select-match>
+    <ui-select-match placeholder="Click to select BBP Teams">{{$item.shortName}}</ui-select-match>
     <ui-select-choices repeat="team in availableTeams | filter:$select.search">
       {{team.shortName}} - {{team.name}}
     </ui-select-choices>

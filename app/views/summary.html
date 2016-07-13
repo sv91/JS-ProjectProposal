@@ -4,7 +4,7 @@
   <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Write down the title of this project. <br />Maximum 300 characters.')">
   <label>Project Title</label> (300 characters max.)
   <div>
-    <textarea class="form-control" maxlength="300" id="projectTitle" ng-model="record.projectTitle"  ng-required="record.projectType >= 2">
+    <textarea class="form-control" maxlength="300" id="projectTitle" ng-model="record.projectTitle"  ng-required="record.projectType >= 2" placeholder="Project Title ...">
     </textarea>
   </div>
 </div>
@@ -16,7 +16,7 @@
   <div class="form-group">
     <label>Project Start Date</label>
     <p>
-      <md-datepicker ng-required="record.projectType >= 2" ng-model="record.projectStartDate" md-placeholder="Enter date" md-min-date="today" ng-required="record.projectType >= 2"></md-datepicker>
+      <md-datepicker ng-required="record.projectType >= 2" ng-model="record.projectStartDate" md-placeholder="Enter start date" md-min-date="today" ng-required="record.projectType >= 2"></md-datepicker>
       </p>
   </div>
 </td>
@@ -28,14 +28,13 @@
   <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Select the date of the ending of this project.<br />The date have to respect the minimum length specified by the project type.')">
   <label>Project End Date</label>
   <p>
-    <md-datepicker ng-required="record.projectType >= 2" ng-model="record.projectEndDate" md-placeholder="Enter date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
+    <md-datepicker ng-required="record.projectType >= 2" ng-model="record.projectEndDate" md-placeholder="Enter end date" md-min-date="minDate" md-max-date="maxDate"></md-datepicker>
     </p>
 </div>
 </td>
 </table>
 
 
-<!-- TODO -->
 <!-- New project? -->
 <div class="form-group" id="new_project" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Is this project new or does it continue a previous project?')">
   <label>New project?</label>
@@ -47,15 +46,14 @@
 
 </div>
 
-<!-- TODO -->
 <!-- Old project specification-->
-<div class="form-group" id="old_project" ng-class="{hideOld: record.newproject=='true'}">
+<div class="form-group p10" id="old_project" ng-class="{hideOld: record.newproject=='true'}">
   <!-- project Title -->
   <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Specify the name of the previous project that this project extends.')">
     <label>Previous Project Title</label> (300 characters max.)
     <div>
       <p>
-        <input maxlength="300" ng-required="record.projectType >= 2" ng-model="record.previousProject.title" type="text" required>
+        <input maxlength="300" ng-required="record.projectType >= 2" ng-model="record.previousProject.title" type="text" placeholder="Previous project title ...">
       </p>
     </div>
   </div><!-- project Title -->
@@ -63,7 +61,7 @@
     <label>Previous Project ID</label>
     <div>
       <p>
-        <input ng-required="record.projectType >= 2" ng-model="record.previousProject.title" type="text" required>
+        <input ng-required="record.projectType >= 2" ng-model="record.previousProject.title" type="text" placeholder="Previous project ID">
       </p>
     </div>
   </div><!-- project Title -->
@@ -71,7 +69,7 @@
     <label>Previous Project Principal Investigator</label>
     <div>
       <p>
-        <input ng-required="record.projectType >= 2" ng-model="record.previousProject.title" type="text" required>
+        <input ng-required="record.projectType >= 2" ng-model="record.previousProject.title" type="text" placeholder="Previous Project PI ...">
       </p>
     </div>
   </div>
@@ -89,7 +87,7 @@
   ng-required="record.projectType >= 2" ng-model="record.grants"
   theme="bootstrap"
   sortable="true">
-  <ui-select-match placeholder="Click to select">
+  <ui-select-match placeholder="Click to select a grant or write down to add a new one">
     {{$item}}
   </ui-select-match>
   <ui-select-choices repeat="grant in availableGrants | filter:$select.search">
@@ -110,7 +108,7 @@
     ng-required="record.projectType >= 2" ng-model="record.tasks"
     theme="bootstrap"
     sortable="true">
-    <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+    <ui-select-match placeholder="Click to select Tasks">{{$item.name}}</ui-select-match>
     <ui-select-choices repeat="tasks in availableTasks | filter:$select.search | taskFilter : record.grants ">
       {{tasks.name}} - <i>{{tasks.grant}}</i>
     </ui-select-choices>
@@ -136,7 +134,7 @@
   ng-required="record.projectType >= 2" ng-model="record.tags"
   theme="bootstrap"
   sortable="true">
-  <ui-select-match placeholder="Click to select">{{$item}}</ui-select-match>
+  <ui-select-match placeholder="Click to select a keyword or write down to add new ones">{{$item}}</ui-select-match>
   <ui-select-choices repeat="tag in availableTags | filter:$select.search">
     {{tag}}
   </ui-select-choices>
@@ -147,7 +145,7 @@
 <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some summary.<br />Maximum 1000 characters.')">
 <label>Executive Summary</label> (1000 characters max.)
 <div>
-  <textarea class="form-control" maxlength="1000" ng-required="record.projectType >= 2" ng-model="record.executiveSummary" required>
+  <textarea class="form-control" maxlength="1000" ng-required="record.projectType >= 2" ng-model="record.executiveSummary" placeholder="Some summary ...">
   </textarea>
 </div>
 </div>
@@ -155,7 +153,7 @@
 <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some summary.<br />Maximum 1000 characters.')">
 <label>Impact Statement</label> (1000 characters max.)
 <div>
-  <textarea class="form-control" maxlength="1000" ng-required="record.projectType >= 2" ng-model="record.impactStatement" required>
+  <textarea class="form-control" maxlength="1000" ng-required="record.projectType >= 2" ng-model="record.impactStatement"  placeholder="Some summary ...">
   </textarea>
 </div>
 </div>
@@ -163,7 +161,7 @@
 <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some summary.<br />Maximum 500 characters.')">
 <label>Benefit to Community</label> (500 characters max.)
 <div>
-  <textarea class="form-control" maxlength="500" ng-required="record.projectType >= 2" ng-model="record.benefitToCommunity" required>
+  <textarea class="form-control" maxlength="500" ng-required="record.projectType >= 2" ng-model="record.benefitToCommunity"  placeholder="Some summary ...">
 </textarea>
 </div>
 </div>
@@ -171,7 +169,7 @@
 <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some summary.<br />Maximum 2000 characters.')">
 <label>Scientific Summary</label> (2000 characters max.)
 <div>
-  <textarea class="form-control" maxlength="2000" ng-required="record.projectType >= 2" ng-model="record.scientificSummary" required>
+  <textarea class="form-control" maxlength="2000" ng-required="record.projectType >= 2" ng-model="record.scientificSummary"  placeholder="Some summary ...">
   </textarea>
 </div>
 </div>
@@ -179,7 +177,7 @@
 <div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some summary.<br />Maximum 2000 characters.')">
 <label>Technological Summary</label> (2000 characters max.)
 <div>
-  <textarea class="form-control" maxlength="2000" ng-required="record.projectType >= 2" ng-model="record.technologicalSummary" required>
+  <textarea class="form-control" maxlength="2000" ng-required="record.projectType >= 2" ng-model="record.technologicalSummary"  placeholder="Some summary ...">
   </textarea>
 </div>
 </div>

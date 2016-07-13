@@ -7,7 +7,7 @@
       <div ng-show="svPair.open">
           <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Title of the requirement')">
              Title
-              <input type="text" class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.title" maxlength="300">
+              <input type="text" class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.title" maxlength="300"  placeholder="Give a title for your requirement.">
           </div>
           <br /><div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Type of the requirement.')">
               Type
@@ -15,7 +15,7 @@
               ng-required="record.projectType >= 2" ng-model="svPair.type"
               theme="bootstrap"
               sortable="true">
-              <ui-select-match placeholder="Select the type">{{$select.selected.name}}</ui-select-match>
+              <ui-select-match placeholder="Select the type of requirement">{{$select.selected.name}}</ui-select-match>
               <ui-select-choices repeat="type in availableRequirements | filter:$select.search">
                 {{type.name}}
               </ui-select-choices>
@@ -24,7 +24,7 @@
             <br />
             <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Define the requirements')">
                Requirement definition
-                <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.requirement" placeholder={{svPair.type.desc}} maxlength="300"></textarea>
+                <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.requirement" placeholder={{svPair.type.desc}} maxlength="300"  placeholder="Shortly explain the requirement (max 300 char.)"></textarea>
 
             </div>
             <br />
@@ -55,14 +55,14 @@
                 <div ng-show="h.open">
                   <!--<pre>{{ngModel|json}}</pre>-->
                   Tag
-                  <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control">
+                  <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control"  placeholder="Define the desired input data">
                   <br />
                   Format
                   <ui-select
                   ng-required="record.projectType >= 2" ng-model="svPair.format"
                   theme="bootstrap"
                   sortable="true">
-                  <ui-select-match placeholder="Select the format">{{$select.selected.name}}</ui-select-match>
+                  <ui-select-match placeholder="Select the input format">{{$select.selected.name}}</ui-select-match>
                   <ui-select-choices repeat="type in availableFormats | filter:$select.search">
                     {{type.name}}
                   </ui-select-choices>
@@ -115,14 +115,14 @@
                             <div ng-show="h.open">
                               <!--<pre>{{ngModel|json}}</pre>-->
                               Tag
-                              <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control">
+                              <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control" placeholder="Define the desired output data">
                               <br />
                               Format
                               <ui-select
                               ng-required="record.projectType >= 2" ng-model="svPair.format"
                               theme="bootstrap"
                               sortable="true">
-                              <ui-select-match placeholder="Select the format">{{$select.selected.name}}</ui-select-match>
+                              <ui-select-match placeholder="Select the output format">{{$select.selected.name}}</ui-select-match>
                               <ui-select-choices repeat="type in availableFormats | filter:$select.search">
                                 {{type.name}}
                               </ui-select-choices>

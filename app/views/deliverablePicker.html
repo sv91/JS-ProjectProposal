@@ -46,7 +46,7 @@
           ng-required="record.projectType >= 2" ng-model="svPair.dependency"
           theme="bootstrap"
           sortable="true">
-          <ui-select-match placeholder="Select the dependencies">{{$item.name}}</ui-select-match>
+          <ui-select-match placeholder="Select the dependencies to any other deliverable">{{$item.name}}</ui-select-match>
           <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | dependencyFilter : svPair.name">
             {{dependency.name}}
           </ui-select-choices>
@@ -60,7 +60,7 @@
         ng-required="record.projectType >= 2" ng-model="svPair.requirements"
         theme="bootstrap"
         sortable="true">
-        <ui-select-match placeholder="Select the dependencies">{{$item.title}}</ui-select-match>
+        <ui-select-match placeholder="Select the dependencies to any requirement">{{$item.title}}</ui-select-match>
         <ui-select-choices repeat="requirement in record.requirements | filter:$select.search">
           {{requirement.title}}
         </ui-select-choices>
@@ -81,7 +81,7 @@
                 ng-required="record.projectType >= 2" ng-model="svPair.softdev"
                 theme="bootstrap"
                 sortable="true">
-                <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+                <ui-select-match placeholder="Select the desired Sofware development tools">{{$item.name}}</ui-select-match>
                 <ui-select-choices repeat="soft in availableSoftDev | filter:$select.search">
                   {{soft.name}} <i>{{soft.desc}}</i>
                 </ui-select-choices>
@@ -97,7 +97,7 @@
               ng-required="record.projectType >= 2" ng-model="svPair.datatransfer"
               theme="bootstrap"
               sortable="true">
-              <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+              <ui-select-match placeholder="Select the desired Data Transfer tools">{{$item.name}}</ui-select-match>
               <ui-select-choices repeat="soft in availableDataTransfer | filter:$select.search">
                 {{soft.name}} <i>{{soft.desc}}</i>
               </ui-select-choices>
@@ -111,7 +111,7 @@
             ng-required="record.projectType >= 2" ng-model="svPair.collabs"
             theme="bootstrap"
             sortable="true">
-            <ui-select-match placeholder="Click to select">{{$item.title}}</ui-select-match>
+            <ui-select-match placeholder="Select the HBP Collabs related to the deliverable">{{$item.title}}</ui-select-match>
             <ui-select-choices repeat="collab in availableCollab | filter:$select.search">
               {{collab.title}}
             </ui-select-choices>
@@ -130,7 +130,7 @@
             ng-required="record.projectType >= 2" ng-model="svPair.virtualization"
             theme="bootstrap"
             sortable="true">
-            <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+            <ui-select-match placeholder="Select the desired Virtualization tools">{{$item.name}}</ui-select-match>
             <ui-select-choices repeat="virtualization in availableVirtualization | filter:$select.search">
               {{virtualization.name}} <i>{{virtualization.desc}}</i>
             </ui-select-choices>
@@ -146,7 +146,7 @@
           ng-required="record.projectType >= 2" ng-model="svPair.devenv"
           theme="bootstrap"
           sortable="true">
-          <ui-select-match placeholder="Click to select">{{$item.name}}</ui-select-match>
+          <ui-select-match placeholder="Select the desired Development environment">{{$item.name}}</ui-select-match>
           <ui-select-choices repeat="devenv in availableDevEnv | filter:$select.search">
             {{devenv.name}} <i>{{devenv.desc}}</i>
           </ui-select-choices>
@@ -186,7 +186,7 @@
           ng-required="record.projectType >= 2" ng-model="h.type"
           theme="bootstrap"
           sortable="true">
-          <ui-select-match placeholder="Click to select">{{$select.selected.name}}</ui-select-match>
+          <ui-select-match placeholder="Select the desired System Architecture">{{$select.selected.name}}</ui-select-match>
           <ui-select-choices repeat="soft in availableArchitecture | filter:$select.search">
             {{soft.name}} <i>{{soft.desc}}</i>
           </ui-select-choices>
@@ -254,7 +254,7 @@
           ng-required="record.projectType >= 2" ng-model="h.type"
           theme="bootstrap"
           sortable="true">
-          <ui-select-match placeholder="Click to select">{{$select.selected.name}}</ui-select-match>
+          <ui-select-match placeholder="Select the desired Provider">{{$select.selected.name}}</ui-select-match>
           <ui-select-choices repeat="soft in availableArchitectureCloud | filter:$select.search">
             {{soft.name}} <i>{{soft.desc}}</i>
           </ui-select-choices>
@@ -322,25 +322,25 @@
       <div ng-show="hard.open">
         <div >
           Name
-          <input type="text" class="form-control" style="width:100%" ng-required="record.projectType >= 2" ng-model="hard.name">
+          <input type="text" class="form-control" style="width:100%" ng-required="record.projectType >= 2" ng-model="hard.name" placeholder="Name of the desired Hardware">
         </div>
         <div>
           <table>
             <td class="inTwo">
               Price
-              <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.price">
+              <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.price" placeholder="Price in CHF">
             </td>
             <td class="inTwoEmptySeparator">
             </td>
             <td class="inTwo">
               Link
-              <input type="URL" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.link">
+              <input type="URL" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.link" placeholder="Link to the desired Hardware">
             </td>
           </table>
         </div>
         <div>
           Description
-          <textarea class="form-control"  ng-required="record.projectType >= 2" ng-model="hard.description">
+          <textarea class="form-control"  ng-required="record.projectType >= 2" ng-model="hard.description" placeholder="Short explanation why it is needed">
           </textarea>
         </div>
         <div button type="button" class="close" aria-label="Remove" ng-click="deleteHardware(hard,svPair)">
