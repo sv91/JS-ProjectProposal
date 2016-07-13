@@ -12,6 +12,9 @@ angular.module('projectProposalApp')
 
   $scope.summ.softdev=[];
   $scope.summ.collabs=[];
+  $scope.summ.datatransfer=[];
+  $scope.summ.virtualization=[];
+  $scope.summ.devenv=[];
   $scope.summ.architecture=[];
   $scope.summ.architectureC=[];
   $scope.summ.hpc={'runs':0,'partition':0,'time':0,'numarte':0,'sizearte':0};
@@ -65,53 +68,63 @@ angular.module('projectProposalApp')
   function refresh(){
     angular.forEach($scope.record.deliverables,function(val){
       var temp ={};
-        temp.softdev=[];
-        temp.collabs=[];
-        temp.architecture=[];
-        temp.architectureC=[];
-        temp.hpc={'runs':0,'partition':0,'time':0,'numarte':0,'sizearte':0};
-        temp.cloud={'runs':0,'partition':0,'time':0,'numarte':0,'sizearte':0};
-        temp.hardware=[];
-        temp.members=[];
-        temp.name=val.name;
-        temp.date=val.date;
-        temp.risks=val.risks;
-        temp.desc=val.description;
-        temp.dependency=val.dependency;
+      temp.softdev=[];
+      temp.datatransfer=[];
+      temp.virtualization=[];
+      temp.devenv=[];
+      temp.collabs=[];
+      temp.architecture=[];
+      temp.architectureC=[];
+      temp.hpc={'runs':0,'partition':0,'time':0,'numarte':0,'sizearte':0};
+      temp.cloud={'runs':0,'partition':0,'time':0,'numarte':0,'sizearte':0};
+      temp.hardware=[];
+      temp.members=[];
+      temp.name=val.name;
+      temp.date=val.date;
+      temp.risks=val.risks;
+      temp.desc=val.description;
+      temp.dependency=val.dependency;
 
-
-      angular.forEach(val.softdev,function(val2){
-        if ($scope.summ.softdev.indexOf(val2)==-1){
-          $scope.summ.softdev.push(val2);
-        }
-          if (temp.softdev.indexOf(val2)==-1){
-            temp.softdev.push(val2);
+      function add(origin,summ,tempo){
+        angular.forEach(origin,function(val2){
+          if (summ.indexOf(val2)==-1){
+            summ.push(val2);
           }
-      })
+          if (tempo.indexOf(val2)==-1){
+            tempo.push(val2);
+          }
+        })
+      }
+      add(val.softdev,$scope.summ.softdev,temp.softdev);
+      add(val.datatransfer,$scope.summ.datatransfer,temp.datatransfer);
+      add(val.virtualization,$scope.summ.virtualization,temp.virtualization);
+      add(val.devenv,$scope.summ.devenv,temp.devenv);
+      add(val.hardware,$scope.summ.hardware,temp.hardware);
+
       angular.forEach(val.members,function(val2){
-          var tempM = {'name':'','pm':''};
-          tempM.name=val2.name;
-          tempM.pm=val2.pm;
-            var index = findMember(val2.name,$scope.summ.members);
+        var tempM = {'name':'','pm':''};
+        tempM.name=val2.name;
+        tempM.pm=val2.pm;
+        var index = findMember(val2.name,$scope.summ.members);
         if (index==-1){
           $scope.summ.members.push(tempM);
         } else {
           $scope.summ.members[index].pm = parseInt($scope.summ.members[index].pm) + parseInt(val2.pm);
         }
-          var indexD = findMember(val2.name,temp.members);
-      if (indexD==-1){
-        temp.members.push(tempM);
-      } else {
-        temp.members[index].pm = parseInt(temp.members[index].pm) + parseInt(val2.pm);
-      }
+        var indexD = findMember(val2.name,temp.members);
+        if (indexD==-1){
+          temp.members.push(tempM);
+        } else {
+          temp.members[index].pm = parseInt(temp.members[index].pm) + parseInt(val2.pm);
+        }
       })
       angular.forEach(val.collabs,function(val2){
         if ($scope.summ.collabs.indexOf(val2)==-1){
           $scope.summ.collabs.push(val2);
         }
-          if (temp.collabs.indexOf(val2)==-1){
-            temp.collabs.push(val2);
-          }
+        if (temp.collabs.indexOf(val2)==-1){
+          temp.collabs.push(val2);
+        }
       })
       angular.forEach(val.hpc,function(val2){
         if ($scope.summ.architecture.indexOf(val2.type)==-1){
@@ -153,24 +166,14 @@ angular.module('projectProposalApp')
         temp.cloud.sizearte+= addIfNotNull(val2.size)*addIfNotNull(val2.arte);
       })
 
-      angular.forEach(val.hardware,function(val2){
-        if(val2.name!=""){
-        if ($scope.summ.hardware.indexOf(val2)==-1){
-          $scope.summ.hardware.push(val2);
-        }
-        if (temp.hardware.indexOf(val2)==-1){
-          temp.hardware.push(val2);
-        }}
-      })
 
+        temp.cloud.sizearte = temp.cloud.sizearte/temp.cloud.numarte;
+        temp.hpc.sizearte = temp.hpc.sizearte/temp.hpc.numarte;
+        $scope.summ.deliverables.push(temp);
+      });
 
-          temp.cloud.sizearte = temp.cloud.sizearte/temp.cloud.numarte;
-          temp.hpc.sizearte = temp.hpc.sizearte/temp.hpc.numarte;
-    $scope.summ.deliverables.push(temp);
-    });
-
-        $scope.summ.cloud.sizearte = $scope.summ.cloud.sizearte/$scope.summ.cloud.numarte;
-        $scope.summ.hpc.sizearte = $scope.summ.hpc.sizearte/$scope.summ.hpc.numarte;
-  }
-  refresh();
-});
+      $scope.summ.cloud.sizearte = $scope.summ.cloud.sizearte/$scope.summ.cloud.numarte;
+      $scope.summ.hpc.sizearte = $scope.summ.hpc.sizearte/$scope.summ.hpc.numarte;
+    }
+    refresh();
+  });
