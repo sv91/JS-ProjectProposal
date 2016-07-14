@@ -104,7 +104,6 @@ angular
 		{'name':'IBM POWER7, POWER8','desc':''},
 		{'name':'Nvidia GPU','desc':''}
 	];
-
 	$scope.availableArchitectureCloud = [
 		{'name':'Amazon','desc':''},
 		{'name':'BBP OpenStack','desc':''},
@@ -119,7 +118,6 @@ angular
 		{'name':'Python','desc':'(2.6, 2.7, 3.1, 3.2)'},
 		{'name':'Parallel environment','desc':'(MPI, OpenMP, Spark, ...)'}
 	];
-
 	$scope.availableTeams = [
 		{'name':'Algorithms','shortName':'Algo','displayName':''},
 		{'name':'Analysis','shortName':'Ana','displayName':''},
@@ -134,7 +132,6 @@ angular
 		{'name':'Sub Cellular','shortName':'Sub','displayName':''},
 		{'name':'Visualization','shortName':'Viz','displayName':''}
 	];
-
 	angular.forEach($scope.availableTeams,function(val){
 		val.displayName = 'BBP Team: ' + val.name;
 	});
@@ -154,23 +151,17 @@ angular
 		{'name':'Visualization','desc':'Define typical visualization, file format, software package to be used.'},
 		{'name':'Web application','desc':''}
 	];
-
 	$scope.availableFormats = [
 		{'name':'HDF5'},
 		{'name':'ASCII'}
 	];
 
+	// List of required fields for each level of proposal
 	$scope.requiredFields = {};
 	$scope.requiredFields.gold = [
 		{'field':'projectTitle'},
 		{'field':'projectStartDate'}
 	];
-
-	$scope.fields = [
-		{'name':'projectTitle','show':0,'required':0},
-		{'name':'projectStartDate','show':1,'required':2}
-	];
-
 	$scope.good = false;
 	$scope.log=[];
 	$scope.minDate = new Date();
@@ -234,6 +225,7 @@ $scope.$watchGroup(['record.projectType', 'record.projectStartDate'], function()
 	$scope.maxDate.setDate(dateTemp.getDate() + numberOfDaysToAdd);
 });
 
+// Load the Collabs informations 
 function loadCollabs() {
 	hbpCollabStore.list().then(function(rs) {return rs.toArray();})
 	.then(function(arr){

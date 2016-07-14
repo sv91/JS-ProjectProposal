@@ -11,6 +11,7 @@ angular.module('projectProposalApp')
 .controller('RequirementsCtrl', function () {
 })
 
+
 /**
 * @ngdoc directive
 * @name projectProposalApp.directive:publicationPicker
@@ -30,6 +31,8 @@ angular.module('projectProposalApp')
           {'title':'','open':true,'feature': '', 'requirement': '','type':'','input':[],'output':[]}
         ];
       }
+
+      
       /**
       * @ngdoc function
       * @name deleteRequirement
@@ -50,6 +53,7 @@ angular.module('projectProposalApp')
         scope.record.requirements.splice(index, 1);
       };
 
+
       /**
       * @ngdoc function
       * @name addRequirement
@@ -60,7 +64,6 @@ angular.module('projectProposalApp')
       scope.addRequirement = function () {
         scope.record.requirements.push({'title':'','open':true,'feature': '', 'requirements': '','type':'','input':[],'output':[]});
       };
-
 
 
       // Functions for the output ressources inside a requirement
@@ -84,6 +87,8 @@ angular.module('projectProposalApp')
         var indexOutput = scope.record.requirements[index].input.indexOf(item);
         scope.record.requirements[index].input.splice(indexOutput, 1);
       };
+
+
       /**
       * @ngdoc function
       * @name addInput
@@ -96,7 +101,6 @@ angular.module('projectProposalApp')
         var index = scope.record.requirements.indexOf(del);
         scope.record.requirements[index].input.push({'tag':'','format':'','number':'','size':'','open':true});
       };
-
 
 
       // Functions for the output ressources inside a requirement
@@ -120,6 +124,8 @@ angular.module('projectProposalApp')
         var indexOutput = scope.record.requirements[index].output.indexOf(item);
         scope.record.requirements[index].output.splice(indexOutput, 1);
       };
+
+
       /**
       * @ngdoc function
       * @name addOutput

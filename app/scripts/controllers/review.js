@@ -85,6 +85,16 @@ angular.module('projectProposalApp')
       temp.desc=val.description;
       temp.dependency=val.dependency;
 
+      /**
+      * @ngdoc function
+      * @name add
+      * @description
+      * # add
+      * Verify if a value is present in the two arrays and if not add it into it.
+      * @param {Object} origin The object to add.
+      * @param {Object} summ First array.
+      * @param {Object} tempo Second array.
+      */
       function add(origin,summ,tempo){
         angular.forEach(origin,function(val2){
           if (summ.indexOf(val2)==-1){
@@ -95,12 +105,15 @@ angular.module('projectProposalApp')
           }
         })
       }
+      // Filling the arrays
       add(val.softdev,$scope.summ.softdev,temp.softdev);
       add(val.datatransfer,$scope.summ.datatransfer,temp.datatransfer);
       add(val.virtualization,$scope.summ.virtualization,temp.virtualization);
       add(val.devenv,$scope.summ.devenv,temp.devenv);
       add(val.hardware,$scope.summ.hardware,temp.hardware);
+      add(val.collabs,$scope.summ.collabs,temp.collabs);
 
+      // Filling the members arrays
       angular.forEach(val.members,function(val2){
         var tempM = {'name':'','pm':''};
         tempM.name=val2.name;
@@ -118,14 +131,8 @@ angular.module('projectProposalApp')
           temp.members[index].pm = parseInt(temp.members[index].pm) + parseInt(val2.pm);
         }
       })
-      angular.forEach(val.collabs,function(val2){
-        if ($scope.summ.collabs.indexOf(val2)==-1){
-          $scope.summ.collabs.push(val2);
-        }
-        if (temp.collabs.indexOf(val2)==-1){
-          temp.collabs.push(val2);
-        }
-      })
+
+      // Filling the HPC arrays
       angular.forEach(val.hpc,function(val2){
         if ($scope.summ.architecture.indexOf(val2.type)==-1){
           $scope.summ.architecture.push(val2.type);
@@ -146,6 +153,7 @@ angular.module('projectProposalApp')
         temp.hpc.sizearte+= addIfNotNull(val2.size)*addIfNotNull(val2.arte);
       })
 
+      // Filling the Cloud arrays
       angular.forEach(val.cloud,function(val2){
         if ($scope.summ.architectureC.indexOf(val2.type)==-1){
           $scope.summ.architectureC.push(val2.type);
@@ -166,14 +174,15 @@ angular.module('projectProposalApp')
         temp.cloud.sizearte+= addIfNotNull(val2.size)*addIfNotNull(val2.arte);
       })
 
+      //Compute the averages for the deliverables
+      temp.cloud.sizearte = temp.cloud.sizearte/temp.cloud.numarte;
+      temp.hpc.sizearte = temp.hpc.sizearte/temp.hpc.numarte;
+      $scope.summ.deliverables.push(temp);
+    });
 
-        temp.cloud.sizearte = temp.cloud.sizearte/temp.cloud.numarte;
-        temp.hpc.sizearte = temp.hpc.sizearte/temp.hpc.numarte;
-        $scope.summ.deliverables.push(temp);
-      });
-
-      $scope.summ.cloud.sizearte = $scope.summ.cloud.sizearte/$scope.summ.cloud.numarte;
-      $scope.summ.hpc.sizearte = $scope.summ.hpc.sizearte/$scope.summ.hpc.numarte;
-    }
-    refresh();
-  });
+    //Compute the averages for the project
+    $scope.summ.cloud.sizearte = $scope.summ.cloud.sizearte/$scope.summ.cloud.numarte;
+    $scope.summ.hpc.sizearte = $scope.summ.hpc.sizearte/$scope.summ.hpc.numarte;
+  }
+  refresh();
+});

@@ -45,6 +45,7 @@ angular.module('projectProposalApp')
 
 })
 
+
 /**
 * @ngdoc filter
 * @name projectProposalApp.filter:dependencyFilter
@@ -77,6 +78,9 @@ angular.module('projectProposalApp')
     return depend ;
   }
 
+  /**
+  * Return the filter function
+  */
   return function(input, optional1) {
     var output=[];
     angular.forEach(input,function(val){
@@ -90,6 +94,7 @@ angular.module('projectProposalApp')
     return output;
   };
 })
+
 
 /**
 * @ngdoc directive
@@ -110,6 +115,7 @@ angular.module('projectProposalApp')
         ];
       }
 
+
       /**
       * @ngdoc function
       * @name deleteDeliverable
@@ -129,7 +135,6 @@ angular.module('projectProposalApp')
         }
         var index = scope.record.deliverables.indexOf(item);
         scope.record.deliverables.splice(index, 1);
-
       };
 
 
@@ -143,6 +148,7 @@ angular.module('projectProposalApp')
       scope.addDeliverable = function () {
         scope.record.deliverables.push({'name': '', 'date': '', 'risks': '','requirement':[], 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[],'cloud':[],'hardware':[]});
       };
+
 
       // Functions for the members inside a deliverable
       /**
@@ -178,6 +184,7 @@ angular.module('projectProposalApp')
         scope.record.deliverables[index].members.push({'name': '', 'role': '', 'pm':'','description':''});
       };
 
+      
       // Functions for the hardwares inside a deliverable
       /**
       * @ngdoc function
@@ -199,6 +206,8 @@ angular.module('projectProposalApp')
         var indexHardware = scope.record.deliverables[index].hardware.indexOf(item);
         scope.record.deliverables[index].hardware.splice(indexHardware, 1);
       };
+
+
       /**
       * @ngdoc function
       * @name addHardware
@@ -234,6 +243,8 @@ angular.module('projectProposalApp')
         var indexCloud = scope.record.deliverables[index].hpc.indexOf(item);
         scope.record.deliverables[index].hpc.splice(indexCloud, 1);
       };
+
+
       /**
       * @ngdoc function
       * @name addHpc
@@ -246,7 +257,6 @@ angular.module('projectProposalApp')
         var index = scope.record.deliverables.indexOf(del);
         scope.record.deliverables[index].hpc.push({'type': '', 'runs': '','open':true, 'part':'','time':'','arte':'','size':''});
       };
-
 
 
       // Functions for the cloud ressources inside a deliverable
@@ -270,6 +280,8 @@ angular.module('projectProposalApp')
         var indexCloud = scope.record.deliverables[index].cloud.indexOf(item);
         scope.record.deliverables[index].cloud.splice(indexCloud, 1);
       };
+
+
       /**
       * @ngdoc function
       * @name addCloud
