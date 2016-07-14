@@ -32,7 +32,7 @@ angular.module('projectProposalApp')
         ];
       }
 
-      
+
       /**
       * @ngdoc function
       * @name deleteRequirement

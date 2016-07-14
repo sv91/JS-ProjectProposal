@@ -76,14 +76,14 @@ angular.module('projectProposalApp')
     scope: true,
     template: '<hbp-user-selector hbp-on-select="handleUserSelection(user)"></hbp-user-selector><hbp-usercard hbp-user="record.copi" ></hbp-usercard></pre>',
     link: function(scope, elt, attr) {
-        /**
-        * @ngdoc function
-        * @name handleUserSelection
-        * @description
-        * # handleUserSelection
-        * Manage the user selection by checking if the input is not repeated in other fields.
-        * @param {Object} options The selected user.
-        */
+      /**
+      * @ngdoc function
+      * @name handleUserSelection
+      * @description
+      * # handleUserSelection
+      * Manage the user selection by checking if the input is not repeated in other fields.
+      * @param {Object} options The selected user.
+      */
       scope.handleUserSelection = function(options) {
         var pi = false;
         if(scope.record.pi != undefined){

@@ -184,7 +184,7 @@ angular.module('projectProposalApp')
         scope.record.deliverables[index].members.push({'name': '', 'role': '', 'pm':'','description':''});
       };
 
-      
+
       // Functions for the hardwares inside a deliverable
       /**
       * @ngdoc function
