@@ -2,7 +2,7 @@
   <label>
     Review
   </label><br />
-  
+
   <input id="whole" type="checkbox" class="plusMinus" ng-model="whole">
   <label for="whole" class="css-label"><span class="glyphicon glyphicon-plus"></span>
     <span class="glyphicon glyphicon-minus"></span> Whole Project
@@ -65,8 +65,8 @@
         <label>Grants</label>
         <ul ng-show="record.grants.length">
           <li ng-repeat="grant in record.grants">{{grant}}</li>
-          </ul
-          <span ng-hide="record.grants.length" class="nonePadding"><br />None<br /></span>
+        </ul>
+        <span ng-hide="record.grants.length" class="nonePadding"><br />None<br /></span>
         </div>
 
         <div class="form-group">
