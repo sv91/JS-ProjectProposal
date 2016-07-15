@@ -3,7 +3,15 @@
 </div>
 
 <script>
-
+/**
+* @ngdoc function
+* @name show
+* @description
+* # show
+* Display the associated div to the clicked picture and the opposite picture
+* and hide the clicked picture.
+* @param {string} img   Id of the clicked image.
+*/
 function show(img){
   img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="";
   img.parentNode.getElementsByTagName("span")[1].style.display="inline";
@@ -11,6 +19,15 @@ function show(img){
   resetBubble();
 }
 
+/**
+* @ngdoc function
+* @name hide
+* @description
+* # hide
+* Hide the associated div to the clicked picture and the clicked picture
+* and show the opposite picture.
+* @param {string} img   Id of the clicked image.
+*/
 function hide(img){
   img.parentNode.parentNode.parentNode.parentNode.parentNode.getElementsByTagName("div")[0].style.display="none";
   img.parentNode.getElementsByTagName("span")[0].style.display="inline";

@@ -49,6 +49,15 @@
 -->
 
 <script>
+/**
+* @ngdoc function
+* @name changeURL
+* @description
+* # changeURL
+* Change the target URL of an element.
+* @param {string} id      Id of the element.
+* @param {string} value   New URL adress.
+*/
 function changeURL(id,value){
   var doc = document.getElementById(id)
   doc.href = '#/form/'+value;
@@ -57,55 +66,20 @@ function changeURL(id,value){
   } else {
     doc.style = 'visibility:visible';
   }
-
 }
+
+/**
+* @ngdoc function
+* @name updateLinks
+* @description
+* # updateLinks
+* Change the target URL of the "previous" and "next" buttons.
+* @param {string} prev   New URL adress for the "previous" button.
+* @param {string} next   New URL adress for the "next" button.
+*/
 function updateLinks(prev,next){
   resetBubble();
   changeURL('prev',prev);
   changeURL('next',next);
-}
-
-function getParam(elem,type){
-  var name = elem.id;
-  var show = 0;
-  angular.forEach($scope.fields,function(elem){
-    if( elem.name == name ){
-      show = elem[type];
-  }
-  })
-  return show;
-}
-
-function setSettings(elem){
-  var name = elem.id;
-  var level = 0;
-  switch($scope.record.projectType) {
-    case 'gold':
-    level = 2;
-    break;
-    case 'silver':
-    level = 1;
-    break;
-    case 'bronze':
-    level = 0;
-    break;
-    default:
-    level = 0;
-  }
-  var req = 0;
-  var show = 0;
-  angular.forEach($scope.fields,function(elem){
-    if( elem.name == name ){
-      req = elem.required;
-      show = elem.show;
-  }
-})
-  if(show < level){
-    elem.display = 'none';
-  }
-
-  if(req >= level){
-    elem.required = true;
-  }
 }
 </script>
