@@ -391,8 +391,13 @@ input:read-only:required {
   visibility: hidden;
 }
 
-.corner{
-  width: 50px;
+.cornerS{
+  width: 48px;
+  height: 175px;
+}
+
+.cornerB{
+  width: 54px;
   height: 175px;
 }
 
