@@ -26,399 +26,357 @@
         <md-datepicker ng-required="record.projectType >= 2" ng-model="svPair.date"
           md-placeholder="Enter date"
           md-min-date="record.projectStartDate"
-          md-max-date="record.projectEndDate"></md-datepicker>
-        </div>
-        <br />
-        <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'A short description.')">
-          <label>Description</label>
-          <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.description" placeholder="A short description" required>
-          </textarea>
-        </div>
-        <br />
-        <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some risks.')">
-          <label>Risks</label>
-          <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.risks" placeholder="Risks of the deliverable" required>
-          </textarea>
-        </div>
-        <br />
-        <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Dependencies of the deliverable to other deliverables.')">
-          <label>Deliverable Dependencies</label>
-          <ui-select
-          multiple
-          ng-required="record.projectType >= 2" ng-model="svPair.dependency"
-          theme="bootstrap"
-          sortable="true">
+          md-max-date="record.projectEndDate">
+        </md-datepicker>
+      </div>
+      <br />
+      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'A short description.')">
+        <label>Description</label>
+        <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.description" placeholder="A short description" required>
+        </textarea>
+      </div>
+      <br />
+      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some risks.')">
+        <label>Risks</label>
+        <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.risks" placeholder="Risks of the deliverable" required>
+        </textarea>
+      </div>
+      <br />
+      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Dependencies of the deliverable to other deliverables.')">
+        <label>Deliverable Dependencies</label>
+        <ui-select multiple ng-required="record.projectType >= 2" ng-model="svPair.dependency" theme="bootstrap" sortable="true">
           <ui-select-match placeholder="Select the dependencies to any other deliverable">{{$item.name}}</ui-select-match>
           <ui-select-choices repeat="dependency in record.deliverables | filter:$select.search | dependencyFilter : svPair.name">{{dependency.name}}</ui-select-choices>
         </ui-select>
       </div>
       <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Dependencies of the deliverable to previously defined requirements.')">
         <label>Requirement Dependencies</label>
-        <ui-select
-        multiple
-        ng-required="record.projectType >= 2" ng-model="svPair.requirements"
-        theme="bootstrap"
-        sortable="true">
-        <ui-select-match placeholder="Select the dependencies to any requirement">{{$item.title}}</ui-select-match>
-        <ui-select-choices repeat="requirement in record.requirements | filter:$select.search">{{requirement.title}}</ui-select-choices>
-      </ui-select>
-      <br />
-    </div>
-    <div class="midform">
-      <label>Computing, Storage and Services resources</label>
-      <div class="p10-5">
-        <label>Software as a Service (SaaS)</label>
-        <div class="p10">
-          <table width="100%">
-            <tr>
-              <td class="inTwo" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Select the needed tools.')">
-                Software development
-                <ui-select
-                multiple
-                ng-required="record.projectType >= 2" ng-model="svPair.softdev"
-                theme="bootstrap"
-                sortable="true">
-                <ui-select-match placeholder="Select the desired Sofware development tools">{{$item.name}}</ui-select-match>
-                <ui-select-choices repeat="soft in availableSoftDev | filter:$select.search">{{soft.name}} <i>{{soft.desc}}</i></ui-select-choices>
+        <ui-select multiple ng-required="record.projectType >= 2" ng-model="svPair.requirements" heme="bootstrap" sortable="true">
+          <ui-select-match placeholder="Select the dependencies to any requirement">{{$item.title}}</ui-select-match>
+          <ui-select-choices repeat="requirement in record.requirements | filter:$select.search">{{requirement.title}}</ui-select-choices>
+        </ui-select>
+        <br />
+      </div>
+      <div class="midform">
+        <label>Computing, Storage and Services resources</label>
+        <div class="p10-5">
+          <label>Software as a Service (SaaS)</label>
+          <div class="p10">
+            <table width="100%">
+              <tr>
+                <td class="inTwo" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Select the needed tools.')">
+                  Software development
+                  <ui-select multiple ng-required="record.projectType >= 2" ng-model="svPair.softdev" theme="bootstrap" sortable="true">
+                    <ui-select-match placeholder="Select the desired Sofware development tools">{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="soft in availableSoftDev | filter:$select.search">{{soft.name}} <i>{{soft.desc}}</i></ui-select-choices>
+                  </ui-select>
+                </td>
+                <td class="inTwoEmptySeparator">
+                </td>
+                <td class="inTwo" ng-show="record.projectType >= 1" >
+                  Data Transfer
+                  <ui-select multiple ng-required="record.projectType >= 2" ng-model="svPair.datatransfer" theme="bootstrap" sortable="true">
+                    <ui-select-match placeholder="Select the desired Data Transfer tools">{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="soft in availableDataTransfer | filter:$select.search">{{soft.name}} <i>{{soft.desc}}</i></ui-select-choices>
+                  </ui-select>
+                </td>
+              </tr>
+            </table>
+            <div ng-show="record.projectType >= 1" >HBP Collab
+              <ui-select onclick="updateBubble(this,'Select related Collab.')" multiple ng-required="record.projectType >= 2" ng-model="svPair.collabs" theme="bootstrap" sortable="true">
+                <ui-select-match placeholder="Select the HBP Collabs related to the deliverable">{{$item.title}}</ui-select-match>
+                <ui-select-choices repeat="collab in availableCollab | filter:$select.search">{{collab.title}}</ui-select-choices>
               </ui-select>
-            </td>
-            <td class="inTwoEmptySeparator">
-            </td>
-            <td class="inTwo" ng-show="record.projectType >= 1" >
-              Data Transfer
-              <ui-select
-              multiple
-              ng-required="record.projectType >= 2" ng-model="svPair.datatransfer"
-              theme="bootstrap"
-              sortable="true">
-              <ui-select-match placeholder="Select the desired Data Transfer tools">{{$item.name}}</ui-select-match>
-              <ui-select-choices repeat="soft in availableDataTransfer | filter:$select.search">{{soft.name}} <i>{{soft.desc}}</i></ui-select-choices>
-            </ui-select>
-          </td>
-        </tr>
-      </table>
-      <div ng-show="record.projectType >= 1" >HBP Collab
-        <ui-select
-        onclick="updateBubble(this,'Select related Collab.')"
-        multiple
-        ng-required="record.projectType >= 2" ng-model="svPair.collabs"
-        theme="bootstrap"
-        sortable="true">
-        <ui-select-match placeholder="Select the HBP Collabs related to the deliverable">{{$item.title}}</ui-select-match>
-        <ui-select-choices repeat="collab in availableCollab | filter:$select.search">{{collab.title}}</ui-select-choices>
-      </ui-select>
-    </div>
-  </div>
-</div>
-<div class="p10-5">
-  <label>Platform as a Service (PaaS)</label>
-  <div class="p10">
-    <table width="100%">
-      <tr>
-        <td class="inTwo" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Select the needed tools.')">
-          Virtualization
-          <ui-select
-          multiple
-          ng-required="record.projectType >= 2" ng-model="svPair.virtualization"
-          theme="bootstrap"
-          sortable="true">
-          <ui-select-match placeholder="Select the desired Virtualization tools">{{$item.name}}</ui-select-match>
-          <ui-select-choices repeat="virtualization in availableVirtualization | filter:$select.search">{{virtualization.name}} <i>{{virtualization.desc}}</i></ui-select-choices>
-        </ui-select>
-      </td>
-      <td class="inTwoEmptySeparator">
-      </td>
-      <td class="inTwo" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Select the needed tools.')">
-        Development environment
-        <ui-select
-        multiple
-        ng-required="record.projectType >= 2" ng-model="svPair.devenv"
-        theme="bootstrap"
-        sortable="true">
-        <ui-select-match placeholder="Select the desired Development environment">{{$item.name}}</ui-select-match>
-        <ui-select-choices repeat="devenv in availableDevEnv | filter:$select.search">
-          {{devenv.name}} <i>{{devenv.desc}}</i></ui-select-choices>
-        </ui-select>
-      </td>
-    </tr>
-  </table>
-</div>
-</div>
-<div class="p10-5">
-  <label>Infrastructure as a Service (IaaS)</label>
-
-
-  <div class="hpcList p10" data-ng-model="svPair.hpc" ng-show="record.projectType >= 1" >
-    <label>HPC resources
-    </label><br />
-    <div ng-repeat="h in svPair.hpc" >
-
-      <input id="hpc{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
-      <label for="hpc{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
-        <span class="glyphicon glyphicon-minus"></span>
-      </label>
-      <div ng-hide="h.open">
-        <label>
-          HPC resource n°{{$index + 1}}:
-        </label> {{h.type.name}}
-        <div button type="button" class="close" aria-label="Remove" ng-click="deleteHpc(h,svPair)">
-          <span aria-hidden="true">&times;
-          </span>
-        </div>
-      </div>
-
-      <div ng-show="h.open">
-        <!--<pre>{{ngModel|json}}</pre>-->
-        System Architecture
-        <ui-select
-        ng-show="record.projectType >= 1" onclick="updateBubble(this,'System Architecture.')"
-        ng-required="record.projectType >= 2" ng-model="h.type"
-        theme="bootstrap"
-        sortable="true">
-        <ui-select-match placeholder="Select the desired System Architecture">{{$select.selected.name}}</ui-select-match>
-        <ui-select-choices repeat="soft in availableArchitecture | filter:$select.search">
-          {{soft.name}} <i>{{soft.desc}}</i>
-        </ui-select-choices>
-      </ui-select>
-      <br />
-      <table width="100%"><tr>
-        <td class="inTwo">
-          HPC Computing
-          <div class="p10 form-group">
-            Total number of runs
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.runs" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of runs.')">
-            Average partition size (Number of processors)
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.part" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average partition size (Number of processors).')">
-            Time to solution (In hours)
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.time" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Time to solution (In hours).')">
-          </div>
-        </td>
-        <td class="inTwoEmptySeparator">
-        </td>
-        <td class="inTwo">
-          HPC Storage
-          <div class="p10 form-group">
-            Number of artefacts
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.arte" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
-            Average size of artefacts (in GB)
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.size" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
-          </div>
-        </td></tr></table>
-        <div button type="button" class="close" aria-label="Remove" ng-click="deleteHpc(h,svPair)">
-          <span aria-hidden="true">&times;</span>
-        </div>
-        <hr/>
-      </div>
-
-
-
-    </div>
-    <br />
-    <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Resource</div>
-  </div>
-  <hr />
-
-  <div class="cloudList p10" data-ng-model="svPair.cloud" ng-show="record.projectType >= 1" >
-    <label>Cloud resources
-    </label><br />
-    <div ng-repeat="h in svPair.cloud">
-      <input id="cloud{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
-      <label for="cloud{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
-        <span class="glyphicon glyphicon-minus"></span>
-      </label>
-      <div ng-hide="h.open">
-        <label>
-          Cloud resource n°{{$index + 1}}:
-        </label> {{h.type.name}}
-        <div button type="button" class="close" aria-label="Remove" ng-click="deleteCloud(h,svPair)">
-          <span aria-hidden="true">&times;
-          </span>
-        </div>
-      </div>
-      <div ng-show="h.open">
-        <!--<pre>{{ngModel|json}}</pre>-->
-        Provider
-        <ui-select
-        ng-show="record.projectType >= 1" onclick="updateBubble(this,'Provider.')"
-        ng-required="record.projectType >= 2" ng-model="h.type"
-        theme="bootstrap"
-        sortable="true">
-        <ui-select-match placeholder="Select the desired Provider">{{$select.selected.name}}</ui-select-match>
-        <ui-select-choices repeat="soft in availableArchitectureCloud | filter:$select.search">
-          {{soft.name}} <i>{{soft.desc}}</i>
-        </ui-select-choices>
-      </ui-select>
-      <br />
-      <table width="100%"><tr>
-        <td class="inTwo">
-          Cloud Computing
-          <div class="p10 form-group">
-            Total number of runs
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.runs" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of runs.')">
-            Average partition size (Number of processors)
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.part" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average partition size (Number of processors).')">
-            Time to solution (In hours)
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.time" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Time to solution (In hours).')">
-          </div>
-        </td>
-        <td class="inTwoEmptySeparator">
-        </td>
-        <td class="inTwo">
-          Cloud Storage
-          <div class="p10 form-group">
-            Number of artefacts
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.arte" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
-            Average size of artefacts (in GB)
-            <input type="number" ng-required="record.projectType >= 2" ng-model="h.size" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
-          </div>
-        </td></tr></table>
-        <div button type="button" class="close" aria-label="Remove" ng-click="deleteCloud(h,svPair)">
-          <span aria-hidden="true">&times;</span>
-        </div>
-        <hr/>
-      </div>
-    </div>
-    <br />
-    <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Resource</div>
-  </div>
-</div><br />
-
-
-
-
-
-
-<div class="p10-5">
-  <div ng-show="record.projectType >= 1" >
-    <label>Hardware as a Service (HaaS)</label>
-
-    <div class="p10 form-group" data-ng-model="svPair.hardware" >
-      <div ng-repeat="hard in svPair.hardware">
-        <input id="hard{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="hard.open">
-        <label for="hard{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
-          <span class="glyphicon glyphicon-minus"></span>
-        </label>
-        <div ng-hide="hard.open">
-          <label>
-            Hardware n°{{$index + 1}}:
-          </label> {{hard.name}}
-          <div button type="button" class="close" aria-label="Remove" ng-click="deleteHardware(hard,svPair)">
-            <span aria-hidden="true">&times;
-            </span>
+            </div>
           </div>
         </div>
-
-        <div ng-show="hard.open">
-          <div >
-            Name
-            <input type="text" class="form-control" style="width:100%" ng-required="record.projectType >= 2" ng-model="hard.name" placeholder="Name of the desired Hardware">
+        <div class="p10-5">
+          <label>Platform as a Service (PaaS)</label>
+          <div class="p10">
+            <table width="100%">
+              <tr>
+                <td class="inTwo" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Select the needed tools.')">
+                  Virtualization
+                  <ui-select multiple ng-required="record.projectType >= 2" ng-model="svPair.virtualization" theme="bootstrap" sortable="true">
+                    <ui-select-match placeholder="Select the desired Virtualization tools">{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="virtualization in availableVirtualization | filter:$select.search">{{virtualization.name}} <i>{{virtualization.desc}}</i></ui-select-choices>
+                  </ui-select>
+                </td>
+                <td class="inTwoEmptySeparator">
+                </td>
+                <td class="inTwo" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Select the needed tools.')">
+                  Development environment
+                  <ui-select multiple ng-required="record.projectType >= 2" ng-model="svPair.devenv" theme="bootstrap" sortable="true">
+                    <ui-select-match placeholder="Select the desired Development environment">{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="devenv in availableDevEnv | filter:$select.search">
+                      {{devenv.name}} <i>{{devenv.desc}}</i></ui-select-choices>
+                    </ui-select>
+                  </td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div>
+          <div class="p10-5">
+            <label>Infrastructure as a Service (IaaS)</label>
+
+
+            <div class="hpcList p10" data-ng-model="svPair.hpc" ng-show="record.projectType >= 1" >
+              <label>HPC resources
+              </label><br />
+              <div ng-repeat="h in svPair.hpc" >
+
+                <input id="hpc{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
+                <label for="hpc{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+                  <span class="glyphicon glyphicon-minus"></span>
+                </label>
+                <div ng-hide="h.open">
+                  <label>
+                    HPC resource n°{{$index + 1}}:
+                  </label> {{h.type.name}}
+                  <div button type="button" class="close" aria-label="Remove" ng-click="deleteHpc(h,svPair)">
+                    <span aria-hidden="true">&times;
+                    </span>
+                  </div>
+                </div>
+
+                <div ng-show="h.open">
+                  <!--<pre>{{ngModel|json}}</pre>-->
+                  System Architecture
+                  <ui-select ng-show="record.projectType >= 1" onclick="updateBubble(this,'System Architecture.')" ng-required="record.projectType >= 2" ng-model="h.type" theme="bootstrap" sortable="true">
+                    <ui-select-match placeholder="Select the desired System Architecture">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="soft in availableArchitecture | filter:$select.search">
+                      {{soft.name}} <i>{{soft.desc}}</i>
+                    </ui-select-choices>
+                  </ui-select>
+                  <br />
+                  <table width="100%">
+                    <tr>
+                      <td class="inTwo">
+                        HPC Computing
+                        <div class="p10 form-group">
+                          Total number of runs
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.runs" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of runs.')">
+                          Average partition size (Number of processors)
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.part" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average partition size (Number of processors).')">
+                          Time to solution (In hours)
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.time" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Time to solution (In hours).')">
+                        </div>
+                      </td>
+                      <td class="inTwoEmptySeparator">
+                      </td>
+                      <td class="inTwo">
+                        HPC Storage
+                        <div class="p10 form-group">
+                          Number of artefacts
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.arte" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
+                          Average size of artefacts (in GB)
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.size" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div button type="button" class="close" aria-label="Remove" ng-click="deleteHpc(h,svPair)">
+                    <span aria-hidden="true">&times;</span>
+                  </div>
+                  <hr/>
+                </div>
+
+
+
+              </div>
+              <br />
+              <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Resource</div>
+            </div>
+            <hr />
+
+            <div class="cloudList p10" data-ng-model="svPair.cloud" ng-show="record.projectType >= 1" >
+              <label>Cloud resources
+              </label><br />
+              <div ng-repeat="h in svPair.cloud">
+                <input id="cloud{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="h.open">
+                <label for="cloud{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+                  <span class="glyphicon glyphicon-minus"></span>
+                </label>
+                <div ng-hide="h.open">
+                  <label>
+                    Cloud resource n°{{$index + 1}}:
+                  </label> {{h.type.name}}
+                  <div button type="button" class="close" aria-label="Remove" ng-click="deleteCloud(h,svPair)">
+                    <span aria-hidden="true">&times;
+                    </span>
+                  </div>
+                </div>
+                <div ng-show="h.open">
+                  <!--<pre>{{ngModel|json}}</pre>-->
+                  Provider
+                  <ui-select ng-show="record.projectType >= 1" onclick="updateBubble(this,'Provider.')" ng-required="record.projectType >= 2" ng-model="h.type" theme="bootstrap" sortable="true">
+                    <ui-select-match placeholder="Select the desired Provider">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="soft in availableArchitectureCloud | filter:$select.search">
+                      {{soft.name}} <i>{{soft.desc}}</i>
+                    </ui-select-choices>
+                  </ui-select>
+                  <br />
+                  <table width="100%">
+                    <tr>
+                      <td class="inTwo">
+                        Cloud Computing
+                        <div class="p10 form-group">
+                          Total number of runs
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.runs" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of runs.')">
+                          Average partition size (Number of processors)
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.part" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average partition size (Number of processors).')">
+                          Time to solution (In hours)
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.time" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Time to solution (In hours).')">
+                        </div>
+                      </td>
+                      <td class="inTwoEmptySeparator">
+                      </td>
+                      <td class="inTwo">
+                        Cloud Storage
+                        <div class="p10 form-group">
+                          Number of artefacts
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.arte" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
+                          Average size of artefacts (in GB)
+                          <input type="number" ng-required="record.projectType >= 2" ng-model="h.size" min="0" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Average size of artefacts (in GB).')">
+                        </div>
+                      </td>
+                    </tr>
+                  </table>
+                  <div button type="button" class="close" aria-label="Remove" ng-click="deleteCloud(h,svPair)">
+                    <span aria-hidden="true">&times;</span>
+                  </div>
+                  <hr/>
+                </div>
+              </div>
+              <br />
+              <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Resource</div>
+            </div>
+          </div>
+          <br />
+
+          <div class="p10-5">
+            <div ng-show="record.projectType >= 1" >
+              <label>Hardware as a Service (HaaS)</label>
+
+              <div class="p10 form-group" data-ng-model="svPair.hardware" >
+                <div ng-repeat="hard in svPair.hardware">
+                  <input id="hard{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="hard.open">
+                  <label for="hard{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+                    <span class="glyphicon glyphicon-minus"></span>
+                  </label>
+                  <div ng-hide="hard.open">
+                    <label>
+                      Hardware n°{{$index + 1}}:
+                    </label> {{hard.name}}
+                    <div button type="button" class="close" aria-label="Remove" ng-click="deleteHardware(hard,svPair)">
+                      <span aria-hidden="true">&times;
+                      </span>
+                    </div>
+                  </div>
+
+                  <div ng-show="hard.open">
+                    <div >
+                      Name
+                      <input type="text" class="form-control" style="width:100%" ng-required="record.projectType >= 2" ng-model="hard.name" placeholder="Name of the desired Hardware">
+                    </div>
+                    <div>
+                      <table>
+                        <td class="inTwo">
+                          Price
+                          <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.price" placeholder="Price in CHF">
+                        </td>
+                        <td class="inTwoEmptySeparator">
+                        </td>
+                        <td class="inTwo">
+                          Link
+                          <input type="URL" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.link" placeholder="Link to the desired Hardware">
+                        </td>
+                      </table>
+                    </div>
+                    <div>
+                      Description
+                      <textarea class="form-control"  ng-required="record.projectType >= 2" ng-model="hard.description" placeholder="Short explanation why it is needed">
+                      </textarea>
+                    </div>
+                    <div button type="button" class="close" aria-label="Remove" ng-click="deleteHardware(hard,svPair)">
+                      <span aria-hidden="true">&times;</span>
+                    </div>
+                    <hr />
+                  </div>
+                </div>
+              </div>
+              <br />
+              <div class="btn btn-default" ng-click="addHardware(svPair)">Add hardware</div>
+            </div>
+          </div>
+
+          <br />
+          <div ng-show="record.projectType >= 1" >
+            <label>Human resources</label>
+
             <table>
-              <td class="inTwo">
-                Price
-                <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.price" placeholder="Price in CHF">
+              <td class="memberName">
+                <label>Name</label>
               </td>
-              <td class="inTwoEmptySeparator">
+              <td class="memberRole">
+                <label>Role</label>
               </td>
-              <td class="inTwo">
-                Link
-                <input type="URL" class="form-control" ng-required="record.projectType >= 2" ng-model="hard.link" placeholder="Link to the desired Hardware">
+              <td class="memberPm">
+                <label>Person/Month</label>
+              </td>
+              <td class="memberDesc">
+                <label>Description</label>
+              </td>
+              <td class="memberButton" align="right">
+                <label>Delete</label>
               </td>
             </table>
+
+            <div class="memberList" data-ng-model="svPair.members">
+              <div ng-repeat="member in svPair.members">
+                <div>
+                  <!--<pre>{{ngModel|json}}</pre>-->
+                  <table>
+                    <td class="memberName">
+                      <select ng-required="record.projectType >= 2" ng-model="member.name">
+                        <option ng-repeat="people in membersAndLead" value="{{people.displayName}}">{{people.displayName}}</option>
+                      </select>
+                    </td>
+                    <td class="memberRole">
+                      <select ng-required="record.projectType >= 2" ng-model="member.role">
+                        <option ng-repeat="role in availableRoles" value="{{role}}">{{role}}</option>
+                      </select>
+                    </td>
+                    <td class="memberPm">
+                      <input type="number" class=""
+                      ng-required="record.projectType >= 2" ng-model="member.pm">
+                    </td>
+                    <td class="memberDesc">
+                      <input type="text" class=""
+                      placeholder="Description"
+                      ng-required="record.projectType >= 2" ng-model="member.description">
+                    </td>
+                    <td class="memberButtom">
+                      <div button type="button" class="close" aria-label="Remove" ng-click="deleteMember(member,svPair)">
+                        <span aria-hidden="true">&times;</span>
+                      </div>
+                    </td>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="btn btn-default" ng-click="addMember(svPair)">Add members</div>
           </div>
-          <div>
-            Description
-            <textarea class="form-control"  ng-required="record.projectType >= 2" ng-model="hard.description" placeholder="Short explanation why it is needed">
-            </textarea>
-          </div>
-          <div button type="button" class="close" aria-label="Remove" ng-click="deleteHardware(hard,svPair)">
+
+        </div>
+        <div align="right">
+          Delete this Deliverable<br />
+          <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
             <span aria-hidden="true">&times;</span>
           </div>
-          <hr />
         </div>
       </div>
-    </div>
-    <br />
-    <div class="btn btn-default" ng-click="addHardware(svPair)">Add hardware</div>
-  </div>
-</div>
-
-
-
-
-
-
-
-<br />
-<div ng-show="record.projectType >= 1" >
-  <label>Human resources</label>
-
-  <table>
-    <td class="memberName">
-      <label>Name</label>
-    </td>
-    <td class="memberRole">
-      <label>Role</label>
-    </td>
-    <td class="memberPm">
-      <label>Person/Month</label>
-    </td>
-    <td class="memberDesc">
-      <label>Description</label>
-    </td>
-    <td class="memberButton" align="right">
-      <label>Delete</label>
-    </td>
-  </table>
-
-  <div class="memberList" data-ng-model="svPair.members">
-    <div ng-repeat="member in svPair.members">
-      <div>
-        <!--<pre>{{ngModel|json}}</pre>-->
-        <table>
-          <td class="memberName">
-            <select ng-required="record.projectType >= 2" ng-model="member.name">
-              <option ng-repeat="people in membersAndLead" value="{{people.displayName}}">{{people.displayName}}</option>
-            </select>
-          </td>
-          <td class="memberRole">
-            <select ng-required="record.projectType >= 2" ng-model="member.role">
-              <option ng-repeat="role in availableRoles" value="{{role}}">{{role}}</option>
-            </select>
-          </td>
-          <td class="memberPm">
-            <input type="number" class=""
-            ng-required="record.projectType >= 2" ng-model="member.pm">
-          </td>
-          <td class="memberDesc">
-            <input type="text" class=""
-            placeholder="Description"
-            ng-required="record.projectType >= 2" ng-model="member.description">
-          </td>
-          <td class="memberButtom">
-            <div button type="button" class="close" aria-label="Remove" ng-click="deleteMember(member,svPair)">
-              <span aria-hidden="true">&times;</span>
-            </div>
-          </td>
-        </table>
-      </div>
+      <hr>
     </div>
   </div>
-  <div class="btn btn-default" ng-click="addMember(svPair)">Add members</div>
-</div>
-
-</div>
-<div align="right">
-  Delete this Deliverable<br />
-  <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
-    <span aria-hidden="true">&times;</span>
-  </div>
-</div>
-</div>
-<hr>
-</div>
-</div>
-</div>
-</div>
 <div class="btn btn-default" ng-click="addDeliverable()">Add a Deliverable</div>

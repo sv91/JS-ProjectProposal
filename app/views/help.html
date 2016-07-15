@@ -1,9 +1,9 @@
 <div class="container form middlePart" >
   <label>Need some help?
   </label>
-<br />
-    Did you first checked the F.A.Q. ?
-    <input type="checkbox" ng-model="faq" value="Yes"> Yes
+  <br />
+  Did you first checked the F.A.Q. ?
+  <input type="checkbox" ng-model="faq" value="Yes"> Yes
   <br/>
   <p><br/>If you have any question or comment, you can contact the support of this app by using this form.</p>
   <div>
@@ -11,17 +11,17 @@
       <input type="text" id="subject" placeholder="Message subject" class="form-control">
     </div>
     <br />
-      <div>
-        <select id="type" placeholder="Issue type" class="form-control">
-          <option ng-repeat="type in availableTypes" value={{type.name}}>{{type.name}} - <i>{{type.description}}</i></option>
-        </select>
-      </div>
-      <br />
     <div>
-    <div>
-      <textarea id="message" placeholder="Message ..." class="form-control"></textarea>
+      <select id="type" placeholder="Issue type" class="form-control">
+        <option ng-repeat="type in availableTypes" value={{type.name}}>{{type.name}} - <i>{{type.description}}</i></option>
+      </select>
     </div>
     <br />
+    <div>
+      <div>
+        <textarea id="message" placeholder="Message ..." class="form-control"></textarea>
+      </div>
+      <br />
     </div>
     <div align="right">
       <div class="btn btn-default" id="button" ng-disabled="!faq" onclick="sendMessage();">Send message</div>
@@ -35,14 +35,19 @@
 <script>
 updateLinks("","");
 
+/**
+* @ngdoc function
+* @name sendMessage
+* @description
+* # sendMessage
+* Create an email that the user can then send to the support.
+*/
 function sendMessage(){
   if(document.getElementById("button").getAttribute('disabled') != "disabled"){
-      var link = "mailto:alexander.vostriakov@epfl.ch"
-               + "?cc=myCCaddress@example.com"
-               + "&subject=" + escape("["+document.getElementById('type').value+"]"+document.getElementById('subject').value)
-               + "&body=" + escape(document.getElementById('message').value)
-      ;
-
-      window.location.href = link;}
-}
-</script>
+    var link = "mailto:alexander.vostriakov@epfl.ch"
+    + "?cc=myCCaddress@example.com"
+    + "&subject=" + escape("["+document.getElementById('type').value+"]"+document.getElementById('subject').value)
+    + "&body=" + escape(document.getElementById('message').value);
+    window.location.href = link;}
+  }
+  </script>

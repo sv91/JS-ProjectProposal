@@ -4,43 +4,37 @@
     <label>Project Leader</label>
     <div style="width:720px">
       <select-pi></select-pi>
-      </div>
+    </div>
   </div>
 
-<!-- Co-principal Investigator -->
-<div class="form-group" onclick="updateBubble(this,'Select the co-leader of this project if there is one.')" ng-show="record.projectType >= 1">
-  <label>Project Co-Leader</label>
-  <div style="width:720px">
-    <select-copi></select-copi>
+  <!-- Co-principal Investigator -->
+  <div class="form-group" onclick="updateBubble(this,'Select the co-leader of this project if there is one.')" ng-show="record.projectType >= 1">
+    <label>Project Co-Leader</label>
+    <div style="width:720px">
+      <select-copi></select-copi>
     </div>
-</div>
+  </div>
 
-<!-- Members -->
-<div class="form-group" onclick="updateBubble(this,'Select all the Human Brain Project members working on this project (Do not add the leader and co-leader).')" ng-show="record.projectType >= 1">
-  <label>Human Brain Project Members</label>
-  <div style="width:720px">
-    <multi-user-select></multi-user-select>
+  <!-- Members -->
+  <div class="form-group" onclick="updateBubble(this,'Select all the Human Brain Project members working on this project (Do not add the leader and co-leader).')" ng-show="record.projectType >= 1">
+    <label>Human Brain Project Members</label>
+    <div style="width:720px">
+      <multi-user-select></multi-user-select>
     </div>
-</div>
+  </div>
 
-
-<!-- Teams -->
-<div class="form-group" onclick="updateBubble(this,'Select the Blue Brain teams you will need.')" ng-show="record.projectType >= 1">
-  <label>Blue Brain Project Teams</label>
-  <div style="width:720px">
-    <ui-select
-    multiple
-    ng-model="record.teams"
-    theme="bootstrap"
-    sortable="true">
-    <ui-select-match placeholder="Click to select BBP Teams">{{$item.shortName}}</ui-select-match>
-    <ui-select-choices repeat="team in availableTeams | filter:$select.search">
-      {{team.shortName}} - {{team.name}}
-    </ui-select-choices>
-  </ui-select>
+  <!-- Teams -->
+  <div class="form-group" onclick="updateBubble(this,'Select the Blue Brain teams you will need.')" ng-show="record.projectType >= 1">
+    <label>Blue Brain Project Teams</label>
+    <div style="width:720px">
+      <ui-select multiple ng-model="record.teams" theme="bootstrap" sortable="true">
+        <ui-select-match placeholder="Click to select BBP Teams">{{$item.shortName}}</ui-select-match>
+        <ui-select-choices repeat="team in availableTeams | filter:$select.search">
+          {{team.shortName}} - {{team.name}}
+        </ui-select-choices>
+      </ui-select>
     </div>
-</div>
-
+  </div>
 </div>
 
 <script>

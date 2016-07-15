@@ -1,274 +1,274 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>HPC: Project Requests</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width">
-<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-<!-- build:css(.) styles/vendor.css -->
-<!-- bower:css -->
-<link rel="stylesheet" href="bower_components/angular-hbp-document-client/dist/angular-hbp-document-client.css" />
-<link rel="stylesheet" href="bower_components/select2/select2.css" />
-<link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-<!-- endbower -->
-<!-- endbuild -->
-<!-- build:css(.tmp) styles/main.css -->
-<link rel="stylesheet" href="bower_components/hbp-collaboratory-theme/dist/css/bootstrap.css">
-<link rel="stylesheet" href="styles/app.css">
-<link rel="stylesheet" href="bower_components/ui-select/dist/select.css">
+  <meta charset="utf-8">
+  <title>HPC: Project Requests</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(.) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/angular-hbp-document-client/dist/angular-hbp-document-client.css" />
+  <link rel="stylesheet" href="bower_components/select2/select2.css" />
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="bower_components/hbp-collaboratory-theme/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="styles/app.css">
+  <link rel="stylesheet" href="bower_components/ui-select/dist/select.css">
 
-<!-- endbuild -->
+  <!-- endbuild -->
 
 </head>
 <body ng-app="projectProposalApp">
-<div class="container-fluid form-step">
-  <div class="container page-header">
-    <h1>Blue Brain Project - Project Request</h1>
-  </div>
+  <div class="container-fluid form-step">
+    <div class="container page-header">
+      <h1>Blue Brain Project - Project Request</h1>
+    </div>
 
-  <div class="header">
-  </div>
+    <div class="header">
+    </div>
 
-  <div>
-    <div ui-view></div>
-  </div>
+    <div>
+      <div ui-view></div>
+    </div>
 
-  <div class="footer">
-    <div class="container">
-      <p></p>
+    <div class="footer">
+      <div class="container">
+        <p></p>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- build:js(.) scripts/vendor.js -->
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-animate/angular-animate.js"></script>
-<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-<script src="bower_components/angular-resource/angular-resource.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-<script src="bower_components/angular-touch/angular-touch.js"></script>
-<script src="bower_components/angular-bbp-config/angular-bbp-config.js"></script>
-<script src="bower_components/bbp-oidc-client/angular-bbp-oidc-client.js"></script>
-<script src="bower_components/marked-hbp/lib/marked.js"></script>
-<script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
-<script src="bower_components/angular-hbp-document-client/dist/angular-hbp-document-client.js"></script>
-<script src="bower_components/angular-uuid4/angular-uuid4.js"></script>
-<script src="bower_components/select2/select2.js"></script>
-<script src="bower_components/angular-ui-select3/src/select3.js"></script>
-<script src="bower_components/angular-aria/angular-aria.js"></script>
-<script src="bower_components/angular-messages/angular-messages.js"></script>
-<script src="bower_components/angular-material/angular-material.js"></script>
-<!-- endbower -->
-<!-- endbuild -->
+  <!-- build:js(.) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-bbp-config/angular-bbp-config.js"></script>
+  <script src="bower_components/bbp-oidc-client/angular-bbp-oidc-client.js"></script>
+  <script src="bower_components/marked-hbp/lib/marked.js"></script>
+  <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+  <script src="bower_components/angular-hbp-document-client/dist/angular-hbp-document-client.js"></script>
+  <script src="bower_components/angular-uuid4/angular-uuid4.js"></script>
+  <script src="bower_components/select2/select2.js"></script>
+  <script src="bower_components/angular-ui-select3/src/select3.js"></script>
+  <script src="bower_components/angular-aria/angular-aria.js"></script>
+  <script src="bower_components/angular-messages/angular-messages.js"></script>
+  <script src="bower_components/angular-material/angular-material.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
 
-<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="bower_components/angular-hbp-common/dist/angular-hbp-common.js"></script>
-<script src="bower_components/angular-hbp-collaboratory/angular-hbp-collaboratory.js"></script>
-<script src="bower_components/lodash/lodash.js"></script>
-<script src="bower_components/ui-select/dist/select.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
-<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-<script src="bower_components/jquery-ui/jquery-ui.js"></script>
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers/members.js"></script>
-<script src="scripts/controllers/review.js"></script>
-<script src="scripts/controllers/requirements.js"></script>
-<script src="scripts/controllers/delivrables.js"></script>
-<script src="scripts/controllers/summary.js"></script>
-<script src="scripts/bubble.js"></script>
-<!-- To create date calendar for Firefox and IE -->
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="bower_components/angular-hbp-common/dist/angular-hbp-common.js"></script>
+  <script src="bower_components/angular-hbp-collaboratory/angular-hbp-collaboratory.js"></script>
+  <script src="bower_components/lodash/lodash.js"></script>
+  <script src="bower_components/ui-select/dist/select.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/members.js"></script>
+  <script src="scripts/controllers/review.js"></script>
+  <script src="scripts/controllers/requirements.js"></script>
+  <script src="scripts/controllers/delivrables.js"></script>
+  <script src="scripts/controllers/summary.js"></script>
+  <script src="scripts/bubble.js"></script>
+  <!-- To create date calendar for Firefox and IE -->
 
-<script>
-// Config for the bbpOidcClient
-window.bbpConfig = {
-  "api":{
-    "account":{
-      "v1":"https://services.humanbrainproject.eu/idm/account"},
-      "bluepy":{
-        "v0":"https://services.humanbrainproject.eu/bluepy/v0/api"
-      },
-      "chat":{
-        "v0":"wss://services.humanbrainproject.eu/xmpp-websocket"
-      },
-      "collab":{
-        "v0":"https://services.humanbrainproject.eu/collab/v0"
-      },
-      "document":{
-        "v0":"https://services.humanbrainproject.eu/document/v0/api"
-      },
-      "editor":{
-        "v0":"https://services.humanbrainproject.eu/editor/v0/api"
-      },
-      "image":{
-        "v0":"https://services.humanbrainproject.eu/image/v0/api"
-      },
-      "invitation":{
-        "v0":"https://services.humanbrainproject.eu/collab/v0/invitation"
-      },
-      "jupyter":{
-        "v0":"https://services.humanbrainproject.eu/jupyterhub"
-      },
-      "mimetype":{
-        "v0":"https://services.humanbrainproject.eu/mimetype/v0"
-      },
-      "provenance":{
-        "v0":"https://services.humanbrainproject.eu/provenance/v0/api",
-        "v1":"https://services.humanbrainproject.eu/provenance/v1/api",
-        "v2":"https://services.humanbrainproject.eu/provenance/v2/api"
-      },
-      "richtext":{
-        "v0":"https://services.humanbrainproject.eu/richtxt-app/api"},
-        "s3":{
-          "v0":"https://storage.humanbrainproject.eu"
-        },
-        "simconfig":{
+  <script>
+  // Config for the bbpOidcClient
+  window.bbpConfig = {
+    "api":{
+      "account":{
+        "v1":"https://services.humanbrainproject.eu/idm/account"},
+        "bluepy":{
           "v0":"https://services.humanbrainproject.eu/bluepy/v0/api"
         },
-        "softwarecatalog":{
-          "v0":"https://services.humanbrainproject.eu/software-catalog/v0/api"
+        "chat":{
+          "v0":"wss://services.humanbrainproject.eu/xmpp-websocket"
         },
-        "stream":{
-          "v0":"https://services.humanbrainproject.eu/stream/v0/api"
+        "collab":{
+          "v0":"https://services.humanbrainproject.eu/collab/v0"
         },
-        "task":{
-          "v0":"https://services.humanbrainproject.eu/task/v0/api"
+        "document":{
+          "v0":"https://services.humanbrainproject.eu/document/v0/api"
         },
-        "user":{
-          "v0":"https://services.humanbrainproject.eu/oidc/v0/api",
-          "v1":"https://services.humanbrainproject.eu/idm/v1/api"
-        }
-      },
-      "auth":{
-        "clientId":"bbc02f4c-03ed-4b70-878c-e7ed0942cc1a",
-        "url":"https://services.humanbrainproject.eu/oidc"
-      },
-      "bbpBrowser":{
-        "features":{
-          "releaseApi":false
-        }
-      },
-      "collab":{
-        "env":{
-          "analyticsId":"UA-42872005-5"},
+        "editor":{
+          "v0":"https://services.humanbrainproject.eu/editor/v0/api"
+        },
+        "image":{
+          "v0":"https://services.humanbrainproject.eu/image/v0/api"
+        },
+        "invitation":{
+          "v0":"https://services.humanbrainproject.eu/collab/v0/invitation"
+        },
+        "jupyter":{
+          "v0":"https://services.humanbrainproject.eu/jupyterhub"
+        },
+        "mimetype":{
+          "v0":"https://services.humanbrainproject.eu/mimetype/v0"
+        },
+        "provenance":{
+          "v0":"https://services.humanbrainproject.eu/provenance/v0/api",
+          "v1":"https://services.humanbrainproject.eu/provenance/v1/api",
+          "v2":"https://services.humanbrainproject.eu/provenance/v2/api"
+        },
+        "richtext":{
+          "v0":"https://services.humanbrainproject.eu/richtxt-app/api"},
+          "s3":{
+            "v0":"https://storage.humanbrainproject.eu"
+          },
+          "simconfig":{
+            "v0":"https://services.humanbrainproject.eu/bluepy/v0/api"
+          },
+          "softwarecatalog":{
+            "v0":"https://services.humanbrainproject.eu/software-catalog/v0/api"
+          },
+          "stream":{
+            "v0":"https://services.humanbrainproject.eu/stream/v0/api"
+          },
+          "task":{
+            "v0":"https://services.humanbrainproject.eu/task/v0/api"
+          },
+          "user":{
+            "v0":"https://services.humanbrainproject.eu/oidc/v0/api",
+            "v1":"https://services.humanbrainproject.eu/idm/v1/api"
+          }
+        },
+        "auth":{
+          "clientId":"bbc02f4c-03ed-4b70-878c-e7ed0942cc1a",
+          "url":"https://services.humanbrainproject.eu/oidc"
+        },
+        "bbpBrowser":{
           "features":{
-            "identity":{
-              "userApiV1":true
+            "releaseApi":false
+          }
+        },
+        "collab":{
+          "env":{
+            "analyticsId":"UA-42872005-5"},
+            "features":{
+              "identity":{
+                "userApiV1":true
+              },
+              "notification":true,
+              "profile":{
+                "invitation":true
+              }
             },
-            "notification":true,
-            "profile":{
-              "invitation":true
-            }
+            "internal":["amblet","brukau","ivaska","zaninett","asantars"],
+            "widgets":
+            [{
+              "default":true,
+              "id":"env-collaboration",
+              "label":"Collaboration"
+            },
+            {
+              "id":"env-activity",
+              "label":"Activity",
+              "url":"https://placehold.it/214x400&text=Activities+coming+soon..."
+            },
+            {
+              "id":"env-provenance",
+              "label":"Provenance",
+              "url":"https://placehold.it/214x400&text=Provenance+coming+soon..."
+            }]
           },
-          "internal":["amblet","brukau","ivaska","zaninett","asantars"],
-          "widgets":
-          [{
-            "default":true,
-            "id":"env-collaboration",
-            "label":"Collaboration"
+          "hbpFileStore":{
+            "maxFileUploadSize":1048576000
           },
-          {
-            "id":"env-activity",
-            "label":"Activity",
-            "url":"https://placehold.it/214x400&text=Activities+coming+soon..."
+          "oidc":{
+            "debug":false
           },
-          {
-            "id":"env-provenance",
-            "label":"Provenance",
-            "url":"https://placehold.it/214x400&text=Provenance+coming+soon..."
-          }]
-        },
-        "hbpFileStore":{
-          "maxFileUploadSize":1048576000
-        },
-        "oidc":{
-          "debug":false
-        },
-        "up":{
-          "config":"https://up.humanbrainproject.eu/upnav/data-production.json",
-          "extensions":{
-            "ui":{
-              "apps":
-              [{
-                "name":"Documentation",
-                "type":"external",
-                "url":"https://developer.humanbrainproject.eu/docs/"
-              },
-              {
-                "name":"NMPI",
-                "type":"external",
-                "url":"https://neuromorphic.humanbrainproject.eu/app/"
-              }],
-              "settings":
-              [{
-                "category":"User Management",
-                "name":"Manage Users",
-                "type":"external",
-                "url":"https://up.humanbrainproject.eu/apps/usermanagement/#/user/"
-              },
-              {
-                "category":"User Management",
-                "name":"Create User",
-                "type":"external",
-                "url":"https://up.humanbrainproject.eu/apps/usermanagement/#/create-user/"
-              },
-              {
-                "category":"User Management",
-                "name":"Manage Account Requests",
-                "type":"external",
-                "url":"https://up.humanbrainproject.eu/apps/usermanagement/#/account-request/"
-              }],
-              "user":
-              [{
-                "name":"profile",
-                "title":"Profile",
-                "type":"external",
-                "url":"https://up.humanbrainproject.eu/apps/userprofile/#/me"
-              },
-              {
-                "name":"editProfile",
-                "title":"Edit Profile",
-                "type":"external",
-                "url":"https://up.humanbrainproject.eu/apps/userprofile/#/me/edit"
-              }],
-              "viewers":{
-                "bbp-brainbuilder-viewer":{
-                  "url":"https://up.humanbrainproject.eu/extension/brainbuilderviewer/"
+          "up":{
+            "config":"https://up.humanbrainproject.eu/upnav/data-production.json",
+            "extensions":{
+              "ui":{
+                "apps":
+                [{
+                  "name":"Documentation",
+                  "type":"external",
+                  "url":"https://developer.humanbrainproject.eu/docs/"
+                },
+                {
+                  "name":"NMPI",
+                  "type":"external",
+                  "url":"https://neuromorphic.humanbrainproject.eu/app/"
+                }],
+                "settings":
+                [{
+                  "category":"User Management",
+                  "name":"Manage Users",
+                  "type":"external",
+                  "url":"https://up.humanbrainproject.eu/apps/usermanagement/#/user/"
+                },
+                {
+                  "category":"User Management",
+                  "name":"Create User",
+                  "type":"external",
+                  "url":"https://up.humanbrainproject.eu/apps/usermanagement/#/create-user/"
+                },
+                {
+                  "category":"User Management",
+                  "name":"Manage Account Requests",
+                  "type":"external",
+                  "url":"https://up.humanbrainproject.eu/apps/usermanagement/#/account-request/"
+                }],
+                "user":
+                [{
+                  "name":"profile",
+                  "title":"Profile",
+                  "type":"external",
+                  "url":"https://up.humanbrainproject.eu/apps/userprofile/#/me"
+                },
+                {
+                  "name":"editProfile",
+                  "title":"Edit Profile",
+                  "type":"external",
+                  "url":"https://up.humanbrainproject.eu/apps/userprofile/#/me/edit"
+                }],
+                "viewers":{
+                  "bbp-brainbuilder-viewer":{
+                    "url":"https://up.humanbrainproject.eu/extension/brainbuilderviewer/"
+                  }
                 }
               }
-            }
-          },
-          "resourceUrlWhitelist":[
-            "https://up.humanbrainproject.eu/apps/**",
-            "https://developer.humanbrainproject.eu/**",
-            "https://neuromorphic.humanbrainproject.eu/**"
-          ],
-          "sites":
-          [{
-            "name":"Public",
-            "url":"https://humanbrainproject.eu"
-          },
-          {
-            "name":"Unified Portal",
-            "url":"https://up.humanbrainproject.eu"
-          },
-          {
-            "name":"Collaboration",
-            "url":"https://collaboration.humanbrainproject.eu"
-          },
-          {
-            "name":"Education",
-            "url":"https://education.humanbrainproject.eu"
-          }]
+            },
+            "resourceUrlWhitelist":[
+              "https://up.humanbrainproject.eu/apps/**",
+              "https://developer.humanbrainproject.eu/**",
+              "https://neuromorphic.humanbrainproject.eu/**"
+            ],
+            "sites":
+            [{
+              "name":"Public",
+              "url":"https://humanbrainproject.eu"
+            },
+            {
+              "name":"Unified Portal",
+              "url":"https://up.humanbrainproject.eu"
+            },
+            {
+              "name":"Collaboration",
+              "url":"https://collaboration.humanbrainproject.eu"
+            },
+            {
+              "name":"Education",
+              "url":"https://education.humanbrainproject.eu"
+            }]
+          }
+
         }
+        </script>
 
-}
-      </script>
-
-      <!-- endbuild -->
-  </body>
+<!-- endbuild -->
+</body>
 </html>

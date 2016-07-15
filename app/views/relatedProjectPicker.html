@@ -1,67 +1,68 @@
 <div class="relatedProjectList" data-ng-model="record.relatedProjects">
-    <div ng-repeat="svPair in record.relatedProjects">
-      <input id="project{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="svPair.open">
-        <label for="project{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
-  <span class="glyphicon glyphicon-minus"></span>
-</label>
-      <div ng-hide="svPair.open">
-        <label>
-    Related project n° {{$index + 1}}:
-        </label> {{svPair.name}}
-        <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
-            <span aria-hidden="true">&times;
-            </span>
-          </div>
+  <div ng-repeat="svPair in record.relatedProjects">
+    <input id="project{{$index}}" type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="svPair.open">
+    <label for="project{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+      <span class="glyphicon glyphicon-minus"></span>
+    </label>
+    <div ng-hide="svPair.open">
+      <label>
+        Related project n° {{$index + 1}}:
+      </label> {{svPair.name}}
+      <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
+        <span aria-hidden="true">&times;
+        </span>
       </div>
-      <div ng-show="svPair.open">
-            <!--<pre>{{ngModel|json}}</pre>-->
-            <div onclick="updateBubble(this,'The name of a related project.')">
-              Project name
-                <input type="text" class=""
-                       name="dataset_title"
-                       placeholder="Project name"
-                       ng-required=""
-                       uib-typeahead="project.name for project in relatedProjects| unique:'name' | filter:$viewValue  | limitTo:8"
-                       typeahead-editable
-                       typeahead-min-length="0"
-                       typeahead-show-hint="false"
-                       ng-required="record.projectType >= 2" ng-model="svPair.name">
-            </div>
-            <!-- Table to put the dates at the same position -->
-            <table width="100%"><tr>
-            <td class="inTwo" onclick="updateBubble(this,'The start date.')">
-              Start Date
-                      <md-datepicker ng-required="record.projectType >= 2" ng-model="svPair.startDate"
-                      md-placeholder="Enter date"></md-datepicker>
-
-            </td>
-            <td class="inTwoEmptySeparator">
-            </td>
-            <td class="inTwo" onclick="updateBubble(this,'The end date.<br />Can not precede the start date.')">
-              End Date
-
-                      <md-datepicker ng-required="record.projectType >= 2" ng-model="svPair.endDate"
-                      md-placeholder="Enter date"
-                      md-min-date="svPair.startDate"></md-datepicker>
-
-            </td></tr></table>
-            <div onclick="updateBubble(this,'A short description.')">
-              Synergies with this project (Max. 200 characters)
-                <input type="text" class="form-control"
-                       maxlength="200"
-                       name="dataset_title"
-                       uib-typeahead="project.description for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-                       placeholder="A short description"
-                       ng-required="record.projectType >= 2" ng-model="svPair.description">
-
-            </div>
-            <div>
-                <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
-                    <span aria-hidden="true">&times;</span></div>
-
-            </div>
-            <hr>
-        </div>
     </div>
+    <div ng-show="svPair.open">
+      <!--<pre>{{ngModel|json}}</pre>-->
+      <div onclick="updateBubble(this,'The name of a related project.')">
+        Project name
+        <input type="text" class=""
+        name="dataset_title"
+        placeholder="Project name"
+        ng-required=""
+        uib-typeahead="project.name for project in relatedProjects| unique:'name' | filter:$viewValue  | limitTo:8"
+        typeahead-editable
+        typeahead-min-length="0"
+        typeahead-show-hint="false"
+        ng-required="record.projectType >= 2" ng-model="svPair.name">
+      </div>
+      <!-- Table to put the dates at the same position -->
+      <table width="100%">
+        <tr>
+          <td class="inTwo" onclick="updateBubble(this,'The start date.')">
+            Start Date
+            <md-datepicker ng-required="record.projectType >= 2" ng-model="svPair.startDate"
+              md-placeholder="Enter date">
+            </md-datepicker>
+          </td>
+          <td class="inTwoEmptySeparator">
+          </td>
+          <td class="inTwo" onclick="updateBubble(this,'The end date.<br />Can not precede the start date.')">
+          End Date
+          <md-datepicker ng-required="record.projectType >= 2" ng-model="svPair.endDate"
+            md-placeholder="Enter date"
+            md-min-date="svPair.startDate"></md-datepicker>
+          </td>
+        </tr>
+      </table>
+      <div onclick="updateBubble(this,'A short description.')">
+        Synergies with this project (Max. 200 characters)
+        <input type="text" class="form-control"
+        maxlength="200"
+        name="dataset_title"
+        uib-typeahead="project.description for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+        placeholder="A short description"
+        ng-required="record.projectType >= 2" ng-model="svPair.description">
+
+      </div>
+      <div>
+        <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
+          <span aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
 </div>
 <div class="btn btn-default" ng-click="addProject()">Add a related Project</div>

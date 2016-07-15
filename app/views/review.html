@@ -2,7 +2,7 @@
   <label>
     Review
   </label><br />
-
+  
   <input id="whole" type="checkbox" class="plusMinus" ng-model="whole">
   <label for="whole" class="css-label"><span class="glyphicon glyphicon-plus"></span>
     <span class="glyphicon glyphicon-minus"></span> Whole Project
@@ -65,534 +65,523 @@
         <label>Grants</label>
         <ul ng-show="record.grants.length">
           <li ng-repeat="grant in record.grants">{{grant}}</li>
-        </ul
-        <span ng-hide="record.grants.length" class="nonePadding"><br />None<br /></span>
-      </div>
-
-      <div class="form-group">
-        <label>Tasks</label>
-        <ul ng-show="record.tasks.length">
-          <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
-        </ul>
-        <span ng-hide="record.tasks.length" class="nonePadding"><br />None<br /></span>
-      </div>
-
-      <div class="form-group" ng-class="{hideOld: record.newproject!='false'}">
-        <label>Project Key Words</label>
-        <ul ng-show="record.tags.length">
-          <li ng-repeat="tag in record.tags">{{tag}}</li>
-        </ul>
-        <span ng-hide="record.tags.length" class="nonePadding"><br />None<br /></span>
-      </div>
-
-      <div class="form-group">
-        <label>Executive Summary</label>
-        <div>
-          <textarea readonly required value="{{record.executiveSummary}}"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Impact Statement</label>
-        <div>
-          <textarea readonly required value="{{record.impactStatement}}"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Benefit to Community</label>
-        <div>
-          <textarea readonly required value="{{record.benefitToCommunity}}"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Scientific Summary</label>
-        <div>
-          <textarea readonly required value="{{record.scientificSummary}}"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Technological Summary</label>
-        <div>
-          <textarea readonly required value="{{record.technologicalSummary}}"></textarea>
-        </div>
-      </div>
-
-      <div class="form-group" ng-show="record.publications.length">
-        <label>Publications</label>
-        <ul>
-          <li ng-repeat="pub in record.publications" ng-show="pub.name">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
-        </ul>
-      </div>
-
-
-      <div class="form-group" ng-show="record.relatedProjects.length">
-        <label>Related Projects</label>
-        <ul>
-          <li ng-repeat="proj in record.relatedProjects" ng-show="proj.name"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
-        </ul>
-      </div>
-    </div>
-    <hr />
-
-    <input id="comp" type="checkbox" class="plusMinus" ng-model="comp">
-    <label for="comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
-      <span class="glyphicon glyphicon-minus"></span> Computing, Storage and Services resources
-    </label>
-    <div ng-show="comp">
-
-
-      <div class="p10-5">
-        <label>Software as a Service (SaaS)</label>
-        <div class="p10">
-          <table width="100%"><tr>
-            <td class="inTwo">
-              <u>Software development</u>
-              <ul ng-show="summ.softdev.length">
-                <li ng-repeat="soft in summ.softdev">{{soft.name}}</li>
-              </ul>
-              <span ng-hide="summ.softdev.length" class="nonePadding"><br />None<br /></span>
-            </td>
-            <td class="inTwoEmptySeparator">
-            </td>
-            <td class="inTwo">
-              <u>Data Transfer</u>
-              <ul ng-show="summ.datatransfer.length">
-                <li ng-repeat="soft in summ.datatransfer">{{soft.name}}</li>
-              </ul>
-              <span ng-hide="summ.datatransfer.length" class="nonePadding"><br />None<br /></span>
-            </td>
-          </tr>
-        </table>
-        <u>HBP Collab</u>
-        <ul ng-show="summ.collabs.length">
-          <li ng-repeat="collab in summ.collabs">{{collab.title}}</li>
-        </ul>
-        <span ng-hide="summ.collabs.length" class="nonePadding"><br />None<br /></span>
-      </div>
-    </div>
-    <div class="p10-5">
-      <label>Platform as a Service (PaaS)</label>
-      <div class="p10">
-        <table width="100%"><tr>
-          <td class="inTwo">
-            <u>Virtualization</u>
-            <ul ng-show="summ.virtualization.length">
-              <li ng-repeat="soft in summ.virtualization">{{soft.name}}</li>
-            </ul>
-            <span ng-hide="summ.virtualization.length" class="nonePadding"><br />None<br /></span>
-          </td>
-          <td class="inTwoEmptySeparator">
-          </td>
-          <td class="inTwo">
-            <u>Development environment</u>
-            <ul ng-show="summ.devenv.length">
-              <li ng-repeat="soft in summ.devenv">{{soft.name}}</li>
-            </ul>
-            <span ng-hide="summ.devenv.length" class="nonePadding"><br />None<br /></span>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="p10-5">
-    <label>Infrastructure as a Service (IaaS)</label>
-    <div class="p10">
-      <u>System Architectures</u>
-      <ul ng-show="summ.architecture.length">
-        <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
-      </ul>
-      <span ng-hide="summ.architecture.length" class="nonePadding"><br />None<br /></span>
-
-      <br />
-      <table width="100%" style="padding-top:15px;"><tr>
-        <td class="inTwo">
-          <u>HPC Computing</u>
-          <div class="p10 form-group">
-            <u>Total number of runs</u>
-            <input type="number" readonly ng-model="
-            summ.hpc.runs
-            ">
-            <u>Average partition size (Number of processors)</u>
-            <input type="number" readonly ng-model="
-            summ.hpc.partition
-            ">
-            <u>Time to solution (In hours)</u>
-            <input type="number" readonly ng-model="
-            summ.hpc.time
-            ">
-          </div>
-        </td>
-        <td class="inTwoEmptySeparator">
-        </td>
-        <td class="inTwo">
-          <u>HPC Storage</u>
-          <div class="p10 form-group">
-            <u>Number of artefacts</u>
-            <input type="number" readonly ng-model="
-            summ.hpc.numarte
-            ">
-            <u>Average size of artefacts (in GB)</u>
-            <input type="number" readonly ng-model="
-            summ.hpc.sizearte
-            ">
-          </div>
-        </td></tr>
-      </table>
-
-      <u>Providers</u>
-      <ul ng-show="summ.architectureC.length">
-        <li ng-repeat="tasks in summ.architectureC">{{tasks.name}}</li>
-      </ul>
-      <span ng-hide="summ.architectureC.length" class="nonePadding"><br />None<br /></span>
-
-      <br />
-      <table>
-        <tr>
-          <td class="inTwo">
-            <u>Cloud Computing</u>
-            <div class="p10 form-group">
-              <u>Total number of runs</u>
-              <input type="number" readonly ng-model="
-              summ.cloud.runs
-              ">
-              <u>Average partition size (Number of processors)</u>
-              <input type="number" readonly ng-model="
-              summ.cloud.partition
-              ">
-              <u>Time to solution (In hours)</u>
-              <input type="number" readonly ng-model="
-              summ.cloud.time
-              ">
-            </div>
-          </td>
-          <td class="inTwoEmptySeparator">
-          </td>
-          <td class="inTwo">
-            <u>Cloud Storage</u>
-            <div class="p10 form-group">
-              <u>Number of artefacts</u>
-              <input type="number" readonly ng-model="
-              summ.cloud.numarte
-              ">
-              <u>Average size of artefacts (in GB)</u>
-              <input type="number" readonly ng-model="
-              summ.cloud.sizearte
-              ">
-            </div>
-          </td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="p10-5">
-    <label>Hardware as a Service (HaaS)</label>
-    <ul ng-show="summ.hardware.length">
-      <li ng-repeat="hard in summ.hardware"><b>{{hard.name}}</b>: {{hard.description}}<br />Price: {{hard.price}}<br />{{hard.link}}</li>
-    </ul>
-    <span ng-hide="summ.hardware.length" class="nonePadding"><br />None<br /></span>
-
-  </div>
-</div>
-
-
-<hr />
-
-<input id="hr" type="checkbox" class="plusMinus" ng-model="hr">
-<label for="hr" class="css-label"><span class="glyphicon glyphicon-plus"></span>
-  <span class="glyphicon glyphicon-minus"></span> Human resources
-</label>
-
-<div ng-show="hr">
-
-  <table>
-    <td class="inTwo">
-      <label>Name</label>
-    </td>
-    <td class="inTwo">
-      <label>Total Person/Month</label>
-    </td>
-  </table>
-
-  <div class="memberList" data-ng-model="summ.members">
-    <div ng-repeat="member in summ.members">
-      <table>
-        <td class="inTwo">
-          {{member.name}}
-        </td>
-        <td class="inTwo">
-          <input type="number" readonly class=""
-          ng-model="member.pm">
-        </td>
-      </table>
-    </div>
-  </div>
-
-</div>
-</div>
-
-<hr />
-
-<div data-ng-model="summ.deliverables">
-  <div ng-repeat="deli in summ.deliverables">
-    <input id="deli{{$index}}" type="checkbox" class="plusMinus" ng-model="deli.summaryShow">
-    <label for="deli{{$index}}" class="css-label"><span class="glyphicon glyphicon-plus"></span>
-      <span class="glyphicon glyphicon-minus"></span> Deliverable {{deli.name}}
-    </label>
-    <div class="p10" ng-show="deli.summaryShow">
-
-      <input id="deli{{$index}}-summ" type="checkbox" class="plusMinus" ng-model="deli.info">
-      <label for="deli{{$index}}-summ" class="css-label"><span class="glyphicon glyphicon-plus"></span>
-        <span class="glyphicon glyphicon-minus"></span> Summary
-      </label>
-      <div ng-show="deli.info">
-        <div class="form-group">
-          <label>Name</label>
-          <div>
-            <input type="text" readonly required value="{{deli.name}}">
-          </div>
+          </ul
+          <span ng-hide="record.grants.length" class="nonePadding"><br />None<br /></span>
         </div>
 
         <div class="form-group">
-          <label>Delivery Date</label><br />
-          <input type="date" readonly required value="{{deli.date | date:'yyyy-MM-dd'}}">
-        </div>
-
-        <div class="form-group">
-          <label>Description</label>
-          <div>
-            <textarea readonly value="{{deli.desc}}"></textarea>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Risks</label>
-          <div>
-            <input type="text" readonly value="{{deli.risks}}">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Deliverable Dependencies</label>
-          <ul ng-show="deli.dependency.length">
-            <li ng-repeat="dep in deli.dependency">{{dep}}</li>
+          <label>Tasks</label>
+          <ul ng-show="record.tasks.length">
+            <li ng-repeat="tasks in record.tasks">{{tasks.name}} - <i>{{tasks.grant}}</i></li>
           </ul>
-          <span ng-hide="deli.dependency.length" class="nonePadding"><br />None<br /></span>
+          <span ng-hide="record.tasks.length" class="nonePadding"><br />None<br /></span>
+        </div>
+
+        <div class="form-group" ng-class="{hideOld: record.newproject!='false'}">
+          <label>Project Key Words</label>
+          <ul ng-show="record.tags.length">
+            <li ng-repeat="tag in record.tags">{{tag}}</li>
+          </ul>
+          <span ng-hide="record.tags.length" class="nonePadding"><br />None<br /></span>
         </div>
 
         <div class="form-group">
-          <label>Requirement Dependencies</label>
-          <ul ng-show="deli.requirements.length">
-            <li ng-repeat="dep in deli.requirements">{{dep}}</li>
-          </ul>
-          <span ng-hide="deli.requirements.length" class="nonePadding"><br />None<br /></span>
+          <label>Executive Summary</label>
+          <div>
+            <textarea readonly required value="{{record.executiveSummary}}"></textarea>
+          </div>
         </div>
 
+        <div class="form-group">
+          <label>Impact Statement</label>
+          <div>
+            <textarea readonly required value="{{record.impactStatement}}"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Benefit to Community</label>
+          <div>
+            <textarea readonly required value="{{record.benefitToCommunity}}"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Scientific Summary</label>
+          <div>
+            <textarea readonly required value="{{record.scientificSummary}}"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Technological Summary</label>
+          <div>
+            <textarea readonly required value="{{record.technologicalSummary}}"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group" ng-show="record.publications.length">
+          <label>Publications</label>
+          <ul>
+            <li ng-repeat="pub in record.publications" ng-show="pub.name">{{pub.name}}<span ng-show="pub.link">{{pub.link}}</span></li>
+          </ul>
+        </div>
+
+
+        <div class="form-group" ng-show="record.relatedProjects.length">
+          <label>Related Projects</label>
+          <ul>
+            <li ng-repeat="proj in record.relatedProjects" ng-show="proj.name"><b>{{proj.name}}</b> <br />{{proj.startDate| date:'EEE. dd MMM. yy'}} - {{proj.endDate| date:'EEE. dd MMM. yy'}}<br /> <i>{{proj.description}}</i></li>
+          </ul>
+        </div>
       </div>
       <hr />
 
-      <input id="deli{{$index}}-comp" type="checkbox" class="plusMinus" ng-model="deli.compInfo">
-      <label for="deli{{$index}}-comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+      <input id="comp" type="checkbox" class="plusMinus" ng-model="comp">
+      <label for="comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
         <span class="glyphicon glyphicon-minus"></span> Computing, Storage and Services resources
       </label>
-      <div ng-show="deli.compInfo">
+      <div ng-show="comp">
 
 
         <div class="p10-5">
           <label>Software as a Service (SaaS)</label>
           <div class="p10">
-            <table width="100%"><tr>
-              <td class="inTwo">
-                <u>Software development</u>
-                <ul ng-show="deli.softdev.length">
-                  <li ng-repeat="soft in deli.softdev">{{soft.name}}</li>
-                </ul>
-                <span ng-hide="deli.softdev.length" class="nonePadding"><br />None<br /></span>
-              </td>
-              <td class="inTwoEmptySeparator">
-              </td>
-              <td class="inTwo">
-                <u>Data Transfer</u>
-                <ul ng-show="deli.datatransfer.length">
-                  <li ng-repeat="collab in deli.datatransfer">{{datatransfer.name}}</li>
-                </ul>
-                <span ng-hide="deli.datatransfer.length" class="nonePadding"><br />None<br /></span>
-              </td>
-            </tr>
-          </table>
-          <u>HBP Collab</u>
-          <ul ng-show="deli.collabs.length">
-            <li ng-repeat="collab in deli.collabs">{{collab.title}}</li>
+            <table width="100%">
+              <tr>
+                <td class="inTwo">
+                  <u>Software development</u>
+                  <ul ng-show="summ.softdev.length">
+                    <li ng-repeat="soft in summ.softdev">{{soft.name}}</li>
+                  </ul>
+                  <span ng-hide="summ.softdev.length" class="nonePadding"><br />None<br /></span>
+                </td>
+                <td class="inTwoEmptySeparator">
+                </td>
+                <td class="inTwo">
+                  <u>Data Transfer</u>
+                  <ul ng-show="summ.datatransfer.length">
+                    <li ng-repeat="soft in summ.datatransfer">{{soft.name}}</li>
+                  </ul>
+                  <span ng-hide="summ.datatransfer.length" class="nonePadding"><br />None<br /></span>
+                </td>
+              </tr>
+            </table>
+            <u>HBP Collab</u>
+            <ul ng-show="summ.collabs.length">
+              <li ng-repeat="collab in summ.collabs">{{collab.title}}</li>
+            </ul>
+            <span ng-hide="summ.collabs.length" class="nonePadding"><br />None<br /></span>
+          </div>
+        </div>
+        <div class="p10-5">
+          <label>Platform as a Service (PaaS)</label>
+          <div class="p10">
+            <table width="100%">
+              <tr>
+                <td class="inTwo">
+                  <u>Virtualization</u>
+                  <ul ng-show="summ.virtualization.length">
+                    <li ng-repeat="soft in summ.virtualization">{{soft.name}}</li>
+                  </ul>
+                  <span ng-hide="summ.virtualization.length" class="nonePadding"><br />None<br /></span>
+                </td>
+                <td class="inTwoEmptySeparator">
+                </td>
+                <td class="inTwo">
+                  <u>Development environment</u>
+                  <ul ng-show="summ.devenv.length">
+                    <li ng-repeat="soft in summ.devenv">{{soft.name}}</li>
+                  </ul>
+                  <span ng-hide="summ.devenv.length" class="nonePadding"><br />None<br /></span>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="p10-5">
+          <label>Infrastructure as a Service (IaaS)</label>
+          <div class="p10">
+            <u>System Architectures</u>
+            <ul ng-show="summ.architecture.length">
+              <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
+            </ul>
+            <span ng-hide="summ.architecture.length" class="nonePadding"><br />None<br /></span>
+
+            <br />
+            <table width="100%" style="padding-top:15px;">
+              <tr>
+                <td class="inTwo">
+                  <u>HPC Computing</u>
+                  <div class="p10 form-group">
+                    <u>Total number of runs</u>
+                    <input type="number" readonly ng-model="
+                    summ.hpc.runs
+                    ">
+                    <u>Average partition size (Number of processors)</u>
+                    <input type="number" readonly ng-model="
+                    summ.hpc.partition
+                    ">
+                    <u>Time to solution (In hours)</u>
+                    <input type="number" readonly ng-model="
+                    summ.hpc.time
+                    ">
+                  </div>
+                </td>
+                <td class="inTwoEmptySeparator">
+                </td>
+                <td class="inTwo">
+                  <u>HPC Storage</u>
+                  <div class="p10 form-group">
+                    <u>Number of artefacts</u>
+                    <input type="number" readonly ng-model="
+                    summ.hpc.numarte
+                    ">
+                    <u>Average size of artefacts (in GB)</u>
+                    <input type="number" readonly ng-model="
+                    summ.hpc.sizearte
+                    ">
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <u>Providers</u>
+            <ul ng-show="summ.architectureC.length">
+              <li ng-repeat="tasks in summ.architectureC">{{tasks.name}}</li>
+            </ul>
+            <span ng-hide="summ.architectureC.length" class="nonePadding"><br />None<br /></span>
+
+            <br />
+            <table>
+              <tr>
+                <td class="inTwo">
+                  <u>Cloud Computing</u>
+                  <div class="p10 form-group">
+                    <u>Total number of runs</u>
+                    <input type="number" readonly ng-model="
+                    summ.cloud.runs
+                    ">
+                    <u>Average partition size (Number of processors)</u>
+                    <input type="number" readonly ng-model="
+                    summ.cloud.partition
+                    ">
+                    <u>Time to solution (In hours)</u>
+                    <input type="number" readonly ng-model="
+                    summ.cloud.time
+                    ">
+                  </div>
+                </td>
+                <td class="inTwoEmptySeparator">
+                </td>
+                <td class="inTwo">
+                  <u>Cloud Storage</u>
+                  <div class="p10 form-group">
+                    <u>Number of artefacts</u>
+                    <input type="number" readonly ng-model="
+                    summ.cloud.numarte
+                    ">
+                    <u>Average size of artefacts (in GB)</u>
+                    <input type="number" readonly ng-model="
+                    summ.cloud.sizearte
+                    ">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="p10-5">
+          <label>Hardware as a Service (HaaS)</label>
+          <ul ng-show="summ.hardware.length">
+            <li ng-repeat="hard in summ.hardware"><b>{{hard.name}}</b>: {{hard.description}}<br />Price: {{hard.price}} CHF<br />{{hard.link}}</li>
           </ul>
-          <span ng-hide="deli.collabs.length" class="nonePadding"><br />None<br /></span>
+          <span ng-hide="summ.hardware.length" class="nonePadding"><br />None<br /></span>
         </div>
       </div>
-      <div class="p10-5">
-        <label>Platform as a Service (PaaS)</label>
-        <div class="p10">
 
-          <table width="100%"><tr>
-            <td class="inTwo">
-              <u>Virtualization</u>
-              <ul ng-show="deli.virtualization.length">
-                <li ng-repeat="soft in deli.virtualization">{{soft.name}}</li>
-              </ul>
-              <span ng-hide="deli.virtualization.length" class="nonePadding"><br />None<br /></span>
-            </td>
-            <td class="inTwoEmptySeparator">
-            </td>
-            <td class="inTwo">
-              <u>Development Environment</u>
-              <ul ng-show="deli.devenv.length">
-                <li ng-repeat="collab in deli.devenv">{{datatransfer.name}}</li>
-              </ul>
-              <span ng-hide="deli.devenv.length" class="nonePadding"><br />None<br /></span>
-            </td>
-          </tr>
-          </table>
+      <hr />
 
+      <input id="hr" type="checkbox" class="plusMinus" ng-model="hr">
+      <label for="hr" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-minus"></span> Human resources
+      </label>
 
+      <div ng-show="hr">
+        <table>
+          <td class="inTwo">
+            <label>Name</label>
+          </td>
+          <td class="inTwo">
+            <label>Total Person/Month</label>
+          </td>
+        </table>
 
-        </div>
-      </div>
-      <div class="p10-5">
-        <label>Infrastructure as a Service (IaaS)</label>
-        <div class="p10">
-          <u>Prefered Architecture</u>
-          <ul ng-show="deli.architecture.length">
-            <li ng-repeat="tasks in deli.architecture">{{tasks.name}}</li>
-          </ul>
-          <span ng-hide="deli.architecture.length" class="nonePadding"><br />None<br /></span>
-
-          <br />
-          <table width="100%" style="padding-top:15px;"><tr>
-            <td class="inTwo">
-              <u>HPC Computing</u>
-              <div class="p10 form-group">
-                <u>Total number of runs</u>
-                <input type="number" readonly ng-model="
-                deli.hpc.runs
-                ">
-                <u>Average partition size (Number of processors)</u>
-                <input type="number" readonly ng-model="
-                deli.hpc.partition
-                ">
-                <u>Time to solution (In hours)</u>
-                <input type="number" readonly ng-model="
-                deli.hpc.time
-                ">
-              </div>
-            </td>
-            <td class="inTwoEmptySeparator">
-            </td>
-            <td class="inTwo">
-              <u>HPC Storage</u>
-              <div class="p10 form-group">
-                <u>Number of artefacts</u>
-                <input type="number" readonly ng-model="
-                deli.hpc.numarte
-                ">
-                <u>Average size of artefacts (in GB)</u>
-                <input type="number" readonly ng-model="
-                deli.hpc.sizearte
-                ">
-              </div>
-            </td></tr>
-          </table>
-
-          <u>Prefered Cloud Architecture</u>
-          <ul ng-show="deli.architectureC.length">
-            <li ng-repeat="tasks in deli.architectureC">{{tasks.name}}</li>
-          </ul>
-          <span ng-hide="deli.architectureC.length" class="nonePadding"><br />None<br /></span>
-
-          <br />
-          <table>
-            <tr>
+        <div class="memberList" data-ng-model="summ.members">
+          <div ng-repeat="member in summ.members">
+            <table>
               <td class="inTwo">
-                <u>Cloud Computing</u>
-                <div class="p10 form-group">
-                  <u>Total number of runs</u>
-                  <input type="number" readonly ng-model="
-                  deli.cloud.runs
-                  ">
-                  <u>Average partition size (Number of processors)</u>
-                  <input type="number" readonly ng-model="
-                  deli.cloud.partition
-                  ">
-                  <u>Time to solution (In hours)</u>
-                  <input type="number" readonly ng-model="
-                  deli.cloud.time
-                  ">
-                </div>
-              </td>
-              <td class="inTwoEmptySeparator">
+                {{member.name}}
               </td>
               <td class="inTwo">
-                <u>Cloud Storage</u>
-                <div class="p10 form-group">
-                  <u>Number of artefacts</u>
-                  <input type="number" readonly ng-model="
-                  deli.cloud.numarte
-                  ">
-                  <u>Average size of artefacts (in GB)</u>
-                  <input type="number" readonly ng-model="
-                  deli.cloud.sizearte
-                  ">
-                </div>
+                <input type="number" readonly class=""
+                ng-model="member.pm">
               </td>
-            </tr>
-          </table>
+            </table>
+          </div>
         </div>
-      </div>
-      <div class="p10-5">
-        <label>Hardware as a Service (HaaS)</label>
-        <ul ng-show="deli.hardware.length">
-          <li ng-repeat="hard in deli.hardware"><b>{{hard.name}}</b>: {{hard.description}}<br />Price: {{hard.price}} CHF<br />{{hard.link}}</li>
-        </ul>
-        <span ng-hide="deli.hardware.length" class="nonePadding"><br />None<br /></span>
-
       </div>
     </div>
-
 
     <hr />
-    <input id="deli{{$index}}-hr" type="checkbox" class="plusMinus" ng-model="deli.hr">
-    <label for="deli{{$index}}-hr" class="css-label"><span class="glyphicon glyphicon-plus"></span>
-      <span class="glyphicon glyphicon-minus"></span> Human resources
-    </label>
-    <div ng-show="deli.hr">
 
-      <table>
-        <td class="inTwo">
-          <label>Name</label>
-        </td>
-        <td class="inTwo">
-          <label>Total Person/Month</label>
-        </td>
-      </table>
+    <div data-ng-model="summ.deliverables">
+      <div ng-repeat="deli in summ.deliverables">
+        <input id="deli{{$index}}" type="checkbox" class="plusMinus" ng-model="deli.summaryShow">
+        <label for="deli{{$index}}" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+          <span class="glyphicon glyphicon-minus"></span> Deliverable {{deli.name}}
+        </label>
+        <div class="p10" ng-show="deli.summaryShow">
+          <input id="deli{{$index}}-summ" type="checkbox" class="plusMinus" ng-model="deli.info">
+          <label for="deli{{$index}}-summ" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+            <span class="glyphicon glyphicon-minus"></span> Summary
+          </label>
+          <div ng-show="deli.info">
+            <div class="form-group">
+              <label>Name</label>
+              <div>
+                <input type="text" readonly required value="{{deli.name}}">
+              </div>
+            </div>
 
-      <div class="memberList" data-ng-model="deli.members">
-        <div ng-repeat="member in deli.members">
+            <div class="form-group">
+              <label>Delivery Date</label><br />
+              <input type="date" readonly required value="{{deli.date | date:'yyyy-MM-dd'}}">
+            </div>
+
+            <div class="form-group">
+              <label>Description</label>
+              <div>
+                <textarea readonly value="{{deli.desc}}"></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Risks</label>
+              <div>
+                <input type="text" readonly value="{{deli.risks}}">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Deliverable Dependencies</label>
+              <ul ng-show="deli.dependency.length">
+                <li ng-repeat="dep in deli.dependency">{{dep}}</li>
+              </ul>
+              <span ng-hide="deli.dependency.length" class="nonePadding"><br />None<br /></span>
+            </div>
+
+            <div class="form-group">
+              <label>Requirement Dependencies</label>
+              <ul ng-show="deli.requirements.length">
+                <li ng-repeat="dep in deli.requirements">{{dep}}</li>
+              </ul>
+              <span ng-hide="deli.requirements.length" class="nonePadding"><br />None<br /></span>
+            </div>
+          </div>
+          <hr />
+
+          <input id="deli{{$index}}-comp" type="checkbox" class="plusMinus" ng-model="deli.compInfo">
+          <label for="deli{{$index}}-comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+            <span class="glyphicon glyphicon-minus"></span> Computing, Storage and Services resources
+          </label>
+          <div ng-show="deli.compInfo">
+            <div class="p10-5">
+              <label>Software as a Service (SaaS)</label>
+              <div class="p10">
+                <table width="100%">
+                  <tr>
+                    <td class="inTwo">
+                      <u>Software development</u>
+                      <ul ng-show="deli.softdev.length">
+                        <li ng-repeat="soft in deli.softdev">{{soft.name}}</li>
+                      </ul>
+                      <span ng-hide="deli.softdev.length" class="nonePadding"><br />None<br /></span>
+                    </td>
+                    <td class="inTwoEmptySeparator">
+                    </td>
+                    <td class="inTwo">
+                      <u>Data Transfer</u>
+                      <ul ng-show="deli.datatransfer.length">
+                        <li ng-repeat="collab in deli.datatransfer">{{datatransfer.name}}</li>
+                      </ul>
+                      <span ng-hide="deli.datatransfer.length" class="nonePadding"><br />None<br /></span>
+                    </td>
+                  </tr>
+                </table>
+                <u>HBP Collab</u>
+                <ul ng-show="deli.collabs.length">
+                  <li ng-repeat="collab in deli.collabs">{{collab.title}}</li>
+                </ul>
+                <span ng-hide="deli.collabs.length" class="nonePadding"><br />None<br /></span>
+              </div>
+            </div>
+            <div class="p10-5">
+              <label>Platform as a Service (PaaS)</label>
+              <div class="p10">
+                <table width="100%">
+                  <tr>
+                    <td class="inTwo">
+                      <u>Virtualization</u>
+                      <ul ng-show="deli.virtualization.length">
+                        <li ng-repeat="soft in deli.virtualization">{{soft.name}}</li>
+                      </ul>
+                      <span ng-hide="deli.virtualization.length" class="nonePadding"><br />None<br /></span>
+                    </td>
+                    <td class="inTwoEmptySeparator">
+                    </td>
+                    <td class="inTwo">
+                      <u>Development Environment</u>
+                      <ul ng-show="deli.devenv.length">
+                        <li ng-repeat="collab in deli.devenv">{{datatransfer.name}}</li>
+                      </ul>
+                      <span ng-hide="deli.devenv.length" class="nonePadding"><br />None<br /></span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="p10-5">
+              <label>Infrastructure as a Service (IaaS)</label>
+              <div class="p10">
+                <u>Prefered Architecture</u>
+                <ul ng-show="deli.architecture.length">
+                  <li ng-repeat="tasks in deli.architecture">{{tasks.name}}</li>
+                </ul>
+                <span ng-hide="deli.architecture.length" class="nonePadding"><br />None<br /></span>
+                <br />
+                <table width="100%" style="padding-top:15px;"><tr>
+                  <td class="inTwo">
+                    <u>HPC Computing</u>
+                    <div class="p10 form-group">
+                      <u>Total number of runs</u>
+                      <input type="number" readonly ng-model="
+                      deli.hpc.runs
+                      ">
+                      <u>Average partition size (Number of processors)</u>
+                      <input type="number" readonly ng-model="
+                      deli.hpc.partition
+                      ">
+                      <u>Time to solution (In hours)</u>
+                      <input type="number" readonly ng-model="
+                      deli.hpc.time
+                      ">
+                    </div>
+                  </td>
+                  <td class="inTwoEmptySeparator">
+                  </td>
+                  <td class="inTwo">
+                    <u>HPC Storage</u>
+                    <div class="p10 form-group">
+                      <u>Number of artefacts</u>
+                      <input type="number" readonly ng-model="
+                      deli.hpc.numarte
+                      ">
+                      <u>Average size of artefacts (in GB)</u>
+                      <input type="number" readonly ng-model="
+                      deli.hpc.sizearte
+                      ">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+
+              <u>Prefered Cloud Architecture</u>
+              <ul ng-show="deli.architectureC.length">
+                <li ng-repeat="tasks in deli.architectureC">{{tasks.name}}</li>
+              </ul>
+              <span ng-hide="deli.architectureC.length" class="nonePadding"><br />None<br /></span>
+              <br />
+              <table>
+                <tr>
+                  <td class="inTwo">
+                    <u>Cloud Computing</u>
+                    <div class="p10 form-group">
+                      <u>Total number of runs</u>
+                      <input type="number" readonly ng-model="
+                      deli.cloud.runs
+                      ">
+                      <u>Average partition size (Number of processors)</u>
+                      <input type="number" readonly ng-model="
+                      deli.cloud.partition
+                      ">
+                      <u>Time to solution (In hours)</u>
+                      <input type="number" readonly ng-model="
+                      deli.cloud.time
+                      ">
+                    </div>
+                  </td>
+                  <td class="inTwoEmptySeparator">
+                  </td>
+                  <td class="inTwo">
+                    <u>Cloud Storage</u>
+                    <div class="p10 form-group">
+                      <u>Number of artefacts</u>
+                      <input type="number" readonly ng-model="
+                      deli.cloud.numarte
+                      ">
+                      <u>Average size of artefacts (in GB)</u>
+                      <input type="number" readonly ng-model="
+                      deli.cloud.sizearte
+                      ">
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="p10-5">
+            <label>Hardware as a Service (HaaS)</label>
+            <ul ng-show="deli.hardware.length">
+              <li ng-repeat="hard in deli.hardware"><b>{{hard.name}}</b>: {{hard.description}}<br />Price: {{hard.price}} CHF<br />{{hard.link}}</li>
+            </ul>
+            <span ng-hide="deli.hardware.length" class="nonePadding"><br />None<br /></span>
+          </div>
+        </div>
+
+        <hr />
+
+        <input id="deli{{$index}}-hr" type="checkbox" class="plusMinus" ng-model="deli.hr">
+        <label for="deli{{$index}}-hr" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+          <span class="glyphicon glyphicon-minus"></span> Human resources
+        </label>
+        <div ng-show="deli.hr">
           <table>
             <td class="inTwo">
-              {{member.name}}
+              <label>Name</label>
             </td>
             <td class="inTwo">
-              <input type="number" readonly class=""
-              ng-model="member.pm">
+              <label>Total Person/Month</label>
             </td>
           </table>
+          <div class="memberList" data-ng-model="deli.members">
+            <div ng-repeat="member in deli.members">
+              <table>
+                <td class="inTwo">
+                  {{member.name}}
+                </td>
+                <td class="inTwo">
+                  <input type="number" readonly class=""
+                  ng-model="member.pm">
+                </td>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
-</div>
-</div>
-<script>
-document.getElementById("final").style="";
-updateLinks("deliverables","");
-</script>
+  <script>
+  document.getElementById("final").style="";
+  updateLinks("deliverables","");
+  </script>

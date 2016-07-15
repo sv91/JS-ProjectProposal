@@ -1,36 +1,34 @@
 <div class="publicationList" data-ng-model="record.publications" >
-    <div ng-repeat="svPair in record.publications">
-        <div>
-            <!--<pre>{{ngModel|json}}</pre>-->
-            <div onclick="updateBubble(this,'Name of the publication.')">
-              Name
-
-                <input type="text" class=""
-                       name="dataset_title"
-                       placeholder="Publication name"
-                       ng-required=""
-                       uib-typeahead="publication.name for publication in publications| unique:'name' | filter:$viewValue  | limitTo:8"
-                       typeahead-editable
-                       typeahead-min-length="0"
-                       typeahead-show-hint="false"
-                       ng-required="record.projectType >= 2" ng-model="svPair.name">
-            </div>
-            <div onclick="updateBubble(this,'Link to the publication, if exists.<br />Format: <i>\'http:\\\\the.address.com\'</i>')">
-               Link
-                <input type="URL" class="form-control"
-                       name="dataset_title"
-                       uib-typeahead="publication.link for publication in publications | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-                       placeholder="Link to publication"
-                       ng-required="record.projectType >= 2" ng-model="svPair.link">
-
-            </div>
-            <div>
-                <div button type="button" class="close" aria-label="Remove" ng-click="deletePublication(svPair)">
-                    <span aria-hidden="true">&times;</span></div>
-
-            </div>
+  <div ng-repeat="svPair in record.publications">
+    <div>
+      <!--<pre>{{ngModel|json}}</pre>-->
+      <div onclick="updateBubble(this,'Name of the publication.')">
+        Name
+        <input type="text" class=""
+        name="dataset_title"
+        placeholder="Publication name"
+        ng-required=""
+        uib-typeahead="publication.name for publication in publications| unique:'name' | filter:$viewValue  | limitTo:8"
+        typeahead-editable
+        typeahead-min-length="0"
+        typeahead-show-hint="false"
+        ng-required="record.projectType >= 2" ng-model="svPair.name">
+      </div>
+      <div onclick="updateBubble(this,'Link to the publication, if exists.<br />Format: <i>\'http:\\\\the.address.com\'</i>')">
+        Link
+        <input type="URL" class="form-control"
+        name="dataset_title"
+        uib-typeahead="publication.link for publication in publications | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
+        placeholder="Link to publication"
+        ng-required="record.projectType >= 2" ng-model="svPair.link">
+      </div>
+      <div>
+        <div button type="button" class="close" aria-label="Remove" ng-click="deletePublication(svPair)">
+          <span aria-hidden="true">&times;</span>
         </div>
-        <hr>
+      </div>
     </div>
+    <hr>
+  </div>
 </div>
 <div class="btn btn-default" ng-click="addPublication()">Add a publication</div>

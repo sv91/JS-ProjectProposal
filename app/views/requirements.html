@@ -2,14 +2,12 @@
   <div ng-show="record.projectType >= 1" >
     <label>Use case description</label><br />
     <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="2000"></textarea>
-
   </div>
   <br />
   <hr style="padding-top:10px;padding-bottom:10px;" />
   <div>
     <requirements-picker></requirements-picker>
   </div>
-
 </div>
 
 <script>
