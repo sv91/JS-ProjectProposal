@@ -188,7 +188,7 @@ angular.module('projectProposalApp')
       * Add an additional form for a deliverable.
       */
       scope.addDeliverable = function () {
-        scope.record.shortDeliverable.push({'name': '', 'deliveryDate': '', 'description': '','open':true});
+        scope.record.shortDeliverable.push({'name': '', 'deliveryDate': '', 'description': '','pm':'','open':true});
       };
     }
   };
