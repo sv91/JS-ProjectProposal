@@ -138,16 +138,8 @@
 </div>
 </div>
 
-<div class="form-group" ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some summary.<br />Maximum 1000 characters.')">
-  <label>Executive Summary</label> (1000 characters max.)
-  <div>
-    <textarea class="form-control" maxlength="1000" ng-required="record.projectType >= 2" ng-model="record.executiveSummary" placeholder="Some summary ...">
-    </textarea>
-  </div>
-</div>
-
-<div class="form-group" ng-show="record.projectType == 0" onclick="updateBubble(this,'Some summary.<br />Maximum 1000 characters.')">
-  <label>Project Summary</label> (1000 characters max.)
+<div class="form-group" onclick="updateBubble(this,'Some summary.<br />Maximum 1000 characters.')">
+  <label ng-show="record.projectType >= 1">Executive Summary</label><label ng-show="record.projectType == 0">Project Summary</label> (1000 characters max.)
   <div>
     <textarea class="form-control" maxlength="1000" ng-required="record.projectType >= 2" ng-model="record.executiveSummary" placeholder="Some summary ...">
     </textarea>
