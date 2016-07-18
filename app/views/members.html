@@ -1,6 +1,6 @@
 <div class="container form middlePart">
   <!-- principal Investigator -->
-  <div class="form-group" onclick="updateBubble(this,'Select the leader of this project.')" ng-show="record.projectType >= 1">
+  <div class="form-group" onclick="updateBubble(this,'Select the leader of this project.')" ng-show="record.projectType >= 0">
     <label>Project Leader</label>
     <div style="width:720px">
       <select-pi></select-pi>
@@ -22,6 +22,14 @@
       <multi-user-select></multi-user-select>
     </div>
   </div>
+
+    <!-- Members with limit -->
+    <div class="form-group" onclick="updateBubble(this,'Select all the members working on this project (Do not add the leader and co-leader).')" ng-show="record.projectType == 0">
+      <label>Members</label>
+      <div style="width:720px">
+        <multi-user-select></multi-user-select>
+      </div>
+    </div>
 
   <!-- Teams -->
   <div class="form-group" onclick="updateBubble(this,'Select the Blue Brain teams you will need.')" ng-show="record.projectType >= 1">

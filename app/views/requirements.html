@@ -1,5 +1,5 @@
-<div class="container form middlePart">
-  <div ng-show="record.projectType >= 1" >
+<div class="container form middlePart" id="req">
+  <div ng-show="record.projectType >= 0" >
     <label>Use case description</label><br />
     <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="2000"></textarea>
   </div>
@@ -8,8 +8,17 @@
   <div>
     <requirements-picker></requirements-picker>
   </div>
+  <div style="visibility:hidden"><input type="text" id="hidden" ng-model="record.projectType"></div>
 </div>
 
 <script>
-updateLinks("summary","deliverables");
+setTimeout(function() {
+  var type = document.getElementById("hidden").value;
+  console.log('Type:"'+type+'"');
+  if (type >= 1){
+    updateLinks("summary","deliverables");
+  } else if (type == 0){
+    updateLinks("summary","review");
+  }
+},300);
 </script>

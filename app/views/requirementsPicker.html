@@ -5,12 +5,12 @@
     <input type="checkbox" class="plusMinus" ng-required="record.projectType >= 2" ng-model="svPair.open">
     <label ng-hide="svPair.open">{{svPair.title}}</label>
     <div ng-show="svPair.open">
-      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Title of the requirement')">
+      <div ng-show="record.projectType >= 0" onclick="updateBubble(this,'Title of the requirement')">
         Title
         <input type="text" class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.title" maxlength="300"  placeholder="Give a title for your requirement.">
       </div>
       <br />
-      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Type of the requirement.')">
+      <div ng-show="record.projectType >= 0" onclick="updateBubble(this,'Type of the requirement.')">
         Type
         <ui-select ng-required="record.projectType >= 2" ng-model="svPair.type" theme="bootstrap" sortable="true">
           <ui-select-match placeholder="Select the type of requirement">{{$select.selected.name}}</ui-select-match>
@@ -20,18 +20,18 @@
         </ui-select>
       </div>
       <br />
-      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Define the requirements')">
+      <div ng-show="record.projectType >= 0" onclick="updateBubble(this,'Define the requirements')">
         Requirement definition
         <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.requirement" placeholder={{svPair.type.desc}} maxlength="300"></textarea>
 
       </div>
       <br />
-      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Define which feature is missing.')">
+      <div ng-show="record.projectType >= 0" onclick="updateBubble(this,'Define which feature is missing.')">
         Feature of interest
         <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="300"></textarea>
       </div>
       <br />
-      <div ng-show="record.projectType >= 1" >
+      <div ng-show="record.projectType >= 0" >
         <label>Describe expected input data</label>
         <div class="p10" data-ng-model="svPair.input">
           <div ng-repeat="h in svPair.input">
@@ -65,13 +65,13 @@
                 <tr>
                   <td class="inTwo">
                     Number of artefacts
-                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.number" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
+                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.number" min="0"  ng-show="record.projectType >= 0" onclick="updateBubble(this,'Number of artefacts.')">
                   </td>
                   <td class="inTwoEmptySeparator">
                   </td>
                   <td class="inTwo">
                     Size of artefacts
-                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.size" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Size of artefacts.')">
+                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.size" min="0"  ng-show="record.projectType >= 0" onclick="updateBubble(this,'Size of artefacts.')">
                   </td>
                 </tr>
               </table>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <br />
-      <div ng-show="record.projectType >= 1" >
+      <div ng-show="record.projectType >= 0" >
         <label>Outputs</label>
         <div class="p10" data-ng-model="svPair.output">
           <div ng-repeat="h in svPair.output">
@@ -119,13 +119,13 @@
                 <tr>
                   <td class="inTwo">
                     Number of artefacts
-                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.number" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Number of artefacts.')">
+                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.number" min="0"  ng-show="record.projectType >= 0" onclick="updateBubble(this,'Number of artefacts.')">
                   </td>
                   <td class="inTwoEmptySeparator">
                   </td>
                   <td class="inTwo">
                     Size of artefacts
-                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.size" min="0"  ng-show="record.projectType >= 1" onclick="updateBubble(this,'Size of artefacts.')">
+                    <input type="number" class="form-control" ng-required="record.projectType >= 2" ng-model="h.size" min="0"  ng-show="record.projectType >= 0" onclick="updateBubble(this,'Size of artefacts.')">
 
                   </td>
                 </tr>

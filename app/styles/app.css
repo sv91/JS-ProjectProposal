@@ -386,6 +386,9 @@ input:read-only:required {
 .bronzeSelected{
   background-color: #CD7F32;
 }
+.bottomBorder{
+  border:0px 0px 1px 1px solid #CCCCCC;
+}
 
 .placeholder{
   visibility: hidden;

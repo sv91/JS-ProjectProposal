@@ -581,7 +581,16 @@
       </div>
     </div>
   </div>
+  <div style="visibility:hidden"><input type="text" id="hidden" ng-model="record.projectType"></div>
   <script>
   document.getElementById("final").style="";
+
+  setTimeout(function() {
+  var type = document.getElementById("hidden").value;
+  if (type >= 1){
   updateLinks("deliverables","");
+  } else if (type == 0){
+  updateLinks("requirements","");
+  }
+},300);
   </script>
