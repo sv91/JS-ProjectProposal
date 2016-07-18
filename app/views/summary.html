@@ -178,6 +178,11 @@
   </div>
 </div>
 
+<div class="form-group" ng-show="record.projectType == 0" >
+  <label>Deliverable</label>
+  <short-deliverable-picker></short-deliverable-picker>
+</div>
+
 <div class="form-group" ng-show="record.projectType >= 0" >
   <label>Publications</label>
   <publication-picker></publication-picker>

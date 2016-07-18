@@ -1,0 +1,44 @@
+<div data-ng-model="record.shortDeliverable" >
+  <div ng-repeat="svPair in record.shortDeliverable">
+    <input id="deli{{$index}}" type="checkbox" class="plusMinus" ng-model="svPair.open">
+    <label for="deli{{$index}}" class="css-label ft"><span class="glyphicon glyphicon-plus"></span>
+      <span class="glyphicon glyphicon-minus"></span>
+    </label>
+    <div ng-hide="svPair.open">
+      <label>
+        Deliverable n° {{$index + 1}}:
+      </label> {{svPair.name}}
+      <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
+        <span aria-hidden="true">&times;
+        </span>
+      </div>
+    </div>
+    <div ng-show="svPair.open">
+      <!--<pre>{{ngModel|json}}</pre>-->
+      <div onclick="updateBubble(this,'Name of the deliverable.')">
+        Name
+        <input type="text" class=""
+        ng-required="record.projectType >= 0" ng-model="svPair.name">
+      </div>
+      <div onclick="updateBubble(this,'Delivery date')">
+        Delivery date
+        <md-datepicker ng-required="record.projectType == 0" ng-model="svPair.deliveryDate"
+          md-placeholder="Enter date"
+          md-min-date="record.projectStartDate"
+          md-max-date="record.projectEndDate">
+        </md-datepicker>
+      </div>
+      <div onclick="updateBubble(this,'Delivery date')">
+        Description<br />
+        <textarea ng-required="record.projectType >= 0" class="form-control" ng-model="svPair.description"></textarea>
+      </div>
+      <div>
+        <div button type="button" class="close" aria-label="Remove" ng-click="deleteDeliverable(svPair)">
+          <span aria-hidden="true">&times;</span>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="btn btn-default" ng-click="addDeliverable()">Add a deliverable</div>

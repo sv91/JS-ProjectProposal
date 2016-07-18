@@ -141,4 +141,55 @@ angular.module('projectProposalApp')
       };
     }
   };
+})
+
+
+/**
+* @ngdoc directive
+* @name projectProposalApp.directive:shortDeliverablePicker
+* @description
+* # shortDeliverablePicker
+* Directive managing the selection of one or more deliverables for the
+* .definitions page.
+*/
+.directive('shortDeliverablePicker', function () {
+  return {
+    scope: true,
+    templateUrl: 'views/shortDeliverablePicker.html',
+    link: function postLink(scope) {
+      // Verify that the JSON part exists.
+      if (!scope.record.shortDeliverable) {
+        scope.record.shortDeliverable = [];
+      }
+      /**
+      * @ngdoc function
+      * @name deleteDeliverable
+      * @description
+      * # deleteDeliverable
+      * Delete the specified deliverable.
+      * @param {Object} item The deliverable to delete.
+      */
+      scope.deleteDeliverable = function (item) {
+        resetBubble();
+        if (scope.record.shortDeliverable.length < 1) {
+          scope.record.shortDeliverable = [];
+          return;
+        }
+        var index = scope.record.shortDeliverable.indexOf(item);
+        scope.record.shortDeliverable.splice(index, 1);
+
+      };
+
+      /**
+      * @ngdoc function
+      * @name addProject
+      * @description
+      * # addProject
+      * Add an additional form for a deliverable.
+      */
+      scope.addDeliverable = function () {
+        scope.record.shortDeliverable.push({'name': '', 'deliveryDate': '', 'description': '','open':true});
+      };
+    }
+  };
 });
