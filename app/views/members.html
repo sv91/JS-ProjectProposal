@@ -24,10 +24,10 @@
   </div>
 
     <!-- Members with limit -->
-    <div class="form-group" onclick="updateBubble(this,'Select all the members working on this project (Do not add the leader and co-leader).')" ng-show="record.projectType == 0">
-      <label>Members</label>
+    <div class="form-group" onclick="updateBubble(this,'Select all the members working on this project (Do not add the leader).')" ng-show="record.projectType == 0">
+      <label>Members (max. 2)</label>
       <div style="width:720px">
-        <multi-user-select></multi-user-select>
+        <two-user-select></two-user-select>
       </div>
     </div>
 

@@ -118,9 +118,9 @@ angular.module('projectProposalApp')
 
 /**
 * @ngdoc directive
-* @name projectProposalApp.directive:selectCopi
+* @name projectProposalApp.directive:multiUserSelect
 * @description
-* # selectCopi
+* # multiUserSelect
 * Input form to select multiple user.
 */
 .directive('multiUserSelect', function($window, $timeout) {
@@ -150,9 +150,19 @@ angular.module('projectProposalApp')
         }
         // Verify if the selected member is not yet selected as pi or co-pi.
         if(!pi && !copi){
-          // If not, add the user as pi
-          console.log('select', arguments);
-          scope.record.members.push(options);
+          // Verify if the selected user is not selected yet.
+          var present = false;
+          angular.forEach(scope.record.members,function(val){
+            if (val.id == options.id){
+              present = true;
+            }
+          });
+          if(!present){
+            // If not, add the user as pi
+            scope.record.members.push(options);
+          } else {
+            $window.alert(options.displayName + " is already selected as member.");
+          }
           // Otherwise provide a corresponding message.
         } else if(pi){
           $timeout(function(){
@@ -161,6 +171,80 @@ angular.module('projectProposalApp')
         } else if(copi){
           $timeout(function(){
             $window.alert(options.displayName + " is already defined as Co-Project Leader.");
+          });
+        }
+      }
+    }
+  }
+})
+
+
+
+
+
+/**
+* @ngdoc directive
+* @name projectProposalApp.directive:twoUserSelect
+* @description
+* # twoUserSelect
+* Input form to select two users max.
+*/
+.directive('twoUserSelect', function($window, $timeout) {
+  return {
+    scope: true,
+    template: '<hbp-user-selector hbp-on-select="handleUserSelection(user)"></hbp-user-selector><hbp-usercard ng-repeat="u in record.members" hbp-user="u" ></hbp-usercard></pre>',
+    link: function(scope, elt, attr) {
+      /**
+      * @ngdoc function
+      * @name handleUserSelection
+      * @description
+      * # handleUserSelection
+      * Manage the user selection by checking if the input is not repeated in other fields.
+      * @param {Object} options The selected user.
+      */
+      scope.handleUserSelection = function(options) {
+        if(scope.record.members==undefined ||scope.record.members==null){
+          scope.record.members = [];
+        }
+        if (scope.record.members.length<2){
+          var pi = false;
+          if(scope.record.pi != undefined){
+            pi = (scope.record.pi.id == options.id);
+          }
+          var copi = false;
+          if(scope.record.copi != undefined){
+            copi = (scope.record.copi.id == options.id);
+          }
+          // Verify if the selected member is not yet selected as pi or co-pi.
+          if(!pi && !copi){
+            // Verify if the selected user is not selected yet.
+            var present = false;
+            angular.forEach(scope.record.members,function(val){
+              if (val.id == options.id){
+                present = true;
+              }
+            });
+            if(!present){
+              // If not, add the user as pi
+              scope.record.members.push(options);
+            } else {
+              $window.alert(options.displayName + " is already selected as member.");
+            }
+            // Otherwise provide a corresponding message.
+          } else if(pi){
+            $timeout(function(){
+              $window.alert(options.displayName + " is already defined as Project Leader.");
+            });
+          } else if(copi){
+            $timeout(function(){
+              $window.alert(options.displayName + " is already defined as Co-Project Leader.");
+            });
+          }
+
+        }
+        else {
+          $timeout(function(){
+            $window.alert("The members are limited to two users.");
           });
         }
       }
