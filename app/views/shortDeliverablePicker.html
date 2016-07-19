@@ -39,8 +39,11 @@
         <!-- Project end date, min value is set for the value of the projectStartDate -->
         <!-- and is reformated to correspond to a date field -->
         <td class="inTwo">
-          <div class="form-group" ng-show="record.projectType == 0" onclick="updateBubble(this,'Specify the number of person/month that will worj on this deliverable.')">
-            Person/Month <input type="number" min=0 ng-model="svPair.pm" step=0.01>
+          <div class="form-group padTop" ng-show="record.projectType == 0" onclick="updateBubble(this,'Specify the number of person/month that will worj on this deliverable.')">
+            <table width="100%">
+              <td>Person/Month</td>
+              <td><input type="number" min=0 ng-model="svPair.pm" step=0.01></td>
+            </table>
           </div>
         </td>
       </table>

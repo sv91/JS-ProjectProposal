@@ -368,6 +368,10 @@ input:read-only:required {
   border-color: #CA5B5B;
 }
 
+.padTop{
+  padding-top: 5px;
+}
+
 .gold{
   background-color: #e0dcd0;
 }
