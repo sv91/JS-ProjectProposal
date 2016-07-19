@@ -147,10 +147,35 @@
           <div>
             <textarea readonly>{{record.usecase}}</textarea>
           </div>
+          <div class="form-group" ng-show="record.requirements.length">
+            <label>Requirements</label>
+            <ul>
+              <li ng-repeat="req in record.requirements" ng-show="req.title"><b>[{{req.type.name}}] <i>{{req.title}}</i></b> <br />
+                <u>Definition:</u> {{req.requirement}}<br />
+                <u>Feature of interest:</u> {{req.feature}}<br />
+                <div class="form-group" ng-show="req.input.length">
+                <u>Inputs:</u>
+                <ul>
+                <li ng-repeat="inp in req.input">[{{inp.format.name}}] <i>{{inp.tag}}</i><br>
+                  {{inp.number}} artifacts of size: {{inp.size}}
+                </li>
+              </ul>
+              </div>
+              <div class="form-group" ng-show="req.output.length">
+              <u>Outputs:</u>
+              <ul>
+              <li ng-repeat="out in req.output">[{{out.format.name}}] <i>{{out.tag}}</i><br>
+                {{out.number}} artifacts of size: {{out.size}}
+              </li>
+            </ul>
+            </div>
+              </li>
+            </ul>
+          </div>
         </div>
+      </div>
 
 
-        </div>
         <hr />
 
 

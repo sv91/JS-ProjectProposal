@@ -54,7 +54,7 @@
               <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control"  placeholder="Define the desired input data">
               <br />
               Format
-              <ui-select ng-required="record.projectType >= 2" ng-model="svPair.format" theme="bootstrap" sortable="true">
+              <ui-select ng-required="record.projectType >= 2" ng-model="h.format" theme="bootstrap" sortable="true">
                 <ui-select-match placeholder="Select the input format">{{$select.selected.name}}</ui-select-match>
                 <ui-select-choices repeat="type in availableFormats | filter:$select.search">
                   {{type.name}}
@@ -108,7 +108,7 @@
               <input type="text" ng-required="record.projectType >= 2" ng-model="h.tag" class="form-control" placeholder="Define the desired output data">
               <br />
               Format
-              <ui-select ng-required="record.projectType >= 2" ng-model="svPair.format" theme="bootstrap" sortable="true">
+              <ui-select ng-required="record.projectType >= 2" ng-model="h.format" theme="bootstrap" sortable="true">
                 <ui-select-match placeholder="Select the output format">{{$select.selected.name}}</ui-select-match>
                 <ui-select-choices repeat="type in availableFormats | filter:$select.search">
                   {{type.name}}
