@@ -55,7 +55,7 @@ angular.module('projectProposalApp')
           });
         } else if(member){
           $timeout(function(){
-            $window.alert(options.displayName + " is already defined as HBP Member.");
+            $window.alert(options.displayName + " is already defined as Member.");
           });
         }
       }
@@ -107,7 +107,7 @@ angular.module('projectProposalApp')
           });
         } else if(member){
           $timeout(function(){
-            $window.alert(options.displayName + " is already defined as HBP Member.");
+            $window.alert(options.displayName + " is already defined as Member.");
           });
         }
       }
