@@ -149,7 +149,8 @@ angular
 			{'name':'Simulation','desc':'Define typical simulation, expected time to solution, size of circuit, equations, software to be used.'},
 			{'name':'Analysis','desc':'Define typical analysis and software package to be used.'},
 			{'name':'Visualization','desc':'Define typical visualization, file format, software package to be used.'},
-			{'name':'Web application','desc':''}
+			{'name':'Web application','desc':''},
+			{'name':'Infrastructure','desc':''}
 		];
 		$scope.availableFormats = [
 			{'name':'HDF5'},
