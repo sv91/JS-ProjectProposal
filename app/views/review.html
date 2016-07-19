@@ -137,6 +137,23 @@
       </div>
       <hr />
 
+      <input id="r" type="checkbox" class="plusMinus" ng-model="r">
+      <label for="r" class="css-label"><span class="glyphicon glyphicon-plus"></span>
+        <span class="glyphicon glyphicon-minus"></span> Requirements
+      </label>
+      <div ng-show="r">
+        <div class="form-group">
+          <label>Usecase</label>
+          <div>
+            <textarea readonly>{{record.usecase}}</textarea>
+          </div>
+        </div>
+
+
+        </div>
+        <hr />
+
+
       <input id="comp" type="checkbox" class="plusMinus" ng-model="comp">
       <label for="comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
         <span class="glyphicon glyphicon-minus"></span> Computing, Storage and Services resources
