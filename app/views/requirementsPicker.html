@@ -26,12 +26,12 @@
 
       </div>
       <br />
-      <div ng-show="record.projectType >= 0" onclick="updateBubble(this,'Define which feature is missing.')">
+      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Define which feature is missing.')">
         Feature of interest
         <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.feature" placeholder='Define which feature is missing.' maxlength="300"></textarea>
       </div>
       <br />
-      <div ng-show="record.projectType >= 0" >
+      <div ng-show="record.projectType >= 1" >
         <label>Describe expected input data</label>
         <div class="p10" data-ng-model="svPair.input">
           <div ng-repeat="h in svPair.input">
@@ -85,7 +85,7 @@
         </div>
       </div>
       <br />
-      <div ng-show="record.projectType >= 0" >
+      <div ng-show="record.projectType >= 1" >
         <label>Outputs</label>
         <div class="p10" data-ng-model="svPair.output">
           <div ng-repeat="h in svPair.output">
