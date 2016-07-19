@@ -48,13 +48,7 @@
       </table>
       <div onclick="updateBubble(this,'A short description.')">
         Synergies with this project (Max. 200 characters)
-        <input type="text" class="form-control"
-        maxlength="200"
-        name="dataset_title"
-        uib-typeahead="project.description for project in relatedProjects | filter:{'name': svPair.name}:true | filter:$viewValue | limitTo:8"
-        placeholder="A short description"
-        ng-required="record.projectType >= 2" ng-model="svPair.description">
-
+        <textarea class="form-control" maxlength="200" placeholder="A short description" ng-required="record.projectType >= 2" ng-model="svPair.description"></textarea>
       </div>
       <div>
         <div button type="button" class="close" aria-label="Remove" ng-click="deleteProject(svPair)">
