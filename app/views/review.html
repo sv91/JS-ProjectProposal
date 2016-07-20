@@ -152,7 +152,7 @@
             <ul>
               <li ng-repeat="req in record.requirements" ng-show="req.title"><b>[{{req.type.name}}] <i>{{req.title}}</i></b> <br />
                 <u>Definition:</u> {{req.requirement}}<br />
-                <u>Feature of interest:</u> {{req.feature}}<br />
+                <span ng-show="record.projectType >= 1"><u>Feature of interest:</u> {{req.feature}}<br /></span>
                 <div class="form-group" ng-show="req.input.length">
                 <u>Inputs:</u>
                 <ul>
