@@ -1,4 +1,4 @@
-<div class="container form middlePart"  onmouseover="updateBubble(this.childNodes[1].childNodes[3],'Select the type of project you would like to create.')">
+<div class="container form middlePart" id="typeMain">
   <div class="form-group">
     <!-- main information -->
     <label>Please select the type of project you would like to submit</label>
@@ -7,7 +7,7 @@
       <input type="text" ng-model="record.projectType">
       FOR TEST -->
       <table>
-        <tr ng-class="{bronzeSelected : record.projectType=='0', bronze: record.projectType!='0'}">
+        <tr ng-class="{bronzeSelected : record.projectType=='0', bronze: record.projectType!='0'}" onclick="updateBubble(this,'The estimated time to write a Bronze proposal is 1 hour.')">
           <td colspan="2" class="empty">
             <p class="placeholder">P</p>
           </td>
@@ -29,7 +29,7 @@
             <p class="placeholder">P</p>
           </td>
         </tr>
-        <tr ng-class="{silverSelected : record.projectType=='1', silver: record.projectType!='1'}">
+        <tr ng-class="{silverSelected : record.projectType=='1', silver: record.projectType!='1'}" onclick="updateBubble(this,'The estimated time to write a Silver proposal is 4 hours.')">
           <td colspan="1" class="empty">
             <p class="placeholder">P</p>
           </td>
@@ -51,7 +51,7 @@
             <p class="placeholder">P</p>
           </td>
         </tr>
-        <tr ng-class="{goldSelected : record.projectType=='2', gold: record.projectType!='2'}">
+        <tr ng-class="{goldSelected : record.projectType=='2', gold: record.projectType!='2'}" onclick="updateBubble(this,'The estimated time to write a Gold proposal is 2 days.')">
           <td class="cornerS">
             <div>
               <img src="/images/sideLB.png" class="cornerS">
@@ -74,5 +74,6 @@
 </div>
 
 <script>
+updateBubble(document.getElementById("typeMain").childNodes[1].childNodes[3],'Select the type of project you would like to create.');
 updateLinks('',"members");
 </script>
