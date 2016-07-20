@@ -36,7 +36,7 @@
         </textarea>
       </div>
       <br />
-      <div ng-show="record.projectType >= 1" onclick="updateBubble(this,'Some risks.')">
+      <div ng-show="record.projectType >= 2" onclick="updateBubble(this,'Some risks.')">
         <label>Risks</label>
         <textarea class="form-control" ng-required="record.projectType >= 2" ng-model="svPair.risks" placeholder="Risks of the deliverable" required>
         </textarea>
@@ -119,8 +119,26 @@
           <div class="p10-5">
             <label>Infrastructure as a Service (IaaS)</label>
 
+            <table width="100%" class="hpcList p10" ng-show="record.projectType == 1" >
+              <!-- Project beggining date, min value is set for "Today" in the formController -->
+              <!-- and is reformated to correspond to a date field -->
+              <td class="inTwo">
+                <div class="form-group">
+                    <input type="checkbox" ng-model="svPair.hpcRessource"> HPC Ressources
+                </div>
+              </td>
+              <td class="inTwoEmptySeparator">
+              </td>
+              <!-- Project end date, min value is set for the value of the projectStartDate -->
+              <!-- and is reformated to correspond to a date field -->
+              <td class="inTwo">
+                <div class="form-group">
+                    <input type="checkbox" ng-model="svPair.cloudRessource"> Cloud Ressources
+                </div>
+              </td>
+            </table>
 
-            <div class="hpcList p10" data-ng-model="svPair.hpc" ng-show="record.projectType >= 1" >
+            <div class="hpcList p10" data-ng-model="svPair.hpc" ng-show="record.projectType >= 2" >
               <label>HPC resources
               </label><br />
               <div ng-repeat="h in svPair.hpc" >
@@ -180,16 +198,13 @@
                   </div>
                   <hr/>
                 </div>
-
-
-
               </div>
               <br />
               <div class="btn btn-default" ng-click="addHpc(svPair)">Add HPC Resource</div>
+              <hr />
             </div>
-            <hr />
 
-            <div class="cloudList p10" data-ng-model="svPair.cloud" ng-show="record.projectType >= 1" >
+            <div class="cloudList p10" data-ng-model="svPair.cloud" ng-show="record.projectType >= 2" >
               <label>Cloud resources
               </label><br />
               <div ng-repeat="h in svPair.cloud">
@@ -250,9 +265,9 @@
               </div>
               <br />
               <div class="btn btn-default" ng-click="addCloud(svPair)">Add Cloud Resource</div>
+              <br />
             </div>
           </div>
-          <br />
 
           <div class="p10-5">
             <div ng-show="record.projectType >= 1" >

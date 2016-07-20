@@ -103,7 +103,7 @@ angular.module('projectProposalApp')
 * # deliverablePicker
 * Directive managing the deliverables for the .deliverables page.
 */
-.directive('deliverablePicker', function () {
+.directive('deliverablePicker', function ($window, $timeout) {
   return {
     scope: true,
     templateUrl: 'views/deliverablePicker.html',
@@ -146,6 +146,12 @@ angular.module('projectProposalApp')
       * Add an additional form for a deliverable.
       */
       scope.addDeliverable = function () {
+        if(scope.record.projectType==1 && scope.record.deliverables.length >= 4){
+          $timeout(function(){
+            $window.alert("Silver type of proposal are limited to 4 deliverables.");
+          });
+          return;
+        }
         scope.record.deliverables.push({'name': '', 'date': '', 'risks': '','requirement':[], 'description': '','dependency':[],'members':[{'name': '', 'role': '', 'pm':'','description':''}],'hpc':[],'cloud':[],'hardware':[]});
       };
 

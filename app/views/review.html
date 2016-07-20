@@ -178,7 +178,7 @@
 
         <hr />
 
-
+<div ng-show="record.projectType >= 1" >
       <input id="comp" type="checkbox" class="plusMinus" ng-model="comp">
       <label for="comp" class="css-label"><span class="glyphicon glyphicon-plus"></span>
         <span class="glyphicon glyphicon-minus"></span> Computing, Storage and Services resources
@@ -341,9 +341,10 @@
           <span ng-hide="summ.hardware.length" class="nonePadding"><br />None<br /></span>
         </div>
       </div>
-
       <hr />
+</div>
 
+<div ng-show="record.projectType >= 1" >
       <input id="hr" type="checkbox" class="plusMinus" ng-model="hr">
       <label for="hr" class="css-label"><span class="glyphicon glyphicon-plus"></span>
         <span class="glyphicon glyphicon-minus"></span> Human resources
@@ -374,6 +375,7 @@
         </div>
       </div>
     </div>
+  </div>
 
     <hr />
 
