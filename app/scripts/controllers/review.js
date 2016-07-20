@@ -85,6 +85,12 @@ angular.module('projectProposalApp')
       temp.desc=val.description;
       temp.dependency=val.dependency;
 
+
+      $scope.summ.hpcRessource = ($scope.summ.hpcRessource || val.hpcRessource);
+      temp.hpcRessource = val.hpcRessource;
+      $scope.summ.cloudRessource = ($scope.summ.cloudRessource || val.cloudRessource);
+      temp.cloudRessource = val.cloudRessource;
+
       /**
       * @ngdoc function
       * @name add
@@ -105,6 +111,28 @@ angular.module('projectProposalApp')
           }
         })
       }
+
+      /**
+      * @ngdoc function
+      * @name add
+      * @description
+      * # add
+      * Verify if a value is present in the two arrays and if not add it into it.
+      * @param {Object} origin The object to add.
+      * @param {Object} summ First array.
+      * @param {Object} tempo Second array.
+      */
+      function add(origin,summ,tempo){
+        angular.forEach(origin,function(val2){
+          if (summ.indexOf(val2)==-1){
+            summ.push(val2);
+          }
+          if (tempo.indexOf(val2)==-1){
+            tempo.push(val2);
+          }
+        })
+      }
+
       // Filling the arrays
       add(val.softdev,$scope.summ.softdev,temp.softdev);
       add(val.datatransfer,$scope.summ.datatransfer,temp.datatransfer);

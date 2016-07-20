@@ -243,7 +243,23 @@
         </div>
         <div class="p10-5">
           <label>Infrastructure as a Service (IaaS)</label>
-          <div class="p10">
+          <div ng-show="record.projectType == 1" >
+            <table width="100%" class="hpcList p10" ng-show="record.projectType == 1" >
+              <td class="inTwo">
+                <div class="form-group">
+                    <input type="checkbox" ng-model="summ.hpcRessource" disabled="disabled"> HPC Ressources
+                </div>
+              </td>
+              <td class="inTwoEmptySeparator">
+              </td>
+              <td class="inTwo">
+                <div class="form-group">
+                    <input type="checkbox" ng-model="summ.cloudRessource" disabled="disabled"> Cloud Ressources
+                </div>
+              </td>
+            </table>
+          </div>
+          <div class="p10" ng-show="record.projectType >= 2" >
             <u>System Architectures</u>
             <ul ng-show="summ.architecture.length">
               <li ng-repeat="tasks in summ.architecture">{{tasks.name}}</li>
