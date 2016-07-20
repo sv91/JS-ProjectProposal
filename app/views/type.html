@@ -7,7 +7,7 @@
       <input type="text" ng-model="record.projectType">
       FOR TEST -->
       <table>
-        <tr ng-class="{bronzeSelected : record.projectType=='0', bronze: record.projectType!='0'}" onclick="updateBubble(this,'The estimated time to write a Bronze proposal is 1 hour.')">
+        <tr ng-class="{bronzeSelected : record.projectType=='0', bronze: record.projectType!='0'}" onmouseover="updateBubble(this,'The estimated time to write a Bronze proposal is 1 hour.')">
           <td colspan="2" class="empty">
             <p class="placeholder">P</p>
           </td>
@@ -29,7 +29,7 @@
             <p class="placeholder">P</p>
           </td>
         </tr>
-        <tr ng-class="{silverSelected : record.projectType=='1', silver: record.projectType!='1'}" onclick="updateBubble(this,'The estimated time to write a Silver proposal is 4 hours.')">
+        <tr ng-class="{silverSelected : record.projectType=='1', silver: record.projectType!='1'}" onmouseover="updateBubble(this,'The estimated time to write a Silver proposal is 4 hours.')">
           <td colspan="1" class="empty">
             <p class="placeholder">P</p>
           </td>
@@ -51,7 +51,7 @@
             <p class="placeholder">P</p>
           </td>
         </tr>
-        <tr ng-class="{goldSelected : record.projectType=='2', gold: record.projectType!='2'}" onclick="updateBubble(this,'The estimated time to write a Gold proposal is 2 days.')">
+        <tr ng-class="{goldSelected : record.projectType=='2', gold: record.projectType!='2'}" onmouseover="updateBubble(this,'The estimated time to write a Gold proposal is 2 days.')">
           <td class="cornerS">
             <div>
               <img src="/images/sideLB.png" class="cornerS">
