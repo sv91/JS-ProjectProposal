@@ -64,11 +64,11 @@ angular
 	$urlRouterProvider.otherwise('/form/type');
 })
 
-.controller('formController', function($scope, hbpCollabStore, $localStorage) {
+.controller('formController', function($scope, hbpCollabStore, $sessionStorage) {
 	// we will store all of our form data in this object
 	if($scope.record == undefined | $scope.record == null){
 		console.log('scope');
-		$scope.record = $localStorage;
+		$scope.record = $sessionStorage;
 		$scope.summ = {};
 		$scope.faq = '';
 		// value of current date
