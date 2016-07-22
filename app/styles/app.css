@@ -353,7 +353,7 @@ textarea:-moz-read-only {
   border-width: 1px;
 }
 
-textarea:required{
+textarea:required.ng-invalid.ng-touched{
   background-color: #FA787E !important;
   border-color: #CA5B5B !important;
 }
