@@ -10,7 +10,7 @@
 */
 
 angular
-.module('projectProposalApp', ['ui.router','ui.select','angular.filter','hbpCommon','bbpOidcClient','ui.bootstrap','ngMaterial', 'ngMessages'])
+.module('projectProposalApp', ['ui.router','ui.select','angular.filter','hbpCommon','bbpOidcClient','ui.bootstrap','ngMaterial', 'ngMessages','ngStorage'])
 .config(function ($stateProvider, $urlRouterProvider) {
 	// link adresses to views and controllers
 	$stateProvider
@@ -64,11 +64,11 @@ angular
 	$urlRouterProvider.otherwise('/form/type');
 })
 
-.controller('formController', function($scope, hbpCollabStore) {
+.controller('formController', function($scope, hbpCollabStore, $localStorage) {
 	// we will store all of our form data in this object
 	if($scope.record == undefined | $scope.record == null){
 		console.log('scope');
-		$scope.record = {};
+		$scope.record = $localStorage;
 		$scope.summ = {};
 		$scope.faq = '';
 		// value of current date
